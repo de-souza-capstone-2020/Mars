@@ -10,7 +10,11 @@ import com.facebook.react.shell.MainReactPackage;
 import java.util.Arrays;
 import java.util.ArrayList;
 
+import com.awesomeproject.BuildConfig;
+import com.awesomeproject.R;
 
+// react-native-vector-icons
+import com.oblador.vectoricons.VectorIconsPackage;
 
 public class PackageList {
   private ReactNativeHost reactNativeHost;
@@ -36,7 +40,8 @@ public class PackageList {
 
   public ArrayList<ReactPackage> getPackages() {
     return new ArrayList<>(Arrays.<ReactPackage>asList(
-      new MainReactPackage()
+      new MainReactPackage(),
+      new VectorIconsPackage()
     ));
   }
 }

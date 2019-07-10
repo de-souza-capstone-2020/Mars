@@ -15,7 +15,8 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
-
+import { Button } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const App = () => {
   return (
@@ -29,7 +30,15 @@ const App = () => {
           </View>
 
           <View style={styles.get_started}>
-            <Text style={styles.title_font}> Hi there </Text>
+            <Text style={styles.title_font}> Example text </Text>
+            <Button
+              icon={{
+                name: "arrow-forward",
+                size: 15,
+                color: "white",
+              }}
+              title="Get started"
+            />
           </View>
         </View>
       </SafeAreaView>
@@ -52,7 +61,7 @@ const styles = StyleSheet.create({
     flex: 2,
     borderColor: 'blue',
     justifyContent: 'center',
-    borderWidth: 1,
+    // borderWidth: 1,
   },
   sectionContainer: {
     marginTop: 32,

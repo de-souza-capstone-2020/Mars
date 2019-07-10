@@ -5,6 +5,7 @@ INJECTED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:1
 INJECTED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:1:1-26:12
 INJECTED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:1:1-26:12
 MERGED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:1:1-26:12
+MERGED from [:react-native-vector-icons] /Users/melaniewang/Mars/node_modules/react-native-vector-icons/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [com.facebook.react:react-native:0.60.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/f1024658b243f1bf59baccb3881d4692/AndroidManifest.xml:2:1-13:12
 MERGED from [org.webkit:android-jsc:r245459] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/909a98489a1a82fe65899c4f4fabdeca/AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat:1.0.2] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/e952b2223cc0b8d2036b3e61f5987ebf/AndroidManifest.xml:17:1-22:12
@@ -132,6 +133,8 @@ uses-sdk
 INJECTED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml
 INJECTED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml
+MERGED from [:react-native-vector-icons] /Users/melaniewang/Mars/node_modules/react-native-vector-icons/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-vector-icons] /Users/melaniewang/Mars/node_modules/react-native-vector-icons/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.react:react-native:0.60.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/f1024658b243f1bf59baccb3881d4692/AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.react:react-native:0.60.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/f1024658b243f1bf59baccb3881d4692/AndroidManifest.xml:7:5-9:41
 MERGED from [org.webkit:android-jsc:r245459] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/909a98489a1a82fe65899c4f4fabdeca/AndroidManifest.xml:7:5-9:41
