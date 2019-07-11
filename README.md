@@ -23,12 +23,13 @@ run this beforehand:
 4. Create a pull request after you added code (see below)
 
 
-### Common Git Commands | QUESTIONS? ASK DAVID
+### Common git commands | QUESTIONS? ASK DAVID
+<hr>
 
 
 #### Creating a Pull Request
 
-1. (can be ignored if you have a branch) In your terminal run `git checkout -b <your branch name>` to create a branch 
+1. (can be ignored if you have a branch) Run `git checkout -b <your branch name>` to create a branch 
 2. Code, work, do stuff
 3. Run `git add .`
 4. Run `git commit -m "<your commit message>"`
@@ -39,7 +40,6 @@ run this beforehand:
 
 #### To find your current branch
 1. Run `git branch`
-
 
 #### Test someone's pull request
 
@@ -55,3 +55,12 @@ run this beforehand:
 2. Run `git commit -m "<your commit message>"`
 3. Run `git push` (you'll be prompt to update your upstream for the first push)
 
+#### Merging master to your branch
+
+Alert: There is a possibility that you'll have to rebase. Message David if you have any confusion. He'll explain everything in-person
+
+1. Commit your changes first
+2. Run `git checkout master`
+3. Run `git pull` to pull latest changes
+4. Run `git checkout <your branch>`
+5. Run `git merge master` 
