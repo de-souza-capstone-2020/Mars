@@ -1,56 +1,193 @@
-# Mars
-React Native Front-end
+### ANNOUNCEMENT
+DO NOT MODIFY OR CHANGE THE CODE BEFORE CONFIRMED BY `DOOBOOLAB`. THIS REPOSITORY IS USED IN `DOOBOO-CLI`.
 
-### How to run:
+# React Native JS Boilerplate
+> Specification
+* flow
+* react-navigation
+* localization
+* mobx
+* jest configured with decorator and injector from mobx
 
-run on android:
-`$react-native run-android`
+# Gain points
+```
+1. Sample of mobx and data modeling.
+2. Able to learn how to structure react native app with mobx and jest and flow.
+3. Test type with flow with `npm run build` command.
+4. Learn how to localize your project.
+```
 
-run on ios:
-`$react-native run-ios`
+# INSTALL
+```
+1. npm install
+2. npm start
+```
 
+# Structures
+```text
+app/
+├─ .doobooo // necessary if using dooboo-cli
+├─ assets
+│  └─ icons // app icons
+│  └─ images // app images like background images
+├─ node_modules/
+├─ src/
+│  └─ apis
+│  └─ components
+│  └─ models
+│  └─ stores
+│  └─ utils
+│  └─ index.js
+├─ test/
+├─ .babelrc
+├─ .buckconfig
+├─ .eslintignore
+├─ .eslintrc.js
+├─ .flowconfig
+├─ .gitattributes
+├─ .gitignore
+├─ .watchmanconfig
+├─ app.json
+├─ index.js
+├─ package.json
+├─ README.md
+└─ STRINGS.js
+```
 
-**if theres a problem**
+# Running the project
+Running the project is as simple as running
+```sh
+npm run start
+```
 
-run this beforehand:
-`$react-native run`
+This runs the `start` script specified in our `package.json`, and will spawn off a server which reloads the page as we save our files.
+Typically the server runs at `http://localhost:8080`, but should be automatically opened for you.
 
-### Common Git Commands | QUESTIONS? ASK DAVID
+## Troubleshoot
+* Facing `Can't find variable Symbol` error in `window` or `ubuntu`.
+  ```
+  npm install --save mobx@3.6.2
+  npm install --save mobx-react@4.4.3
+  ```
 
-#### BEFORE WORKING
+## Testing the project
+Testing is also just a command away:
+```sh
+npm test
+> jest -u
 
-1. Run `git checkout master` to go on master
-2. Run `git pull` to pull latest changes
-3. Run `git checkout -b <your branch name>` to create a branch to work on
-4. Create a pull request after you added code (see below)
+ PASS  src/components/screen/__tests__/NotFound.test.js
+  ● Console
 
+    console.log src/utils/Styles.js:6
+      calRatio: 8.995502248875562
+    console.log src/utils/Styles.js:20
+      calRatio: 83.33333333333333
+    console.log src/utils/Styles.js:25
+      ratio: 2.083333333333333
 
-* Creating a Pull Request
+ PASS  lib/components/screen/__tests__/NotFound.test.js
+  ● Console
 
-1. (can be ignored if you have a branch) In your terminal run `git checkout -b <your branch name>` to create a branch 
-2. Code, work, do stuff
-3. Run `git add .`
-4. Run `git commit -m "<your commit message>"
-5. Run `git push` (you'll be prompt to update your upstream for the first push)
-6. Navigate to Mars on Github, you'll be prompt to `open a pull request`
-7. Fill out the `pull request` template
-8. Submit it and ask for review
+    console.log lib/utils/Styles.js:1
+      calRatio: 8.995502248875562
+    console.log lib/utils/Styles.js:1
+      calRatio: 83.33333333333333
+    console.log lib/utils/Styles.js:1
+      ratio: 2.083333333333333
 
-* To find your current branch
-1. Run `git branch`
+ › 2 snapshots written.
+ PASS  lib/components/screen/__tests__/Home.test.js
+ › 2 snapshots written.
+ PASS  src/components/shared/__tests__/Button.test.js
+  ● Console
 
+    console.log src/utils/Styles.js:6
+      calRatio: 8.995502248875562
+    console.log src/utils/Styles.js:20
+      calRatio: 83.33333333333333
+    console.log src/utils/Styles.js:25
+      ratio: 2.083333333333333
 
-* Test someone's pull request
+ › 4 snapshots updated.
+ PASS  lib/components/shared/__tests__/Button.test.js
+  ● Console
 
-1. Find out the pull request's branch name
-2. Run `git branch -a` (-a mean "all")
-3. Run `git checkout <the branch name>`
-4. Follow the test plan
-5. Review the pull request
+    console.log lib/utils/Styles.js:1
+      calRatio: 8.995502248875562
+    console.log lib/utils/Styles.js:1
+      calRatio: 83.33333333333333
+    console.log lib/utils/Styles.js:1
+      ratio: 2.083333333333333
 
-* Pushing your work via git
+ › 4 snapshots written.
+ PASS  src/components/screen/__tests__/Intro.test.js
+  ● Console
 
-1. Run `git add .`
-2. Run `git commit -m "<your commit message>"`
-3. Run `git push` (you'll be prompt to update your upstream for the first push)
+    console.log src/utils/Styles.js:6
+      calRatio: 8.995502248875562
+    console.log src/utils/Styles.js:20
+      calRatio: 83.33333333333333
+    console.log src/utils/Styles.js:25
+      ratio: 2.083333333333333
 
+ › 1 snapshot updated.
+
+Snapshot Summary
+ › 8 snapshots written from 3 test suites.
+ › 5 snapshots updated from 2 test suites.
+
+Test Suites: 6 passed, 6 total
+Tests:       14 passed, 14 total
+Snapshots:   5 updated, 8 written, 3 passed, 16 total
+Time:        5.251s
+Ran all test suites.
+```
+
+## Writing tests with Jest
+We've created test examples with jest-ts in `src/components/screen/__tests__` and `src/components/shared/__tests__`. Since react is component oriented, we've designed to focus on writing test in same level of directory with component. You can simply run `npm test` to test if it succeeds and look more closer opening the source.
+
+## Localization
+We've defined Localization strings in `STRINGS.js` which is in root dir.
+We used [react-native-localization](https://github.com/stefalda/ReactNativeLocalization) pacakage for this one.
+```
+import LocalizedStrings from 'react-native-localization';
+
+const strings = new LocalizedStrings({
+  en: {
+    LOGIN: 'Login',
+  },
+  kr: {
+    LOGIN: '로그인',
+  },
+});
+
+export {
+  strings,
+};
+```
+
+Fixed jest setup by adding following in jestSetup.
+
+```
+import { NativeModules } from 'react-native';
+
+/**
+ * monkey patching the locale to avoid the error:
+ * Something went wrong initializing the native ReactLocalization module
+ * https://gist.github.com/MoOx/08b465c3eac9e36e683929532472d1e0
+ */
+
+NativeModules.ReactLocalization = {
+  language: 'en_US',
+};
+```
+
+## React version
+16.5
+
+## React Native version
+0.57
+
+## React navigation
+3

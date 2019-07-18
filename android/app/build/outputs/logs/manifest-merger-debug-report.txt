@@ -4,108 +4,73 @@ ADDED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:1:1-
 INJECTED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:1:1-26:12
 INJECTED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:1:1-26:12
 INJECTED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:1:1-26:12
-MERGED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:1:1-26:12
-MERGED from [:react-native-vector-icons] /Users/melaniewang/Mars/node_modules/react-native-vector-icons/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
-MERGED from [com.facebook.react:react-native:0.60.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/f1024658b243f1bf59baccb3881d4692/AndroidManifest.xml:2:1-13:12
-MERGED from [org.webkit:android-jsc:r245459] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/909a98489a1a82fe65899c4f4fabdeca/AndroidManifest.xml:2:1-11:12
-MERGED from [androidx.appcompat:appcompat:1.0.2] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/e952b2223cc0b8d2036b3e61f5987ebf/AndroidManifest.xml:17:1-22:12
-MERGED from [com.facebook.fresco:fresco:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/979e17fd3aa52dba4299e65a38499716/AndroidManifest.xml:2:1-9:12
-MERGED from [com.facebook.fresco:imagepipeline-okhttp3:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/20e2cda661ca81b66ed56454b62adff6/AndroidManifest.xml:2:1-9:12
-MERGED from [com.facebook.fresco:drawee:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/7ea03521821652ca1110456ef2a6ff6b/AndroidManifest.xml:2:1-9:12
-MERGED from [com.facebook.fresco:nativeimagefilters:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/fdf230c7e665af5e6bb1d7470ea2a348/AndroidManifest.xml:2:1-9:12
-MERGED from [com.facebook.fresco:imagepipeline:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/d1756185f257276a7080089e3783727f/AndroidManifest.xml:2:1-9:12
-MERGED from [com.facebook.fresco:nativeimagetranscoder:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/8cb454ba7ffc402dd0ebc1be70c08011/AndroidManifest.xml:2:1-9:12
-MERGED from [com.facebook.fresco:imagepipeline-base:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/587e4122f6e2c97abfd67749fd09f41a/AndroidManifest.xml:2:1-9:12
-MERGED from [com.facebook.soloader:soloader:0.6.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/9641a6ad36f764d493dcc8080ae3dcba/AndroidManifest.xml:2:1-13:12
-MERGED from [androidx.fragment:fragment:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/ce0f4c187c4dfd7e3d93cd8411622ce6/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/67eedc6256a8d21127e188bd4b7d2c37/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/dcb4a0e0660e3640f321886cdf626369/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/456deb9ad8d42297417dfc6796c8d5b6/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.vectordrawable:vectordrawable:1.0.1] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/4306d70eeaf4868fe323e5ab81591f68/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.loader:loader:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/ddd2204d55f03ac70f1010d0cae853ef/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/243e77112754949cd079df5a65a701a3/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/9eb8216e85b2b5e3b3f7081c3c9144e0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/11f5dcdfce89e5a2a072c45be2b3cd17/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/7e108c6e17c9916861edf096247ae60a/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.customview:customview:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/332904977438f5f9339b456707e14681/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/17207795726b3bdbc4b3a395c74414c3/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/fbb87a9153b852c6574900702547dc17/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.core:core:1.0.1] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/cddd8a3182cbf26eb2564214312ab0fc/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/e59e7921128ee84543385cd3dc53ec0b/AndroidManifest.xml:17:1-25:12
-MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/2251e7cc9832c2f86fefde601b3bb37e/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/c74926d16934273ad848a13f83a7ff1b/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/37c67d7ff440ffb44145cca9f31d8200/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/27936ab9394330b0231ac5aed14d5c39/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.print:print:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/1cada8b0a465902a01dcf23dec6173cb/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/fd29474ca00b5dfeddd3fe8b9653a462/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/987398349c6171e4d7af8e7f9181fabe/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/af69a2b963cc5fcb2aff103774aa540f/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/8c8cd37e7a6c5b81c940292dc94fc558/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/20dcbf258479b470b246662e1c8ebbc5/AndroidManifest.xml:17:1-22:12
-MERGED from [com.facebook.fresco:fbcore:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/645498ee348f6fb72621fcca0025ecc6/AndroidManifest.xml:2:1-9:12
-INJECTED from /Users/melaniewang/Mars/android/app/src/debug/AndroidManifest.xml:2:1-8:12
-INJECTED from /Users/melaniewang/Mars/android/app/src/debug/AndroidManifest.xml:2:1-8:12
-INJECTED from /Users/melaniewang/Mars/android/app/src/debug/AndroidManifest.xml:2:1-8:12
+MERGED from [:react-native-vector-icons] /Users/melaniewang/Mars/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-gesture-handler] /Users/melaniewang/Mars/node_modules/react-native-gesture-handler/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-localization] /Users/melaniewang/Mars/node_modules/react-native-localization/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [com.facebook.react:react-native:0.57.8] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/react-native-0.57.8.aar/75ded354292db8dc8ce062e3ab0a80ef/AndroidManifest.xml:2:1-15:12
+MERGED from [com.android.support:appcompat-v7:27.1.1] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/094be4955b010e533c73c06d83616927/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.1.1] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/720d55e498674bb867cf5d975f72b0a6/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/438d3488c520e47b5c40e94ec0ad8361/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.1] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/5b99868369bcf10b5b7e55498904fc16/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.1.1] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/4489c0d177f921e437e4c28946f82f95/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/2a3db87623ded3740a9a027872eb83fd/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.1] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/93c0a0d936e868864df98ac23f6b4de4/AndroidManifest.xml:17:1-22:12
+MERGED from [com.facebook.fresco:fresco:1.10.0] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/fresco-1.10.0.aar/b8906bf30af08a69a9bd94e536079e09/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.10.0] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.10.0.aar/867a252a0ebea2513c401270615c1b66/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:drawee:1.10.0] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/drawee-1.10.0.aar/136ff705c5266a8b40ed0da1e04cc98a/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline:1.10.0] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/imagepipeline-1.10.0.aar/23b1bc7ef3817235bf8fb3d6826158de/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline-base:1.10.0] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.10.0.aar/107d67c8e3901a0ea45305e20c8db163/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.soloader:soloader:0.5.1] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/soloader-0.5.1.aar/78c4a10be65b603a4fff54cd7fe05a1d/AndroidManifest.xml:2:1-13:12
+MERGED from [org.webkit:android-jsc-intl:r236355] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/android-jsc-intl-r236355.aar/99384fd6486a6a03612f0a72f0dc6c11/AndroidManifest.xml:2:1-11:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/9f9dc8fa2beb264469ab5884ece14b40/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/989334ff60465fa5a6053cbb2d4f2dd6/AndroidManifest.xml:17:1-22:12
+MERGED from [com.facebook.fresco:fbcore:1.10.0] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/fbcore-1.10.0.aar/87014bb1e286c2eb89af8b35198e089d/AndroidManifest.xml:2:1-9:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/d41743567f985d406d26f9feb1ae1314/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.0] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/654258e7c46b4120a95776174430e2a0/AndroidManifest.xml:17:1-22:12
+INJECTED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:1:1-26:12
+INJECTED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:1:1-26:12
+INJECTED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:1:1-26:12
 	package
-		ADDED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:2:3-31
+		ADDED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:2:5-36
 		INJECTED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:2:3-31
-		INJECTED from /Users/melaniewang/Mars/android/app/src/debug/AndroidManifest.xml
+		INJECTED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml
 		ADDED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:1:1-26:12
-		INJECTED from /Users/melaniewang/Mars/android/app/src/debug/AndroidManifest.xml
-	xmlns:tools
-		ADDED from /Users/melaniewang/Mars/android/app/src/debug/AndroidManifest.xml:3:5-51
+		INJECTED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml
 		ADDED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:1:1-26:12
-		INJECTED from /Users/melaniewang/Mars/android/app/src/debug/AndroidManifest.xml
+		INJECTED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:1:11-69
 uses-permission#android.permission.INTERNET
 ADDED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:4:5-67
 	android:name
 		ADDED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:4:22-64
+uses-permission#android.permission.SYSTEM_ALERT_WINDOW
+ADDED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:5:5-77
+MERGED from [com.facebook.react:react-native:0.57.8] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/react-native-0.57.8.aar/75ded354292db8dc8ce062e3ab0a80ef/AndroidManifest.xml:11:5-78
+MERGED from [com.facebook.react:react-native:0.57.8] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/react-native-0.57.8.aar/75ded354292db8dc8ce062e3ab0a80ef/AndroidManifest.xml:11:5-78
+	android:name
+		ADDED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:5:22-75
 application
-ADDED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:6:5-24:19
-MERGED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:6:5-24:19
-MERGED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:6:5-24:19
-MERGED from [com.facebook.react:react-native:0.60.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/f1024658b243f1bf59baccb3881d4692/AndroidManifest.xml:11:5-20
-MERGED from [com.facebook.react:react-native:0.60.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/f1024658b243f1bf59baccb3881d4692/AndroidManifest.xml:11:5-20
-MERGED from [com.facebook.soloader:soloader:0.6.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/9641a6ad36f764d493dcc8080ae3dcba/AndroidManifest.xml:11:5-20
-MERGED from [com.facebook.soloader:soloader:0.6.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/9641a6ad36f764d493dcc8080ae3dcba/AndroidManifest.xml:11:5-20
-MERGED from [androidx.core:core:1.0.1] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/cddd8a3182cbf26eb2564214312ab0fc/AndroidManifest.xml:22:5-89
-MERGED from [androidx.core:core:1.0.1] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/cddd8a3182cbf26eb2564214312ab0fc/AndroidManifest.xml:22:5-89
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/e59e7921128ee84543385cd3dc53ec0b/AndroidManifest.xml:22:5-23:19
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/e59e7921128ee84543385cd3dc53ec0b/AndroidManifest.xml:22:5-23:19
-	android:appComponentFactory
-		ADDED from [androidx.core:core:1.0.1] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/cddd8a3182cbf26eb2564214312ab0fc/AndroidManifest.xml:22:18-86
+ADDED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:7:5-24:19
+MERGED from [com.facebook.react:react-native:0.57.8] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/react-native-0.57.8.aar/75ded354292db8dc8ce062e3ab0a80ef/AndroidManifest.xml:13:5-20
+MERGED from [com.facebook.react:react-native:0.57.8] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/react-native-0.57.8.aar/75ded354292db8dc8ce062e3ab0a80ef/AndroidManifest.xml:13:5-20
+MERGED from [com.facebook.soloader:soloader:0.5.1] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/soloader-0.5.1.aar/78c4a10be65b603a4fff54cd7fe05a1d/AndroidManifest.xml:11:5-20
+MERGED from [com.facebook.soloader:soloader:0.5.1] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/soloader-0.5.1.aar/78c4a10be65b603a4fff54cd7fe05a1d/AndroidManifest.xml:11:5-20
 	android:label
-		ADDED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:8:7-39
-		ADDED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:8:7-39
-	tools:ignore
-		ADDED from /Users/melaniewang/Mars/android/app/src/debug/AndroidManifest.xml:7:75-114
-	android:roundIcon
-		ADDED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:10:7-52
-		ADDED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:10:7-52
-	tools:targetApi
-		ADDED from /Users/melaniewang/Mars/android/app/src/debug/AndroidManifest.xml:7:54-74
+		ADDED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:9:7-39
 	android:icon
-		ADDED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:9:7-41
-		ADDED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:9:7-41
+		ADDED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:10:7-41
 	android:allowBackup
-		ADDED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:11:7-34
 		ADDED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:11:7-34
 	android:theme
 		ADDED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:12:7-38
-		ADDED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:12:7-38
-	android:usesCleartextTraffic
-		ADDED from /Users/melaniewang/Mars/android/app/src/debug/AndroidManifest.xml:7:18-53
 	android:name
-		ADDED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:7:7-38
-		ADDED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:7:7-38
-activity#com.awesomeproject.MainActivity
+		ADDED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:8:7-38
+activity#com.reactnavigationv3.MainActivity
 ADDED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:13:7-22:18
 	android:label
 		ADDED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml:15:9-41
@@ -133,91 +98,59 @@ uses-sdk
 INJECTED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml
 INJECTED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml
-MERGED from [:react-native-vector-icons] /Users/melaniewang/Mars/node_modules/react-native-vector-icons/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [:react-native-vector-icons] /Users/melaniewang/Mars/node_modules/react-native-vector-icons/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [com.facebook.react:react-native:0.60.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/f1024658b243f1bf59baccb3881d4692/AndroidManifest.xml:7:5-9:41
-MERGED from [com.facebook.react:react-native:0.60.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/f1024658b243f1bf59baccb3881d4692/AndroidManifest.xml:7:5-9:41
-MERGED from [org.webkit:android-jsc:r245459] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/909a98489a1a82fe65899c4f4fabdeca/AndroidManifest.xml:7:5-9:41
-MERGED from [org.webkit:android-jsc:r245459] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/909a98489a1a82fe65899c4f4fabdeca/AndroidManifest.xml:7:5-9:41
-MERGED from [androidx.appcompat:appcompat:1.0.2] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/e952b2223cc0b8d2036b3e61f5987ebf/AndroidManifest.xml:20:5-44
-MERGED from [androidx.appcompat:appcompat:1.0.2] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/e952b2223cc0b8d2036b3e61f5987ebf/AndroidManifest.xml:20:5-44
-MERGED from [com.facebook.fresco:fresco:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/979e17fd3aa52dba4299e65a38499716/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:fresco:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/979e17fd3aa52dba4299e65a38499716/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:imagepipeline-okhttp3:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/20e2cda661ca81b66ed56454b62adff6/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:imagepipeline-okhttp3:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/20e2cda661ca81b66ed56454b62adff6/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:drawee:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/7ea03521821652ca1110456ef2a6ff6b/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:drawee:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/7ea03521821652ca1110456ef2a6ff6b/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:nativeimagefilters:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/fdf230c7e665af5e6bb1d7470ea2a348/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:nativeimagefilters:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/fdf230c7e665af5e6bb1d7470ea2a348/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:imagepipeline:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/d1756185f257276a7080089e3783727f/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:imagepipeline:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/d1756185f257276a7080089e3783727f/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:nativeimagetranscoder:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/8cb454ba7ffc402dd0ebc1be70c08011/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:nativeimagetranscoder:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/8cb454ba7ffc402dd0ebc1be70c08011/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:imagepipeline-base:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/587e4122f6e2c97abfd67749fd09f41a/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:imagepipeline-base:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/587e4122f6e2c97abfd67749fd09f41a/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.soloader:soloader:0.6.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/9641a6ad36f764d493dcc8080ae3dcba/AndroidManifest.xml:7:5-9:41
-MERGED from [com.facebook.soloader:soloader:0.6.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/9641a6ad36f764d493dcc8080ae3dcba/AndroidManifest.xml:7:5-9:41
-MERGED from [androidx.fragment:fragment:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/ce0f4c187c4dfd7e3d93cd8411622ce6/AndroidManifest.xml:20:5-44
-MERGED from [androidx.fragment:fragment:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/ce0f4c187c4dfd7e3d93cd8411622ce6/AndroidManifest.xml:20:5-44
-MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/67eedc6256a8d21127e188bd4b7d2c37/AndroidManifest.xml:20:5-44
-MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/67eedc6256a8d21127e188bd4b7d2c37/AndroidManifest.xml:20:5-44
-MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/dcb4a0e0660e3640f321886cdf626369/AndroidManifest.xml:20:5-44
-MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/dcb4a0e0660e3640f321886cdf626369/AndroidManifest.xml:20:5-44
-MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/456deb9ad8d42297417dfc6796c8d5b6/AndroidManifest.xml:20:5-44
-MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/456deb9ad8d42297417dfc6796c8d5b6/AndroidManifest.xml:20:5-44
-MERGED from [androidx.vectordrawable:vectordrawable:1.0.1] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/4306d70eeaf4868fe323e5ab81591f68/AndroidManifest.xml:20:5-44
-MERGED from [androidx.vectordrawable:vectordrawable:1.0.1] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/4306d70eeaf4868fe323e5ab81591f68/AndroidManifest.xml:20:5-44
-MERGED from [androidx.loader:loader:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/ddd2204d55f03ac70f1010d0cae853ef/AndroidManifest.xml:20:5-44
-MERGED from [androidx.loader:loader:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/ddd2204d55f03ac70f1010d0cae853ef/AndroidManifest.xml:20:5-44
-MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/243e77112754949cd079df5a65a701a3/AndroidManifest.xml:20:5-44
-MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/243e77112754949cd079df5a65a701a3/AndroidManifest.xml:20:5-44
-MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/9eb8216e85b2b5e3b3f7081c3c9144e0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/9eb8216e85b2b5e3b3f7081c3c9144e0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/11f5dcdfce89e5a2a072c45be2b3cd17/AndroidManifest.xml:20:5-44
-MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/11f5dcdfce89e5a2a072c45be2b3cd17/AndroidManifest.xml:20:5-44
-MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/7e108c6e17c9916861edf096247ae60a/AndroidManifest.xml:20:5-44
-MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/7e108c6e17c9916861edf096247ae60a/AndroidManifest.xml:20:5-44
-MERGED from [androidx.customview:customview:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/332904977438f5f9339b456707e14681/AndroidManifest.xml:20:5-44
-MERGED from [androidx.customview:customview:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/332904977438f5f9339b456707e14681/AndroidManifest.xml:20:5-44
-MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/17207795726b3bdbc4b3a395c74414c3/AndroidManifest.xml:20:5-44
-MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/17207795726b3bdbc4b3a395c74414c3/AndroidManifest.xml:20:5-44
-MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/fbb87a9153b852c6574900702547dc17/AndroidManifest.xml:20:5-44
-MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/fbb87a9153b852c6574900702547dc17/AndroidManifest.xml:20:5-44
-MERGED from [androidx.core:core:1.0.1] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/cddd8a3182cbf26eb2564214312ab0fc/AndroidManifest.xml:20:5-44
-MERGED from [androidx.core:core:1.0.1] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/cddd8a3182cbf26eb2564214312ab0fc/AndroidManifest.xml:20:5-44
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/e59e7921128ee84543385cd3dc53ec0b/AndroidManifest.xml:20:5-44
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/e59e7921128ee84543385cd3dc53ec0b/AndroidManifest.xml:20:5-44
-MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/2251e7cc9832c2f86fefde601b3bb37e/AndroidManifest.xml:20:5-44
-MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/2251e7cc9832c2f86fefde601b3bb37e/AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/c74926d16934273ad848a13f83a7ff1b/AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/c74926d16934273ad848a13f83a7ff1b/AndroidManifest.xml:20:5-44
-MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/37c67d7ff440ffb44145cca9f31d8200/AndroidManifest.xml:20:5-44
-MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/37c67d7ff440ffb44145cca9f31d8200/AndroidManifest.xml:20:5-44
-MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/27936ab9394330b0231ac5aed14d5c39/AndroidManifest.xml:20:5-44
-MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/27936ab9394330b0231ac5aed14d5c39/AndroidManifest.xml:20:5-44
-MERGED from [androidx.print:print:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/1cada8b0a465902a01dcf23dec6173cb/AndroidManifest.xml:20:5-44
-MERGED from [androidx.print:print:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/1cada8b0a465902a01dcf23dec6173cb/AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/fd29474ca00b5dfeddd3fe8b9653a462/AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/fd29474ca00b5dfeddd3fe8b9653a462/AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/987398349c6171e4d7af8e7f9181fabe/AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/987398349c6171e4d7af8e7f9181fabe/AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/af69a2b963cc5fcb2aff103774aa540f/AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/af69a2b963cc5fcb2aff103774aa540f/AndroidManifest.xml:20:5-44
-MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/8c8cd37e7a6c5b81c940292dc94fc558/AndroidManifest.xml:20:5-44
-MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/8c8cd37e7a6c5b81c940292dc94fc558/AndroidManifest.xml:20:5-44
-MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/20dcbf258479b470b246662e1c8ebbc5/AndroidManifest.xml:20:5-44
-MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/20dcbf258479b470b246662e1c8ebbc5/AndroidManifest.xml:20:5-44
-MERGED from [com.facebook.fresco:fbcore:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/645498ee348f6fb72621fcca0025ecc6/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:fbcore:2.0.0] /Users/melaniewang/.gradle/caches/transforms-2/files-2.1/645498ee348f6fb72621fcca0025ecc6/AndroidManifest.xml:5:5-7:41
-INJECTED from /Users/melaniewang/Mars/android/app/src/debug/AndroidManifest.xml
-INJECTED from /Users/melaniewang/Mars/android/app/src/debug/AndroidManifest.xml
+MERGED from [:react-native-vector-icons] /Users/melaniewang/Mars/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-vector-icons] /Users/melaniewang/Mars/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-gesture-handler] /Users/melaniewang/Mars/node_modules/react-native-gesture-handler/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-gesture-handler] /Users/melaniewang/Mars/node_modules/react-native-gesture-handler/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-localization] /Users/melaniewang/Mars/node_modules/react-native-localization/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-localization] /Users/melaniewang/Mars/node_modules/react-native-localization/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.react:react-native:0.57.8] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/react-native-0.57.8.aar/75ded354292db8dc8ce062e3ab0a80ef/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.react:react-native:0.57.8] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/react-native-0.57.8.aar/75ded354292db8dc8ce062e3ab0a80ef/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:appcompat-v7:27.1.1] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/094be4955b010e533c73c06d83616927/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/094be4955b010e533c73c06d83616927/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/720d55e498674bb867cf5d975f72b0a6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/720d55e498674bb867cf5d975f72b0a6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/438d3488c520e47b5c40e94ec0ad8361/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/438d3488c520e47b5c40e94ec0ad8361/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/5b99868369bcf10b5b7e55498904fc16/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/5b99868369bcf10b5b7e55498904fc16/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/4489c0d177f921e437e4c28946f82f95/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/4489c0d177f921e437e4c28946f82f95/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/2a3db87623ded3740a9a027872eb83fd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/2a3db87623ded3740a9a027872eb83fd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/93c0a0d936e868864df98ac23f6b4de4/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/93c0a0d936e868864df98ac23f6b4de4/AndroidManifest.xml:20:5-44
+MERGED from [com.facebook.fresco:fresco:1.10.0] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/fresco-1.10.0.aar/b8906bf30af08a69a9bd94e536079e09/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fresco:1.10.0] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/fresco-1.10.0.aar/b8906bf30af08a69a9bd94e536079e09/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.10.0] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.10.0.aar/867a252a0ebea2513c401270615c1b66/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.10.0] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.10.0.aar/867a252a0ebea2513c401270615c1b66/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:1.10.0] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/drawee-1.10.0.aar/136ff705c5266a8b40ed0da1e04cc98a/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:1.10.0] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/drawee-1.10.0.aar/136ff705c5266a8b40ed0da1e04cc98a/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline:1.10.0] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/imagepipeline-1.10.0.aar/23b1bc7ef3817235bf8fb3d6826158de/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline:1.10.0] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/imagepipeline-1.10.0.aar/23b1bc7ef3817235bf8fb3d6826158de/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:1.10.0] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.10.0.aar/107d67c8e3901a0ea45305e20c8db163/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:1.10.0] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.10.0.aar/107d67c8e3901a0ea45305e20c8db163/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.soloader:soloader:0.5.1] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/soloader-0.5.1.aar/78c4a10be65b603a4fff54cd7fe05a1d/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.soloader:soloader:0.5.1] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/soloader-0.5.1.aar/78c4a10be65b603a4fff54cd7fe05a1d/AndroidManifest.xml:7:5-9:41
+MERGED from [org.webkit:android-jsc-intl:r236355] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/android-jsc-intl-r236355.aar/99384fd6486a6a03612f0a72f0dc6c11/AndroidManifest.xml:7:5-9:41
+MERGED from [org.webkit:android-jsc-intl:r236355] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/android-jsc-intl-r236355.aar/99384fd6486a6a03612f0a72f0dc6c11/AndroidManifest.xml:7:5-9:41
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/9f9dc8fa2beb264469ab5884ece14b40/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/9f9dc8fa2beb264469ab5884ece14b40/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/989334ff60465fa5a6053cbb2d4f2dd6/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/989334ff60465fa5a6053cbb2d4f2dd6/AndroidManifest.xml:20:5-44
+MERGED from [com.facebook.fresco:fbcore:1.10.0] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/fbcore-1.10.0.aar/87014bb1e286c2eb89af8b35198e089d/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fbcore:1.10.0] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/fbcore-1.10.0.aar/87014bb1e286c2eb89af8b35198e089d/AndroidManifest.xml:5:5-7:41
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/d41743567f985d406d26f9feb1ae1314/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/d41743567f985d406d26f9feb1ae1314/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/654258e7c46b4120a95776174430e2a0/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /Users/melaniewang/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/654258e7c46b4120a95776174430e2a0/AndroidManifest.xml:20:5-44
+INJECTED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml
+INJECTED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml
 	android:targetSdkVersion
 		INJECTED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/melaniewang/Mars/android/app/src/debug/AndroidManifest.xml
+		ADDED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml
 	android:minSdkVersion
 		INJECTED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/melaniewang/Mars/android/app/src/debug/AndroidManifest.xml
-uses-permission#android.permission.SYSTEM_ALERT_WINDOW
-ADDED from /Users/melaniewang/Mars/android/app/src/debug/AndroidManifest.xml:5:5-77
-	android:name
-		ADDED from /Users/melaniewang/Mars/android/app/src/debug/AndroidManifest.xml:5:22-75
+		ADDED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/melaniewang/Mars/android/app/src/main/AndroidManifest.xml

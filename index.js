@@ -1,9 +1,12 @@
-/**
- * @format
- */
+import { AppRegistry, YellowBox } from 'react-native';
+import App from './src/App';
 
-import {AppRegistry} from 'react-native';
-import welcome_page from './src/welcome/welcome_page';
-import {name as appName} from './app.json';
+YellowBox.ignoreWarnings([
+  // 'Warning: componentWillMount is deprecated',
+  // 'Warning: isMounted',
+  'Warning: isMounted(...) is deprecated',
+  'Class RCTCxxModule',
+  'Module RCTImageLoader'
+]);
 
-AppRegistry.registerComponent(appName, () => welcome_page);
+AppRegistry.registerComponent('ReactNavigationV3', () => App);

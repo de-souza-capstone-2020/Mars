@@ -4,7 +4,7 @@
             "outputFile": "/Users/melaniewang/Mars/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-h720dp-v13/values-h720dp-v13.xml",
             "map": [
                 {
-                    "source": "/Users/melaniewang/.gradle/caches/transforms-2/files-2.1/e952b2223cc0b8d2036b3e61f5987ebf/res/values-h720dp-v13/values-h720dp-v13.xml",
+                    "source": "/Users/melaniewang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/094be4955b010e533c73c06d83616927/res/values-h720dp-v13/values-h720dp-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
