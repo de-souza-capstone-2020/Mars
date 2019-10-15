@@ -10,7 +10,7 @@ export default class Home extends React.Component{
 
     render() {
         return (
-            <View>
+            <View style={styles.container}>
                 <Text> Chat bot screen! </Text>
             </View>
         );
