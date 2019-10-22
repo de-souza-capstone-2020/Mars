@@ -8,13 +8,25 @@ import {
   StatusBar,
   Button
 } from 'react-native';
+import ChatBot from 'react-native-chatbot';
+
+const steps = [
+  {
+    id: '0',
+    message: 'Welcome to react chatbot!',
+    trigger: '1',
+  },
+  {
+    id: '1',
+    message: 'Bye!',
+    end: true,
+  },
+];
 
 
 export default class Welcome extends React.Component{
   render() {
     return (
-      <Fragment>
-        <StatusBar barStyle="dark-content" />
         <SafeAreaView style={styles.body}>
           <View style={styles.body}>
 
@@ -36,7 +48,6 @@ export default class Welcome extends React.Component{
             </View>
           </View>
         </SafeAreaView>
-      </Fragment>
     );
   }
 };

@@ -5,13 +5,27 @@ import {
     StyleSheet,
     Button
 } from "react-native";
+import ChatBot from 'react-native-chatbot';
+const steps = [
+  {
+    id: '0',
+    message: 'Welcome to react chatbot!',
+    trigger: '1',
+  },
+  {
+    id: '1',
+    message: 'Bye!',
+    end: true,
+  },
+];
+
 
 export default class Home extends React.Component{
 
     render() {
         return (
             <View style={styles.container}>
-                <Text> Chat bot screen! </Text>
+                <ChatBot steps={steps} />
             </View>
         );
     }
