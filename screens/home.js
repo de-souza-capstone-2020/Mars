@@ -1,41 +1,40 @@
-import React, { Component } from "react";
-import {
-    View,
-    Text,
-    StyleSheet,
-    Button
-} from "react-native";
-import ChatBot from 'react-native-chatbot';
-const steps = [
-  {
-    id: '0',
-    message: 'Welcome to react chatbot!',
-    trigger: '1',
-  },
-  {
-    id: '1',
-    message: 'Bye!',
-    end: true,
-  },
-];
+import React, { Component } from 'react';
+import { StyleSheet, Text, View, Image } from 'react-native';
+import { GiftedChat } from 'react-native-gifted-chat';
 
+export default class Home extends Component {
+  state = {
+    messages: [
+      {
+          _id: 1,
+          text: `Hi! I am your personal SleepWell bot.\n\nHow may I help you with today?`,
+          createdAt: new Date(),
+          user: {
+            _id: 2,
+            name: 'FAQ Bot',
+            avatar: 'https://i.imgur.com/7k12EPD.png'
+          }
+      }
+               ]
+          };
 
-export default class Home extends React.Component{
+         onSend(messages = []) {
+            this.setState(previousState => ({
+              messages: GiftedChat.append(previousState.messages, messages)
+            }));
+          }
 
     render() {
-        return (
-            <View style={styles.container}>
-                <ChatBot steps={steps} />
-            </View>
+      return (
+        <View style={{ flex: 1, backgroundColor: '#fff' }}>
+          <GiftedChat
+            messages={this.state.messages}
+            onSend={messages => this.onSend(messages)}
+            user={{
+              _id: 1
+            }}
+          />
+        </View>
         );
-    }
-}
-
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
-    }
-});
+      }
+  }
