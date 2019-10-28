@@ -14,15 +14,15 @@ export default class Home extends Component {
               keepIt: true,
               values: [
                 {
-                  title: '😋 Yes',
+                  title: 'Yes',
                   value: 'yes',
                 },
                 {
-                  title: '📷 Yes, let me show you with a picture!',
+                  title: 'Yes, let me show you with a picture!',
                   value: 'yes_picture',
                 },
                 {
-                  title: '😞 Nope. What?',
+                  title: 'Nope. What?',
                   value: 'no',
                 },
               ],

@@ -38,3 +38,11 @@ local.properties
 /android/
 *.lock
 *.bin
+*.txt
+*.so
+*.dex
+*.jar
+*.flat
+*.class
+*.java
+*.lock

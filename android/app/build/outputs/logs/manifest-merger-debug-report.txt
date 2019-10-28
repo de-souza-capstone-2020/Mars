@@ -5,7 +5,7 @@ INJECTED from C:\Users\hmasha\Mars\android\app\src\main\AndroidManifest.xml:1:1-
 INJECTED from C:\Users\hmasha\Mars\android\app\src\main\AndroidManifest.xml:1:1-26:12
 INJECTED from C:\Users\hmasha\Mars\android\app\src\main\AndroidManifest.xml:1:1-26:12
 MERGED from C:\Users\hmasha\Mars\android\app\src\main\AndroidManifest.xml:1:1-26:12
-MERGED from [com.facebook.react:react-native:0.60.0] C:\Users\hmasha\.gradle\caches\transforms-2\files-2.1\8ac228779761e02fc6daae0d3aae4dc6\AndroidManifest.xml:2:1-13:12
+MERGED from [com.facebook.react:react-native:0.61.2] C:\Users\hmasha\.gradle\caches\transforms-2\files-2.1\f9a7006daf454b1290fbc1cfaba8fb39\AndroidManifest.xml:2:1-13:12
 MERGED from [org.webkit:android-jsc:r245459] C:\Users\hmasha\.gradle\caches\transforms-2\files-2.1\d63884d436f888d9c45ec0c5773df15a\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat:1.0.2] C:\Users\hmasha\.gradle\caches\transforms-2\files-2.1\255148d80391f462113e0db50ad63339\AndroidManifest.xml:17:1-22:12
 MERGED from [com.facebook.fresco:fresco:2.0.0] C:\Users\hmasha\.gradle\caches\transforms-2\files-2.1\03a0b95e1796329e16a53cdbcb0e554d\AndroidManifest.xml:2:1-9:12
@@ -70,8 +70,8 @@ application
 ADDED from C:\Users\hmasha\Mars\android\app\src\main\AndroidManifest.xml:6:5-24:19
 MERGED from C:\Users\hmasha\Mars\android\app\src\main\AndroidManifest.xml:6:5-24:19
 MERGED from C:\Users\hmasha\Mars\android\app\src\main\AndroidManifest.xml:6:5-24:19
-MERGED from [com.facebook.react:react-native:0.60.0] C:\Users\hmasha\.gradle\caches\transforms-2\files-2.1\8ac228779761e02fc6daae0d3aae4dc6\AndroidManifest.xml:11:5-20
-MERGED from [com.facebook.react:react-native:0.60.0] C:\Users\hmasha\.gradle\caches\transforms-2\files-2.1\8ac228779761e02fc6daae0d3aae4dc6\AndroidManifest.xml:11:5-20
+MERGED from [com.facebook.react:react-native:0.61.2] C:\Users\hmasha\.gradle\caches\transforms-2\files-2.1\f9a7006daf454b1290fbc1cfaba8fb39\AndroidManifest.xml:11:5-20
+MERGED from [com.facebook.react:react-native:0.61.2] C:\Users\hmasha\.gradle\caches\transforms-2\files-2.1\f9a7006daf454b1290fbc1cfaba8fb39\AndroidManifest.xml:11:5-20
 MERGED from [com.facebook.soloader:soloader:0.6.0] C:\Users\hmasha\.gradle\caches\transforms-2\files-2.1\05f2f1318d5541d92eb253d36fd3d483\AndroidManifest.xml:11:5-20
 MERGED from [com.facebook.soloader:soloader:0.6.0] C:\Users\hmasha\.gradle\caches\transforms-2\files-2.1\05f2f1318d5541d92eb253d36fd3d483\AndroidManifest.xml:11:5-20
 MERGED from [androidx.core:core:1.0.1] C:\Users\hmasha\.gradle\caches\transforms-2\files-2.1\bdf0177fb9e25fcd316d5d1b04f11f29\AndroidManifest.xml:22:5-89
@@ -132,8 +132,8 @@ uses-sdk
 INJECTED from C:\Users\hmasha\Mars\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\hmasha\Mars\android\app\src\main\AndroidManifest.xml
 INJECTED from C:\Users\hmasha\Mars\android\app\src\main\AndroidManifest.xml
-MERGED from [com.facebook.react:react-native:0.60.0] C:\Users\hmasha\.gradle\caches\transforms-2\files-2.1\8ac228779761e02fc6daae0d3aae4dc6\AndroidManifest.xml:7:5-9:41
-MERGED from [com.facebook.react:react-native:0.60.0] C:\Users\hmasha\.gradle\caches\transforms-2\files-2.1\8ac228779761e02fc6daae0d3aae4dc6\AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.react:react-native:0.61.2] C:\Users\hmasha\.gradle\caches\transforms-2\files-2.1\f9a7006daf454b1290fbc1cfaba8fb39\AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.react:react-native:0.61.2] C:\Users\hmasha\.gradle\caches\transforms-2\files-2.1\f9a7006daf454b1290fbc1cfaba8fb39\AndroidManifest.xml:7:5-9:41
 MERGED from [org.webkit:android-jsc:r245459] C:\Users\hmasha\.gradle\caches\transforms-2\files-2.1\d63884d436f888d9c45ec0c5773df15a\AndroidManifest.xml:7:5-9:41
 MERGED from [org.webkit:android-jsc:r245459] C:\Users\hmasha\.gradle\caches\transforms-2\files-2.1\d63884d436f888d9c45ec0c5773df15a\AndroidManifest.xml:7:5-9:41
 MERGED from [androidx.appcompat:appcompat:1.0.2] C:\Users\hmasha\.gradle\caches\transforms-2\files-2.1\255148d80391f462113e0db50ad63339\AndroidManifest.xml:20:5-44
