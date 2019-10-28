@@ -36,3 +36,5 @@ RNTester/build
 local.properties
 *.iml
 /android/
+*.lock
+*.bin
