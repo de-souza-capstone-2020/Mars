@@ -7,57 +7,28 @@ export default class Home extends Component {
     messages: [
       {
           _id: 1,
-          text: 'This is a quick reply. Do you love Gifted Chat? (radio) KEEP IT',
+          text: 'This is your personal SleepWell bot. Would you like to learn more about me?',
           createdAt: new Date(),
           quickReplies: {
               type: 'radio', // or 'checkbox',
-              keepIt: true,
               values: [
                 {
                   title: 'Yes',
                   value: 'yes',
                 },
                 {
-                  title: 'Yes, let me show you with a picture!',
+                  title: 'Will this take long?',
                   value: 'yes_picture',
                 },
                 {
-                  title: 'Nope. What?',
+                  title: 'Not right now',
                   value: 'no',
                 },
               ],
             },
-            user: {
-               _id: 2,
-               name: 'React Native',
-            },
-      },
-           {
-               _id: 2,
-               text: 'This is a quick reply. Do you love Gifted Chat? (checkbox)',
-               createdAt: new Date(),
-               quickReplies: {
-                 type: 'checkbox', // or 'radio',
-                 values: [
-                   {
-                     title: 'Yes',
-                     value: 'yes',
-                   },
-                   {
-                     title: 'Yes, let me show you with a picture!',
-                     value: 'yes_picture',
-                   },
-                   {
-                     title: 'Nope. What?',
-                     value: 'no',
-                   },
-                 ],
-               },
-               user: {
-                 _id: 2,
-                 name: 'React Native',
-               },
-           }
+
+      }
+
                ]
           };
 

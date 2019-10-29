@@ -46,3 +46,17 @@ local.properties
 *.class
 *.java
 *.lock
+*.lock
+*.bin
+*.java
+*.xml
+*.class
+*.bin
+*.lock
+*.xml
+*.class
+*.jar
+*.so
+*.json
+*.txt
+*.xml
