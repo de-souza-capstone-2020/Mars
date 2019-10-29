@@ -8,7 +8,6 @@ import {
   StatusBar,
   Button
 } from 'react-native';
-import ChatBot from 'react-native-chatbot';
 
 const steps = [
   {
