@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/melaniewang/Mars/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v24/values-v24.xml",
+            "outputFile": "C:\\Users\\hmasha\\Mars\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v24\\values-v24.xml",
             "map": [
                 {
-                    "source": "/Users/melaniewang/.gradle/caches/transforms-2/files-2.1/e952b2223cc0b8d2036b3e61f5987ebf/res/values-v24/values-v24.xml",
+                    "source": "C:\\Users\\hmasha\\.gradle\\caches\\transforms-2\\files-2.1\\255148d80391f462113e0db50ad63339\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
