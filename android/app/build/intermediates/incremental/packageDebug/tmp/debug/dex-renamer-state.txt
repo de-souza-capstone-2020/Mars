@@ -1,4 +1,4 @@
-#Mon Oct 14 21:46:13 EDT 2019
-base.0=/Users/melaniewang/Mars/android/app/build/intermediates/transforms/dexMerger/debug/0
+#Mon Oct 28 23:42:58 EDT 2019
+base.0=C\:\\Users\\hmasha\\Mars\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
 path.0=classes.dex
 renamed.0=classes.dex
