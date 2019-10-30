@@ -211,6 +211,7 @@ gradle-app.setting
 
 # Java class files
 *.class
+.java
 
 # Generated files
 bin/
@@ -384,4 +385,3 @@ public/
 
 # End of https://www.gitignore.io/api/reactnative
 
-android/
