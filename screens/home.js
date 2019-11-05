@@ -148,10 +148,35 @@ export default class Home extends Component {
        if (reply.value === 'yes'){
          this.onSend([
            {
-             createdAt,
-             _id: Math.round(Math.random() * 1000000),
-             text: "yay!!",
-             otherUser,
+
+                   _id: 2,
+                   text: 'Awesome, Did you sleep last night?',
+                   createdAt: new Date(),
+                   quickReplies: {
+                       type: 'radio', // or 'checkbox',
+                       keepIt: true,
+                       values: [
+
+                         {
+                           title: 'For a bit',
+                           value: 'yes_picture',
+                         },
+                         {
+                            title: 'Yes 😋 ',
+                            value: 'yes',
+                         },
+                         {
+                           title: 'Nope. Was up all night😞 ',
+                           value: 'no',
+                         },
+                       ],
+                     },
+                     user: {
+                        _id: 2,
+                        name: 'React Native',
+                   },
+
+
            },
          ])
        }
