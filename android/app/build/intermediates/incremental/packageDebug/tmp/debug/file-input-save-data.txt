@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sun Jul 07 21:43:20 EDT 2019
+#Thu Aug 08 01:02:27 EDT 2019
 5.base=/Users/melaniewang/Mars/android/app/build/intermediates/transforms/stripDebugSymbol/debug/0
 42.base=/Users/melaniewang/Mars/android/app/build/intermediates/transforms/stripDebugSymbol/debug/0
 22.path=lib/armeabi-v7a/libnative-imagetranscoder.so
