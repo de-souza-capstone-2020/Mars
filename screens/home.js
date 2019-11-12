@@ -183,7 +183,13 @@ export default class Home extends Component {
 
      }
     renderQuickReplySend = () => <Text>{' custom send =>'}</Text>
-
+    renderInputToolbar(props){
+    if(this.state.toolbar){
+    return(
+    <InputToolbar {...props} />
+    );
+    }
+    }
     render() {
       return (
         <View style={{ flex: 1, backgroundColor: '#fff' }}>
@@ -194,7 +200,7 @@ export default class Home extends Component {
             quickReplyStyle={{ borderRadius: 2 }}
             onQuickReply={this.onQuickReply}
             renderQuickReplySend={this.renderQuickReplySend}
-
+            renderInputToolbar={(props) => this.renderInputToolbar(props)}
           />
         </View>
         );
