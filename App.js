@@ -7,21 +7,42 @@
  */
 
 import React from 'react';
-import { createStackNavigator } from 'react-navigation';
+import {
+  createAppContainer,
+  createBottomTabNavigator,
+  createDrawerNavigator,
+  createStackNavigator,
+  createSwitchNavigator
+} from "react-navigation";
 import Welcome from "./screens/welcome";
 import Home from "./screens/home";
+import Setting from "./screens/setting"
 
-export default class App extends React.Component{
-  render() {
-    return(
-      <AppStackNavigator />
-    );
-  }
-};
-
-
-
-const AppStackNavigator = createStackNavigator({
+const WelcomeStack = createStackNavigator({
   Welcome: Welcome,
-  Home: Home
-})
+  },
+  {
+    headerMode: "none"
+  });
+
+const MainTabs = createBottomTabNavigator({
+  Home: {
+    screen: Home,
+    navigationOptions: {
+      tabBarLabel: "Home"
+    }
+  },
+  Setting: {
+    screen: Setting,
+    navigationOptions: {
+      tabBarLabel: "Settings"
+    }
+  },
+});
+
+const App = createSwitchNavigator({
+  WelcomeStack: WelcomeStack,
+  App: MainTabs
+  });
+
+export default createAppContainer(App);
