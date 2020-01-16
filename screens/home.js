@@ -86,7 +86,7 @@ export default class Home extends Component {
     // for demo purpose
     // setTimeout(() => this.botSend(step, messages[0]), Math.round(Math.random() * 1000))
   };
-
+  
   onSendFromUser = (messages = []) => {
     const createdAt = new Date();
     const messagesToUpload = messages.map(message => ({
@@ -109,7 +109,8 @@ export default class Home extends Component {
           user
         }
       ]);
-      setTimeout(() => this.determineResponse(replies[0]), 3000);
+      setTimeout(() => this.determineResponse(replies[0]), 2000);
+      setTimeout(() => this.turnOffTyping(), 2000);
     } else if (replies.length > 1) {
       this.onSend([
         {
@@ -123,6 +124,12 @@ export default class Home extends Component {
       console.warn("replies param is not set correctly");
     }
   };
+
+  turnOffTyping() {
+    this.setState({
+      typingText: null
+    })
+  }
 
   determineResponse = reply => {
     const createdAt = new Date();
