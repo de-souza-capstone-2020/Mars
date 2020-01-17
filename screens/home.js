@@ -193,10 +193,11 @@ export default class Home extends Component {
     }
   }
   renderFooter = () => {
-    if (this.state.typingText) {
+    const { typingText } = this.state;
+    if (typingText) {
       return (
         <View>
-          <Text>{this.state.typingText}</Text>
+          <Text>{typingText}</Text>
         </View>
       )
     } 
