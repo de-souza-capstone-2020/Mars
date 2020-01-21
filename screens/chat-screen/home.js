@@ -51,7 +51,7 @@ export default class Home extends Component {
         }
       }
     ],
-    typingText: null,
+    typingText: null
   };
 
   onReceive = text => {
@@ -66,19 +66,19 @@ export default class Home extends Component {
             user: otherUser
           },
           Platform.OS !== "web"
-          ),
-        };
-      });
-    };
-    
+        )
+      };
+    });
+  };
+
   onSend = (messages = []) => {
     const step = this.state.step + 1;
-    this.setState((previousState) => {
-      previousState.messages.forEach((message) => {
-        if( message.quickReplies !== undefined){
+    this.setState(previousState => {
+      previousState.messages.forEach(message => {
+        if (message.quickReplies !== undefined) {
           message.quickReplies.values = [];
         }
-      })
+      });
       const sentMessages = [{ ...messages[0], sent: true, received: true }];
       return {
         messages: GiftedChat.append(
@@ -93,7 +93,7 @@ export default class Home extends Component {
     // for demo purpose
     // setTimeout(() => this.botSend(step, messages[0]), Math.round(Math.random() * 1000))
   };
-  
+
   onSendFromUser = (messages = []) => {
     const createdAt = new Date();
     const messagesToUpload = messages.map(message => ({
@@ -116,9 +116,14 @@ export default class Home extends Component {
           user
         }
       ]);
-
-      setTimeout(() => this.turnOffTyping(), 2000);
-      setTimeout(() => this.determineResponse(replies[0]), 2000);
+      new Promise(resolve => {
+        setTimeout(() => {
+          this.determineResponse(replies[0]);
+          resolve();
+        }, 2000);
+      }).then(() => {
+        this.turnOffTyping();
+      });
     } else if (replies.length > 1) {
       this.onSend([
         {
@@ -128,8 +133,6 @@ export default class Home extends Component {
           user
         }
       ]);
-      // setTimeout(() => this.turnOffTyping(), 2000);
-      // setTimeout(() => this.determineResponse(replies[0]), 2000);
     } else {
       console.warn("replies param is not set correctly");
     }
@@ -138,7 +141,7 @@ export default class Home extends Component {
   turnOffTyping() {
     this.setState({
       typingText: null
-    })
+    });
   }
 
   determineResponse = reply => {
@@ -164,8 +167,6 @@ export default class Home extends Component {
       ]);
     }
     if (reply.value === "yes") {
-      console.log(reply.value)
-      console.log()
       this.onSend([
         {
           _id: getID(),
@@ -198,7 +199,8 @@ export default class Home extends Component {
     }
   };
   renderQuickReplySend = () => {
-    return (<Text>{" custom send =>"}</Text>)};
+    return <Text>{" custom send =>"}</Text>;
+  };
   renderInputToolbar(props) {
     if (this.state.toolbar) {
       return <InputToolbar {...props} />;
@@ -211,13 +213,13 @@ export default class Home extends Component {
         <View>
           <Text>{typingText}</Text>
         </View>
-      )
-    } 
-  return null;
-};
+      );
+    }
+    return null;
+  };
 
   render() {
-    const { messages} = this.state;
+    const { messages } = this.state;
     return (
       <View style={{ flex: 1, backgroundColor: "#fff" }}>
         <GiftedChat
