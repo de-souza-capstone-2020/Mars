@@ -13,6 +13,8 @@ const otherUser = {
   avatar: "https://facebook.github.io/react/img/logo_og.png"
 };
 
+const getID = () => Math.round(Math.random() * 1000000);
+
 const styles = StyleSheet.create({
   container: { flex: 1 }
 });
@@ -58,20 +60,25 @@ export default class Home extends Component {
         messages: GiftedChat.append(
           previousState.messages,
           {
-            _id: Math.round(Math.random() * 1000000),
+            _id: getID(),
             text,
             createdAt: new Date(),
             user: otherUser
           },
           Platform.OS !== "web"
-        ),
-      };
-    });
-  };
-
+          ),
+        };
+      });
+    };
+    
   onSend = (messages = []) => {
     const step = this.state.step + 1;
-    this.setState(previousState => {
+    this.setState((previousState) => {
+      previousState.messages.forEach((message) => {
+        if( message.quickReplies !== undefined){
+          message.quickReplies.values = [];
+        }
+      })
       const sentMessages = [{ ...messages[0], sent: true, received: true }];
       return {
         messages: GiftedChat.append(
@@ -93,7 +100,7 @@ export default class Home extends Component {
       ...message,
       user,
       createdAt,
-      _id: Math.round(Math.random() * 1000000)
+      _id: getID()
     }));
     this.onSend(messagesToUpload);
   };
@@ -104,22 +111,25 @@ export default class Home extends Component {
       this.onSend([
         {
           createdAt,
-          _id: Math.round(Math.random() * 1000000),
+          _id: getID(),
           text: replies[0].title,
           user
         }
       ]);
-      setTimeout(() => this.determineResponse(replies[0]), 2000);
+
       setTimeout(() => this.turnOffTyping(), 2000);
+      setTimeout(() => this.determineResponse(replies[0]), 2000);
     } else if (replies.length > 1) {
       this.onSend([
         {
           createdAt,
-          _id: Math.round(Math.random() * 1000000),
+          _id: getID(),
           text: replies.map(reply => reply.title).join(", "),
           user
         }
       ]);
+      // setTimeout(() => this.turnOffTyping(), 2000);
+      // setTimeout(() => this.determineResponse(replies[0]), 2000);
     } else {
       console.warn("replies param is not set correctly");
     }
@@ -133,12 +143,11 @@ export default class Home extends Component {
 
   determineResponse = reply => {
     const createdAt = new Date();
-    console.log(reply.title);
     if (reply.value === "no") {
       this.onSend([
         {
           createdAt,
-          _id: Math.round(Math.random() * 1000000),
+          _id: getID(),
           text: "have a nice day :(",
           otherUser
         }
@@ -148,16 +157,18 @@ export default class Home extends Component {
       this.onSend([
         {
           createdAt,
-          _id: Math.round(Math.random() * 1000000),
+          _id: getID(),
           text: "jokes i have no pics",
           otherUser
         }
       ]);
     }
     if (reply.value === "yes") {
+      console.log(reply.value)
+      console.log()
       this.onSend([
         {
-          _id: 2,
+          _id: getID(),
           text: "Awesome, Did you sleep last night?",
           createdAt: new Date(),
           quickReplies: {
@@ -179,14 +190,15 @@ export default class Home extends Component {
             ]
           },
           user: {
-            _id: 2,
+            _id: getID(),
             name: "React Native"
           }
         }
       ]);
     }
   };
-  renderQuickReplySend = () => <Text>{" custom send =>"}</Text>;
+  renderQuickReplySend = () => {
+    return (<Text>{" custom send =>"}</Text>)};
   renderInputToolbar(props) {
     if (this.state.toolbar) {
       return <InputToolbar {...props} />;
@@ -205,10 +217,11 @@ export default class Home extends Component {
 };
 
   render() {
+    const { messages} = this.state;
     return (
       <View style={{ flex: 1, backgroundColor: "#fff" }}>
         <GiftedChat
-          messages={this.state.messages}
+          messages={messages}
           onSend={this.onSend}
           user={{ _id: 1 }}
           quickReplyStyle={{ borderRadius: 2 }}

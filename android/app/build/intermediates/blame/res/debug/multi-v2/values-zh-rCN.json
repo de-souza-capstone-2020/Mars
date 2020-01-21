@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\hmasha\\Mars\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zh-rCN\\values-zh-rCN.xml",
+            "outputFile": "C:\\Users\\ruiqi\\Documents\\4B Term\\Msci 402\\Mars\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zh-rCN\\values-zh-rCN.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\hmasha\\.gradle\\caches\\transforms-2\\files-2.1\\255148d80391f462113e0db50ad63339\\res\\values-zh-rCN\\values-zh-rCN.xml",
+                    "source": "C:\\Users\\ruiqi\\.gradle\\caches\\transforms-2\\files-2.1\\772e4ae37e2a5dc52ee508169fcf4de1\\res\\values-zh-rCN\\values-zh-rCN.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\hmasha\\.gradle\\caches\\transforms-2\\files-2.1\\bdf0177fb9e25fcd316d5d1b04f11f29\\res\\values-zh-rCN\\values-zh-rCN.xml",
+                    "source": "C:\\Users\\ruiqi\\.gradle\\caches\\transforms-2\\files-2.1\\19003a54a74cb2db5a8b0914b788a504\\res\\values-zh-rCN\\values-zh-rCN.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

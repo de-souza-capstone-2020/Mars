@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\hmasha\\Mars\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v26\\values-v26.xml",
+            "outputFile": "C:\\Users\\ruiqi\\Documents\\4B Term\\Msci 402\\Mars\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v26\\values-v26.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\hmasha\\.gradle\\caches\\transforms-2\\files-2.1\\255148d80391f462113e0db50ad63339\\res\\values-v26\\values-v26.xml",
+                    "source": "C:\\Users\\ruiqi\\.gradle\\caches\\transforms-2\\files-2.1\\772e4ae37e2a5dc52ee508169fcf4de1\\res\\values-v26\\values-v26.xml",
                     "from": {
                         "startLines": "2,3,4,8,12,16",
                         "startColumns": "4,4,4,4,4,4",
