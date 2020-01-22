@@ -16,7 +16,7 @@ import {
 import Welcome from "./screens/welcome";
 import Home from "./screens/home";
 import Setting from "./screens/setting";
-import Intro from "./screens/intro/intro";
+import Intro from "./screens/intro";
 
 const WelcomeStack = createStackNavigator({
   Welcome: Welcome
