@@ -140,6 +140,29 @@ export default class Home extends Component {
           createdAt,
           _id: Math.round(Math.random() * 1000000),
           text: "have a nice day :(",
+          quickReplies: {
+            type: "radio", // or 'checkbox',
+            keepIt: true,
+            values: [
+              {
+                title: "See you later",
+                value: "seeu"
+              },
+            ]
+          },
+          user: {
+            _id: 2,
+            name: "React Native"
+          }
+        }
+      ]);
+    }
+    if (reply.value === "seeu") {
+      this.onSend([
+        {
+          createdAt,
+          _id: Math.round(Math.random() * 1000000),
+          text: "byeeeee",
           otherUser
         }
       ]);
