@@ -94,7 +94,7 @@ export default class Test extends Component {
       console.error(error);
     }
 
-    console.log("saved");
+    console.log("Saved");
   };
 
   _retrieveData = async () => {
@@ -104,7 +104,6 @@ export default class Test extends Component {
         Moment(date).format("MM-DD-YYYY")
       );
       const JSONValue = JSON.parse(value);
-      console.log(JSONValue);
       if (value !== null) {
         this.setState({
           storedDateTime: JSONValue.time,
