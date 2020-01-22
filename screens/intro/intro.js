@@ -7,13 +7,13 @@ export default class Intro extends React.Component {
     return (
       <Swiper style={styles.wrapper} showsButtons={true}>
         <View style={styles.slide1}>
-          <Text style={styles.text}>Hello Swiper</Text>
+          <Text style={styles.text}>We suggest you stay with us for 6-8 weeks</Text>
         </View>
         <View style={styles.slide2}>
-          <Text style={styles.text}>Beautiful</Text>
+          <Text style={styles.text}>Please enter your nickname</Text>
         </View>
         <View style={styles.slide3}>
-          <Text style={styles.text}>And simple</Text>
+          <Text style={styles.text}>Please enter your year of birth</Text>
         </View>
       </Swiper>
     );

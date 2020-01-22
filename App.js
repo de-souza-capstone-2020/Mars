@@ -10,16 +10,16 @@ import React from 'react';
 import {
   createAppContainer,
   createBottomTabNavigator,
-  createDrawerNavigator,
   createStackNavigator,
   createSwitchNavigator
 } from "react-navigation";
 import Welcome from "./screens/welcome";
 import Home from "./screens/home";
-import Setting from "./screens/setting"
+import Setting from "./screens/setting";
+import Intro from "./screens/intro/intro";
 
 const WelcomeStack = createStackNavigator({
-  Welcome: Welcome,
+  Welcome: Welcome
   },
   {
     headerMode: "none"
@@ -42,6 +42,7 @@ const MainTabs = createBottomTabNavigator({
 
 const App = createSwitchNavigator({
   WelcomeStack: WelcomeStack,
+  Intro: Intro,
   App: MainTabs
   });
 

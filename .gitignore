@@ -36,6 +36,8 @@ RNTester/build
 local.properties
 *.iml
 /android/
+android/app/build
+android/build
 
 
 # OSX
