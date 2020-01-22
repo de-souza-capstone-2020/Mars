@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 import { GiftedChat } from "react-native-gifted-chat";
-
+// Sleep diary questions: https://i.gyazo.com/94ecf49c2e6bc6e7fe8e2074dd2a3e8b.png
 const user = {
   _id: 1,
   name: "Developer"

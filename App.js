@@ -16,7 +16,8 @@ import {
 } from "react-navigation";
 import Welcome from "./screens/welcome";
 import Home from "./screens/chat-screen/home";
-import Setting from "./screens/setting"
+import Setting from "./screens/setting";
+import Test from "./screens/chat-screen/tmp-inputoutput";
 
 const WelcomeStack = createStackNavigator({
   Welcome: Welcome,
@@ -36,6 +37,12 @@ const MainTabs = createBottomTabNavigator({
     screen: Setting,
     navigationOptions: {
       tabBarLabel: "Settings"
+    }
+  },
+  Test: {
+    screen: Test,
+    navigationOptions: {
+      tabBarLabel: "Test"
     }
   },
 });
