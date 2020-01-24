@@ -138,7 +138,7 @@ export default class Test extends Component {
     } = this.state;
 
 
-    // console.log(this.viewStoredAllData());
+    console.log(this.viewStoredAllData());
     // console.log(date);
     return (
       <SafeAreaView style={styles.container}>
