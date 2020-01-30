@@ -9,26 +9,12 @@ import {
   Button
 } from 'react-native';
 
-const steps = [
-  {
-    id: '0',
-    message: 'Welcome to react chatbot!',
-    trigger: '1',
-  },
-  {
-    id: '1',
-    message: 'Bye!',
-    end: true,
-  },
-];
-
-
 export default class Welcome extends React.Component{
   render() {
+    const { navigation } = this.props;
     return (
         <SafeAreaView style={styles.body}>
           <View style={styles.body}>
-
             <View style={styles.logo_area}>
               <Text style={styles.title_font}> Logo </Text>
             </View>
@@ -42,7 +28,17 @@ export default class Welcome extends React.Component{
                   color: "white",
                 }}
                 title="Get started"
-                onPress={()=>this.props.navigation.navigate('Home')}
+                onPress={()=>navigation.navigate('Intro')}
+              />
+              <Text>  </Text>
+              <Button
+                icon={{
+                  name: "arrow-forward",
+                  size: 15,
+                  color: "white",
+                }}
+                title="Directly to chatbot"
+                onPress={()=>navigation.navigate('Home')}
               />
             </View>
           </View>

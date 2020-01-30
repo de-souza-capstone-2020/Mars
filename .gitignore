@@ -35,6 +35,9 @@ RNTester/build
 .gradle/
 local.properties
 *.iml
+/android/
+android/app/build
+android/build
 build/
 
 # Files for the ART/Dalvik VM
