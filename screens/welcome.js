@@ -11,6 +11,7 @@ import {
 
 export default class Welcome extends React.Component{
   render() {
+    const { navigation } = this.props;
     return (
         <SafeAreaView style={styles.body}>
           <View style={styles.body}>
@@ -27,7 +28,7 @@ export default class Welcome extends React.Component{
                   color: "white",
                 }}
                 title="Get started"
-                onPress={()=>this.props.navigation.navigate('Intro')}
+                onPress={()=>navigation.navigate('Intro')}
               />
               <Text>  </Text>
               <Button
@@ -37,7 +38,7 @@ export default class Welcome extends React.Component{
                   color: "white",
                 }}
                 title="Directly to chatbot"
-                onPress={()=>this.props.navigation.navigate('Home')}
+                onPress={()=>navigation.navigate('Home')}
               />
             </View>
           </View>

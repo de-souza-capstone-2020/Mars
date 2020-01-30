@@ -3,11 +3,8 @@ import { SafeAreaView, StyleSheet, View, Text, Button, TextInput,} from "react-n
 import Swiper from 'react-native-swiper';
 
 export default class Intro extends React.Component {
-
-  state = {
-    language: 'JavaScript'
-  }
   render() {
+    const { navigation } = this.props;
     return (
       <Swiper style={styles.wrapper} showsButtons={true}>
         <View style={styles.slide1}>
@@ -32,7 +29,7 @@ export default class Intro extends React.Component {
           <Text style={styles.input_text}>You're all set</Text>
           <Button 
             title="Go to chatbot"
-            onPress={()=>this.props.navigation.navigate('Home')}
+            onPress={()=>navigation.navigate('Home')}
           />
         </View>
       </Swiper>
