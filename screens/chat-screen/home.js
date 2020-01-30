@@ -13,6 +13,8 @@ const otherUser = {
   avatar: "https://facebook.github.io/react/img/logo_og.png"
 };
 
+const getID = () => Math.round(Math.random() * 1000000);
+
 const styles = StyleSheet.create({
   container: { flex: 1 }
 });
@@ -49,7 +51,7 @@ export default class Home extends Component {
         }
       }
     ],
-    typingText: null,
+    typingText: null
   };
 
   onReceive = text => {
@@ -58,13 +60,13 @@ export default class Home extends Component {
         messages: GiftedChat.append(
           previousState.messages,
           {
-            _id: Math.round(Math.random() * 1000000),
+            _id: getID(),
             text,
             createdAt: new Date(),
             user: otherUser
           },
           Platform.OS !== "web"
-        ),
+        )
       };
     });
   };
@@ -72,6 +74,11 @@ export default class Home extends Component {
   onSend = (messages = []) => {
     const step = this.state.step + 1;
     this.setState(previousState => {
+      previousState.messages.forEach(message => {
+        if (message.quickReplies !== undefined) {
+          message.quickReplies.values = [];
+        }
+      });
       const sentMessages = [{ ...messages[0], sent: true, received: true }];
       return {
         messages: GiftedChat.append(
@@ -86,14 +93,14 @@ export default class Home extends Component {
     // for demo purpose
     // setTimeout(() => this.botSend(step, messages[0]), Math.round(Math.random() * 1000))
   };
-  
+
   onSendFromUser = (messages = []) => {
     const createdAt = new Date();
     const messagesToUpload = messages.map(message => ({
       ...message,
       user,
       createdAt,
-      _id: Math.round(Math.random() * 1000000)
+      _id: getID()
     }));
     this.onSend(messagesToUpload);
   };
@@ -104,18 +111,24 @@ export default class Home extends Component {
       this.onSend([
         {
           createdAt,
-          _id: Math.round(Math.random() * 1000000),
+          _id: getID(),
           text: replies[0].title,
           user
         }
       ]);
-      setTimeout(() => this.determineResponse(replies[0]), 2000);
-      setTimeout(() => this.turnOffTyping(), 2000);
+      new Promise(resolve => {
+        setTimeout(() => {
+          this.determineResponse(replies[0]);
+          resolve();
+        }, 2000);
+      }).then(() => {
+        this.turnOffTyping();
+      });
     } else if (replies.length > 1) {
       this.onSend([
         {
           createdAt,
-          _id: Math.round(Math.random() * 1000000),
+          _id: getID(),
           text: replies.map(reply => reply.title).join(", "),
           user
         }
@@ -128,17 +141,16 @@ export default class Home extends Component {
   turnOffTyping() {
     this.setState({
       typingText: null
-    })
+    });
   }
 
   determineResponse = reply => {
     const createdAt = new Date();
-    console.log(reply.title);
     if (reply.value === "no") {
       this.onSend([
         {
           createdAt,
-          _id: Math.round(Math.random() * 1000000),
+          _id: getID(),
           text: "have a nice day :(",
           quickReplies: {
             type: "radio", // or 'checkbox',
@@ -171,7 +183,7 @@ export default class Home extends Component {
       this.onSend([
         {
           createdAt,
-          _id: Math.round(Math.random() * 1000000),
+          _id: getID(),
           text: "jokes i have no pics",
           otherUser
         }
@@ -180,7 +192,7 @@ export default class Home extends Component {
     if (reply.value === "yes") {
       this.onSend([
         {
-          _id: 2,
+          _id: getID(),
           text: "Awesome, Did you sleep last night?",
           createdAt: new Date(),
           quickReplies: {
@@ -202,14 +214,16 @@ export default class Home extends Component {
             ]
           },
           user: {
-            _id: 2,
+            _id: getID(),
             name: "React Native"
           }
         }
       ]);
     }
   };
-  renderQuickReplySend = () => <Text>{" custom send =>"}</Text>;
+  renderQuickReplySend = () => {
+    return <Text>{" custom send =>"}</Text>;
+  };
   renderInputToolbar(props) {
     if (this.state.toolbar) {
       return <InputToolbar {...props} />;
@@ -222,16 +236,17 @@ export default class Home extends Component {
         <View>
           <Text>{typingText}</Text>
         </View>
-      )
-    } 
-  return null;
-};
+      );
+    }
+    return null;
+  };
 
   render() {
+    const { messages } = this.state;
     return (
       <View style={{ flex: 1, backgroundColor: "#fff" }}>
         <GiftedChat
-          messages={this.state.messages}
+          messages={messages}
           onSend={this.onSend}
           user={{ _id: 1 }}
           quickReplyStyle={{ borderRadius: 2 }}

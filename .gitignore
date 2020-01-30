@@ -32,13 +32,19 @@ RNTester/build
 
 # Android
 .idea
-.gradle
+.gradle/
 local.properties
 *.iml
 /android/
 android/app/build
 android/build
+build/
 
+# Files for the ART/Dalvik VM
+*.dex
+
+# Android Studio captures folder
+captures/
 
 # OSX
 #

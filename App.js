@@ -14,9 +14,9 @@ import {
   createSwitchNavigator
 } from "react-navigation";
 import Welcome from "./screens/welcome";
-import Home from "./screens/home";
-import Setting from "./screens/setting";
+import Home from "./screens/chat-screen/home";
 import Intro from "./screens/intro";
+import Setting from "./screens/setting"
 
 const WelcomeStack = createStackNavigator({
   Welcome: Welcome
