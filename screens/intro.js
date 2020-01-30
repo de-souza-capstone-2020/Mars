@@ -5,7 +5,7 @@ import Swiper from 'react-native-swiper';
 export default class Intro extends React.Component {
   render() {
     return (
-      <Swiper style={styles.wrapper} showsButtons={true}>
+      <Swiper style={styles.wrapper} showsButtons={false}>
         <View style={styles.slide1}>
           <Text style={styles.text}>We suggest you stay with us for 6-8 weeks</Text>
         </View>
@@ -14,6 +14,12 @@ export default class Intro extends React.Component {
         </View>
         <View style={styles.slide3}>
           <Text style={styles.text}>Please enter your year of birth</Text>
+        </View>
+        <View style={styles.slide2}>
+          <Button 
+            title="Go to chatbot"
+            onPress={()=>this.props.navigation.navigate('Home')}
+          />
         </View>
       </Swiper>
     );
