@@ -293,42 +293,7 @@ export default class Home extends Component {
           renderChatFooter={this.renderFooter}
         />
         <SleepDiary toggleModal={this.toggleModal} isVisible={isModalVisible} />
-        {/* <Modal isVisible={isModalVisible}>
-          <View style={{flex: 1}}></View>
-          <View style={styles.sleepDiary}>
-            <SleepDiary />
-            <View style={styles.confirmation}>
-              <View style={styles.diaryButtons}>
-                <Button title="Cancel" onPress={this.toggleModal} />
-              </View>
-              <View style={styles.diaryButtons}>
-                <Button title="Submit" onPress={this.toggleModal} />
-              </View>
-            </View>
-          </View>
-          <View style={{flex: 1}}></View>
-        </Modal> */}
       </View>
     );
   }
 }
-
-// const styles = StyleSheet.create({
-//   confirmation: {
-//     flexDirection: 'row',
-//     alignItems: 'center',
-//     justifyContent: 'center'
-//   },
-//   sleepDiary: {
-//     flex: 5,
-//     paddingBottom: 20, 
-//     paddingTop: 20, 
-//     backgroundColor: 'white',
-//     borderRadius: 14,
-//     borderColor: 'rgba(0, 0, 0, 0.1)',
-//   },
-//   diaryButtons: {
-//     flex: 1,
-//     padding: 10
-//   }
-// });

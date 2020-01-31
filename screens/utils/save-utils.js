@@ -24,16 +24,11 @@ export const storeSleepDiaryData = async res => {
 };
 
 export const retrieveSleepDiaryData = async (date) => {
-//   const { date } = this.state;
     try {
       const value = await AsyncStorage.getItem(Moment(date).format("MM-DD-YYYY"));
       const JSONValue = JSON.parse(value);
       if (value !== null) {
           console.log(value);
-      //   this.setState({
-      //     storedDateTime: JSONValue.time,
-      //     pickerValueFromStorage: JSONValue.pickerValueFromStorage
-      //   });
       }
     } catch (error) {
       console.error(error);
