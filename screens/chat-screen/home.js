@@ -128,7 +128,7 @@ export default class Home extends Component {
         setTimeout(() => {
           this.determineResponse(replies[0]);
           resolve();
-        }, 2000);
+        }, 0);
       }).then(() => {
         this.turnOffTyping();
       });

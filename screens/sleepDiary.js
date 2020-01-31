@@ -8,31 +8,31 @@ export default class SleepDiary extends Component {
     return (
       <ScrollView style={styles.body}>
         <Text style={styles.text}>Today's Date</Text>
-        <View style={styles.row}>
-          <View style={styles.question}>
-            <Text style={styles.text}>What time did you get into bed?</Text>
-          </View>
-          <View style={styles.answer}>
-          <DatePicker
-            date={this.state.date}
-            onDateChange={date => this.setState({ date })}
-          />
-          </View>
-        </View>
-        <View style={styles.row}>
-          <View style={styles.question}>
-            <Text style={styles.text}>What time did you try to go to sleep?</Text>
-          </View>
-          <View style={styles.answer}>
-            <Text style={styles.text}>Im good!</Text>
-          </View>
-        </View>
+        <Text style={styles.text}>What time did you get into bed?</Text>
+        <DatePicker
+          date={this.state.date}
+          onDateChange={date => this.setState({ date })}
+          mode={'time'}
+          fadeToColor={'none'}
+          textColor={'#ffffff'}
+        />
+        <Text style={styles.text}>What time did you try to go to sleep?</Text>
+        <DatePicker
+          date={this.state.date}
+          onDateChange={date => this.setState({ date })}
+          mode={'time'}
+          fadeToColor={'none'}
+          textColor={'#ffffff'}
+        />
         <View style={styles.row}>
           <View style={styles.question}>
             <Text style={styles.text}>How long did it take you to fall asleep?</Text>
           </View>
           <View style={styles.answer}>
-            <Text style={styles.text}>Im good!</Text>
+            <TextInput
+              style={styles.textBox}
+              keyboardType='numeric'
+            />
           </View>
         </View>
         <View style={styles.row}>
@@ -99,7 +99,8 @@ export default class SleepDiary extends Component {
 const styles = StyleSheet.create({
   body: {
     flex: 1,
-    paddingTop: 10
+    paddingTop: 40,
+    paddingBottom: 40
   },
   row: {
     flexDirection: 'row',
@@ -112,12 +113,22 @@ const styles = StyleSheet.create({
     // borderWidth: 1
   },
   answer: {
-    flex: 2,
+    flex: 3,
+    alignItems: 'center'
     // borderWidth: 1
   },
   text: {
     color: 'white',
     fontSize: 15
   },
+  textBox: {
+    height: 50,
+    width: 40,
+    borderColor: 'white', 
+    borderBottomWidth: 1, 
+    fontSize: 15, 
+    color: 'white', 
+    textAlign: 'center',
+  }
 
 });
