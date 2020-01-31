@@ -267,7 +267,8 @@ export default class Home extends Component {
           renderChatFooter={this.renderFooter}
         />
         <Modal isVisible={this.state.isModalVisible}>
-          <View style={{ flex: 1 }}>
+          <View style={{flex: 1}}></View>
+          <View style={styles.sleepDiary}>
             <SleepDiary />
             <View style={styles.confirmation}>
               <View style={styles.diaryButtons}>
@@ -278,6 +279,7 @@ export default class Home extends Component {
               </View>
             </View>
           </View>
+          <View style={{flex: 1}}></View>
         </Modal>
       </View>
     );
@@ -289,6 +291,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  sleepDiary: {
+    flex: 5,
+    paddingBottom: 20, 
+    paddingTop: 20, 
+    backgroundColor: 'white',
+    borderRadius: 14,
+    borderColor: 'rgba(0, 0, 0, 0.1)',
   },
   diaryButtons: {
     flex: 1,
