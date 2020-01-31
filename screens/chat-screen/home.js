@@ -272,10 +272,10 @@ export default class Home extends Component {
             <SleepDiary />
             <View style={styles.confirmation}>
               <View style={styles.diaryButtons}>
-                <Button title="Submit" onPress={this.toggleModal} />
+                <Button title="Cancel" onPress={this.toggleModal} />
               </View>
               <View style={styles.diaryButtons}>
-                <Button title="Cancel" onPress={this.toggleModal} />
+                <Button title="Submit" onPress={this.toggleModal} />
               </View>
             </View>
           </View>
