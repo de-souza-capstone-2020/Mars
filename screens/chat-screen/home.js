@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, Button, } from "react-native";
 import { GiftedChat } from "react-native-gifted-chat";
+import Modal from "react-native-modal";
+import SleepDiary from "../sleepDiary";
 
 const user = {
   _id: 1,
@@ -14,10 +16,6 @@ const otherUser = {
 };
 
 const getID = () => Math.round(Math.random() * 1000000);
-
-const styles = StyleSheet.create({
-  container: { flex: 1 }
-});
 
 export default class Home extends Component {
   state = {
@@ -42,6 +40,10 @@ export default class Home extends Component {
             {
               title: "😞 Nope. What?",
               value: "no"
+            },
+            {
+              title: "sleep diary",
+              value: "sleep_diary"
             }
           ]
         },
@@ -51,8 +53,14 @@ export default class Home extends Component {
         }
       }
     ],
-    typingText: null
+    typingText: null,
+    isModalVisible: false
   };
+
+  toggleModal = () => {
+    this.setState({ isModalVisible: !this.state.isModalVisible });
+  };
+
 
   onReceive = text => {
     this.setState(previousState => {
@@ -220,6 +228,9 @@ export default class Home extends Component {
         }
       ]);
     }
+    if (reply.value === "sleep_diary") {
+      this.toggleModal();
+    }
   };
   renderQuickReplySend = () => {
     return <Text>{" custom send =>"}</Text>;
@@ -255,7 +266,32 @@ export default class Home extends Component {
           renderInputToolbar={props => this.renderInputToolbar(props)}
           renderChatFooter={this.renderFooter}
         />
+        <Modal isVisible={this.state.isModalVisible}>
+          <View style={{ flex: 1 }}>
+            <SleepDiary />
+            <View style={styles.confirmation}>
+              <View style={styles.diaryButtons}>
+                <Button title="Submit" onPress={this.toggleModal} />
+              </View>
+              <View style={styles.diaryButtons}>
+                <Button title="Cancel" onPress={this.toggleModal} />
+              </View>
+            </View>
+          </View>
+        </Modal>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  confirmation: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  diaryButtons: {
+    flex: 1,
+    padding: 10
+  }
+});
