@@ -31,7 +31,7 @@ export default class Welcome extends React.Component{
                 onPress={()=>navigation.navigate('Intro')}
               />
               <Text>  </Text>
-              <Button
+              {/* <Button
                 icon={{
                   name: "arrow-forward",
                   size: 15,
@@ -39,7 +39,7 @@ export default class Welcome extends React.Component{
                 }}
                 title="Directly to chatbot"
                 onPress={()=>navigation.navigate('Home')}
-              />
+              /> */}
             </View>
           </View>
         </SafeAreaView>
