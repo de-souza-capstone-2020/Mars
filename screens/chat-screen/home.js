@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, Image, Button, } from "react-native";
 import { GiftedChat } from "react-native-gifted-chat";
-import Modal from "react-native-modal";
+import { retrieveSleepDiaryData } from '../utils/save-utils';
 import SleepDiary from "../sleepDiary";
 
 const user = {
@@ -230,6 +230,32 @@ export default class Home extends Component {
     }
     if (reply.value === "sleep_diary") {
       this.toggleModal();
+      
+      this.onSend([
+        {
+          _id: getID(),
+          text: "Awesome, saved!",
+          createdAt: new Date(),
+          quickReplies: {
+            type: "radio", // or 'checkbox',
+            keepIt: true,
+            values: [
+              {
+                title: "View your Saved Data",
+                value: "view_data"
+              }
+            ]
+          },
+          user: {
+            _id: getID(),
+            name: "React Native"
+          }
+        }
+      ]);
+    }
+    if (reply.value === "view_data") {
+        const date = new Date();
+        retrieveSleepDiaryData(date);
     }
   };
   renderQuickReplySend = () => {
@@ -253,7 +279,7 @@ export default class Home extends Component {
   };
 
   render() {
-    const { messages } = this.state;
+    const { messages, isModalVisible } = this.state;
     return (
       <View style={{ flex: 1, backgroundColor: "#fff" }}>
         <GiftedChat
@@ -266,7 +292,8 @@ export default class Home extends Component {
           renderInputToolbar={props => this.renderInputToolbar(props)}
           renderChatFooter={this.renderFooter}
         />
-        <Modal isVisible={this.state.isModalVisible}>
+        <SleepDiary toggleModal={this.toggleModal} isVisible={isModalVisible} />
+        {/* <Modal isVisible={isModalVisible}>
           <View style={{flex: 1}}></View>
           <View style={styles.sleepDiary}>
             <SleepDiary />
@@ -280,28 +307,28 @@ export default class Home extends Component {
             </View>
           </View>
           <View style={{flex: 1}}></View>
-        </Modal>
+        </Modal> */}
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  confirmation: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  sleepDiary: {
-    flex: 5,
-    paddingBottom: 20, 
-    paddingTop: 20, 
-    backgroundColor: 'white',
-    borderRadius: 14,
-    borderColor: 'rgba(0, 0, 0, 0.1)',
-  },
-  diaryButtons: {
-    flex: 1,
-    padding: 10
-  }
-});
+// const styles = StyleSheet.create({
+//   confirmation: {
+//     flexDirection: 'row',
+//     alignItems: 'center',
+//     justifyContent: 'center'
+//   },
+//   sleepDiary: {
+//     flex: 5,
+//     paddingBottom: 20, 
+//     paddingTop: 20, 
+//     backgroundColor: 'white',
+//     borderRadius: 14,
+//     borderColor: 'rgba(0, 0, 0, 0.1)',
+//   },
+//   diaryButtons: {
+//     flex: 1,
+//     padding: 10
+//   }
+// });
