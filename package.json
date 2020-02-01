@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "core-js": "^3.3.5",
+    "lodash": "^4.17.15",
+    "moment": "^2.24.0",
     "react": "16.9.0",
     "react-native": "^0.61.2",
     "react-native-chatbot": "0.0.1-alpha.12",
