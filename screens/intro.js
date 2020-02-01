@@ -1,8 +1,21 @@
 import React, { Fragment, Component } from "react";
 import { SafeAreaView, StyleSheet, View, Text, Button, TextInput,} from "react-native";
 import Swiper from 'react-native-swiper';
+import {storeNickNameYearBirth} from "./utils/save-utils";
 
 export default class Intro extends React.Component {
+    state = {
+        nickName: "",
+        yearOfBirth: ""
+    }
+
+    onNavigate = () => {
+        const { navigation } = this.props;
+        const {nickName, yearOfBirth} = this.state;
+        navigation.navigate('Home');
+        storeNickNameYearBirth({nickName, yearOfBirth});
+
+    }
   render() {
     const { navigation } = this.props;
     return (
@@ -15,6 +28,7 @@ export default class Intro extends React.Component {
           <TextInput
             style={styles.textBox}
             autoCapitalize='words'
+            onChangeText={text => this.setState({nickName: text})}
           />
         </View>
         <View style={styles.slide3}>
@@ -23,13 +37,14 @@ export default class Intro extends React.Component {
             style={styles.textBox}
             autoCapitalize='words'
             keyboardType='numeric'
+            onChangeText={text => this.setState({yearOfBirth: text})}
           />
         </View>
         <View style={styles.slide2}>
           <Text style={styles.input_text}>You're all set</Text>
           <Button 
             title="Go to chatbot"
-            onPress={()=>navigation.navigate('Home')}
+            onPress={this.onNavigate}
           />
         </View>
       </Swiper>
