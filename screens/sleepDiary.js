@@ -23,7 +23,7 @@ export default class SleepDiary extends Component {
     durationTotalWakeUp: "",
     wakeUpTime: new Date(),
     leaveBedTime: new Date(),
-    didNap: false,
+    didNap: "",
     napTime: new Date(),
     napDuration: "",
     others: ""
@@ -227,7 +227,7 @@ export default class SleepDiary extends Component {
               </View>
               <View style={styles.answer}>
                 <Picker
-                  selectedValue={"no"}
+                  selectedValue={didNap}
                   style={{ height: 50, width: 120 }}
                   onValueChange={(itemValue, itemIndex) =>
                     this.setState({ didNap: itemValue })
@@ -239,7 +239,7 @@ export default class SleepDiary extends Component {
               </View>
             </View>
 
-            {didNap && (
+            {(didNap==="yes") && (
               <View style={styles.row}>
                 <View style={styles.question}>
                   <Text style={styles.text}>When did you nap?</Text>
@@ -256,7 +256,7 @@ export default class SleepDiary extends Component {
                 </View>
               </View>
             )}
-            {didNap && (
+            {(didNap==="yes") && (
               <View style={styles.row}>
 
                 <View style={styles.question}>
