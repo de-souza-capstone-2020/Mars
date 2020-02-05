@@ -1,7 +1,20 @@
 import { retrieveSleepDiaryData } from '../utils/save-utils';
 
+const user = {
+  _id: 1,
+  name: "Developer"
+};
+
+const otherUser = {
+  _id: 2,
+  name: "React Native",
+  avatar: "https://facebook.github.io/react/img/logo_og.png"
+};
+
+const getID = () => Math.round(Math.random() * 1000000);
+const createdAt = new Date();
+
 export const sleep_diary_response = reply => {
-  const createdAt = new Date();
   if (reply.value === "no") {
     return ([
       {

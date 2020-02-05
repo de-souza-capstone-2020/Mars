@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Image, Button, } from "react-native";
 import { GiftedChat } from "react-native-gifted-chat";
 import SleepDiary from "../sleepDiary";
 import sleep_diary_messages from "../data/messages";
-import sleep_diary_response from "../data/customActions";
+import { sleep_diary_response } from "../data/customActions";
 
 const user = {
   _id: 1,
@@ -121,7 +121,35 @@ export default class Home extends Component {
   }
 
   determineResponse = reply => {
-    this.onSend(sleep_diary_response(reply));
+    if (reply.value === "sleep_diary") {
+      this.toggleModal();
+      
+      return ([
+        {
+          _id: getID(),
+          text: "Awesome, saved!",
+          createdAt: new Date(),
+          quickReplies: {
+            type: "radio", // or 'checkbox',
+            keepIt: true,
+            values: [
+              {
+                title: "View your Saved Data",
+                value: "view_data"
+              }
+            ]
+          },
+          user: {
+            _id: getID(),
+            name: "React Native"
+          }
+        }
+      ]);
+    }
+    else {
+      reply = sleep_diary_response(reply);
+    }
+    this.onSend(reply);
   };
   
   renderQuickReplySend = () => {
