@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, Image, Button, } from "react-native";
 import { GiftedChat } from "react-native-gifted-chat";
-import { retrieveSleepDiaryData } from '../utils/save-utils';
 import SleepDiary from "../sleepDiary";
+import sleep_diary_messages from "../data/messages";
+import sleep_diary_response from "../data/customActions";
 
 const user = {
   _id: 1,
@@ -19,40 +20,7 @@ const getID = () => Math.round(Math.random() * 1000000);
 
 export default class Home extends Component {
   state = {
-    messages: [
-      {
-        _id: 1,
-        text:
-          "This is Sleepwell. Would you like to learn more about how i can help?",
-        createdAt: new Date(),
-        quickReplies: {
-          type: "radio", // or 'checkbox',
-          keepIt: true,
-          values: [
-            {
-              title: "😋 Yes",
-              value: "yes"
-            },
-            {
-              title: "📷 Yes,show me with a picture!",
-              value: "yes_picture"
-            },
-            {
-              title: "😞 Nope. What?",
-              value: "no"
-            },
-            {
-              title: "sleep diary",
-              value: "sleep_diary"
-            }
-          ]
-        },
-        user: {
-          _id: 2,
-          name: "React Native"
-        }
-      }
-    ],
+    messages: sleep_diary_messages,
     typingText: null,
     isModalVisible: false
   };
@@ -153,111 +121,9 @@ export default class Home extends Component {
   }
 
   determineResponse = reply => {
-    const createdAt = new Date();
-    if (reply.value === "no") {
-      this.onSend([
-        {
-          createdAt,
-          _id: getID(),
-          text: "have a nice day :(",
-          quickReplies: {
-            type: "radio", // or 'checkbox',
-            keepIt: true,
-            values: [
-              {
-                title: "See you later",
-                value: "seeu"
-              },
-            ]
-          },
-          user: {
-            _id: 2,
-            name: "React Native"
-          }
-        }
-      ]);
-    }
-    if (reply.value === "seeu") {
-      this.onSend([
-        {
-          createdAt,
-          _id: Math.round(Math.random() * 1000000),
-          text: "byeeeee",
-          otherUser
-        }
-      ]);
-    }
-    if (reply.value === "yes_picture") {
-      this.onSend([
-        {
-          createdAt,
-          _id: getID(),
-          text: "jokes i have no pics",
-          otherUser
-        }
-      ]);
-    }
-    if (reply.value === "yes") {
-      this.onSend([
-        {
-          _id: getID(),
-          text: "Awesome, Did you sleep last night?",
-          createdAt: new Date(),
-          quickReplies: {
-            type: "radio", // or 'checkbox',
-            keepIt: true,
-            values: [
-              {
-                title: "For a bit",
-                value: "yes_picture"
-              },
-              {
-                title: "Yes 😋 ",
-                value: "yes"
-              },
-              {
-                title: "Nope. Was up all night😞 ",
-                value: "no"
-              }
-            ]
-          },
-          user: {
-            _id: getID(),
-            name: "React Native"
-          }
-        }
-      ]);
-    }
-    if (reply.value === "sleep_diary") {
-      this.toggleModal();
-      
-      this.onSend([
-        {
-          _id: getID(),
-          text: "Awesome, saved!",
-          createdAt: new Date(),
-          quickReplies: {
-            type: "radio", // or 'checkbox',
-            keepIt: true,
-            values: [
-              {
-                title: "View your Saved Data",
-                value: "view_data"
-              }
-            ]
-          },
-          user: {
-            _id: getID(),
-            name: "React Native"
-          }
-        }
-      ]);
-    }
-    if (reply.value === "view_data") {
-        const date = new Date();
-        retrieveSleepDiaryData(date);
-    }
+    this.onSend(sleep_diary_response(reply));
   };
+  
   renderQuickReplySend = () => {
     return <Text>{" custom send =>"}</Text>;
   };
