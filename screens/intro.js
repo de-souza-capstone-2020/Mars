@@ -6,15 +6,10 @@ import {
   Text,
   Button,
   TextInput,
-  Picker
 } from "react-native";
 import Swiper from "react-native-swiper";
 import { storeNickNameYearBirth } from "./utils/save-utils";
-import RadioForm, {
-  RadioButton,
-  RadioButtonInput,
-  RadioButtonLabel
-} from "react-native-simple-radio-button";
+import RadioForm from "react-native-simple-radio-button";
 
 export default class Intro extends React.Component {
   state = {
