@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 
 export default class Welcome extends React.Component{
+
   render() {
     const { navigation } = this.props;
     return (

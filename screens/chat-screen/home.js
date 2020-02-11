@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Image, Button, } from "react-native";
+import { StyleSheet, Text, View, Image, Button, AsyncStorage } from "react-native";
 import { GiftedChat } from "react-native-gifted-chat";
+import Moment from "moment";
 import SleepDiary from "../sleepDiary";
 import sleep_diary_messages from "../data/messages";
 import { sleep_diary_response } from "../data/customActions";
@@ -19,11 +20,45 @@ const otherUser = {
 const getID = () => Math.round(Math.random() * 1000000);
 
 export default class Home extends Component {
+
+  
   state = {
     messages: sleep_diary_messages,
     typingText: null,
-    isModalVisible: false
+    isModalVisible: false,
+    diary: '',
+    appState: new Set() 
   };
+  
+  componentDidMount() {
+    
+    this.determineState();
+    console.log(this.state.appState);
+  }
+
+  determineState(){
+    this.isSleepDiaryEntered();
+  }
+
+  isSleepDiaryEntered = async () => {
+    // var date = Moment(date).format("MM-DD-YYYY")
+    var appState = this.state.appState;
+    var date = "02-10-2020";
+    try {
+      const keys = await AsyncStorage.getAllKeys().then(
+      )
+      if (keys.indexOf(date) != -1) {
+        appState.add(1);
+        this.setState({appState});
+      } else {
+        appState.delete(1);
+        this.setState({appState});
+      }
+      console.log(this.state.appState)
+    } catch (e) {
+      console.error(e);
+    }
+  }
 
   toggleModal = () => {
     this.setState({ isModalVisible: !this.state.isModalVisible });
@@ -174,6 +209,7 @@ export default class Home extends Component {
 
   render() {
     const { messages, isModalVisible } = this.state;
+    
     return (
       <View style={{ flex: 1, backgroundColor: "#fff" }}>
         <GiftedChat
