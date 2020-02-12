@@ -33,27 +33,35 @@ export default class Home extends Component {
   componentDidMount() {
     
     this.determineState();
+    console.log("in componentDidMount");
     console.log(this.state.appState);
   }
 
-  determineState(){
+  determineState = () => {
     this.isSleepDiaryEntered();
+    //other functions
   }
 
-  isSleepDiaryEntered = async () => {
+
+
+  isSleepDiaryEntered = () => {
     // var date = Moment(date).format("MM-DD-YYYY")
     var appState = this.state.appState;
-    var date = "02-10-2020";
+    var date = "02-12-2020"; //for testing
     try {
-      const keys = await AsyncStorage.getAllKeys().then(
-      )
-      if (keys.indexOf(date) != -1) {
-        appState.add(1);
-        this.setState({appState});
-      } else {
-        appState.delete(1);
-        this.setState({appState});
-      }
+      AsyncStorage.getAllKeys().then((keys) => {
+        // console.log(keys);
+        if (keys.indexOf(date) != -1) {
+          console.log('found')
+          appState.add(1);
+          this.setState({appState});
+          console.log(this.state.appState)
+        } else {
+          appState.delete(1);
+          this.setState({appState});
+        }
+      });
+      console.log('inside func');
       console.log(this.state.appState)
     } catch (e) {
       console.error(e);
