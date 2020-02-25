@@ -4,7 +4,6 @@ import Map from 'lodash';
 
 const formatDate = (element) => element instanceof Date ? element.getTime() : element;
 
-
 export const storeSleepDiaryData = async res => {
   const formattedObj = Map(res, formatDate);
     

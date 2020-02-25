@@ -1,9 +1,11 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Image, Button, } from "react-native";
+import { StyleSheet, Text, View, Image, Button, AsyncStorage } from "react-native";
 import { GiftedChat } from "react-native-gifted-chat";
+import Moment from "moment";
 import SleepDiary from "../sleepDiary";
-import sleep_diary_messages from "../data/messages";
+import { generic_messages, sleep_diary_messages }  from "../data/messages";
 import { sleep_diary_response } from "../data/customActions";
+import SplashScreen from "../loading";
 
 const user = {
   _id: 1,
@@ -20,10 +22,70 @@ const getID = () => Math.round(Math.random() * 1000000);
 
 export default class Home extends Component {
   state = {
-    messages: sleep_diary_messages,
+    messages: generic_messages,
     typingText: null,
-    isModalVisible: false
+    isModalVisible: false,
+    diary: '',
+    isLoading: true,
+    appState: new Set() 
   };
+  
+  async componentDidMount() {
+    
+    await this.isSleepDiaryEntered();
+    console.log('inside comp');
+    console.log(this.state.appState)
+
+    //determining message type
+    const { appState } = this.state;
+    if(appState.size > 0 ) {
+      if (appState.has(1)) {
+        this.setState({ messages: sleep_diary_messages });
+      }
+      this.setState({
+        isLoading: false,
+      });
+    }
+  }
+
+
+  /** 
+   * determines if there is a sleep diary entry for today
+   * sets app state to 1 if there is no entry
+   * sets app state to 2, 3, 4 if there is
+   */
+  isSleepDiaryEntered = async() => {
+    // var date = Moment(date).format("MM-DD-YYYY")
+    const appState = this.state.appState;
+    const date = "02-12-2020"; //for testing
+    try {
+      AsyncStorage.getAllKeys().then((keys) => {
+        console.log(keys);
+        if (keys.indexOf(date) != -1) {
+          console.log('found')
+          appState.clear();
+          appState.add(2);
+          appState.add(3);
+          appState.add(4);
+          this.setState({appState});
+          console.log(this.state.appState)
+        } else {
+          appState.clear();
+          appState.add(1);
+          this.setState({appState});
+        }
+      }); 
+    } catch (e) {
+      console.error(e);
+    }
+
+    return new Promise((resolve) =>
+      setTimeout(
+        () => { resolve('result') },
+        2000
+      )
+    );
+  }
 
   toggleModal = () => {
     this.setState({ isModalVisible: !this.state.isModalVisible });
@@ -173,7 +235,10 @@ export default class Home extends Component {
   };
 
   render() {
-    const { messages, isModalVisible } = this.state;
+    const { messages, isModalVisible, isLoading } = this.state;
+    if (isLoading) {
+      return <SplashScreen />;
+    }
     return (
       <View style={{ flex: 1, backgroundColor: "#fff" }}>
         <GiftedChat

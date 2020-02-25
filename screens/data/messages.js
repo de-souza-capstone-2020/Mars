@@ -1,5 +1,5 @@
 
-var sleep_diary_messages = [
+const sleep_diary_messages = [
   {
     _id: 1,
     text:
@@ -34,4 +34,26 @@ var sleep_diary_messages = [
   }
 ]
 
-export default sleep_diary_messages;
+const generic_messages = [
+  {
+    _id: 1,
+    text:
+      "This is a generic message",
+    createdAt: new Date(),
+    quickReplies: {
+      type: "radio", // or 'checkbox',
+      keepIt: true,
+      values: [
+        {
+          title: "Hi",
+          value: "hi"
+        }
+      ]
+    },
+    user: {
+      _id: 2,
+      name: "React Native"
+    }
+  }
+]
+export { generic_messages, sleep_diary_messages } ;
