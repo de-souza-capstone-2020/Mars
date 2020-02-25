@@ -136,17 +136,6 @@ export default class Home extends Component {
     // setTimeout(() => this.botSend(step, messages[0]), Math.round(Math.random() * 1000))
   };
 
-  onSendFromUser = (messages = []) => {
-    const createdAt = new Date();
-    const messagesToUpload = messages.map(message => ({
-      ...message,
-      user,
-      createdAt,
-      _id: getID()
-    }));
-    this.onSend(messagesToUpload);
-  };
-
   onQuickReply = replies => {
     const createdAt = new Date();
     if (replies.length === 1) {
