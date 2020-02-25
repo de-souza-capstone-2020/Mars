@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Image, Button, AsyncStorage } from "react-nativ
 import { GiftedChat } from "react-native-gifted-chat";
 import Moment from "moment";
 import SleepDiary from "../sleepDiary";
-import { generic_messages, sleep_diary_messages }  from "../data/messages";
+import { generic_messages, sleep_diary_messages, generic_tip }  from "../data/messages";
 import { sleep_diary_response } from "../data/customActions";
 import SplashScreen from "../loading";
 
@@ -41,6 +41,11 @@ export default class Home extends Component {
     if(appState.size > 0 ) {
       if (appState.has(1)) {
         this.setState({ messages: sleep_diary_messages });
+        appState.delete(1);
+      }
+      else if (appState.has(2)) {
+        this.setState({ messages: generic_tip})
+        appState.delete(2);
       }
       this.setState({
         isLoading: false,
@@ -48,14 +53,13 @@ export default class Home extends Component {
     }
   }
 
-
   /** 
    * determines if there is a sleep diary entry for today
    * sets app state to 1 if there is no entry
    * sets app state to 2, 3, 4 if there is
    */
   isSleepDiaryEntered = async() => {
-    // var date = Moment(date).format("MM-DD-YYYY")
+    // const date = Moment(date).format("MM-DD-YYYY")
     const appState = this.state.appState;
     const date = "02-12-2020"; //for testing
     try {
@@ -212,6 +216,7 @@ export default class Home extends Component {
       reply = sleep_diary_response(reply);
     }
     this.onSend(reply);
+
   };
   
   renderQuickReplySend = () => {
