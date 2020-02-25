@@ -56,8 +56,8 @@ export default class Home extends Component {
    */
   isSleepDiaryEntered = async() => {
     // var date = Moment(date).format("MM-DD-YYYY")
-    var appState = this.state.appState;
-    var date = "02-12-2020"; //for testing
+    const appState = this.state.appState;
+    const date = "02-12-2020"; //for testing
     try {
       AsyncStorage.getAllKeys().then((keys) => {
         console.log(keys);
