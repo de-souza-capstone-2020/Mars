@@ -1,9 +1,23 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Image, Button, AsyncStorage } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Button,
+  AsyncStorage
+} from "react-native";
 import { GiftedChat } from "react-native-gifted-chat";
 import Moment from "moment";
 import SleepDiary from "../sleepDiary";
-import { generic_messages, sleep_diary_messages }  from "../data/messages";
+import {
+  generic_messages,
+  sleep_diary_messages,
+  generic_tip,
+  sleep_diary_tip,
+  module
+} from "../data/messages";
+import { getRandomAppState } from "../utils/helper-utils";
 import { sleep_diary_response } from "../data/customActions";
 import SplashScreen from "../loading";
 
@@ -18,6 +32,9 @@ const otherUser = {
   avatar: "https://facebook.github.io/react/img/logo_og.png"
 };
 
+// const date = Moment(date).format("MM-DD-YYYY")
+const date = "02-18-2020"; //for testing
+
 const getID = () => Math.round(Math.random() * 1000000);
 
 export default class Home extends Component {
@@ -25,72 +42,66 @@ export default class Home extends Component {
     messages: generic_messages,
     typingText: null,
     isModalVisible: false,
-    diary: '',
+    diary: "",
     isLoading: true,
-    appState: new Set() 
+    appState: new Set(),
   };
-  
+
   async componentDidMount() {
-    
     await this.isSleepDiaryEntered();
-    console.log('inside comp');
-    console.log(this.state.appState)
 
     //determining message type
     const { appState } = this.state;
-    if(appState.size > 0 ) {
+    if (appState.size > 0) {
       if (appState.has(1)) {
-        this.setState({ messages: sleep_diary_messages });
+        this.setState({ messages: new sleep_diary_messages() });
+        appState.delete(1);
+      } else if (appState.has(2)) {
+        this.setState({ messages: new generic_tip() });
+        appState.delete(2);
       }
       this.setState({
-        isLoading: false,
+        isLoading: false
       });
     }
   }
 
-
-  /** 
+  /**
    * determines if there is a sleep diary entry for today
    * sets app state to 1 if there is no entry
    * sets app state to 2, 3, 4 if there is
    */
-  isSleepDiaryEntered = async() => {
-    // var date = Moment(date).format("MM-DD-YYYY")
+  isSleepDiaryEntered = async () => {
     const appState = this.state.appState;
-    const date = "02-12-2020"; //for testing
     try {
-      AsyncStorage.getAllKeys().then((keys) => {
-        console.log(keys);
+      AsyncStorage.getAllKeys().then(keys => {
         if (keys.indexOf(date) != -1) {
-          console.log('found')
           appState.clear();
           appState.add(2);
           appState.add(3);
           appState.add(4);
-          this.setState({appState});
-          console.log(this.state.appState)
+          this.setState({ appState });
         } else {
           appState.clear();
           appState.add(1);
-          this.setState({appState});
+          appState.add(2);
+          this.setState({ appState });
         }
-      }); 
+      });
     } catch (e) {
       console.error(e);
     }
 
-    return new Promise((resolve) =>
-      setTimeout(
-        () => { resolve('result') },
-        2000
-      )
+    return new Promise(resolve =>
+      setTimeout(() => {
+        resolve("result");
+      }, 2000)
     );
-  }
+  };
 
   toggleModal = () => {
     this.setState({ isModalVisible: !this.state.isModalVisible });
   };
-
 
   onReceive = text => {
     this.setState(previousState => {
@@ -130,17 +141,6 @@ export default class Home extends Component {
     });
     // for demo purpose
     // setTimeout(() => this.botSend(step, messages[0]), Math.round(Math.random() * 1000))
-  };
-
-  onSendFromUser = (messages = []) => {
-    const createdAt = new Date();
-    const messagesToUpload = messages.map(message => ({
-      ...message,
-      user,
-      createdAt,
-      _id: getID()
-    }));
-    this.onSend(messagesToUpload);
   };
 
   onQuickReply = replies => {
@@ -185,8 +185,8 @@ export default class Home extends Component {
   determineResponse = reply => {
     if (reply.value === "sleep_diary") {
       this.toggleModal();
-      
-      return ([
+
+      return [
         {
           _id: getID(),
           text: "Awesome, saved!",
@@ -206,14 +206,52 @@ export default class Home extends Component {
             name: "React Native"
           }
         }
-      ]);
-    }
-    else {
+      ];
+    } else if (reply.value === "got_it") {
+      reply = this.getNextConversation();
+    } else {
       reply = sleep_diary_response(reply);
     }
     this.onSend(reply);
   };
-  
+
+  getNextConversation = () => {
+    const { appState } = this.state;
+    const randAppState = getRandomAppState(appState);
+
+    
+    switch (randAppState) {
+      case 1:
+        appState.delete(1);
+        appState.add(2);
+        appState.add(3);
+        appState.add(4);
+        this.setState(appState);
+        return new sleep_diary_messages();
+      case 2:
+        appState.add(3);
+        appState.add(4);
+        this.setState(appState);
+        return new generic_tip();
+      case 3:
+        appState.delete(3);
+        appState.add(2);
+        appState.add(4);
+        this.setState(appState);
+        return new sleep_diary_tip();
+      case 4:
+        appState.add(2);
+        appState.add(3);
+        this.setState(appState);
+        return new module();
+      default:
+        console.error("There is something wrong with the case statement");
+        return new generic_messages();
+      
+    }
+
+  };
+
   renderQuickReplySend = () => {
     return <Text>{" custom send =>"}</Text>;
   };

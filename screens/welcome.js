@@ -13,6 +13,7 @@ export default class Welcome extends React.Component{
 
   render() {
     const { navigation } = this.props;
+    console.disableYellowBox = true;
     return (
         <SafeAreaView style={styles.body}>
           <View style={styles.body}>

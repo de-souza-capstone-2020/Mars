@@ -118,4 +118,80 @@ export const sleep_diary_response = reply => {
       const date = new Date();
       retrieveSleepDiaryData(date);
   }
+  if (reply.value == "hi") {
+    return ([
+      {
+        createdAt,
+        _id: getID(),
+        text: "👋",
+        otherUser
+      }
+    ]);
+  }
+  if (reply.value == "not_right_now") {
+    return ([
+      {
+        createdAt,
+        _id: getID(),
+        text: "Ok, I will remind you later",
+        otherUser,
+        quickReplies: {
+          type: "radio", // or 'checkbox',
+          keepIt: true,
+          values: [
+            {
+              title: "got it",
+              value: "got_it"
+            }
+          ]
+        },
+      }
+    ]);
+  }
+  if (reply.value == "got_it") {
+    return ([
+      {
+        createdAt,
+        _id: getID(),
+        text: "👍",
+        otherUser,
+        quickReplies: {
+          type: "radio", // or 'checkbox',
+          keepIt: true,
+          values: [
+            {
+              title: "got it",
+              value: "got_it"
+            }
+          ]
+        },
+      }
+    ]);
+  }
+  if (reply.value == "why_caffeine") {
+    return ([
+      {
+        createdAt,
+        _id: getID(),
+        text: "Caffeine is a type of drug that promotes alertness. These drugs are called “stimulants.”\n" + 
+        "Caffeine acts as an “adenosine receptor antagonist.” Adenosine is a substance in your body that promotes sleepiness." + 
+        "Caffeine blocks the adenosine receptor to keep you from feeling sleepy.",
+        otherUser,
+        quickReplies: {
+          type: "radio", // or 'checkbox',
+          keepIt: true,
+          values: [
+            {
+              title: "got it",
+              value: "got_it"
+            }
+          ]
+        },
+        user: {
+          _id: getID(),
+          name: "React Native"
+        }
+      }
+    ]);
+  }
 };
