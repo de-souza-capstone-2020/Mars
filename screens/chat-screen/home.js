@@ -17,6 +17,7 @@ import {
   sleep_diary_tip,
   module
 } from "../data/messages";
+import { getRandomAppState } from "../utils/helper-utils";
 import { sleep_diary_response } from "../data/customActions";
 import SplashScreen from "../loading";
 
@@ -43,13 +44,11 @@ export default class Home extends Component {
     isModalVisible: false,
     diary: "",
     isLoading: true,
-    appState: new Set()
+    appState: new Set(),
   };
 
   async componentDidMount() {
     await this.isSleepDiaryEntered();
-    // console.log('inside comp');
-    // console.log(this.state.appState)
 
     //determining message type
     const { appState } = this.state;
@@ -76,15 +75,12 @@ export default class Home extends Component {
     const appState = this.state.appState;
     try {
       AsyncStorage.getAllKeys().then(keys => {
-        // console.log(keys);
         if (keys.indexOf(date) != -1) {
-          // console.log('found')
           appState.clear();
           appState.add(2);
           appState.add(3);
           appState.add(4);
           this.setState({ appState });
-          // console.log(this.state.appState)
         } else {
           appState.clear();
           appState.add(1);
@@ -127,16 +123,12 @@ export default class Home extends Component {
   onSend = (messages = []) => {
     const step = this.state.step + 1;
     this.setState(previousState => {
-      // console.log(previousState);
       previousState.messages.forEach(message => {
         if (message.quickReplies !== undefined) {
           message.quickReplies.values = [];
         }
       });
       const sentMessages = [{ ...messages[0], sent: true, received: true }];
-      // console.log(previousState.messages);
-      console.log(sentMessages);
-      // console.log
       return {
         messages: GiftedChat.append(
           previousState.messages,
@@ -165,7 +157,6 @@ export default class Home extends Component {
       new Promise(resolve => {
         setTimeout(() => {
           this.determineResponse(replies[0]);
-          // console.log(replies[0]);
           resolve();
         }, 0);
       }).then(() => {
@@ -221,37 +212,44 @@ export default class Home extends Component {
     } else {
       reply = sleep_diary_response(reply);
     }
-    // console.log(reply);
     this.onSend(reply);
   };
 
   getNextConversation = () => {
     const { appState } = this.state;
-    console.log(appState);
-    if (appState.has(1)) {
-      appState.delete(1);
-      appState.add(2);
-      appState.add(3);
-      appState.add(4);
-      this.setState(appState);
-      return new sleep_diary_messages();
-    } else if (appState.has(2)) {
-      appState.add(3);
-      appState.add(4)
-      this.setState(appState);
-      return new generic_tip();
-    } else if (appState.has(3)) {
-      appState.delete(3);
-      appState.add(2);
-      appState.add(4)
-      this.setState(appState);
-      return new sleep_diary_tip();
-    } else if (appState.has(4)) {
-      appState.add(2);
-      appState.add(3)
-      this.setState(appState);
-      return new module();
+    const randAppState = getRandomAppState(appState);
+
+    
+    switch (randAppState) {
+      case 1:
+        appState.delete(1);
+        appState.add(2);
+        appState.add(3);
+        appState.add(4);
+        this.setState(appState);
+        return new sleep_diary_messages();
+      case 2:
+        appState.add(3);
+        appState.add(4);
+        this.setState(appState);
+        return new generic_tip();
+      case 3:
+        appState.delete(3);
+        appState.add(2);
+        appState.add(4);
+        this.setState(appState);
+        return new sleep_diary_tip();
+      case 4:
+        appState.add(2);
+        appState.add(3);
+        this.setState(appState);
+        return new module();
+      default:
+        console.error("There is something wrong with the case statement");
+        return new generic_messages();
+      
     }
+
   };
 
   renderQuickReplySend = () => {
