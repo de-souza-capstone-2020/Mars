@@ -144,7 +144,17 @@ export const sleep_diary_response = reply => {
         createdAt,
         _id: getID(),
         text: "👍",
-        otherUser
+        otherUser,
+        quickReplies: {
+          type: "radio", // or 'checkbox',
+          keepIt: true,
+          values: [
+            {
+              title: "got it",
+              value: "got_it"
+            }
+          ]
+        },
       }
     ]);
   }
