@@ -27,10 +27,7 @@ const sleep_diary_messages = () => {
           }
         ]
       },
-      user: {
-        _id: 2,
-        name: "React Native"
-      }
+      otherUser
     }
   ]
 } 
@@ -39,7 +36,7 @@ const generic_messages = () => {
   
   return [
     {
-      _id: 1,
+      _id: getID(),
       text:
         "This is a generic message",
       createdAt: new Date(),
@@ -53,10 +50,7 @@ const generic_messages = () => {
           }
         ]
       },
-      user: {
-        _id: 2,
-        name: "React Native"
-      }
+      otherUser
     }
   ]
 }
@@ -64,7 +58,7 @@ const generic_messages = () => {
 const generic_tip = () => {
   return [
     {
-      _id: 1,
+      _id: getID(),
       text:
         "This is a general tip (e.g. don't consume caffeinated beverages before bed)",
       createdAt: new Date(),
@@ -82,10 +76,7 @@ const generic_tip = () => {
           },
         ]
       },
-      user: {
-        _id: 2,
-        name: "React Native"
-      }
+      otherUser
     }
   ]
 }
@@ -110,4 +101,25 @@ const sleep_diary_tip = () => {
     }
   ]
 }
-export { generic_messages, sleep_diary_messages, generic_tip, sleep_diary_tip };
+
+const module = () => {
+  return [
+    {
+      createdAt: new Date(),
+      _id: getID(),
+      text: "Module 1: .......",
+      otherUser,
+      quickReplies: {
+        type: "radio", // or 'checkbox',
+        keepIt: true,
+        values: [
+          {
+            title: "...",
+            value: "got_it"
+          }
+        ]
+      },
+    }
+  ]
+}
+export { generic_messages, sleep_diary_messages, generic_tip, sleep_diary_tip, module };

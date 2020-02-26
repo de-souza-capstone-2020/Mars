@@ -14,7 +14,8 @@ import {
   generic_messages,
   sleep_diary_messages,
   generic_tip,
-  sleep_diary_tip
+  sleep_diary_tip,
+  module
 } from "../data/messages";
 import { sleep_diary_response } from "../data/customActions";
 import SplashScreen from "../loading";
@@ -87,6 +88,7 @@ export default class Home extends Component {
         } else {
           appState.clear();
           appState.add(1);
+          appState.add(2);
           this.setState({ appState });
         }
       });
@@ -225,16 +227,30 @@ export default class Home extends Component {
 
   getNextConversation = () => {
     const { appState } = this.state;
-    // console.log(appState);
+    console.log(appState);
     if (appState.has(1)) {
+      appState.delete(1);
+      appState.add(2);
+      appState.add(3);
+      appState.add(4);
+      this.setState(appState);
       return new sleep_diary_messages();
     } else if (appState.has(2)) {
-      // console.log(2);
+      appState.add(3);
+      appState.add(4)
+      this.setState(appState);
       return new generic_tip();
     } else if (appState.has(3)) {
-      // console.log('here 3');
-      // console.log(sleep_diary_tip);
+      appState.delete(3);
+      appState.add(2);
+      appState.add(4)
+      this.setState(appState);
       return new sleep_diary_tip();
+    } else if (appState.has(4)) {
+      appState.add(2);
+      appState.add(3)
+      this.setState(appState);
+      return new module();
     }
   };
 
