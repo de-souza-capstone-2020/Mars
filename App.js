@@ -16,7 +16,8 @@ import {
 import Welcome from "./screens/welcome";
 import Home from "./screens/chat-screen/home";
 import Intro from "./screens/intro";
-import Setting from "./screens/setting"
+import Setting from "./screens/setting";
+import History from './screens/chat-screen/history';
 
 const WelcomeStack = createStackNavigator({
   Welcome: Welcome
@@ -30,6 +31,12 @@ const MainTabs = createBottomTabNavigator({
     screen: Home,
     navigationOptions: {
       tabBarLabel: "Home"
+    }
+  },
+  History: {
+    screen: History,
+    navigationOptions: {
+      tabBarLabel: "History"
     }
   },
   Setting: {
