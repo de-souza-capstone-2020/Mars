@@ -5,22 +5,61 @@ import {
   ScrollView,
   View,
   Text,
-  StatusBar,
-  Button
+  AsyncStorage
 } from 'react-native';
+import { ListItem } from 'react-native-elements'
+import SplashScreen from "../loading";
 
 export default class History extends React.Component{
 
+  state = {
+    diaryHistory: null,
+    isLoading: true,
+  }
+
+  async componentDidMount() {
+    await this.getDiaryList();
+    if (this.state.diaryHistory) {
+      this.setState({isLoading: false});
+    }
+  }
+
+  getDiaryList = async () => {
+    const list = [
+      {
+        title: 'Appointments',
+      },
+      {
+        title: 'Trips',
+      },
+    ]
+    const keys = AsyncStorage.getAllKeys();
+    this.setState({diaryHistory: list});
+  }
+
   render() {
     const { navigation } = this.props;
-    console.disableYellowBox = true;
+    const {isLoading, diaryHistory} = this.state;
+    if (isLoading) {
+      return <SplashScreen />;
+    }
     return (
         <SafeAreaView style={styles.body}>
-          <View style={styles.body}>
-            <View style={styles.logo_area}>
-              <Text style={styles.title_font}> History </Text>
-            </View>
-          </View>
+          <ScrollView style={styles.body}>
+            <Text style={styles.title_font}> Sleep Diary History </Text>
+            {
+              diaryHistory.map((item, i) => (
+                console.log(item),
+                <ListItem
+                  key={i}
+                  title={item.title}
+                  titleProps={{fontSize: 15, color: 'black'}}
+                  bottomDivider
+                  chevron
+                />
+              ))
+            }
+          </ScrollView>
         </SafeAreaView>
     );
   }
@@ -28,7 +67,7 @@ export default class History extends React.Component{
 
 const styles = StyleSheet.create({
   body: {
-    backgroundColor: '#dbefff',
+    // backgroundColor: '#dbefff',
     flex: 1,
   },
   logo_area: {
@@ -59,7 +98,7 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   title_font: {
-    fontSize: 45,
+    fontSize: 30,
     color: 'black',
     textAlign: 'center',
   },
