@@ -12,6 +12,7 @@ import {
 import DatePicker from "react-native-date-picker";
 import Modal from "react-native-modal";
 import { storeSleepDiaryData } from './utils/save-utils';
+import { calculateTips } from "./data/customActions";
 
 export default class SleepDiary extends Component {
   state = {
@@ -62,6 +63,8 @@ export default class SleepDiary extends Component {
         others
     }
     storeSleepDiaryData(values);
+    calculateTips();
+    
     
 }
 

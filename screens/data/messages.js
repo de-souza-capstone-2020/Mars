@@ -1,3 +1,5 @@
+import { solutionTips } from "./constants";
+
 const getID = () => Math.round(Math.random() * 1000000);
 
 const otherUser = {
@@ -10,8 +12,7 @@ const sleep_diary_messages = () => {
   return [
     {
       _id: 1,
-      text:
-        "Hello, please input your previous night's sleep record",
+      text: "Hello, please input your previous night's sleep record",
       createdAt: new Date(),
       quickReplies: {
         type: "radio", // or 'checkbox',
@@ -29,16 +30,14 @@ const sleep_diary_messages = () => {
       },
       otherUser
     }
-  ]
-} 
+  ];
+};
 
 const generic_messages = () => {
-  
   return [
     {
       _id: getID(),
-      text:
-        "This is a generic message",
+      text: "This is a generic message",
       createdAt: new Date(),
       quickReplies: {
         type: "radio", // or 'checkbox',
@@ -52,8 +51,8 @@ const generic_messages = () => {
       },
       otherUser
     }
-  ]
-}
+  ];
+};
 
 const generic_tip = () => {
   return [
@@ -73,13 +72,123 @@ const generic_tip = () => {
           {
             title: "Why not?",
             value: "why_caffeine"
-          },
+          }
         ]
       },
       otherUser
     }
-  ]
-}
+  ];
+};
+
+const solutionOne = () => [
+  {
+    _id: getID(),
+    text: solutionTips["solutionOne"],
+    createdAt: new Date(),
+    quickReplies: {
+      type: "radio", // or 'checkbox',
+      keepIt: true,
+      values: [
+        {
+          title: "Got it",
+          value: "got_it"
+        }
+      ]
+    },
+    otherUser
+  }
+];
+const solutionTwo = () => [
+  {
+    _id: getID(),
+    text: solutionTips["solutionTwo"],
+    createdAt: new Date(),
+    quickReplies: {
+      type: "radio", // or 'checkbox',
+      keepIt: true,
+      values: [
+        {
+          title: "Got it",
+          value: "got_it"
+        }
+      ]
+    },
+    otherUser
+  }
+];
+const solutionThree = () => [
+  {
+    _id: getID(),
+    text: solutionTips["solutionThree"],
+    createdAt: new Date(),
+    quickReplies: {
+      type: "radio", // or 'checkbox',
+      keepIt: true,
+      values: [
+        {
+          title: "Got it",
+          value: "got_it"
+        }
+      ]
+    },
+    otherUser
+  }
+];
+const solutionFour = () => [
+  {
+    _id: getID(),
+    text: solutionTips["solutionFour"],
+    createdAt: new Date(),
+    quickReplies: {
+      type: "radio", // or 'checkbox',
+      keepIt: true,
+      values: [
+        {
+          title: "Got it",
+          value: "got_it"
+        }
+      ]
+    },
+    otherUser
+  }
+];
+const solutionFive = () => [
+  {
+    _id: getID(),
+    text: solutionTips["solutionFive"],
+    createdAt: new Date(),
+    quickReplies: {
+      type: "radio", // or 'checkbox',
+      keepIt: true,
+      values: [
+        {
+          title: "Got it",
+          value: "got_it"
+        }
+      ]
+    },
+    otherUser
+  }
+];
+const solutionSix = () => [
+  {
+    _id: getID(),
+    text: solutionTips["solutionSix"],
+    createdAt: new Date(),
+    quickReplies: {
+      type: "radio", // or 'checkbox',
+      keepIt: true,
+      values: [
+        {
+          title: "Got it",
+          value: "got_it"
+        }
+      ]
+    },
+    otherUser
+  }
+];
+
 
 const sleep_diary_tip = () => {
   return [
@@ -97,10 +206,10 @@ const sleep_diary_tip = () => {
             value: "got_it"
           }
         ]
-      },
+      }
     }
-  ]
-}
+  ];
+};
 
 const module = () => {
   return [
@@ -118,8 +227,14 @@ const module = () => {
             value: "got_it"
           }
         ]
-      },
+      }
     }
-  ]
-}
-export { generic_messages, sleep_diary_messages, generic_tip, sleep_diary_tip, module };
+  ];
+};
+export {
+  generic_messages,
+  sleep_diary_messages,
+  generic_tip,
+  sleep_diary_tip,
+  module
+};
