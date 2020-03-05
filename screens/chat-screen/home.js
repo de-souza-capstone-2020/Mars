@@ -32,8 +32,8 @@ const otherUser = {
   avatar: "https://facebook.github.io/react/img/logo_og.png"
 };
 
-// const date = Moment(date).format("MM-DD-YYYY")
-const date = "02-18-2020"; //for testing
+const date = Moment(date).format("MM-DD-YYYY")
+// const date = "02-18-2020"; //for testing
 
 const getID = () => Math.round(Math.random() * 1000000);
 
@@ -70,18 +70,26 @@ export default class Home extends Component {
    * determines if there is a sleep diary entry for today
    * sets app state to 1 if there is no entry
    * sets app state to 2, 3, 4 if there is
+   * 
+   * state 1: missing sleep diary
+   * state 2: to send general tip
+   * state 3: to send sleep diary tip
+   * state 4: to send module content
    */
+
   isSleepDiaryEntered = async () => {
     const appState = this.state.appState;
     try {
       AsyncStorage.getAllKeys().then(keys => {
         if (keys.indexOf(date) != -1) {
+          //sleep diary is found for the day
           appState.clear();
           appState.add(2);
           appState.add(3);
           appState.add(4);
           this.setState({ appState });
         } else {
+          //sleep diary has not been entered already
           appState.clear();
           appState.add(1);
           appState.add(2);
@@ -185,28 +193,7 @@ export default class Home extends Component {
   determineResponse = reply => {
     if (reply.value === "sleep_diary") {
       this.toggleModal();
-
-      return [
-        {
-          _id: getID(),
-          text: "Awesome, saved!",
-          createdAt: new Date(),
-          quickReplies: {
-            type: "radio", // or 'checkbox',
-            keepIt: true,
-            values: [
-              {
-                title: "View your Saved Data",
-                value: "view_data"
-              }
-            ]
-          },
-          user: {
-            _id: getID(),
-            name: "React Native"
-          }
-        }
-      ];
+      reply = this.getNextConversation();
     } else if (reply.value === "got_it") {
       reply = this.getNextConversation();
     } else {
