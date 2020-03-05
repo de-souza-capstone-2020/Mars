@@ -13,10 +13,12 @@ import {
   createStackNavigator,
   createSwitchNavigator
 } from "react-navigation";
+import { Icon } from 'react-native-elements'
 import Welcome from "./screens/welcome";
 import Home from "./screens/chat-screen/home";
 import Intro from "./screens/intro";
-import Setting from "./screens/setting"
+import Setting from "./screens/setting";
+import History from './screens/chat-screen/history';
 
 const WelcomeStack = createStackNavigator({
   Welcome: Welcome
@@ -29,13 +31,34 @@ const MainTabs = createBottomTabNavigator({
   Home: {
     screen: Home,
     navigationOptions: {
-      tabBarLabel: "Home"
+      tabBarLabel: "Home",
+      tabBarIcon: 
+        <Icon 
+          name = 'comments'
+          type = 'font-awesome'
+        />
+    }
+  },
+  History: {
+    screen: History,
+    navigationOptions: {
+      tabBarLabel: "History",
+      tabBarIcon: 
+        <Icon 
+          name = 'history'
+          type = 'font-awesome'
+        />
     }
   },
   Setting: {
     screen: Setting,
     navigationOptions: {
-      tabBarLabel: "Settings"
+      tabBarLabel: "Settings",
+      tabBarIcon: <Icon
+        name='cog'
+        type='font-awesome'
+        // color='#f99' 
+        />
     }
   },
 });
