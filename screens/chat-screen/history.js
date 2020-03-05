@@ -9,36 +9,45 @@ import {
 } from 'react-native';
 import { ListItem } from 'react-native-elements'
 import SplashScreen from "../loading";
+import { retrieveSleepDiaryData } from "../utils/save-utils";
 
 export default class History extends React.Component{
 
   state = {
-    diaryHistory: null,
+    diaryHistory: [],
     isLoading: true,
   }
 
   async componentDidMount() {
     await this.getDiaryList();
-    if (this.state.diaryHistory) {
-      this.setState({isLoading: false});
-    }
+    // if (this.state.diaryHistory) {
+      
+    // }
+    this.setState({isLoading: false});
   }
 
   getDiaryList = async () => {
-    const list = [
-      {
-        title: 'Appointments',
-      },
-      {
-        title: 'Trips',
-      },
-    ]
-    const keys = AsyncStorage.getAllKeys();
-    this.setState({diaryHistory: list});
+    try {
+      AsyncStorage.getAllKeys().then(keys => {
+        keys.map((key) =>{
+          if (key.search("[0-9]") != -1){
+            this.setState({ diaryHistory: [...this.state.diaryHistory, {title: key}] });
+          }
+        })
+      });
+    } catch (e) {
+      console.log(e);
+    }
+    console.log(this.state.diaryHistory);
+
+    return new Promise(resolve =>
+      setTimeout(() => {
+        resolve("result");
+      }, 2000)
+    );
   }
 
   render() {
-    const { navigation } = this.props;
     const {isLoading, diaryHistory} = this.state;
     if (isLoading) {
       return <SplashScreen />;
@@ -56,6 +65,7 @@ export default class History extends React.Component{
                   titleProps={{fontSize: 15, color: 'black'}}
                   bottomDivider
                   chevron
+                  onPress={()=>retrieveSleepDiaryData(item.title)} //replace with actual function
                 />
               ))
             }
