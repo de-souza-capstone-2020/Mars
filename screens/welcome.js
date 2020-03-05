@@ -44,7 +44,17 @@ export default class Welcome extends React.Component {
             size: 15,
             color: "white"
           }}
-          type="clear"
+          buttonStyle={{
+            borderColor: "#77758F",
+            borderWidth: 2,
+            borderRadius: 15,
+            width: 250,
+            backgroundColor: "#77758F",
+          }}
+          titleStyle={{
+            color: 'white',
+          }}
+          type='solid'
           title="Get started"
           onPress={() => navigation.navigate("Intro")}
         />
