@@ -9,6 +9,7 @@ import {
   Button,
   AsyncStorage
 } from "react-native";
+import s from "./chat-screen/styles";
 
 export default class Welcome extends React.Component {
   state = {
@@ -64,7 +65,7 @@ export default class Welcome extends React.Component {
       <SafeAreaView style={styles.body}>
         <View style={styles.body}>
           <View style={styles.logo_area}>
-            <Text style={styles.title_font}> Logo </Text>
+            <Text style={s.titleFont}> Example text </Text>
           </View>
 
           <View style={styles.get_started}>

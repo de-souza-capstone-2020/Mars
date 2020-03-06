@@ -7,7 +7,7 @@ import {
   Button,
   AsyncStorage
 } from "react-native";
-import { GiftedChat } from "react-native-gifted-chat";
+import { GiftedChat, Bubble, MessageText } from "react-native-gifted-chat";
 import Moment from "moment";
 import SleepDiary from "../sleepDiary";
 import {
@@ -20,6 +20,7 @@ import {
 import { getRandomAppState } from "../utils/helper-utils";
 import { sleep_diary_response } from "../data/customActions";
 import SplashScreen from "../loading";
+import s from "./styles";
 
 const user = {
   _id: 1,
@@ -239,14 +240,12 @@ export default class Home extends Component {
 
   };
 
-  renderQuickReplySend = () => {
-    return <Text>{" custom send =>"}</Text>;
-  };
   renderInputToolbar(props) {
     if (this.state.toolbar) {
       return <InputToolbar {...props} />;
     }
   }
+  
   renderFooter = () => {
     const { typingText } = this.state;
     if (typingText) {
@@ -259,22 +258,53 @@ export default class Home extends Component {
     return null;
   };
 
+  renderBubble = (props) =>{
+    return (
+      <Bubble
+        {...props}
+        textStyle={{
+          right: s.chatFont,
+          left: s.chatFont
+        }}
+        wrapperStyle={{
+          left: {
+            borderWidth: 1,
+            borderRadius: 15,
+            color: 'black',
+          }
+        }}
+      />
+    )
+  }
+
+  renderMessageText =  ({currentMessage, ...args}) => {
+    return (
+      <MessageText
+        currentMessage={currentMessage}
+        customTextStyle={{fontSize:60, lineHeight: 60}}
+        {...args}
+      />
+    );
+  }
+
   render() {
     const { messages, isModalVisible, isLoading } = this.state;
     if (isLoading) {
       return <SplashScreen />;
     }
     return (
-      <View style={{ flex: 1, backgroundColor: "#fff" }}>
+      <View style={s.background}>
         <GiftedChat
           messages={messages}
           onSend={this.onSend}
           user={{ _id: 1 }}
-          quickReplyStyle={{ borderRadius: 2 }}
+          quickReplyStyle={{ borderRadius: 10 }}
           onQuickReply={this.onQuickReply}
           renderQuickReplySend={this.renderQuickReplySend}
           renderInputToolbar={props => this.renderInputToolbar(props)}
           renderChatFooter={this.renderFooter}
+          renderBubble={this.renderBubble}
+          renderMessage={this.renderMessage}
         />
         <SleepDiary toggleModal={this.toggleModal} isVisible={isModalVisible} />
       </View>
