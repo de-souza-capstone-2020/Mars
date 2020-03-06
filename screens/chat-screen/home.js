@@ -245,7 +245,7 @@ export default class Home extends Component {
       return <InputToolbar {...props} />;
     }
   }
-  
+
   renderFooter = () => {
     const { typingText } = this.state;
     if (typingText) {
@@ -269,22 +269,21 @@ export default class Home extends Component {
         wrapperStyle={{
           left: {
             borderWidth: 1,
-            borderRadius: 15,
+            borderRadius: 20,
             color: 'black',
+            margin: 4,
+            paddingLeft: 3,
+            paddingTop: 3,
+            paddingBottom: 3,
+            elevation: 4,
+            shadowOffset: { width: 15, height: 5 },
+            shadowColor: "grey",
+            shadowOpacity: 0.5,
+            shadowRadius: 10,
           }
         }}
       />
     )
-  }
-
-  renderMessageText =  ({currentMessage, ...args}) => {
-    return (
-      <MessageText
-        currentMessage={currentMessage}
-        customTextStyle={{fontSize:60, lineHeight: 60}}
-        {...args}
-      />
-    );
   }
 
   render() {
@@ -304,7 +303,6 @@ export default class Home extends Component {
           renderInputToolbar={props => this.renderInputToolbar(props)}
           renderChatFooter={this.renderFooter}
           renderBubble={this.renderBubble}
-          renderMessage={this.renderMessage}
         />
         <SleepDiary toggleModal={this.toggleModal} isVisible={isModalVisible} />
       </View>

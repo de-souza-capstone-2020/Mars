@@ -7,7 +7,7 @@ const s = StyleSheet.create({
   },
   chatFont: {
     fontSize: 15,
-    fontFamily: "OpenSans-SemiBold"
+    fontFamily: "OpenSans-Bold"
   },
   titleFont: {
     fontSize: 50,
