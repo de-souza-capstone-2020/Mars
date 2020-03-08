@@ -17,7 +17,7 @@ import { Icon } from 'react-native-elements'
 import Welcome from "./screens/welcome";
 import Home from "./screens/chat-screen/home";
 import Intro from "./screens/intro";
-import Setting from "./screens/setting";
+import Setting from "./screens/chat-screen/setting";
 import History from './screens/chat-screen/history';
 
 const WelcomeStack = createStackNavigator({
