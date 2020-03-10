@@ -7,13 +7,15 @@
  */
 
 import React from 'react';
+import { View } from 'react-native';
 import {
   createAppContainer,
   createBottomTabNavigator,
   createStackNavigator,
   createSwitchNavigator
 } from "react-navigation";
-import { Icon } from 'react-native-elements'
+import { Icon } from 'react-native-elements';
+import { colors } from './screens/chat-screen/styles';
 import Welcome from "./screens/welcome";
 import Home from "./screens/chat-screen/home";
 import Intro from "./screens/intro";
@@ -31,37 +33,50 @@ const MainTabs = createBottomTabNavigator({
   Home: {
     screen: Home,
     navigationOptions: {
-      tabBarLabel: "Home",
-      tabBarIcon: 
+      tabBarLabel: <View/>,
+      tabBarIcon: ({tintColor}) => 
         <Icon 
           name = 'comments'
           type = 'font-awesome'
-        />
+          color={tintColor}
+        />,
+        
     }
   },
   History: {
     screen: History,
     navigationOptions: {
-      tabBarLabel: "History",
-      tabBarIcon: 
+      tabBarLabel: <View/>,
+      tabBarIcon: ({tintColor}) => 
         <Icon 
           name = 'history'
           type = 'font-awesome'
-        />
+          color={tintColor}
+        />,
     }
   },
   Setting: {
     screen: Setting,
     navigationOptions: {
-      tabBarLabel: "Settings",
-      tabBarIcon: <Icon
+      tabBarLabel: <View/>,
+      tabBarIcon: ({tintColor}) => 
+      <Icon
         name='cog'
         type='font-awesome'
-        // color='#f99' 
-        />
+        color={tintColor}
+        />,
     }
   },
-});
+},{
+  tabBarOptions: {
+    activeTintColor: colors.accent,
+    inactiveTintColor: 'gray',
+    tabStyle:{
+      backgroundColor:colors.background,
+    },
+  }
+}
+);
 
 const App = createSwitchNavigator({
   WelcomeStack: WelcomeStack,

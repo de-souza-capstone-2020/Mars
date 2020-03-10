@@ -1,8 +1,13 @@
 import { StyleSheet } from "react-native";
 
+const colors = {
+  accent: '#3DDC9F',
+  background: '#EFF0F9'
+}
+
 const s = StyleSheet.create({
   background: {
-    backgroundColor: "#ededed",
+    backgroundColor: colors.background,
     flex: 1,
   },
   chatFont: {
@@ -37,6 +42,8 @@ const s = StyleSheet.create({
     borderBottomWidth: 13,
     borderBottomColor: 'transparent'
   }
+
 });
 
-export default s;
+
+export {s, colors} ;

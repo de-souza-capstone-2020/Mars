@@ -9,7 +9,7 @@ import {
   Button,
   AsyncStorage
 } from "react-native";
-import s from "./chat-screen/styles";
+import {s} from "./chat-screen/styles";
 
 export default class Welcome extends React.Component {
   state = {
