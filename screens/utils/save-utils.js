@@ -1,4 +1,4 @@
-import { AsyncStorage } from "react-native";
+import { AsyncStorage, AppState } from "react-native";
 import Moment from "moment";
 import Map from 'lodash';
 
@@ -20,6 +20,7 @@ export const storeSleepDiaryData = async res => {
     }
 
   console.log("Saved");
+
 };
 
 export const retrieveSleepDiaryData = async (date) => {
@@ -27,14 +28,30 @@ export const retrieveSleepDiaryData = async (date) => {
       const value = await AsyncStorage.getItem(Moment(date).format("MM-DD-YYYY"));
       const JSONValue = JSON.parse(value);
       if (value !== null) {
-          console.log(value);
+          console.log(JSONValue); 
       }
     } catch (error) {
       console.error(error);
       console.log("There are errors");
     }
+    
 };
+export const retrieveAsyncValues = async(date) =>{
+  getData = async () => {
+    try {
+      await AsyncStorage.getAllKeys().then(async keys => {
+        await AsyncStorage.multiGet(keys).then(key => {
+          key.forEach(data => {
+            console.log(data[1]); //values
+          });
+        });
+      });
+    } catch (error) {
+      Alert.alert("Couldn't load data", error);
+    }
+  };
 
+}
 export const storeNickNameYearBirth = async res => {
       const nickName = JSON.stringify(res.nickName);
       const yearOfBirth = JSON.stringify(res.yearOfBirth);

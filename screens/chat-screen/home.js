@@ -17,7 +17,7 @@ import {
   sleep_diary_tip,
   module
 } from "../data/messages";
-import { getRandomAppState } from "../utils/helper-utils";
+import { getRandomAppState , getCurAppState} from "../utils/helper-utils";
 import { sleep_diary_response } from "../data/customActions";
 import SplashScreen from "../loading";
 
@@ -43,11 +43,14 @@ export default class Home extends Component {
     typingText: null,
     isModalVisible: false,
     diary: "",
-    isLoading: true,
+    isLoading: false,
     appState: new Set(),
+    sleepAttemptTime: null,
+    wakeUpTime: null,
   };
 
   async componentDidMount() {
+    //AsyncStorage.clear();
     await this.isSleepDiaryEntered();
 
     //determining message type
@@ -58,6 +61,10 @@ export default class Home extends Component {
         appState.delete(1);
       } else if (appState.has(2)) {
         this.setState({ messages: new generic_tip() });
+        appState.delete(2);
+      }
+      else if (appState.has(3)) {
+        this.setState({ messages: new sleep_diary_tip() });
         appState.delete(2);
       }
       this.setState({
@@ -87,13 +94,16 @@ export default class Home extends Component {
           appState.add(2);
           appState.add(3);
           appState.add(4);
+          this.getSleepData;
           this.setState({ appState });
+          console.log("app state from isentered",appState);
         } else {
           //sleep diary has not been entered already
           appState.clear();
           appState.add(1);
           appState.add(2);
           this.setState({ appState });
+          console.log("app state before sleepdiary",appState);
         }
       });
     } catch (e) {
@@ -106,6 +116,40 @@ export default class Home extends Component {
       }, 2000)
     );
   };
+
+  getSleepData = async () => {
+    const appState = this.state.appState;
+    const today = Moment(new Date()).format("MM-DD-YYYY")
+    try {        
+          await AsyncStorage.getItem(today).then(key => {
+            console.log("Sleep entry for today",JSON.parse(key));
+            const sleepAttempt = JSON.parse(key).attemptToSleepTime;
+            const wakeUp = JSON.parse(key).wakeUpTime;
+            const sleepAttemptTime = sleepAttempt.split("T")[1].split(".")[0]; //Get time
+            const wakeUpTime = wakeUp.split("T")[1].split(".")[0]; //Get time
+            this.setState({sleepAttemptTime: sleepAttemptTime });
+            this.setState({wakeUpTime: wakeUpTime});  
+          });
+        } catch (error) {
+      console.error(error);
+    }
+    if (this.state.sleepAttemptTime != null){
+      console.log("Attempt to sleep time: ", this.state.sleepAttemptTime);
+      appState.add(3);
+     }
+     console.log("damn no appstaste");
+    /*  return new Promise(resolve => {
+      setTimeout(() => {
+        this.determineResponse(replies[0]);
+        resolve();
+      }, 0);
+    }).then(() => {
+      this.turnOffTyping();
+    }); */
+
+  };
+
+
 
   toggleModal = () => {
     this.setState({ isModalVisible: !this.state.isModalVisible });
@@ -191,8 +235,12 @@ export default class Home extends Component {
   }
 
   determineResponse = reply => {
+    const {appState} = this.state;
     if (reply.value === "sleep_diary") {
       this.toggleModal();
+      appState.add(3);
+      this.setState(appState);
+      console.log("app state determineResp: ",appState)
       reply = this.getNextConversation();
     } else if (reply.value === "got_it") {
       reply = this.getNextConversation();
@@ -203,11 +251,14 @@ export default class Home extends Component {
   };
 
   getNextConversation = () => {
-    const { appState } = this.state;
+    const {appState} = this.state;
     const randAppState = getRandomAppState(appState);
-
+    const curAppState = getCurAppState(appState)
+    console.log("App state: ",appState);
+    console.log("Current app state: ",curAppState);
+    console.log("Rand app state: ",randAppState);
     
-    switch (randAppState) {
+    switch (curAppState) {
       case 1:
         appState.delete(1);
         appState.add(2);
@@ -216,12 +267,13 @@ export default class Home extends Component {
         this.setState(appState);
         return new sleep_diary_messages();
       case 2:
+        //appState.delete(2);
         appState.add(3);
         appState.add(4);
         this.setState(appState);
         return new generic_tip();
       case 3:
-        appState.delete(3);
+        //appState.delete(3);
         appState.add(2);
         appState.add(4);
         this.setState(appState);
@@ -281,3 +333,4 @@ export default class Home extends Component {
     );
   }
 }
+

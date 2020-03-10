@@ -22,11 +22,11 @@ export default class Setting extends Component {
   }
 
   async componentDidMount() {
-    await this.getData();
+    await this.getSleepData();
     this.setState({isLoading: false});
   }
 
-  getData = async () => {
+  getSleepData = async () => {
     try {        
           await AsyncStorage.getItem(today).then(key => {
             console.log(JSON.parse(key));
@@ -42,6 +42,7 @@ export default class Setting extends Component {
     }
     if (this.state.sleepAttemptTime != null){
       console.log("Attempt to sleep time: ", this.state.sleepAttemptTime);
+      return [{value: "calc_sleep"}];
      }
   };
   
@@ -53,7 +54,7 @@ export default class Setting extends Component {
     console.log("test 2",sleepAttemptTime_2);
   }
  
- /*  sleep_hygiene_tip = () => {
+  sleep_hygiene_tip = () => {
     const {isLoading, sleepAttemptTime} = this.state;
     if (sleepAttemptTime != null){
       console.log('This is the sleep time',this.getData)
@@ -66,7 +67,7 @@ export default class Setting extends Component {
 
   testgetdata = ()=>{
     console.log(getData().wakeUpTime_)
-  } */
+  }
 
   render() {
     const {isLoading, sleepAttemptTime} = this.state;
