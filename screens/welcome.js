@@ -5,11 +5,13 @@ import {
   ScrollView,
   View,
   Text,
+  Image,
   StatusBar,
-  Button,
   AsyncStorage
 } from "react-native";
-import {s} from "./chat-screen/styles";
+import { Button } from 'react-native-elements';
+import { s } from "./chat-screen/styles";
+
 
 export default class Welcome extends React.Component {
   state = {
@@ -44,6 +46,17 @@ export default class Welcome extends React.Component {
             size: 15,
             color: "white"
           }}
+          buttonStyle={{
+            borderColor: "#77758F",
+            borderWidth: 2,
+            borderRadius: 15,
+            width: 250,
+            backgroundColor: "#77758F",
+          }}
+          titleStyle={{
+            color: 'white',
+          }}
+          type='solid'
           title="Get started"
           onPress={() => navigation.navigate("Intro")}
         />
@@ -54,9 +67,21 @@ export default class Welcome extends React.Component {
           icon={{
             name: "arrow-forward",
             size: 15,
-            color: "white"
+            color: 'white',
           }}
+          buttonStyle={{
+            borderColor: "#77758F",
+            borderWidth: 2,
+            borderRadius: 15,
+            width: 250,
+            backgroundColor: "#77758F",
+          }}
+          titleStyle={{
+            color: 'white',
+          }}
+          type='solid'
           title="Directly to chatbot"
+          // type="clear"
           onPress={() => navigation.navigate("Home")}
         />
       );
@@ -65,11 +90,12 @@ export default class Welcome extends React.Component {
       <SafeAreaView style={styles.body}>
         <View style={styles.body}>
           <View style={styles.logo_area}>
-            <Text style={s.titleFont}> Example text </Text>
+            <Image 
+              source={require('../screens/data/logo.png')}
+              style={{width: 400, height: 250}}
+            />
           </View>
-
           <View style={styles.get_started}>
-            <Text style={styles.title_font}> Example text </Text>
             {button}
           </View>
         </View>
@@ -80,19 +106,22 @@ export default class Welcome extends React.Component {
 
 const styles = StyleSheet.create({
   body: {
-    backgroundColor: "#dbefff",
+    // backgroundColor: "#cfe2f3",
+    backgroundColor: 'white',
     flex: 1
   },
   logo_area: {
-    flex: 1,
-    justifyContent: "center",
-    borderColor: "red"
+    flex: 2,
+    justifyContent: "flex-end",
+    borderColor: "red",
     // borderWidth: 1,
   },
   get_started: {
-    flex: 2,
+    flex: 1,
     borderColor: "blue",
-    justifyContent: "center"
+    justifyContent: "flex-start",
+    alignItems: 'center',
+    paddingTop: 50,
     // borderWidth: 1,
   },
   sectionContainer: {
