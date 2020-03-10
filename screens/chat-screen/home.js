@@ -7,7 +7,8 @@ import {
   Button,
   AsyncStorage
 } from "react-native";
-import { GiftedChat } from "react-native-gifted-chat";
+import { GiftedChat, Bubble } from "react-native-gifted-chat";
+import QuickReplies from 'react-native-gifted-chat/lib/QuickReplies'
 import Moment from "moment";
 import SleepDiary from "../sleepDiary";
 import {
@@ -20,6 +21,7 @@ import {
 import { getRandomAppState } from "../utils/helper-utils";
 import { sleep_diary_response } from "../data/customActions";
 import SplashScreen from "../loading";
+import {s, colors} from "./styles";
 
 const user = {
   _id: 1,
@@ -239,14 +241,12 @@ export default class Home extends Component {
 
   };
 
-  renderQuickReplySend = () => {
-    return <Text>{" custom send =>"}</Text>;
-  };
   renderInputToolbar(props) {
     if (this.state.toolbar) {
       return <InputToolbar {...props} />;
     }
   }
+
   renderFooter = () => {
     const { typingText } = this.state;
     if (typingText) {
@@ -259,22 +259,74 @@ export default class Home extends Component {
     return null;
   };
 
+  renderBubble = (props) =>{
+    return (
+      <Bubble
+        {...props}
+        renderQuickReplies = {(props) => this.renderQuickReply(props)}
+        textStyle={{
+          right: s.chatFont,
+          left: s.chatFont
+        }}
+        wrapperStyle={{
+          left: {
+            // borderWidth: 1,
+            borderRadius: 30,
+            borderBottomLeftRadius: 0, 
+            color: 'black',
+            minWidth: 50,
+            margin: 4,
+            paddingLeft: 3,
+            paddingTop: 6,
+            paddingBottom: 3,
+            elevation: 5,
+            // shadowOffset: { width: 15, height: 5 },
+            // shadowColor: "grey",
+            // shadowRadius: 10,
+          },
+          right: {
+            borderRadius: 20,
+            paddingRight: 2,
+            paddingLeft: 2,
+            paddingTop: 6,
+            paddingBottom: 3,
+            minWidth: 30,
+            backgroundColor: colors.accent
+          }
+        }}
+      />
+    )
+  }
+
+  renderQuickReply = (props) =>{
+    return (
+      <QuickReplies
+        {...props}
+        color='white'
+        quickReplyStyle={{
+          backgroundColor: colors.accent,
+          marginTop: 10,
+          borderWidth: 0,
+        }}
+        
+      />
+    )
+  }
   render() {
     const { messages, isModalVisible, isLoading } = this.state;
     if (isLoading) {
       return <SplashScreen />;
     }
     return (
-      <View style={{ flex: 1, backgroundColor: "#fff" }}>
+      <View style={s.background}>
         <GiftedChat
           messages={messages}
           onSend={this.onSend}
           user={{ _id: 1 }}
-          quickReplyStyle={{ borderRadius: 2 }}
           onQuickReply={this.onQuickReply}
-          renderQuickReplySend={this.renderQuickReplySend}
           renderInputToolbar={props => this.renderInputToolbar(props)}
           renderChatFooter={this.renderFooter}
+          renderBubble={this.renderBubble}
         />
         <SleepDiary toggleModal={this.toggleModal} isVisible={isModalVisible} />
       </View>

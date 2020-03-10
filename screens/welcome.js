@@ -10,6 +10,8 @@ import {
   AsyncStorage
 } from "react-native";
 import { Button } from 'react-native-elements';
+import { s } from "./chat-screen/styles";
+
 
 export default class Welcome extends React.Component {
   state = {
