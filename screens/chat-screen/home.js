@@ -62,10 +62,6 @@ export default class Home extends Component {
         this.setState({ messages: new generic_tip() });
         appState.delete(2);
       }
-      else if (appState.has(3)) {
-        this.setState({ messages: new this.getSleepData() });
-        appState.delete(2);
-      }
       this.setState({
         isLoading: false
       });
@@ -115,11 +111,11 @@ export default class Home extends Component {
     );
   };
 
-  getSleepData = async () => {
+  getSleepData = () => {
     const appState = this.state.appState;
     const today = Moment(new Date()).format("MM-DD-YYYY")
     try {        
-          await AsyncStorage.getItem(today).then(key => {
+          AsyncStorage.getItem(today).then(key => {
             if( key != null){
             console.log("Sleep entry for today",JSON.parse(key));
             const sleepAttempt = JSON.parse(key).attemptToSleepTime;
@@ -144,20 +140,14 @@ export default class Home extends Component {
       console.log("Attempt to sleep time: ", this.state.sleepAttemptTime);
       console.log("Tell me my sleep hygiene", sleepHygiene)
       appState.add(4);
-      return new Promise(resolve => {
-        setTimeout(() => {
-          sleep_diary_messages();
-          resolve();
-        }, 0);
-      }).then(() => {
-        this.turnOffTyping();
-      });
+      return JSON.parse(sleep_diary_tip());
   
      }
      else{
-      console.log("Tell me my sleep hygiene", sleepHygiene)
-      console.log("damn no sleep diary input, weird");
-      return sleep_diary_messages();
+      console.log("Tell me my sleep hygiene", sleepHygiene);
+      console.log("Damn no sleep diary input, weird");
+      const sleep_tip = sleep_diary_tip();
+      return sleep_tip;
      }
      
   };
@@ -252,7 +242,10 @@ export default class Home extends Component {
       appState.add(5);
       this.setState(appState);
       console.log("app state determineResp: ",appState)
+      //setTimeout(() => {  reply = this.getNextConversation(); }, 2000);
+      //return new Promise(resolve => setTimeout(determineResponse, ms));
       reply = this.getNextConversation();
+      console.log(reply);
     } else if (reply.value === "got_it") {
       reply = this.getNextConversation();
     } else {
@@ -297,7 +290,14 @@ export default class Home extends Component {
           appState.add(2);
           appState.add(4);
           this.setState(appState);
-          return new sleep_diary_tip();
+          console.log("========")
+          // console.log(this.getSleepData());
+          // console.log(new sleep_diary_tip());
+          // console.log()
+          const tmp = this.getSleepData();
+          console.log(tmp);
+          console.log("========")
+          return tmp;
       default:
         console.error("There is something wrong with the case statement");
         return new generic_messages();
