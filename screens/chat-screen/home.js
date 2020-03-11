@@ -50,9 +50,8 @@ export default class Home extends Component {
   };
 
   async componentDidMount() {
-    //AsyncStorage.clear();
+    AsyncStorage.clear();
     await this.isSleepDiaryEntered();
-
     //determining message type
     const { appState } = this.state;
     if (appState.size > 0) {
@@ -64,7 +63,7 @@ export default class Home extends Component {
         appState.delete(2);
       }
       else if (appState.has(3)) {
-        this.setState({ messages: new sleep_diary_tip() });
+        this.setState({ messages: new this.getSleepData() });
         appState.delete(2);
       }
       this.setState({
@@ -94,7 +93,6 @@ export default class Home extends Component {
           appState.add(2);
           appState.add(3);
           appState.add(4);
-          this.getSleepData;
           this.setState({ appState });
           console.log("app state from isentered",appState);
         } else {
@@ -122,34 +120,47 @@ export default class Home extends Component {
     const today = Moment(new Date()).format("MM-DD-YYYY")
     try {        
           await AsyncStorage.getItem(today).then(key => {
+            if( key != null){
             console.log("Sleep entry for today",JSON.parse(key));
             const sleepAttempt = JSON.parse(key).attemptToSleepTime;
             const wakeUp = JSON.parse(key).wakeUpTime;
             const sleepAttemptTime = sleepAttempt.split("T")[1].split(".")[0]; //Get time
+            sleepAttemptTime = moment(sleepAttemptTime).format('h:mm:ss')
             const wakeUpTime = wakeUp.split("T")[1].split(".")[0]; //Get time
+            wakeUpTime = moment(wakeUpTime).format('h:mm:ss')
             this.setState({sleepAttemptTime: sleepAttemptTime });
             this.setState({wakeUpTime: wakeUpTime});  
+            }
+            else{
+              console.log("Oooops no key")
+            }
+            
           });
         } catch (error) {
       console.error(error);
     }
+    const sleepHygiene = this.state.wakeUpTime - this.state.sleepAttemptTime
     if (this.state.sleepAttemptTime != null){
       console.log("Attempt to sleep time: ", this.state.sleepAttemptTime);
-      appState.add(3);
+      console.log("Tell me my sleep hygiene", sleepHygiene)
+      appState.add(4);
+      return new Promise(resolve => {
+        setTimeout(() => {
+          sleep_diary_messages();
+          resolve();
+        }, 0);
+      }).then(() => {
+        this.turnOffTyping();
+      });
+  
      }
-     console.log("damn no appstaste");
-    /*  return new Promise(resolve => {
-      setTimeout(() => {
-        this.determineResponse(replies[0]);
-        resolve();
-      }, 0);
-    }).then(() => {
-      this.turnOffTyping();
-    }); */
-
+     else{
+      console.log("Tell me my sleep hygiene", sleepHygiene)
+      console.log("damn no sleep diary input, weird");
+      return sleep_diary_messages();
+     }
+     
   };
-
-
 
   toggleModal = () => {
     this.setState({ isModalVisible: !this.state.isModalVisible });
@@ -187,7 +198,7 @@ export default class Home extends Component {
           sentMessages,
           Platform.OS !== "web"
         ),
-        typingText: "Chat bot is typing...",
+        //typingText: "Chat bot is typing...",
         step
       };
     });
@@ -238,7 +249,7 @@ export default class Home extends Component {
     const {appState} = this.state;
     if (reply.value === "sleep_diary") {
       this.toggleModal();
-      appState.add(3);
+      appState.add(5);
       this.setState(appState);
       console.log("app state determineResp: ",appState)
       reply = this.getNextConversation();
@@ -267,22 +278,26 @@ export default class Home extends Component {
         this.setState(appState);
         return new sleep_diary_messages();
       case 2:
-        //appState.delete(2);
         appState.add(3);
         appState.add(4);
         this.setState(appState);
         return new generic_tip();
       case 3:
-        //appState.delete(3);
         appState.add(2);
         appState.add(4);
         this.setState(appState);
-        return new sleep_diary_tip();
+        return new generic_tip();
       case 4:
         appState.add(2);
         appState.add(3);
         this.setState(appState);
         return new module();
+      case 5:
+          appState.delete(5);
+          appState.add(2);
+          appState.add(4);
+          this.setState(appState);
+          return new sleep_diary_tip();
       default:
         console.error("There is something wrong with the case statement");
         return new generic_messages();
