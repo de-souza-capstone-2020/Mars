@@ -58,7 +58,6 @@ export default class History extends React.Component{
             <Text style={styles.title_font}> Sleep Diary History </Text>
             {
               diaryHistory.map((item, i) => (
-                console.log(item),
                 <ListItem
                   key={i}
                   title={item.title}

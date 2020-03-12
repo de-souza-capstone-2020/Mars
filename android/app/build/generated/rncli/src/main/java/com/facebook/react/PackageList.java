@@ -18,6 +18,8 @@ import com.awesomeproject.R;
 import com.henninghall.date_picker.DatePickerPackage;
 // react-native-gesture-handler
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
+// react-native-vector-icons
+import com.oblador.vectoricons.VectorIconsPackage;
 
 public class PackageList {
   private Application application;
@@ -64,7 +66,8 @@ public class PackageList {
     return new ArrayList<>(Arrays.<ReactPackage>asList(
       new MainReactPackage(mConfig),
       new DatePickerPackage(),
-      new RNGestureHandlerPackage()
+      new RNGestureHandlerPackage(),
+      new VectorIconsPackage()
     ));
   }
 }
