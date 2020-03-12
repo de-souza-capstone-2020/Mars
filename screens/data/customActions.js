@@ -200,7 +200,6 @@ export const conversation_flow_one = reply => {
     
     if(reply.value === "start_chp_one"){
         
-        // console.log("in this")
         return ([
             {
               createdAt,

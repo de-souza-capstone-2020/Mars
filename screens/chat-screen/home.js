@@ -202,7 +202,6 @@ export default class Home extends Component {
     } else if (reply.value === "got_it") {
       reply = this.getNextConversation();
     } else if (reply.value.includes("_chp1")){
-      console.log(reply)
       reply = conversation_flow_one(reply);
     } else {
       reply = sleep_diary_response(reply);
@@ -238,7 +237,6 @@ export default class Home extends Component {
         appState.add(2);
         appState.add(3);
         this.setState(appState);
-        console.log("state 4")
         const reply = {value: "start_chp_one"};
         return new conversation_flow_one(reply);
       default:
