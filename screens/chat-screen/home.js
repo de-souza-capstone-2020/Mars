@@ -19,8 +19,12 @@ import {
   module
 } from "../data/messages";
 import { getRandomAppState } from "../utils/helper-utils";
-import { sleep_diary_response } from "../data/customActions";
 import LottieLoader from "../loading";
+import { 
+    sleep_diary_response,
+    conversation_flow_one
+} from "../data/customActions";
+import SplashScreen from "../loading";
 import {s, colors} from "./styles";
 
 const user = {
@@ -198,6 +202,8 @@ export default class Home extends Component {
       reply = this.getNextConversation();
     } else if (reply.value === "got_it") {
       reply = this.getNextConversation();
+    } else if (reply.value.includes("_chp1")){
+      reply = conversation_flow_one(reply);
     } else {
       reply = sleep_diary_response(reply);
     }
@@ -232,7 +238,8 @@ export default class Home extends Component {
         appState.add(2);
         appState.add(3);
         this.setState(appState);
-        return new module();
+        const reply = {value: "start_chp_one"};
+        return new conversation_flow_one(reply);
       default:
         console.error("There is something wrong with the case statement");
         return new generic_messages();
