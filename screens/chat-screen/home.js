@@ -19,6 +19,7 @@ import {
   module
 } from "../data/messages";
 import { getRandomAppState } from "../utils/helper-utils";
+import LottieLoader from "../loading";
 import { 
     sleep_diary_response,
     conversation_flow_one
@@ -321,7 +322,7 @@ export default class Home extends Component {
   render() {
     const { messages, isModalVisible, isLoading } = this.state;
     if (isLoading) {
-      return <SplashScreen />;
+      return <LottieLoader />;
     }
     return (
       <View style={s.background}>

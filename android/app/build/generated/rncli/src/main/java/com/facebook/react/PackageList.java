@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import com.awesomeproject.BuildConfig;
 import com.awesomeproject.R;
 
+// lottie-react-native
+import com.airbnb.android.react.lottie.LottiePackage;
 // react-native-date-picker
 import com.henninghall.date_picker.DatePickerPackage;
 // react-native-gesture-handler
@@ -65,6 +67,7 @@ public class PackageList {
   public ArrayList<ReactPackage> getPackages() {
     return new ArrayList<>(Arrays.<ReactPackage>asList(
       new MainReactPackage(mConfig),
+      new LottiePackage(),
       new DatePickerPackage(),
       new RNGestureHandlerPackage(),
       new VectorIconsPackage()
