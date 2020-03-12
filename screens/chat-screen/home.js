@@ -20,7 +20,7 @@ import {
 } from "../data/messages";
 import { getRandomAppState } from "../utils/helper-utils";
 import { sleep_diary_response } from "../data/customActions";
-import SplashScreen from "../loading";
+import LottieLoader from "../loading";
 import {s, colors} from "./styles";
 
 const user = {
@@ -315,7 +315,7 @@ export default class Home extends Component {
   render() {
     const { messages, isModalVisible, isLoading } = this.state;
     if (isLoading) {
-      return <SplashScreen />;
+      return <LottieLoader />;
     }
     return (
       <View style={s.background}>
