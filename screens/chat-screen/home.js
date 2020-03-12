@@ -112,7 +112,7 @@ export default class Home extends Component {
   };
 
   getSleepData = () => {
-    const appState = this.state.appState;
+    //const appState = this.state.appState;
     const today = Moment(new Date()).format("MM-DD-YYYY")
     try {        
           AsyncStorage.getItem(today).then(key => {
@@ -138,9 +138,7 @@ export default class Home extends Component {
     const sleepHygiene = this.state.wakeUpTime - this.state.sleepAttemptTime
     if (this.state.sleepAttemptTime != null){
       console.log("Attempt to sleep time: ", this.state.sleepAttemptTime);
-      console.log("Tell me my sleep hygiene", sleepHygiene)
-      appState.add(4);
-      return JSON.parse(sleep_diary_tip());
+      console.log("Tell me my sleep hygiene", sleepHygiene);
   
      }
      else{
@@ -286,18 +284,17 @@ export default class Home extends Component {
         this.setState(appState);
         return new module();
       case 5:
+        //if(isModalVisible = false){
           appState.delete(5);
           appState.add(2);
           appState.add(4);
           this.setState(appState);
           console.log("========")
-          // console.log(this.getSleepData());
-          // console.log(new sleep_diary_tip());
-          // console.log()
           const tmp = this.getSleepData();
-          console.log(tmp);
+          console.log(test);
           console.log("========")
           return tmp;
+       // }     
       default:
         console.error("There is something wrong with the case statement");
         return new generic_messages();

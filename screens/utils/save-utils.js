@@ -36,6 +36,14 @@ export const retrieveSleepDiaryData = async (date) => {
     }
     
 };
+
+export const retrieveSleepCalculations = () => {
+
+
+  
+}
+
+
 export const retrieveAsyncValues = async(date) =>{
   getData = async () => {
     try {

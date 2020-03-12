@@ -12,6 +12,8 @@ import {
 import DatePicker from "react-native-date-picker";
 import Modal from "react-native-modal";
 import { storeSleepDiaryData } from './utils/save-utils';
+import Moment from "moment";
+import { AsyncStorage } from "react-native";
 
 export default class SleepDiary extends Component {
   state = {
@@ -27,8 +29,48 @@ export default class SleepDiary extends Component {
     napTime: new Date(),
     napDuration: "",
     others: ""
+  /*   isLoading: true,
+    sleepAttemptTime: null,
+    wakeUpTime: null */
+    
   };
 
+  getSleepData = () => {
+    //const appState = this.state.appState;
+    const today = Moment(new Date()).format("MM-DD-YYYY")
+    try {        
+          AsyncStorage.getItem(today).then(key => {
+            if( key != null){
+            console.log("Sleep entry for today",JSON.parse(key));
+            const sleepAttempt = JSON.parse(key).attemptToSleepTime;
+            const wakeUp = JSON.parse(key).wakeUpTime;
+            const sleepAttemptTime = sleepAttempt.split("T")[1].split(".")[0]; //Get time
+            sleepAttemptTime = moment(sleepAttemptTime).format('h:mm:ss')
+            const wakeUpTime = wakeUp.split("T")[1].split(".")[0]; //Get time
+            wakeUpTime = moment(wakeUpTime).format('h:mm:ss')
+            this.setState({sleepAttemptTime: sleepAttemptTime });
+            this.setState({wakeUpTime: wakeUpTime});  
+            }
+            else{
+              console.log("Oooops no key")
+            }
+            
+          });
+        } catch (error) {
+      console.error(error);
+    }
+    const sleepHygiene = this.state.wakeUpTime - this.state.sleepAttemptTime
+    if (this.state.sleepAttemptTime != null){
+      console.log("Attempt to sleep time: ", this.state.sleepAttemptTime);
+      console.log("Tell me my sleep hygiene", sleepHygiene);
+     }
+     else{
+      console.log("Tell me my sleep hygiene", sleepHygiene);
+      console.log("Damn no sleep diary input, weird");
+      const sleep_tip = sleep_diary_tip();
+      return sleep_tip;
+     } 
+  };
   
   onSubmitData = () => {
     const {toggleModal } = this.props;
@@ -62,10 +104,9 @@ export default class SleepDiary extends Component {
         others
     }
     storeSleepDiaryData(values);
+    return this.getSleepData();
     
 }
-
-
   render() {
     const today = new Date();
     const todayFormatted = `${parseInt(today.getMonth() + 1)}, ${today.getDate()}, ${today.getFullYear()}`;

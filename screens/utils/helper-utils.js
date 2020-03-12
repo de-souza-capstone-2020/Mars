@@ -3,4 +3,9 @@ const getRandomAppState = appState => {
   return items[Math.floor(Math.random() * items.length)];
 };
 
-export { getRandomAppState };
+const getCurAppState = appState => {
+  let items = Array.from(appState);
+  return items[1];
+};
+
+export { getRandomAppState , getCurAppState };
