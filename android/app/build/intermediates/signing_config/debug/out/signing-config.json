@@ -1,1 +1,1 @@
-{"mName":"debug","mStoreFile":"/Users/melaniewang/Mars/android/app/debug.keystore","mStorePassword":"android","mKeyAlias":"androiddebugkey","mKeyPassword":"android","mStoreType":"jks","mV1SigningEnabled":true,"mV2SigningEnabled":true}
+{"mName":"debug","mStoreFile":"C:\\Users\\ruiqi\\Documents\\4B Term\\Msci 402\\Mars\\android\\app\\debug.keystore","mStorePassword":"android","mKeyAlias":"androiddebugkey","mKeyPassword":"android","mStoreType":"pkcs12","mV1SigningEnabled":true,"mV2SigningEnabled":true}
