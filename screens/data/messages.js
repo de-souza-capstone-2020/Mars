@@ -125,6 +125,27 @@ const sleep_diary_tip = () => {
   ]
 }
 
+const sleep_diary_tip_2 = () => {
+  return [
+    {
+      createdAt: new Date(),
+      _id: getID(),
+      text: "This is a sleep diary tip 2",
+      otherUser,
+      quickReplies: {
+        type: "radio", // or 'checkbox',
+        keepIt: true,
+        values: [
+          {
+            title: "got it",
+            value: "got_it"
+          }
+        ]
+      },
+    }
+  ]
+}
+
 const module = () => {
   return [
     {
@@ -145,4 +166,4 @@ const module = () => {
     }
   ]
 }
-export { generic_messages, sleep_diary_messages, generic_tip, sleep_diary_tip, module, sleep_diary_reminder_messages};
+export { generic_messages, sleep_diary_messages, generic_tip, sleep_diary_tip, module, sleep_diary_reminder_messages,sleep_diary_tip_2};
