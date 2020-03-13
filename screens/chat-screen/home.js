@@ -16,7 +16,8 @@ import {
   sleep_diary_messages,
   generic_tip,
   sleep_diary_tip,
-  module
+  module,
+  sleep_diary_reminder_messages
 } from "../data/messages";
 import { getRandomAppState } from "../utils/helper-utils";
 import LottieLoader from "../loading";
@@ -51,9 +52,13 @@ export default class Home extends Component {
     diary: "",
     isLoading: true,
     appState: new Set(),
+    sleepAttemptTime: null,
+    wakeUpTime: null,
+    sleep_tip: new Object()
   };
 
   async componentDidMount() {
+    AsyncStorage.clear();
     await this.isSleepDiaryEntered();
 
     //determining message type
@@ -196,6 +201,47 @@ export default class Home extends Component {
     });
   }
 
+  getSleepData = () => {
+     //const sleepAttemptTime = this.state.sleepAttemptTime;
+     const today = Moment(new Date()).format("MM-DD-YYYY")
+     try {        
+             AsyncStorage.getItem(today).then(key => {
+             if( key != null){
+             console.log("Sleep entry for today",JSON.parse(key));
+             const sleepAttempt = JSON.parse(key).attemptToSleepTime;
+             var wakeUp = JSON.parse(key).wakeUpTime;
+             const sleepAttempt1 = sleepAttempt.split("T")[1].split(".")[0]; ///Get time
+            // sleepAttempt = Moment(sleepAttempt).format('h:mm:ss')
+             const wakeUp1 = wakeUp.split("T")[1].split(".")[0]; //Get time
+            // wakeUp = Moment(wakeUp).format('h:mm:ss')
+            console.log("SleepAttempt time:", sleepAttempt1)
+             this.setState({sleepAttemptTime: sleepAttempt1});
+             console.log("After state set, sleepATTEMPT Time:", this.state.sleepAttemptTime);
+             this.setState({wakeUpTime: wakeUp});  
+             console.log("After state set, Wakey Time:", this.state.wakeUpTime);
+             }
+             else{
+               console.log("Oooops no key")
+             }
+           });
+         } catch (error) {
+           console.log("cant find key");
+       console.error(error);
+        }
+     //const sleepHygiene = this.state.wakeUpTime - this.state.sleepAttemptTime
+     console.log("After state set, sleepATTEMPT Time:", this.state.sleepAttemptTime);
+     if (this.state.sleepAttemptTime!= null){
+       //console.log("Tell me my sleep hygiene", sleepHygiene);
+       return sleep_diary_tip();
+      }
+      else{
+       //console.log("Tell me my sleep hygiene", sleepHygiene);
+       console.log("Damn no sleep diary input, weird");
+       return sleep_diary_reminder_messages();
+      }
+      
+   };
+
   determineResponse = reply => {
     if (reply.value === "sleep_diary") {
       this.toggleModal();
@@ -210,10 +256,11 @@ export default class Home extends Component {
     this.onSend(reply);
   };
 
-  getNextConversation = () => {
+   getNextConversation =  () => {
     const { appState } = this.state;
     const randAppState = getRandomAppState(appState);
-
+    console.log("appState is:", appState);
+    console.log("RandAppState is:", randAppState);
     
     switch (randAppState) {
       case 1:
@@ -228,12 +275,27 @@ export default class Home extends Component {
         appState.add(4);
         this.setState(appState);
         return new generic_tip();
-      case 3:
-        appState.delete(3);
-        appState.add(2);
-        appState.add(4);
-        this.setState(appState);
-        return new sleep_diary_tip();
+      case 3: 
+      appState.delete(3);
+      appState.add(2);
+      appState.add(4);
+      this.setState(appState);
+      console.log("sleep data",this.getSleepData())
+      this.getSleepData();
+      return this.getSleepData();    
+        /* this.getSleepData().then( data => {
+        console.log("hopefully this is my sleep tip", data);
+        this.setState({sleep_tip: data});
+        });
+          console.log("sleep_tip in timeout",this.state.sleep_tip);
+          appState.delete(3);
+          appState.add(2);
+          appState.add(4);
+          this.setState(appState);
+          return this.state.sleep_tip; */
+       /*  const receiptCall = async () => await this.getSleepData(); 
+        console.log("receipt call",receiptCall());
+        return receiptCall;  */
       case 4:
         appState.add(2);
         appState.add(3);
@@ -242,10 +304,8 @@ export default class Home extends Component {
         return new conversation_flow_one(reply);
       default:
         console.error("There is something wrong with the case statement");
-        return new generic_messages();
-      
+        return new generic_messages();  
     }
-
   };
 
   renderInputToolbar(props) {
