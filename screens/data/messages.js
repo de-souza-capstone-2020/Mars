@@ -61,15 +61,15 @@ const sleep_diary_reminder_messages = () => {
     {
       _id: getID(),
       text:
-        "It is important to enter your sleep diary information.This will allow us provide customized tips.",
+        "It is important to enter your sleep diary information everyday.This will allow us provide customized tips.",
       createdAt: new Date(),
       quickReplies: {
         type: "radio", // or 'checkbox',
         keepIt: true,
         values: [
           {
-            title: "I'll do so",
-            value: "hi"
+            title: "That makes sense",
+            value: "got_it"
           }
         ]
       },

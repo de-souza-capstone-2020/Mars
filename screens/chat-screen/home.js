@@ -204,7 +204,6 @@ export default class Home extends Component {
   }
 
   getSleepData = async () => {
-     //const sleepAttemptTime = this.state.sleepAttemptTime;
      const today = Moment(new Date()).format("MM-DD-YYYY")
      try {        
              await AsyncStorage.getItem(today).then(key => {
@@ -238,7 +237,6 @@ export default class Home extends Component {
       reply = this.getNextConversation();
     } else if (reply.value === "got_it") {
       reply = this.getNextConversation();
-    
     } else if (reply.value.includes("_chp1")){
       reply = conversation_flow_one(reply);
     } else {
@@ -253,6 +251,7 @@ export default class Home extends Component {
     
     console.log("appState is:", appState);
     console.log("RandAppState is:", randAppState);
+
     if (this.state.appState.has(3)) {
     this.getSleepData().then( data => {
       this.setState({sleep_tip: data});
@@ -291,12 +290,8 @@ export default class Home extends Component {
         appState.add(3);
         this.setState(appState);
         const reply = {value: "start_chp_one"};
-        //return new conversation_flow_one(reply);
-        return new generic_tip;
-     /*  default:
-        console.error("There is something wrong with the case statement");
-      //  setTimeout(()=>{Alert.alert('I am appearing...','After 5 second!');return new generic_messages()}, 5000)
-        return new generic_messages(); */  
+        return new conversation_flow_one();
+ 
     }
   };
 
