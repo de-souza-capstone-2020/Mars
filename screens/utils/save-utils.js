@@ -52,18 +52,7 @@ export const retrieveSleepDiaryData = async (date) => {
       console.log("There are errors");
     }
 };
-// export const retrieveSleepDiaryData4Edit = (date) => {
-//   try {
-//     const value = AsyncStorage.getItem(date);
-//     const JSONValue = JSON.parse(value);
-//     if (value !== null) {
-//         return value;
-//     }
-//   } catch (error) {
-//     console.error(error);
-//     console.log("There are errors");
-//   }
-// };
+
 
 export const storeNickNameYearBirth = async res => {
       const nickName = JSON.stringify(res.nickName);
