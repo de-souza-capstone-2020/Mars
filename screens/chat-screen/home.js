@@ -59,7 +59,7 @@ export default class Home extends Component {
   };
 
   async componentDidMount() {
-    AsyncStorage.clear();
+    //AsyncStorage.clear();
     await this.isSleepDiaryEntered();
 
     //determining message type
@@ -210,15 +210,13 @@ export default class Home extends Component {
              if( key != null){
              console.log("Sleep entry for today",JSON.parse(key));
              const sleepAttempt = JSON.parse(key).attemptToSleepTime;
-             var wakeUp = JSON.parse(key).wakeUpTime;
+             const wakeUp = JSON.parse(key).wakeUpTime;
              const sleepAttempt1 = sleepAttempt.split("T")[1].split(".")[0]; ///Get time
-            // sleepAttempt = Moment(sleepAttempt).format('h:mm:ss')
              const wakeUp1 = wakeUp.split("T")[1].split(".")[0]; //Get time
-            // wakeUp = Moment(wakeUp).format('h:mm:ss')
              console.log("SleepAttempt time:", sleepAttempt1)
              this.setState({sleepAttemptTime: sleepAttempt1});
              console.log("After state set, sleepATTEMPT Time:", this.state.sleepAttemptTime);
-             this.setState({wakeUpTime: wakeUp});  
+             this.setState({wakeUpTime: wakeUp1});  
              console.log("After state set, Wakey Time:", this.state.wakeUpTime);
              }
              else{
@@ -276,8 +274,11 @@ export default class Home extends Component {
       appState.add(2);
       appState.add(4);
       this.setState(appState);
-      console.log("sleep attempt",this.state.sleepAttemptTime);  
-      const sleepHygiene = this.state.wakeUpTime - this.state.sleepAttemptTime 
+      console.log("sleep attempt",this.state.sleepAttemptTime); 
+      const sAT = this.state.sleepAttemptTime;
+      const wUT = this.state.wakeUpTime;
+
+      const sleepHygiene = Moment.duration(Moment(wUT).diff(Moment(sAT))) ;
       if(this.state.sleepAttemptTime != null)   {
         console.log("Tell me my sleep hygiene", sleepHygiene);
         return new sleep_diary_tip();
@@ -290,7 +291,7 @@ export default class Home extends Component {
         appState.add(3);
         this.setState(appState);
         const reply = {value: "start_chp_one"};
-        return new conversation_flow_one();
+        return new conversation_flow_one(reply);
  
     }
   };
