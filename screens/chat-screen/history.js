@@ -10,13 +10,19 @@ import {
 import { ListItem } from 'react-native-elements'
 import SplashScreen from "../loading";
 import { retrieveSleepDiaryData } from "../utils/save-utils";
+import SleepDiaryEdit from '../SleepDiaryEdit';
 
 export default class History extends React.Component{
 
   state = {
     diaryHistory: [],
     isLoading: true,
+    isModalVisible: false,
+    sleepDiaryInfo: null
   }
+  toggleModal = () => {
+    this.setState({ isModalVisible: !this.state.isModalVisible });
+  };
 
   async componentDidMount() {
     await this.getDiaryList();
@@ -43,12 +49,33 @@ export default class History extends React.Component{
     return new Promise(resolve =>
       setTimeout(() => {
         resolve("result");
-      }, 2000)
+      }, 1000)
     );
   }
 
+  getDiaryData = (itemTitle) => {
+    try {
+      AsyncStorage.getItem(itemTitle).then(value => {
+        
+        if (value != null){
+          const JSONValue = JSON.parse(value);
+          JSONValue.dateTime = itemTitle;
+          
+          this.setState({sleepDiaryInfo: JSONValue});
+        }
+        this.toggleModal();
+
+      });
+
+    } catch (error) {
+      console.error(error);
+      console.log("There are errors");
+    }
+    
+  }
+
   render() {
-    const {isLoading, diaryHistory} = this.state;
+    const {isLoading, diaryHistory, isModalVisible, sleepDiaryInfo} = this.state;
     if (isLoading) {
       return <SplashScreen />;
     }
@@ -64,11 +91,20 @@ export default class History extends React.Component{
                   titleProps={{fontSize: 15, color: 'black'}}
                   bottomDivider
                   chevron
-                  onPress={()=>retrieveSleepDiaryData(item.title)} //replace with actual function
+                  onPress={()=>this.getDiaryData(item.title)} //replace with actual function
                 />
               ))
             }
           </ScrollView>
+          {/* {console.log(sleepDiaryInfo, "=========")} */}
+          { (isModalVisible && sleepDiaryInfo !== null) && 
+                <SleepDiaryEdit 
+                  toggleModal={this.toggleModal} 
+                  isVisible={isModalVisible} 
+                  diaryInfo={sleepDiaryInfo} 
+                />
+          }
+          
         </SafeAreaView>
     );
   }
