@@ -70,7 +70,7 @@ export default class Home extends Component {
 };
   async componentDidMount() {
 
-    AsyncStorage.clear();
+   // AsyncStorage.removeItem(date);
     await this.isSleepDiaryEntered();
 
     //determining message type
