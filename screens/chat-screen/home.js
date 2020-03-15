@@ -16,7 +16,10 @@ import {
   sleep_diary_messages,
   generic_tip,
   sleep_diary_tip,
-  module
+  module,
+  sleep_diary_reminder_messages,
+  sleep_diary_tip_2,
+  sleep_diary_tip_1
 } from "../data/messages";
 import { getRandomAppState } from "../utils/helper-utils";
 import LottieLoader from "../loading";
@@ -51,9 +54,23 @@ export default class Home extends Component {
     diary: "",
     isLoading: true,
     appState: new Set(),
+    sleepAttemptTime: null,
+    wakeUpTime: null,
+    sleep_tip: new Object()
   };
 
+  removeItemValue = async (key)=>{
+    try {
+        await AsyncStorage.removeItem(key);
+        return true;
+    }
+    catch(exception) {
+        return false;
+    }
+};
   async componentDidMount() {
+
+   // AsyncStorage.removeItem(date);
     await this.isSleepDiaryEntered();
 
     //determining message type
@@ -85,6 +102,7 @@ export default class Home extends Component {
 
   isSleepDiaryEntered = async () => {
     const appState = this.state.appState;
+    
     try {
       AsyncStorage.getAllKeys().then(keys => {
         if (keys.indexOf(date) != -1) {
@@ -196,6 +214,32 @@ export default class Home extends Component {
     });
   }
 
+  getSleepData = async () => {
+     const today = Moment(new Date()).format("MM-DD-YYYY")
+     try {        
+             await AsyncStorage.getItem(today).then(key => {
+             if( key != null){
+             console.log("This is the key", key);
+             console.log("Sleep entry for today",JSON.parse(key));
+             const sleepAttempt = JSON.parse(key).attemptToSleepTime;
+             const wakeUp = JSON.parse(key).wakeUpTime;
+             const sleepdate = new Date(sleepAttempt);
+             const wakedate = new Date(wakeUp);
+             this.setState({sleepAttemptTime: sleepdate});
+             this.setState({wakeUpTime: wakedate}); 
+             console.log("sleepATTEMPT Time:", this.state.sleepAttemptTime); 
+             console.log("Wakey Time:", this.state.wakeUpTime);
+             }
+             else{
+               console.log("Oooops no key")
+             }
+           });
+         } catch (error) {
+           console.log("Try error", error);
+           //console.error(error);
+        }
+   };
+
   determineResponse = reply => {
     if (reply.value === "sleep_diary") {
       this.toggleModal();
@@ -210,11 +254,19 @@ export default class Home extends Component {
     this.onSend(reply);
   };
 
-  getNextConversation = () => {
+   getNextConversation =  () => {
     const { appState } = this.state;
     const randAppState = getRandomAppState(appState);
-
     
+    console.log("appState is:", appState);
+    console.log("RandAppState is:", randAppState);
+
+    if (this.state.appState.has(3)) {
+    this.getSleepData().then( data => {
+      this.setState({sleep_tip: data});
+      });
+    }
+    console.log("*** this the sleep attempt time from state", this.state.sleepAttemptTime);
     switch (randAppState) {
       case 1:
         appState.delete(1);
@@ -228,24 +280,38 @@ export default class Home extends Component {
         appState.add(4);
         this.setState(appState);
         return new generic_tip();
-      case 3:
-        appState.delete(3);
-        appState.add(2);
-        appState.add(4);
-        this.setState(appState);
-        return new sleep_diary_tip();
+      case 3: 
+      appState.delete(3);
+      appState.add(2);
+      appState.add(4);
+      this.setState(appState);
+      console.log("sleep attempt",this.state.sleepAttemptTime); 
+      const sAT = this.state.sleepAttemptTime;
+      const wUT = this.state.wakeUpTime;
+      const hours = Math.abs(sAT - wUT) / 36e5;
+      if(this.state.sleepAttemptTime != null)   {
+        if(hours>1){
+        console.log("Tell me my hours", hours);
+        return new sleep_diary_tip_1();
+        }
+        else{
+        console.log("Tell me my hours", hours);
+        return new sleep_diary_tip_2();
+        }
+      }
+      else{
+        return new sleep_diary_reminder_messages();
+      }
       case 4:
         appState.add(2);
         appState.add(3);
         this.setState(appState);
         const reply = {value: "start_chp_one"};
         return new conversation_flow_one(reply);
-      default:
-        console.error("There is something wrong with the case statement");
-        return new generic_messages();
-      
+        default:
+          console.error("There is something wrong with the case statement");
+          return new generic_messages();
     }
-
   };
 
   renderInputToolbar(props) {

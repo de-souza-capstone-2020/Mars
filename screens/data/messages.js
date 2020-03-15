@@ -55,6 +55,29 @@ const generic_messages = () => {
   ]
 }
 
+const sleep_diary_reminder_messages = () => {
+  
+  return [
+    {
+      _id: getID(),
+      text:
+        "It is important to enter your sleep diary information everyday.This will allow us provide customized tips.",
+      createdAt: new Date(),
+      quickReplies: {
+        type: "radio", // or 'checkbox',
+        keepIt: true,
+        values: [
+          {
+            title: "That makes sense",
+            value: "got_it"
+          }
+        ]
+      },
+      otherUser
+    }
+  ]
+}
+
 const generic_tip = () => {
   return [
     {
@@ -102,6 +125,48 @@ const sleep_diary_tip = () => {
   ]
 }
 
+const sleep_diary_tip_1 = () => {
+  return [
+    {
+      createdAt: new Date(),
+      _id: getID(),
+      text: "Sleep diary tip: Hey , lying in bed while awake reinforces the role of your bed as a stimulus for wakefulness.Spending less time in bed strengthens the role of your bed as the place to sleep.",
+      otherUser,
+      quickReplies: {
+        type: "radio", // or 'checkbox',
+        keepIt: true,
+        values: [
+          {
+            title: "got it",
+            value: "got_it"
+          }
+        ]
+      },
+    }
+  ]
+}
+
+const sleep_diary_tip_2 = () => {
+  return [
+    {
+      createdAt: new Date(),
+      _id: getID(),
+      text: "Sleep diary tip: You know now why spending excessive time in bed not sleeping is bad for your sleep pattern. Keep finding ways to reduce your time in bed!!",
+      otherUser,
+      quickReplies: {
+        type: "radio", // or 'checkbox',
+        keepIt: true,
+        values: [
+          {
+            title: "got it",
+            value: "got_it"
+          }
+        ]
+      },
+    }
+  ]
+}
+
 const module = () => {
   return [
     {
@@ -122,4 +187,4 @@ const module = () => {
     }
   ]
 }
-export { generic_messages, sleep_diary_messages, generic_tip, sleep_diary_tip, module };
+export { generic_messages, sleep_diary_messages, generic_tip, sleep_diary_tip, module, sleep_diary_reminder_messages,sleep_diary_tip_2,sleep_diary_tip_1};
