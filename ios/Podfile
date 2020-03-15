@@ -37,10 +37,6 @@ target 'AwesomeProject' do
   pod 'react-native-date-picker', :path => '../node_modules/react-native-date-picker'
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons/RNVectorIcons.podspec'
 
-  pod 'lottie-ios', :path => '../node_modules/lottie-ios'
-
-  pod 'lottie-react-native', :path => '../node_modules/lottie-react-native'
-
   target 'AwesomeProjectTests' do
     inherit! :search_paths
     # Pods for testing

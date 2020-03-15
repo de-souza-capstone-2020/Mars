@@ -7,8 +7,7 @@ import {
   Button,
   AsyncStorage
 } from "react-native";
-import { GiftedChat, Bubble } from "react-native-gifted-chat";
-import QuickReplies from 'react-native-gifted-chat/lib/QuickReplies'
+import { GiftedChat } from "react-native-gifted-chat";
 import Moment from "moment";
 import SleepDiary from "../sleepDiary";
 import {
@@ -16,19 +15,11 @@ import {
   sleep_diary_messages,
   generic_tip,
   sleep_diary_tip,
-  module,
-  sleep_diary_reminder_messages,
-  sleep_diary_tip_2,
-  sleep_diary_tip_1
+  module
 } from "../data/messages";
 import { getRandomAppState } from "../utils/helper-utils";
-import LottieLoader from "../loading";
-import { 
-    sleep_diary_response,
-    conversation_flow_one
-} from "../data/customActions";
+import { sleep_diary_response } from "../data/customActions";
 import SplashScreen from "../loading";
-import {s, colors} from "./styles";
 
 const user = {
   _id: 1,
@@ -54,23 +45,9 @@ export default class Home extends Component {
     diary: "",
     isLoading: true,
     appState: new Set(),
-    sleepAttemptTime: null,
-    wakeUpTime: null,
-    sleep_tip: new Object()
   };
 
-  removeItemValue = async (key)=>{
-    try {
-        await AsyncStorage.removeItem(key);
-        return true;
-    }
-    catch(exception) {
-        return false;
-    }
-};
   async componentDidMount() {
-
-   // AsyncStorage.removeItem(date);
     await this.isSleepDiaryEntered();
 
     //determining message type
@@ -102,7 +79,6 @@ export default class Home extends Component {
 
   isSleepDiaryEntered = async () => {
     const appState = this.state.appState;
-    
     try {
       AsyncStorage.getAllKeys().then(keys => {
         if (keys.indexOf(date) != -1) {
@@ -127,7 +103,7 @@ export default class Home extends Component {
     return new Promise(resolve =>
       setTimeout(() => {
         resolve("result");
-      }, 1000)
+      }, 2000)
     );
   };
 
@@ -214,59 +190,23 @@ export default class Home extends Component {
     });
   }
 
-  getSleepData = async () => {
-     const today = Moment(new Date()).format("MM-DD-YYYY")
-     try {        
-             await AsyncStorage.getItem(today).then(key => {
-             if( key != null){
-             console.log("This is the key", key);
-             console.log("Sleep entry for today",JSON.parse(key));
-             const sleepAttempt = JSON.parse(key).attemptToSleepTime;
-             const wakeUp = JSON.parse(key).wakeUpTime;
-             const sleepdate = new Date(sleepAttempt);
-             const wakedate = new Date(wakeUp);
-             this.setState({sleepAttemptTime: sleepdate});
-             this.setState({wakeUpTime: wakedate}); 
-             console.log("sleepATTEMPT Time:", this.state.sleepAttemptTime); 
-             console.log("Wakey Time:", this.state.wakeUpTime);
-             }
-             else{
-               console.log("Oooops no key")
-             }
-           });
-         } catch (error) {
-           console.log("Try error", error);
-           //console.error(error);
-        }
-   };
-
   determineResponse = reply => {
     if (reply.value === "sleep_diary") {
       this.toggleModal();
       reply = this.getNextConversation();
     } else if (reply.value === "got_it") {
       reply = this.getNextConversation();
-    } else if (reply.value.includes("_chp1")){
-      reply = conversation_flow_one(reply);
     } else {
       reply = sleep_diary_response(reply);
     }
     this.onSend(reply);
   };
 
-   getNextConversation =  () => {
+  getNextConversation = () => {
     const { appState } = this.state;
     const randAppState = getRandomAppState(appState);
-    
-    console.log("appState is:", appState);
-    console.log("RandAppState is:", randAppState);
 
-    if (this.state.appState.has(3)) {
-    this.getSleepData().then( data => {
-      this.setState({sleep_tip: data});
-      });
-    }
-    console.log("*** this the sleep attempt time from state", this.state.sleepAttemptTime);
+    
     switch (randAppState) {
       case 1:
         appState.delete(1);
@@ -280,46 +220,33 @@ export default class Home extends Component {
         appState.add(4);
         this.setState(appState);
         return new generic_tip();
-      case 3: 
-      appState.delete(3);
-      appState.add(2);
-      appState.add(4);
-      this.setState(appState);
-      console.log("sleep attempt",this.state.sleepAttemptTime); 
-      const sAT = this.state.sleepAttemptTime;
-      const wUT = this.state.wakeUpTime;
-      const hours = Math.abs(sAT - wUT) / 36e5;
-      if(this.state.sleepAttemptTime != null)   {
-        if(hours>1){
-        console.log("Tell me my hours", hours);
-        return new sleep_diary_tip_1();
-        }
-        else{
-        console.log("Tell me my hours", hours);
-        return new sleep_diary_tip_2();
-        }
-      }
-      else{
-        return new sleep_diary_reminder_messages();
-      }
+      case 3:
+        appState.delete(3);
+        appState.add(2);
+        appState.add(4);
+        this.setState(appState);
+        return new sleep_diary_tip();
       case 4:
         appState.add(2);
         appState.add(3);
         this.setState(appState);
-        const reply = {value: "start_chp_one"};
-        return new conversation_flow_one(reply);
-        default:
-          console.error("There is something wrong with the case statement");
-          return new generic_messages();
+        return new module();
+      default:
+        console.error("There is something wrong with the case statement");
+        return new generic_messages();
+      
     }
+
   };
 
+  renderQuickReplySend = () => {
+    return <Text>{" custom send =>"}</Text>;
+  };
   renderInputToolbar(props) {
     if (this.state.toolbar) {
       return <InputToolbar {...props} />;
     }
   }
-
   renderFooter = () => {
     const { typingText } = this.state;
     if (typingText) {
@@ -332,74 +259,22 @@ export default class Home extends Component {
     return null;
   };
 
-  renderBubble = (props) =>{
-    return (
-      <Bubble
-        {...props}
-        renderQuickReplies = {(props) => this.renderQuickReply(props)}
-        textStyle={{
-          right: s.chatFont,
-          left: s.chatFont
-        }}
-        wrapperStyle={{
-          left: {
-            // borderWidth: 1,
-            borderRadius: 30,
-            borderBottomLeftRadius: 0, 
-            color: 'black',
-            minWidth: 50,
-            margin: 4,
-            paddingLeft: 3,
-            paddingTop: 6,
-            paddingBottom: 3,
-            elevation: 5,
-            // shadowOffset: { width: 15, height: 5 },
-            // shadowColor: "grey",
-            // shadowRadius: 10,
-          },
-          right: {
-            borderRadius: 20,
-            paddingRight: 2,
-            paddingLeft: 2,
-            paddingTop: 6,
-            paddingBottom: 3,
-            minWidth: 30,
-            backgroundColor: colors.accent
-          }
-        }}
-      />
-    )
-  }
-
-  renderQuickReply = (props) =>{
-    return (
-      <QuickReplies
-        {...props}
-        color='white'
-        quickReplyStyle={{
-          backgroundColor: colors.accent,
-          marginTop: 10,
-          borderWidth: 0,
-        }}
-        
-      />
-    )
-  }
   render() {
     const { messages, isModalVisible, isLoading } = this.state;
     if (isLoading) {
-      return <LottieLoader />;
+      return <SplashScreen />;
     }
     return (
-      <View style={s.background}>
+      <View style={{ flex: 1, backgroundColor: "#fff" }}>
         <GiftedChat
           messages={messages}
           onSend={this.onSend}
           user={{ _id: 1 }}
+          quickReplyStyle={{ borderRadius: 2 }}
           onQuickReply={this.onQuickReply}
+          renderQuickReplySend={this.renderQuickReplySend}
           renderInputToolbar={props => this.renderInputToolbar(props)}
           renderChatFooter={this.renderFooter}
-          renderBubble={this.renderBubble}
         />
         <SleepDiary toggleModal={this.toggleModal} isVisible={isModalVisible} />
       </View>
