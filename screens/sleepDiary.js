@@ -68,7 +68,7 @@ export default class SleepDiary extends Component {
 
   render() {
     const today = new Date();
-    const todayFormatted = `${parseInt(today.getMonth() + 1)}, ${today.getDate()}, ${today.getFullYear()}`;
+    const todayFormatted = `${parseInt(today.getMonth() + 1)}-${today.getDate()}-${today.getFullYear()}`;
     const {
       sleepQuality,
       sleepTime,
@@ -93,7 +93,7 @@ export default class SleepDiary extends Component {
 
           <ScrollView style={styles.body}>
             <View style={styles.row}>
-              <Text style={styles.date}>{todayFormatted}</Text>
+              <Text style={styles.date}>Sleep Diary: {todayFormatted}</Text>
             </View>
             <View style={styles.row}>
               <View style={styles.question}>

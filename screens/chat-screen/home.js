@@ -19,7 +19,8 @@ import {
   module,
   sleep_diary_reminder_messages,
   sleep_diary_tip_2,
-  sleep_diary_tip_1
+  sleep_diary_tip_1,
+  sleep_diary_tip_eff
 } from "../data/messages";
 import { getRandomAppState } from "../utils/helper-utils";
 import LottieLoader from "../loading";
@@ -70,7 +71,7 @@ export default class Home extends Component {
 };
   async componentDidMount() {
 
-   // AsyncStorage.removeItem(date);
+    AsyncStorage.removeItem(date);
     await this.isSleepDiaryEntered();
 
     //determining message type
