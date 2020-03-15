@@ -308,7 +308,9 @@ export default class Home extends Component {
         this.setState(appState);
         const reply = {value: "start_chp_one"};
         return new conversation_flow_one(reply);
- 
+        default:
+          console.error("There is something wrong with the case statement");
+          return new generic_messages();
     }
   };
 
