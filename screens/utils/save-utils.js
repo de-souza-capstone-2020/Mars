@@ -14,24 +14,6 @@ export const storeSleepDiaryData = async res => {
         Moment(date).format("MM-DD-YYYY"),
         JSON.stringify(formattedObj)
       );
-      console.log("Storing: ",JSON.stringify(formattedObj));
-    } catch (error) {
-      console.error(error);
-      console.log("Error occured, data could not be saved");
-    }
-
-  console.log("Saved: ", date);
-};
-export const storeSleepDiaryDataFromEdit = async (res,date) => {
-  const formattedObj = Map(res, formatDate);
-    
-  
-
-    try {
-      await AsyncStorage.setItem(
-        date,
-        JSON.stringify(formattedObj)
-      );
     } catch (error) {
       console.error(error);
       console.log("Error occured, data could not be saved");
@@ -42,18 +24,16 @@ export const storeSleepDiaryDataFromEdit = async (res,date) => {
 
 export const retrieveSleepDiaryData = async (date) => {
     try {
-      const value = await AsyncStorage.getItem(date);
+      const value = await AsyncStorage.getItem(Moment(date).format("MM-DD-YYYY"));
       const JSONValue = JSON.parse(value);
       if (value !== null) {
-        console.log(value);
-          return value;
+          console.log(value);
       }
     } catch (error) {
       console.error(error);
       console.log("There are errors");
     }
 };
-
 
 export const storeNickNameYearBirth = async res => {
       const nickName = JSON.stringify(res.nickName);

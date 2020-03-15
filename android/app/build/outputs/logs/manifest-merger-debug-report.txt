@@ -5,13 +5,10 @@ INJECTED from C:\Users\ruiqi\Documents\4B Term\Msci 402\Mars\android\app\src\mai
 INJECTED from C:\Users\ruiqi\Documents\4B Term\Msci 402\Mars\android\app\src\main\AndroidManifest.xml:1:1-26:12
 INJECTED from C:\Users\ruiqi\Documents\4B Term\Msci 402\Mars\android\app\src\main\AndroidManifest.xml:1:1-26:12
 MERGED from C:\Users\ruiqi\Documents\4B Term\Msci 402\Mars\android\app\src\main\AndroidManifest.xml:1:1-26:12
-MERGED from [:lottie-react-native] C:\Users\ruiqi\Documents\4B Term\Msci 402\Mars\node_modules\lottie-react-native\src\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-date-picker] C:\Users\ruiqi\Documents\4B Term\Msci 402\Mars\node_modules\react-native-date-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-gesture-handler] C:\Users\ruiqi\Documents\4B Term\Msci 402\Mars\node_modules\react-native-gesture-handler\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
-MERGED from [:react-native-vector-icons] C:\Users\ruiqi\Documents\4B Term\Msci 402\Mars\node_modules\react-native-vector-icons\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
 MERGED from [com.facebook.react:react-native:0.61.2] C:\Users\ruiqi\.gradle\caches\transforms-2\files-2.1\30a9050c721d0887cf17d7851b3a20cf\AndroidManifest.xml:2:1-13:12
 MERGED from [org.webkit:android-jsc:r245459] C:\Users\ruiqi\.gradle\caches\transforms-2\files-2.1\10d773d4f20758e14739453f502f3d24\AndroidManifest.xml:2:1-11:12
-MERGED from [com.airbnb.android:lottie:3.0.7] C:\Users\ruiqi\.gradle\caches\transforms-2\files-2.1\698d5f2bb1a630b85c985b792416653c\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat:1.0.2] C:\Users\ruiqi\.gradle\caches\transforms-2\files-2.1\772e4ae37e2a5dc52ee508169fcf4de1\AndroidManifest.xml:17:1-22:12
 MERGED from [com.facebook.fresco:fresco:2.0.0] C:\Users\ruiqi\.gradle\caches\transforms-2\files-2.1\16a892f1b3215230295fe6de5200dd17\AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:imagepipeline-okhttp3:2.0.0] C:\Users\ruiqi\.gradle\caches\transforms-2\files-2.1\6dc39deeeb32f5884c16e56e289f575b\AndroidManifest.xml:2:1-9:12
@@ -71,8 +68,6 @@ INJECTED from C:\Users\ruiqi\Documents\4B Term\Msci 402\Mars\android\app\src\deb
 		ADDED from C:\Users\ruiqi\Documents\4B Term\Msci 402\Mars\android\app\src\main\AndroidManifest.xml:1:11-69
 uses-permission#android.permission.INTERNET
 ADDED from C:\Users\ruiqi\Documents\4B Term\Msci 402\Mars\android\app\src\main\AndroidManifest.xml:4:5-67
-MERGED from [:lottie-react-native] C:\Users\ruiqi\Documents\4B Term\Msci 402\Mars\node_modules\lottie-react-native\src\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-67
-MERGED from [:lottie-react-native] C:\Users\ruiqi\Documents\4B Term\Msci 402\Mars\node_modules\lottie-react-native\src\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-67
 	android:name
 		ADDED from C:\Users\ruiqi\Documents\4B Term\Msci 402\Mars\android\app\src\main\AndroidManifest.xml:4:22-64
 application
@@ -81,8 +76,6 @@ MERGED from C:\Users\ruiqi\Documents\4B Term\Msci 402\Mars\android\app\src\main\
 MERGED from C:\Users\ruiqi\Documents\4B Term\Msci 402\Mars\android\app\src\main\AndroidManifest.xml:6:5-24:19
 MERGED from [com.facebook.react:react-native:0.61.2] C:\Users\ruiqi\.gradle\caches\transforms-2\files-2.1\30a9050c721d0887cf17d7851b3a20cf\AndroidManifest.xml:11:5-20
 MERGED from [com.facebook.react:react-native:0.61.2] C:\Users\ruiqi\.gradle\caches\transforms-2\files-2.1\30a9050c721d0887cf17d7851b3a20cf\AndroidManifest.xml:11:5-20
-MERGED from [com.airbnb.android:lottie:3.0.7] C:\Users\ruiqi\.gradle\caches\transforms-2\files-2.1\698d5f2bb1a630b85c985b792416653c\AndroidManifest.xml:9:5-20
-MERGED from [com.airbnb.android:lottie:3.0.7] C:\Users\ruiqi\.gradle\caches\transforms-2\files-2.1\698d5f2bb1a630b85c985b792416653c\AndroidManifest.xml:9:5-20
 MERGED from [com.facebook.soloader:soloader:0.6.0] C:\Users\ruiqi\.gradle\caches\transforms-2\files-2.1\7ebcf84dc5ba8420851af0611722d58a\AndroidManifest.xml:11:5-20
 MERGED from [com.facebook.soloader:soloader:0.6.0] C:\Users\ruiqi\.gradle\caches\transforms-2\files-2.1\7ebcf84dc5ba8420851af0611722d58a\AndroidManifest.xml:11:5-20
 MERGED from [net.time4j:time4j-android:4.2-2018i] C:\Users\ruiqi\.gradle\caches\transforms-2\files-2.1\c47dda656a784c9a4cff7410091e1410\AndroidManifest.xml:11:5-20
@@ -145,20 +138,14 @@ uses-sdk
 INJECTED from C:\Users\ruiqi\Documents\4B Term\Msci 402\Mars\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\ruiqi\Documents\4B Term\Msci 402\Mars\android\app\src\main\AndroidManifest.xml
 INJECTED from C:\Users\ruiqi\Documents\4B Term\Msci 402\Mars\android\app\src\main\AndroidManifest.xml
-MERGED from [:lottie-react-native] C:\Users\ruiqi\Documents\4B Term\Msci 402\Mars\node_modules\lottie-react-native\src\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
-MERGED from [:lottie-react-native] C:\Users\ruiqi\Documents\4B Term\Msci 402\Mars\node_modules\lottie-react-native\src\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-date-picker] C:\Users\ruiqi\Documents\4B Term\Msci 402\Mars\node_modules\react-native-date-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-date-picker] C:\Users\ruiqi\Documents\4B Term\Msci 402\Mars\node_modules\react-native-date-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-gesture-handler] C:\Users\ruiqi\Documents\4B Term\Msci 402\Mars\node_modules\react-native-gesture-handler\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-gesture-handler] C:\Users\ruiqi\Documents\4B Term\Msci 402\Mars\node_modules\react-native-gesture-handler\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
-MERGED from [:react-native-vector-icons] C:\Users\ruiqi\Documents\4B Term\Msci 402\Mars\node_modules\react-native-vector-icons\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
-MERGED from [:react-native-vector-icons] C:\Users\ruiqi\Documents\4B Term\Msci 402\Mars\node_modules\react-native-vector-icons\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.react:react-native:0.61.2] C:\Users\ruiqi\.gradle\caches\transforms-2\files-2.1\30a9050c721d0887cf17d7851b3a20cf\AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.react:react-native:0.61.2] C:\Users\ruiqi\.gradle\caches\transforms-2\files-2.1\30a9050c721d0887cf17d7851b3a20cf\AndroidManifest.xml:7:5-9:41
 MERGED from [org.webkit:android-jsc:r245459] C:\Users\ruiqi\.gradle\caches\transforms-2\files-2.1\10d773d4f20758e14739453f502f3d24\AndroidManifest.xml:7:5-9:41
 MERGED from [org.webkit:android-jsc:r245459] C:\Users\ruiqi\.gradle\caches\transforms-2\files-2.1\10d773d4f20758e14739453f502f3d24\AndroidManifest.xml:7:5-9:41
-MERGED from [com.airbnb.android:lottie:3.0.7] C:\Users\ruiqi\.gradle\caches\transforms-2\files-2.1\698d5f2bb1a630b85c985b792416653c\AndroidManifest.xml:5:5-7:41
-MERGED from [com.airbnb.android:lottie:3.0.7] C:\Users\ruiqi\.gradle\caches\transforms-2\files-2.1\698d5f2bb1a630b85c985b792416653c\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.appcompat:appcompat:1.0.2] C:\Users\ruiqi\.gradle\caches\transforms-2\files-2.1\772e4ae37e2a5dc52ee508169fcf4de1\AndroidManifest.xml:20:5-44
 MERGED from [androidx.appcompat:appcompat:1.0.2] C:\Users\ruiqi\.gradle\caches\transforms-2\files-2.1\772e4ae37e2a5dc52ee508169fcf4de1\AndroidManifest.xml:20:5-44
 MERGED from [com.facebook.fresco:fresco:2.0.0] C:\Users\ruiqi\.gradle\caches\transforms-2\files-2.1\16a892f1b3215230295fe6de5200dd17\AndroidManifest.xml:5:5-7:41
