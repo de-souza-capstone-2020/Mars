@@ -18,7 +18,8 @@ import {
   sleep_diary_tip,
   module,
   sleep_diary_reminder_messages,
-  sleep_diary_tip_2
+  sleep_diary_tip_2,
+  sleep_diary_tip_1
 } from "../data/messages";
 import { getRandomAppState } from "../utils/helper-utils";
 import LottieLoader from "../loading";
@@ -58,8 +59,18 @@ export default class Home extends Component {
     sleep_tip: new Object()
   };
 
+  removeItemValue = async (key)=>{
+    try {
+        await AsyncStorage.removeItem(key);
+        return true;
+    }
+    catch(exception) {
+        return false;
+    }
+};
   async componentDidMount() {
-    //AsyncStorage.clear();
+
+    AsyncStorage.clear();
     await this.isSleepDiaryEntered();
 
     //determining message type
@@ -208,24 +219,24 @@ export default class Home extends Component {
      try {        
              await AsyncStorage.getItem(today).then(key => {
              if( key != null){
+             console.log("This is the key", key);
              console.log("Sleep entry for today",JSON.parse(key));
              const sleepAttempt = JSON.parse(key).attemptToSleepTime;
              const wakeUp = JSON.parse(key).wakeUpTime;
-             const sleepAttempt1 = sleepAttempt.split("T")[1].split(".")[0]; ///Get time
-             const wakeUp1 = wakeUp.split("T")[1].split(".")[0]; //Get time
-             console.log("SleepAttempt time:", sleepAttempt1)
-             this.setState({sleepAttemptTime: sleepAttempt1});
-             console.log("After state set, sleepATTEMPT Time:", this.state.sleepAttemptTime);
-             this.setState({wakeUpTime: wakeUp1});  
-             console.log("After state set, Wakey Time:", this.state.wakeUpTime);
+             const sleepdate = new Date(sleepAttempt);
+             const wakedate = new Date(wakeUp);
+             this.setState({sleepAttemptTime: sleepdate});
+             this.setState({wakeUpTime: wakedate}); 
+             console.log("sleepATTEMPT Time:", this.state.sleepAttemptTime); 
+             console.log("Wakey Time:", this.state.wakeUpTime);
              }
              else{
                console.log("Oooops no key")
              }
            });
          } catch (error) {
-           console.log("cant find key");
-       console.error(error);
+           console.log("Try error", error);
+           //console.error(error);
         }
    };
 
@@ -277,11 +288,16 @@ export default class Home extends Component {
       console.log("sleep attempt",this.state.sleepAttemptTime); 
       const sAT = this.state.sleepAttemptTime;
       const wUT = this.state.wakeUpTime;
-
-      const sleepHygiene = Moment.duration(Moment(wUT).diff(Moment(sAT))) ;
+      const hours = Math.abs(sAT - wUT) / 36e5;
       if(this.state.sleepAttemptTime != null)   {
-        console.log("Tell me my sleep hygiene", sleepHygiene);
-        return new sleep_diary_tip();
+        if(hours>1){
+        console.log("Tell me my hours", hours);
+        return new sleep_diary_tip_1();
+        }
+        else{
+        console.log("Tell me my hours", hours);
+        return new sleep_diary_tip_2();
+        }
       }
       else{
         return new sleep_diary_reminder_messages();
