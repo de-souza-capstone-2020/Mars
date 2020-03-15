@@ -14,12 +14,13 @@ export const storeSleepDiaryData = async res => {
         Moment(date).format("MM-DD-YYYY"),
         JSON.stringify(formattedObj)
       );
+      console.log("Storing: ",JSON.stringify(formattedObj));
     } catch (error) {
       console.error(error);
       console.log("Error occured, data could not be saved");
     }
 
-  console.log("Saved");
+  console.log("Saved: ", date);
 };
 
 export const retrieveSleepDiaryData = async (date) => {
