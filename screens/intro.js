@@ -16,6 +16,8 @@ import RadioForm, {
   RadioButtonLabel
 } from "react-native-simple-radio-button";
 
+import { s } from './chat-screen/styles';
+
 export default class Intro extends React.Component {
   state = {
     nickName: "",
@@ -258,31 +260,31 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#9DD6EB",
+    backgroundColor: s.backgroundColor,
     padding: 50
   },
   slide2: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#97CAE5",
+    backgroundColor: s.backgroundColor,
     padding: 50
   },
   slide3: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#92BBD9",
+    backgroundColor: s.backgroundColor,
     padding: 50
   },
   intro_text: {
-    color: "#fff",
+    color: "black",
     fontSize: 30,
     fontWeight: "bold",
     textAlign: "center"
   },
   input_text: {
-    color: "#fff",
+    color: "black",
     fontSize: 30,
     fontWeight: "bold",
     paddingBottom: 50,
@@ -291,10 +293,10 @@ const styles = StyleSheet.create({
   textBox: {
     height: 50,
     width: 250,
-    borderColor: "white",
+    borderColor: "black",
     borderBottomWidth: 1,
     fontSize: 30,
-    color: "white",
+    color: "black",
     fontWeight: "bold",
     textAlign: "center"
   }
