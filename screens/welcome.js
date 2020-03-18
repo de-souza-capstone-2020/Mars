@@ -19,7 +19,7 @@ export default class Welcome extends React.Component {
   };
 
   componentDidMount() {
-    // this.isUserOnboarded(); //comment out for onboarding flow
+    this.isUserOnboarded();
   }
   clearAsyncStorage = async () => {
     AsyncStorage.clear();
@@ -31,7 +31,6 @@ export default class Welcome extends React.Component {
       //nickname found
       this.setState({ onboarded: true });
     }
-    
   };
 
   render() {
