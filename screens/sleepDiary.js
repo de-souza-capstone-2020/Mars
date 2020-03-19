@@ -16,16 +16,16 @@ import { storeSleepDiaryData } from './utils/save-utils';
 export default class SleepDiary extends Component {
   state = {
     sleepQuality: "",
-    sleepTime: new Date(),
-    attemptToSleepTime: new Date(),
-    durationTillSleep: "",
-    numTimesWakeUp: "",
-    durationTotalWakeUp: "",
+    sleepTime: yesterday,
+    attemptToSleepTime: yesterday,
+    getInBedTime: yesterday,
+    numTimesWakeUp: 0,
+    durationTotalWakeUp: 0,
     wakeUpTime: new Date(),
     leaveBedTime: new Date(),
     didNap: "",
     napTime: new Date(),
-    napDuration: "",
+    napDuration: 0,
     others: ""
   };
 
@@ -36,7 +36,7 @@ export default class SleepDiary extends Component {
         sleepQuality,
         sleepTime,
         attemptToSleepTime,
-        durationTillSleep,
+        getInBedTime,
         numTimesWakeUp,
         durationTotalWakeUp,
         wakeUpTime,
@@ -51,7 +51,7 @@ export default class SleepDiary extends Component {
         sleepQuality,
         sleepTime,
         attemptToSleepTime,
-        durationTillSleep,
+        getInBedTime,
         numTimesWakeUp,
         durationTotalWakeUp,
         wakeUpTime,
@@ -73,7 +73,7 @@ export default class SleepDiary extends Component {
       sleepQuality,
       sleepTime,
       attemptToSleepTime,
-      durationTillSleep,
+      getInBedTime,
       numTimesWakeUp,
       durationTotalWakeUp,
       wakeUpTime,
@@ -101,8 +101,8 @@ export default class SleepDiary extends Component {
               </View>
               <View style={styles.answer}>
                 <DatePicker
-                  date={sleepTime}
-                  onDateChange={sleepTime => this.setState({ sleepTime })}
+                  date={getInBedTime}
+                  onDateChange={getInBedTime => this.setState({ getInBedTime })}
                   mode={"time"}
                   fadeToColor={"none"}
                   textColor={"#000000"}
@@ -132,25 +132,24 @@ export default class SleepDiary extends Component {
             <View style={styles.row}>
               <View style={styles.question}>
                 <Text style={styles.text}>
-                  How long did it take you to fall asleep (min)?
+                  What time did you fall asleep?
                 </Text>
               </View>
               <View style={styles.answer}>
-                <TextInput
-                  placeholder={"0.5"}
-                  style={styles.textBox}
-                  keyboardType="numeric"
-                  value={durationTillSleep}
-                  onChangeText={durationTillSleep =>
-                    this.setState({ durationTillSleep })
-                  }
+                <DatePicker
+                  date={sleepTime}
+                  onDateChange={sleepTime => this.setState({ sleepTime })}
+                  mode={"time"}
+                  fadeToColor={"none"}
+                  textColor={"#000000"}
+                  style={{ height: 50, width: 120 }}
                 />
               </View>
             </View>
             <View style={styles.row}>
               <View style={styles.question}>
                 <Text style={styles.text}>
-                  How many times did you wake up, not counting your final
+                  How many times did you wake up during the night, not counting your final
                   awakening?
                 </Text>
               </View>
@@ -324,6 +323,12 @@ export default class SleepDiary extends Component {
     );
   }
 }
+
+
+  const yesterday = new Date(new Date().getTime() - 24 * 60 * 60 * 1000);
+
+
+
 
 const styles = StyleSheet.create({
   body: {

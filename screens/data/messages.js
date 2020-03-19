@@ -61,7 +61,7 @@ const sleep_diary_reminder_messages = () => {
     {
       _id: getID(),
       text:
-        "It is important to enter your sleep diary information everyday.This will allow us provide customized tips.",
+        "It is important to enter your complete sleep diary information everyday.This will allow us provide customized tips.",
       createdAt: new Date(),
       quickReplies: {
         type: "radio", // or 'checkbox',
@@ -130,7 +130,7 @@ const sleep_diary_tip_1 = () => {
     {
       createdAt: new Date(),
       _id: getID(),
-      text: "Sleep diary tip: Hey, lying in bed while awake reinforces the role of your bed as a stimulus for wakefulness.Spending less time in bed strengthens the role of your bed as the place to sleep.",
+      text: "Sleep diary tip: Hey, lying in bed while awake reinforces the role of your bed as a stimulus for wakefulness.Spending less time in bed strengthens the role of your bed as the place to sleep." ,
       otherUser,
       quickReplies: {
         type: "radio", // or 'checkbox',
@@ -172,7 +172,7 @@ const sleep_diary_tip_eff = (sleepEff) => {
     {
       createdAt: new Date(),
       _id: getID(),
-      text: "Sleep diary tip: You know now why spending excessive time in bed not sleeping is bad for your sleep pattern. Keep finding ways to reduce your time in bed!!" + sleepEff,
+      text: "Your sleep efficency today is: " + sleepEff + "%",
       otherUser,
       quickReplies: {
         type: "radio", // or 'checkbox',
