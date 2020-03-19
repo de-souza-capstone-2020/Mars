@@ -199,7 +199,82 @@ export const sleep_diary_response = reply => {
       }
     ]);
   }
+}; 
+
+export const sleep_diary_tip_nap = reply => {
+  if(reply.value === "nap_flow"){
+  return ([
+    {
+      createdAt: new Date(),
+      _id: getID(),
+      text: "Hey, you seem to be struggling with avoiding naps. Remember that napping disrupts the sleep rhythm you are trying to develop with the procedure and destroys any of its benefits.",
+      otherUser,
+      quickReplies: {
+        type: "radio", // or 'checkbox',
+        keepIt: true,
+        values: [
+          {
+            title: "I'll work on napping less",
+            value: "good_nap"
+          },
+          {
+            title: "It's hard not to nap",
+            value: "help_nap" 
+          } 
+        ]
+      },
+    }
+  ]);
+}
+
+  if(reply.value === "help_nap"){
+  return ([
+    {
+      createdAt: new Date(),
+      _id: getID(),
+      text: "Okay, so, one way to avoid napping is to engage in another activity incompatible with napping when the get to urge to sleep during the day",
+      otherUser,
+      quickReplies: {
+        type: "radio", // or 'checkbox',
+        keepIt: true,
+        values: [
+          {
+            title: "👍",
+            value: "got_it"
+          },
+          {
+            title: "It'll be hard but i'll try",
+            value: "got_it" 
+          }
+        ]
+      },
+    }
+  ]);
+}
+
+if(reply.value === "good_nap"){
+  return ([
+    {
+      createdAt: new Date(),
+      _id: getID(),
+      text: "Some ways to nap less include engaging in other activities that are incompatible with napping when you feel the urge to nap.",
+      otherUser,
+      quickReplies: {
+        type: "radio", // or 'checkbox',
+        keepIt: true,
+        values: [
+          {
+            title: "👍",
+            value: "got_it"
+          }
+        ]
+      },
+    }
+  ]);
+}
+
 };
+
 
 export const conversation_flow_one = reply => {
     
@@ -209,7 +284,7 @@ export const conversation_flow_one = reply => {
             {
               createdAt,
               _id: getID(),
-              text: "Hello. Having trouble sleeping? Did you know that the best way to fix this is to actually limit how much time you’re spending in bed? ",
+              text: "Did you know that the best way to fix your trouble sleeping is to actually limit how much time you’re spending in bed? ",
               otherUser,
               quickReplies: {
                 type: "radio", // or 'checkbox',
@@ -356,7 +431,7 @@ export const conversation_flow_one = reply => {
             {
               createdAt,
               _id: getID(),
-              text: "Alright. First you need to pick a a consistent tim every morning to wake up during the week. Based on your current sleep ability use this amount of time and add 30 minutes. Count backwards to figure out your new bedtime. As you work on sleep restriction you wil gradually increase your sleep quantity. Is this something you think you are able to do?",
+              text: "Alright. First you need to pick a a consistent time every morning to wake up during the week. Based on your current sleep ability use this amount of time and add 30 minutes. Count backwards to figure out your new bedtime. As you work on sleep restriction you wil gradually increase your sleep quantity. Is this something you think you are able to do?",
               otherUser,
               quickReplies: {
                 type: "radio", // or 'checkbox',

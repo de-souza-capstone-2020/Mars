@@ -100,7 +100,7 @@ export default class SleepDiaryEdit extends Component {
 
           <ScrollView style={styles.body}>
             <View style={styles.row}>
-              <Text style={styles.date}>{dateTime}</Text>
+              <Text style={styles.date}>Sleep Diary: {dateTime}</Text>
             </View>
             <View style={styles.row}>
               <View style={styles.question}>
