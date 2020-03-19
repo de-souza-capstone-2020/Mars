@@ -2,13 +2,14 @@ import { retrieveSleepDiaryData } from '../utils/save-utils';
 
 const user = {
   _id: 1,
-  name: "Developer"
+  name: "Developer",
+  avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
 };
 
 const otherUser = {
   _id: 2,
   name: "React Native",
-  avatar: "https://facebook.github.io/react/img/logo_og.png"
+  avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
 };
 
 const getID = () => Math.round(Math.random() * 1000000);
@@ -33,7 +34,8 @@ export const sleep_diary_response = reply => {
         },
         user: {
           _id: 2,
-          name: "React Native"
+          name: "React Native",
+          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
         }
       }
     ]);
@@ -84,7 +86,8 @@ export const sleep_diary_response = reply => {
         },
         user: {
           _id: getID(),
-          name: "React Native"
+          name: "React Native",
+          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
         }
       }
     ]);
@@ -109,7 +112,8 @@ export const sleep_diary_response = reply => {
         },
         user: {
           _id: getID(),
-          name: "React Native"
+          name: "React Native",
+          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
         }
       }
     ]);
@@ -189,7 +193,8 @@ export const sleep_diary_response = reply => {
         },
         user: {
           _id: getID(),
-          name: "React Native"
+          name: "React Native",
+          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
         }
       }
     ]);
@@ -222,7 +227,8 @@ export const conversation_flow_one = reply => {
               },
               user: {
                 _id: getID(),
-                name: "React Native"
+                name: "React Native",
+                avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
               }
             }
           ]);
@@ -251,7 +257,8 @@ export const conversation_flow_one = reply => {
               },
               user: {
                 _id: getID(),
-                name: "React Native"
+                name: "React Native",
+                avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
               }
             }
           ]);
@@ -280,7 +287,8 @@ export const conversation_flow_one = reply => {
               },
               user: {
                 _id: getID(),
-                name: "React Native"
+                name: "React Native",
+                avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
               }
             }
           ]);
@@ -308,7 +316,8 @@ export const conversation_flow_one = reply => {
               },
               user: {
                 _id: getID(),
-                name: "React Native"
+                name: "React Native",
+                avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
               }
             }
           ]);
@@ -336,7 +345,8 @@ export const conversation_flow_one = reply => {
               },
               user: {
                 _id: getID(),
-                name: "React Native"
+                name: "React Native",
+                avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
               }
             }
           ]);
@@ -368,7 +378,8 @@ export const conversation_flow_one = reply => {
               },
               user: {
                 _id: getID(),
-                name: "React Native"
+                name: "React Native",
+                avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
               }
             }
           ]);
@@ -400,7 +411,8 @@ export const conversation_flow_one = reply => {
               },
               user: {
                 _id: getID(),
-                name: "React Native"
+                name: "React Native",
+                avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
               }
             }
           ]);
@@ -424,7 +436,8 @@ export const conversation_flow_one = reply => {
               },
               user: {
                 _id: getID(),
-                name: "React Native"
+                name: "React Native",
+                avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
               }
             }
           ]);
@@ -456,7 +469,8 @@ export const conversation_flow_one = reply => {
               },
               user: {
                 _id: getID(),
-                name: "React Native"
+                name: "React Native",
+                avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
               }
             }
           ]);
@@ -484,7 +498,8 @@ export const conversation_flow_one = reply => {
               },
               user: {
                 _id: getID(),
-                name: "React Native"
+                name: "React Native",
+                avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
               }
             }
           ]);
@@ -512,7 +527,8 @@ export const conversation_flow_one = reply => {
               },
               user: {
                 _id: getID(),
-                name: "React Native"
+                name: "React Native",
+                avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
               }
             }
           ]);
@@ -536,7 +552,8 @@ export const conversation_flow_one = reply => {
               },
               user: {
                 _id: getID(),
-                name: "React Native"
+                name: "React Native",
+                avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
               }
             }
           ]);
@@ -556,7 +573,8 @@ export const conversation_flow_one = reply => {
               },
               user: {
                 _id: getID(),
-                name: "React Native"
+                name: "React Native",
+                avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
               }
             }
           ]);
@@ -580,7 +598,8 @@ export const conversation_flow_one = reply => {
             },
             user: {
               _id: getID(),
-              name: "React Native"
+              name: "React Native",
+              avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
             }
           }
         ]);
