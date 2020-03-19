@@ -186,7 +186,7 @@ export default class SleepDiary extends Component {
             <View style={styles.row}>
               <View style={styles.question}>
                 <Text style={styles.text}>
-                  What time was your final awakening?
+                  What time was your final awakening today?
                 </Text>
               </View>
               <View style={styles.answer}>
@@ -203,7 +203,7 @@ export default class SleepDiary extends Component {
             <View style={styles.row}>
               <View style={styles.question}>
                 <Text style={styles.text}>
-                  What time did you get out of bed that day?
+                  What time did you get out of bed today?
                 </Text>
               </View>
               <View style={styles.answer}>

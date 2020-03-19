@@ -20,13 +20,14 @@ import {
   sleep_diary_reminder_messages,
   sleep_diary_tip_2,
   sleep_diary_tip_1,
-  sleep_diary_tip_eff
+  sleep_diary_tip_eff,
 } from "../data/messages";
 import { getRandomAppState } from "../utils/helper-utils";
 import LottieLoader from "../loading";
 import { 
     sleep_diary_response,
-    conversation_flow_one
+    conversation_flow_one,
+    sleep_diary_tip_nap
 } from "../data/customActions";
 import SplashScreen from "../loading";
 import {s, colors} from "./styles";
@@ -61,6 +62,7 @@ export default class Home extends Component {
     getInBedTime: null,
     sleepTime: null,
     durationTotalWakeUp: null, 
+    didNap: "",
     sleep_tip: new Object()
   };
 
@@ -221,7 +223,6 @@ export default class Home extends Component {
   }
 
 
-
   getSleepData = async () => {
      const today = Moment(new Date()).format("MM-DD-YYYY")
      try {        
@@ -235,7 +236,7 @@ export default class Home extends Component {
               const getIntoBed = JSON.parse(key).getInBedTime;
               const leaveBed = JSON.parse(key).leaveBedTime;
               const durTotalWakeUp = JSON.parse(key).durationTotalWakeUp;
-
+              const nap = JSON.parse(key).didNap;
               const attemptTime = new Date(sleepAttempt);
               const wakeTime = new Date(wakeUp);
               const sleepyTime = new Date(sleep);
@@ -249,7 +250,8 @@ export default class Home extends Component {
                 sleepTime: sleepyTime, 
                 getInBedTime: getIntoBedTime,
                 leaveBedTime: getOutBedTime,
-                durationTotalWakeUp: durTotalWakeUp});
+                durationTotalWakeUp: durTotalWakeUp,
+                didNap: nap});
              }
              else
              {
@@ -270,7 +272,9 @@ export default class Home extends Component {
       reply = this.getNextConversation();
     } else if (reply.value.includes("_chp1")){
       reply = conversation_flow_one(reply);
-    } else {
+    } else if (reply.value.includes("_nap")){
+      reply = sleep_diary_tip_nap(reply);
+    }else {
       reply = sleep_diary_response(reply);
     }
     this.onSend(reply);
@@ -313,12 +317,14 @@ export default class Home extends Component {
         appState.add(3);
         appState.add(4);
         appState.add(5);
+        appState.add(6);
         this.setState(appState);
         return new sleep_diary_messages();
       case 2:
         appState.add(3);
         appState.add(4);
         appState.add(5);
+        appState.add(6);
         this.setState(appState);
         return new generic_tip();
       case 3: 
@@ -326,6 +332,7 @@ export default class Home extends Component {
       appState.add(2);
       appState.add(4);
       appState.add(5);
+      appState.add(6);
       this.setState(appState);
       const hours = Math.abs(sAT - sleepTime) / 36e5;
       if(this.state.sleepAttemptTime != null) {
@@ -334,7 +341,7 @@ export default class Home extends Component {
         }
         else{
         return new sleep_diary_tip_2();
-        }
+        } 
       }
       else{
         return new sleep_diary_reminder_messages();
@@ -343,27 +350,36 @@ export default class Home extends Component {
         appState.add(2);
         appState.add(3);
         appState.add(5);
+        appState.add(6);
         this.setState(appState);
         const reply = {value: "start_chp_one"};
         return new conversation_flow_one(reply);
-        default:
-          console.error("There is something wrong with the case statement");
-          return new generic_messages();
 
-      case 5: 
+      case 5:  //sleep efficency
           appState.delete(5);
           appState.add(2);
           appState.add(4);
           this.setState(appState);
-          console.log("********");
-          console.log();
           const sleepEfficiency = Math.floor((sleepDurationMins/totalTimeInBedMins)*100);
-          if(sleepEfficiency > 0) {
-          return new sleep_diary_tip_eff(sleepEfficiency);
+
+            if(sleepEfficiency > 0) {
+            return new sleep_diary_tip_eff(sleepEfficiency);
+            } 
+        
+        case 6:  //naps
+          appState.add(2);
+          appState.add(3);
+          appState.add(4);
+          appState.add(5);
+          this.setState(appState);
+          const napreply = {value: "nap_flow"};
+          if(this.state.didNap == "yes") {
+          return new sleep_diary_tip_nap(napreply);
           }
-          else{
-            return new sleep_diary_reminder_messages();
-          }
+          
+        default:
+          //console.error("There is something wrong with the case statement");
+          return new sleep_diary_reminder_messages();
     }
     
   };
