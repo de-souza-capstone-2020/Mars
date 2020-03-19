@@ -296,13 +296,13 @@ export default class Home extends Component {
 
     console.log("appState is:", appState);
     console.log("RandAppState is:", randAppState);
-    console.log("Sleep Time: ",sleepTime);
+    /* console.log("Sleep Time: ",sleepTime);
     console.log("Wake Time: ",wUT);
     console.log("Get in bed time: ",this.state.getInBedTime);
     console.log("Get out of bed time: ",this.state.leaveBedTime);
     console.log("Sleep Duration: ", sleepDurationMins);
     console.log("Total Time in Bed: ", totalTimeInBed);
-    console.log("Total Time in Bed Mins: ", totalTimeInBedMins);
+    console.log("Total Time in Bed Mins: ", totalTimeInBedMins); */
 
 
     if (this.state.appState.has(3)) {
