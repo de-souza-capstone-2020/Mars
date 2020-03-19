@@ -19,13 +19,15 @@ import {
   module,
   sleep_diary_reminder_messages,
   sleep_diary_tip_2,
-  sleep_diary_tip_1
+  sleep_diary_tip_1,
+  sleep_diary_tip_eff,
 } from "../data/messages";
 import { getRandomAppState,getNextAppState } from "../utils/helper-utils";
 import LottieLoader from "../loading";
 import { 
     sleep_diary_response,
-    conversation_flow_one
+    conversation_flow_one,
+    sleep_diary_tip_nap
 } from "../data/customActions";
 import SplashScreen from "../loading";
 import {s, colors} from "./styles";
@@ -58,6 +60,11 @@ export default class Home extends Component {
     appState: new Set(),
     sleepAttemptTime: null,
     wakeUpTime: null,
+    leaveBedTime: null,
+    getInBedTime: null,
+    sleepTime: null,
+    durationTotalWakeUp: null, 
+    didNap: "",
     sleep_tip: new Object()
   };
 
@@ -113,6 +120,7 @@ export default class Home extends Component {
           appState.add(2);
           appState.add(3);
           appState.add(4);
+          appState.add(5);
           this.setState({ appState });
         } else {
           //sleep diary has not been entered already
@@ -216,23 +224,39 @@ export default class Home extends Component {
     });
   }
 
+
   getSleepData = async () => {
      const today = Moment(new Date()).format("MM-DD-YYYY")
      try {        
              await AsyncStorage.getItem(today).then(key => {
-             if( key != null){
-             console.log("This is the key", key);
-             console.log("Sleep entry for today",JSON.parse(key));
-             const sleepAttempt = JSON.parse(key).attemptToSleepTime;
-             const wakeUp = JSON.parse(key).wakeUpTime;
-             const sleepdate = new Date(sleepAttempt);
-             const wakedate = new Date(wakeUp);
-             this.setState({sleepAttemptTime: sleepdate});
-             this.setState({wakeUpTime: wakedate}); 
-             console.log("sleepATTEMPT Time:", this.state.sleepAttemptTime); 
-             console.log("Wakey Time:", this.state.wakeUpTime);
+             if( key != null)
+             {
+              console.log("Sleep entry for today",JSON.parse(key));
+              const sleepAttempt = JSON.parse(key).attemptToSleepTime;
+              const wakeUp = JSON.parse(key).wakeUpTime;
+              const sleep = JSON.parse(key).sleepTime;
+              const getIntoBed = JSON.parse(key).getInBedTime;
+              const leaveBed = JSON.parse(key).leaveBedTime;
+              const durTotalWakeUp = JSON.parse(key).durationTotalWakeUp;
+              const nap = JSON.parse(key).didNap;
+              const attemptTime = new Date(sleepAttempt);
+              const wakeTime = new Date(wakeUp);
+              const sleepyTime = new Date(sleep);
+              const getIntoBedTime = new Date(getIntoBed);
+              const getOutBedTime = new Date(leaveBed);
+              //const durTotalWakeUp = new Date(durationTotalWakeUp);
+
+              this.setState({
+                sleepAttemptTime: attemptTime,
+                wakeUpTime: wakeTime,
+                sleepTime: sleepyTime, 
+                getInBedTime: getIntoBedTime,
+                leaveBedTime: getOutBedTime,
+                durationTotalWakeUp: durTotalWakeUp,
+                didNap: nap});
              }
-             else{
+             else
+             {
                console.log("Oooops no key")
              }
            });
@@ -240,7 +264,7 @@ export default class Home extends Component {
            console.log("Try error", error);
            //console.error(error);
         }
-   };
+  };
 
   determineResponse = reply => {
     const { appState } = this.state;
@@ -252,7 +276,9 @@ export default class Home extends Component {
       reply = this.getNextConversation();
     } else if (reply.value.includes("_chp1")){
       reply = conversation_flow_one(reply);
-    } else {
+    } else if (reply.value.includes("_nap")){
+      reply = sleep_diary_tip_nap(reply);
+    }else {
       reply = sleep_diary_response(reply);
     }
     this.onSend(reply);
@@ -262,10 +288,28 @@ export default class Home extends Component {
     const { appState } = this.state;
     const randAppState = getRandomAppState(appState);
     const nextAppState = getNextAppState(appState);
+    this.getSleepData();
+
+    const sAT = this.state.sleepAttemptTime;
+    const wUT = this.state.wakeUpTime;
+    const sleepTime = this.state.sleepTime;
+    const sleepDuration = (this.state.wakeUpTime - this.state.sleepTime) - this.state.durationTotalWakeUp;
+    const sleepDurationMins = Math.floor((sleepDuration /1000)/60);
+
+    const totalTimeInBed = (this.state.leaveBedTime - this.state.getInBedTime);
+    const totalTimeInBedMins = Math.floor((totalTimeInBed /1000)/60);
+
 
     console.log("appState is:", appState);
     console.log("RandAppState is:", randAppState);
-    this.getSleepData();
+    /* console.log("Sleep Time: ",sleepTime);
+    console.log("Wake Time: ",wUT);
+    console.log("Get in bed time: ",this.state.getInBedTime);
+    console.log("Get out of bed time: ",this.state.leaveBedTime);
+    console.log("Sleep Duration: ", sleepDurationMins);
+    console.log("Total Time in Bed: ", totalTimeInBed);
+    console.log("Total Time in Bed Mins: ", totalTimeInBedMins); */
+
 
     if (this.state.appState.has(3)) {
     this.getSleepData().then( data => {
@@ -282,25 +326,22 @@ export default class Home extends Component {
       case 2:
         appState.delete(2);
         appState.add(4);
+        appState.add(5);
+        appState.add(6);
         this.setState(appState);
         return new generic_tip(); ////produce a list of genderic tips that are dispensed daily(7 tips)
       case 3: 
       appState.delete(3);
       appState.add(2);
       this.setState(appState);
-      console.log("sleep attempt",this.state.sleepAttemptTime); 
-      const sAT = this.state.sleepAttemptTime;
-      const wUT = this.state.wakeUpTime;
-      const hours = Math.abs(sAT - wUT) / 36e5;
-      if(this.state.sleepAttemptTime != null)   {
-        if(hours>1){
-        console.log("Tell me my hours", hours);
+      const hours = Math.abs(sAT - sleepTime) / 36e5;
+      if(this.state.sleepAttemptTime != null) {
+      if(hours > 1){
         return new sleep_diary_tip_1();
         }
         else{
-        console.log("Tell me my hours", hours);
         return new sleep_diary_tip_2();
-        }
+        } 
       }
       else{
         return new sleep_diary_reminder_messages();
@@ -308,12 +349,37 @@ export default class Home extends Component {
       case 4:
         appState.delete(4);
         appState.add(3);
+        appState.add(5);
+        appState.add(6);
         this.setState(appState);
         const reply = {value: "start_chp_one"};
         return new conversation_flow_one(reply);
+
+      case 5:  //sleep efficency
+          appState.delete(5);
+          appState.add(2);
+          appState.add(4);
+          this.setState(appState);
+          const sleepEfficiency = Math.floor((sleepDurationMins/totalTimeInBedMins)*100);
+
+            if(sleepEfficiency > 0) {
+            return new sleep_diary_tip_eff(sleepEfficiency);
+            } 
+        
+        case 6:  //naps
+          appState.add(2);
+          appState.add(3);
+          appState.add(4);
+          appState.add(5);
+          this.setState(appState);
+          const napreply = {value: "nap_flow"};
+          if(this.state.didNap == "yes") {
+          return new sleep_diary_tip_nap(napreply);
+          }
+          
         default:
-          console.error("There is something wrong with the case statement");
-          return new generic_messages();
+          //console.error("There is something wrong with the case statement");
+          return new sleep_diary_reminder_messages();
     }
    };
 
