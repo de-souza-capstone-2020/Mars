@@ -3,8 +3,14 @@ const getID = () => Math.round(Math.random() * 1000000);
 const otherUser = {
   _id: 2,
   name: "React Native",
-  avatar: "https://facebook.github.io/react/img/logo_og.png"
+  avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
 };
+
+const user= {
+  _id: getID(),
+  name: "React Native",
+  avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
+}
 
 const sleep_diary_messages = () => {
   return [
@@ -27,7 +33,8 @@ const sleep_diary_messages = () => {
           }
         ]
       },
-      otherUser
+      otherUser,
+      user
     }
   ]
 } 
@@ -50,7 +57,8 @@ const generic_messages = () => {
           }
         ]
       },
-      otherUser
+      otherUser,
+      user
     }
   ]
 }
@@ -73,7 +81,8 @@ const sleep_diary_reminder_messages = () => {
           }
         ]
       },
-      otherUser
+      otherUser,
+      user
     }
   ]
 }
@@ -99,7 +108,8 @@ const generic_tip = () => {
           },
         ]
       },
-      otherUser
+      otherUser,
+      user
     }
   ]
 }
@@ -111,6 +121,7 @@ const sleep_diary_tip = () => {
       _id: getID(),
       text: "This is a sleep diary tip",
       otherUser,
+      user,
       quickReplies: {
         type: "radio", // or 'checkbox',
         keepIt: true,
@@ -132,6 +143,7 @@ const sleep_diary_tip_1 = () => {
       _id: getID(),
       text: "Sleep diary tip: Hey , lying in bed while awake reinforces the role of your bed as a stimulus for wakefulness.Spending less time in bed strengthens the role of your bed as the place to sleep.",
       otherUser,
+      user,
       quickReplies: {
         type: "radio", // or 'checkbox',
         keepIt: true,
@@ -153,6 +165,7 @@ const sleep_diary_tip_2 = () => {
       _id: getID(),
       text: "Sleep diary tip: You know now why spending excessive time in bed not sleeping is bad for your sleep pattern. Keep finding ways to reduce your time in bed!!",
       otherUser,
+      user,
       quickReplies: {
         type: "radio", // or 'checkbox',
         keepIt: true,
@@ -174,6 +187,7 @@ const module = () => {
       _id: getID(),
       text: "Module 1: .......",
       otherUser,
+      user,
       quickReplies: {
         type: "radio", // or 'checkbox',
         keepIt: true,

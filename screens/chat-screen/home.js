@@ -32,13 +32,15 @@ import {s, colors} from "./styles";
 
 const user = {
   _id: 1,
-  name: "Developer"
+  name: "Developer",
+  // image: "../../assets/sleep_avatar.png",
+  avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
 };
 
 const otherUser = {
   _id: 2,
   name: "React Native",
-  avatar: "https://facebook.github.io/react/img/logo_og.png"
+  avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
 };
 
 const date = Moment(date).format("MM-DD-YYYY")
@@ -400,6 +402,7 @@ export default class Home extends Component {
           renderInputToolbar={props => this.renderInputToolbar(props)}
           renderChatFooter={this.renderFooter}
           renderBubble={this.renderBubble}
+          showAvatarForEveryMessage={true}
         />
         <SleepDiary toggleModal={this.toggleModal} isVisible={isModalVisible} />
       </View>
