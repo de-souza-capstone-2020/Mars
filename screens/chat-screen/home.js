@@ -21,7 +21,7 @@ import {
   sleep_diary_tip_2,
   sleep_diary_tip_1
 } from "../data/messages";
-import { getRandomAppState } from "../utils/helper-utils";
+import { getRandomAppState,getNextAppState } from "../utils/helper-utils";
 import LottieLoader from "../loading";
 import { 
     sleep_diary_response,
@@ -70,7 +70,7 @@ export default class Home extends Component {
 };
   async componentDidMount() {
 
-   // AsyncStorage.removeItem(date);
+    AsyncStorage.removeItem(date);
     await this.isSleepDiaryEntered();
 
     //determining message type
@@ -241,6 +241,8 @@ export default class Home extends Component {
    };
 
   determineResponse = reply => {
+    const { appState } = this.state;
+    console.log("appState is:", appState);
     if (reply.value === "sleep_diary") {
       this.toggleModal();
       reply = this.getNextConversation();
@@ -257,33 +259,32 @@ export default class Home extends Component {
    getNextConversation =  () => {
     const { appState } = this.state;
     const randAppState = getRandomAppState(appState);
-    
+    const nextAppState = getNextAppState(appState);
+
     console.log("appState is:", appState);
     console.log("RandAppState is:", randAppState);
+    this.getSleepData();
 
     if (this.state.appState.has(3)) {
     this.getSleepData().then( data => {
       this.setState({sleep_tip: data});
       });
     }
-    console.log("*** this the sleep attempt time from state", this.state.sleepAttemptTime);
-    switch (randAppState) {
+    switch (nextAppState) {
       case 1:
         appState.delete(1);
         appState.add(2);
         appState.add(3);
-        appState.add(4);
         this.setState(appState);
         return new sleep_diary_messages();
       case 2:
-        appState.add(3);
+        appState.delete(2);
         appState.add(4);
         this.setState(appState);
-        return new generic_tip();
+        return new generic_tip(); ////produce a list of genderic tips that are dispensed daily(7 tips)
       case 3: 
       appState.delete(3);
       appState.add(2);
-      appState.add(4);
       this.setState(appState);
       console.log("sleep attempt",this.state.sleepAttemptTime); 
       const sAT = this.state.sleepAttemptTime;
@@ -303,7 +304,7 @@ export default class Home extends Component {
         return new sleep_diary_reminder_messages();
       }
       case 4:
-        appState.add(2);
+        appState.delete(4);
         appState.add(3);
         this.setState(appState);
         const reply = {value: "start_chp_one"};
@@ -312,7 +313,7 @@ export default class Home extends Component {
           console.error("There is something wrong with the case statement");
           return new generic_messages();
     }
-  };
+   };
 
   renderInputToolbar(props) {
     if (this.state.toolbar) {
