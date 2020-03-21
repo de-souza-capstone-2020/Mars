@@ -22,8 +22,10 @@ import {
   sleep_diary_tip_1,
   sleep_diary_tip_eff,
   sleep_diary_tip_eff_err,
+  sleep_diary_nap_good,
+  sleep_tip_1,
 } from "../data/messages";
-import { getRandomAppState,getNextAppState } from "../utils/helper-utils";
+import { getRandomAppState,getNextAppState,getRandomGenericTip} from "../utils/helper-utils";
 import LottieLoader from "../loading";
 import { 
     sleep_diary_response,
@@ -85,7 +87,6 @@ export default class Home extends Component {
 
     //determining message type
     const { appState } = this.state;
-    console.log("componentdidmount appState is:", appState);
     if (appState.size > 0) {
       if (appState.has(1)) {
         this.setState({ messages: new sleep_diary_messages() });
@@ -121,8 +122,6 @@ export default class Home extends Component {
           appState.clear();
           appState.add(2);
           appState.add(4);
-          appState.add(5);
-          appState.add(6);
           this.setState({ appState });
         } else {
           //sleep diary has not been entered already
@@ -270,7 +269,6 @@ export default class Home extends Component {
 
   determineResponse = reply => {
     const { appState } = this.state;
-    console.log("determine response appState is:", appState);
     if (reply.value === "sleep_diary") {
       this.toggleModal();
       reply = this.getNextConversation();
@@ -285,6 +283,22 @@ export default class Home extends Component {
     }
     this.onSend(reply);
   };
+
+randGenericTips = () =>{
+  const randNextTip = getRandomGenericTip();
+  console.log("next rand tip",randNextTip);
+  switch(randNextTip){
+    case 1:
+      return new sleep_tip_1();
+    case 2:
+      return new generic_messages();
+    case 3:
+        return new sleep_diary_tip();
+    default:
+    return new generic_tip();
+  }
+};
+
 
    getNextConversation =  () => {
     const { appState } = this.state;
@@ -327,8 +341,8 @@ export default class Home extends Component {
       case 2:
         appState.delete(2);
         appState.add(4);
-        this.setState(appState);
-        return new generic_tip(); ////produce a list of genderic tips that are dispensed daily(7 tips)
+       // this.setState(appState);
+        return this.randGenericTips(); ////produce a list of genderic tips that are dispensed daily(7 tips)
       case 3: 
       appState.delete(3);
       appState.add(6);
@@ -372,6 +386,9 @@ export default class Home extends Component {
           const napreply = {value: "nap_flow"};
           if(this.state.didNap == "yes") {
           return new sleep_diary_tip_nap(napreply);
+          }
+          else{
+            return new sleep_diary_nap_good();
           }
           
         default:

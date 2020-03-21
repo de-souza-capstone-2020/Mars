@@ -291,7 +291,7 @@ export const conversation_flow_one = reply => {
                 keepIt: true,
                 values: [
                   {
-                    title: "I would like to know more",
+                    title: "🧐 Explain..",
                     value: "know_more_please_chp1"
                   },
                   {
