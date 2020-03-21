@@ -311,9 +311,6 @@ export default class SleepDiary extends Component {
           </ScrollView>
           <View style={styles.confirmation}>
             <View style={styles.diaryButtons}>
-              <Button title="Cancel" onPress={toggleModal} />
-            </View>
-            <View style={styles.diaryButtons}>
               <Button title="Submit" onPress={this.onSubmitData} />
             </View>
           </View>
@@ -324,11 +321,7 @@ export default class SleepDiary extends Component {
   }
 }
 
-
-  const yesterday = new Date(new Date().getTime() - 24 * 60 * 60 * 1000);
-
-
-
+const yesterday = new Date(new Date().getTime() - 24 * 60 * 60 * 1000);
 
 const styles = StyleSheet.create({
   body: {

@@ -32,7 +32,8 @@ import LottieLoader from "../loading";
 import { 
     sleep_diary_response,
     conversation_flow_one,
-    sleep_diary_tip_nap
+    sleep_diary_tip_nap,
+    module_sleep_duration
 } from "../data/customActions";
 import SplashScreen from "../loading";
 import {s, colors} from "./styles";
@@ -282,6 +283,8 @@ export default class Home extends Component {
       reply = conversation_flow_one(reply);
     } else if (reply.value.includes("_nap")){
       reply = sleep_diary_tip_nap(reply);
+    }else if (reply.value.includes("_dur")){
+      reply = module_sleep_duration(reply);
     }else {
       reply = sleep_diary_response(reply);
     }
@@ -290,7 +293,6 @@ export default class Home extends Component {
 
 randGenericEndTips = () =>{
   const randNextTip = getRandomGenericTip();
-  console.log("next rand end tip",randNextTip);
   switch(randNextTip){
     case 1:
       return new sleep_tip_1();
@@ -305,7 +307,6 @@ randGenericEndTips = () =>{
 
 randGenericBeginTips = () =>{
   const randNextTip = getRandomGenericTip();
-  console.log("next rand begin tip",randNextTip);
   switch(randNextTip){
     case 1:
       return new generic_tip();
@@ -318,11 +319,28 @@ randGenericBeginTips = () =>{
   }
 };
 
+randModules = () =>{
+  const randNextTip = getRandomGenericTip();
+  console.log("next module state", randNextTip)
+  switch(randNextTip){
+    case 1:
+      var reply = {value: "sleep_dur"};
+      return new module_sleep_duration(reply);
+    case 2:
+      var reply = {value: "start_chp_one"};
+      return new conversation_flow_one(reply);
+    case 3:
+        return new generic_tip_2();
+    default:
+    return new generic_tip();
+  }
+};
+
 
    getNextConversation =  () => {
     const { appState } = this.state;
-    const randAppState = getRandomAppState(appState);
     const nextAppState = getNextAppState(appState);
+    
     this.getSleepData();
 
     const sAT = this.state.sleepAttemptTime;
@@ -344,8 +362,6 @@ randGenericBeginTips = () =>{
     console.log("Sleep Duration: ", sleepDurationMins);
     console.log("Total Time in Bed: ", totalTimeInBed);
     console.log("Total Time in Bed Mins: ", totalTimeInBedMins); */
-
-
     if (this.state.appState.has(3)) {
     this.getSleepData().then( data => {
       this.setState({sleep_tip: data});
@@ -363,8 +379,8 @@ randGenericBeginTips = () =>{
         this.setState(appState);
         return this.randGenericEndTips(); ////produce a list of genderic tips that are dispensed daily(7 tips)
       case 3:   //sleep hygiene tip    
-      appState.delete(3);
-      appState.add(5);
+        appState.delete(3);
+        appState.add(5);
       this.setState(appState);
       const hours = Math.abs(sAT - sleepTime) / 36e5;
       if(this.state.sleepAttemptTime != null) {
@@ -383,8 +399,7 @@ randGenericBeginTips = () =>{
         appState.delete(4);
         appState.add(3);
         this.setState(appState);
-        const reply = {value: "start_chp_one"};
-        return new conversation_flow_one(reply);
+        return this.randModules();
 
       case 5:  //sleep efficency
           appState.delete(5);
@@ -398,7 +413,6 @@ randGenericBeginTips = () =>{
             else if(sleepEfficiency > 0 && sleepEfficiency>100){
               return new sleep_diary_tip_eff_err();
             } 
-
         case 6:  //naps
           appState.delete(6);
           appState.add(2);

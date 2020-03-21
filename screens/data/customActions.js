@@ -764,3 +764,84 @@ export const conversation_flow_one = reply => {
   }
 
 }
+export const module_sleep_duration = reply => {
+  if (reply.value === "sleep_dur") {
+    return ([
+      {
+        createdAt,
+        _id: getID(),
+        text: "Did you know that not al healthy adults actually need 7 or 8 hours of sleep?",
+        quickReplies: {
+          type: "radio", // or 'checkbox',
+          keepIt: true,
+          values: [
+            {
+              title: "What do you mean?",
+              value: "why_dur"
+            },
+            {
+              title: "Yes we do!",
+              value: "no_believe_dur"
+            }
+          ]
+        },
+        user: {
+          _id: 2,
+          name: "React Native",
+          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
+        }
+      }
+    ]);
+  }
+
+  if (reply.value === "no_believe_dur") {
+    return ([
+      {
+        createdAt,
+        _id: getID(),
+        text: "In reality, everyone is different! We typically need between 6-10 hours but this is different for each individual.",
+        quickReplies: {
+          type: "radio", // or 'checkbox',
+          keepIt: true,
+          values: [
+            {
+              title: "Tell me more",
+              value: "why_dur"
+            },
+          ]
+        },
+        user: {
+          _id: 2,
+          name: "React Native",
+          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
+        }
+      }
+    ]);
+  }
+
+  if (reply.value === "why_dur") {
+    return ([
+      {
+        createdAt,
+        _id: getID(),
+        text: "If you’ve ever woken up and felt like you’ve overslept with only 8 hour of sleep, it might be because your body really only needs 6 hours!",
+        quickReplies: {
+          type: "radio", // or 'checkbox',
+          keepIt: true,
+          values: [
+            {
+              title: "Tell me more",
+              value: "why_dur"
+            },
+          ]
+        },
+        user: {
+          _id: 2,
+          name: "React Native",
+          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
+        }
+      }
+    ]);
+  }
+
+}
