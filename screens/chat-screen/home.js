@@ -15,7 +15,7 @@ import {
   generic_messages,
   sleep_diary_messages,
   generic_tip,
-  sleep_diary_tip,
+  sleep_tip_2,
   module,
   sleep_diary_reminder_messages,
   sleep_diary_tip_2,
@@ -24,6 +24,8 @@ import {
   sleep_diary_tip_eff_err,
   sleep_diary_nap_good,
   sleep_tip_1,
+  generic_tip_1,
+  generic_tip_2,
 } from "../data/messages";
 import { getRandomAppState,getNextAppState,getRandomGenericTip} from "../utils/helper-utils";
 import LottieLoader from "../loading";
@@ -87,12 +89,13 @@ export default class Home extends Component {
 
     //determining message type
     const { appState } = this.state;
+    console.log("componentdidmount appstate: ", appState)
     if (appState.size > 0) {
       if (appState.has(1)) {
         this.setState({ messages: new sleep_diary_messages() });
         appState.delete(1);
       } else if (appState.has(2)) {
-        this.setState({ messages: new generic_tip() });
+        this.setState({ messages: await this.randGenericBeginTips() });
         appState.delete(2);
       }
       this.setState({
@@ -284,16 +287,31 @@ export default class Home extends Component {
     this.onSend(reply);
   };
 
-randGenericTips = () =>{
+randGenericEndTips = () =>{
   const randNextTip = getRandomGenericTip();
-  console.log("next rand tip",randNextTip);
+  console.log("next rand end tip",randNextTip);
   switch(randNextTip){
     case 1:
       return new sleep_tip_1();
     case 2:
       return new generic_messages();
     case 3:
-        return new sleep_diary_tip();
+        return new sleep_tip_2();
+    default:
+    return new generic_tip();
+  }
+};
+
+randGenericBeginTips = async() =>{
+  const randNextTip = getRandomGenericTip();
+  console.log("next rand begin tip",randNextTip);
+  switch(randNextTip){
+    case 1:
+      return new generic_tip();
+    case 2:
+      return new generic_tip_1();
+    case 3:
+        return new generic_tip_2();
     default:
     return new generic_tip();
   }
@@ -342,7 +360,7 @@ randGenericTips = () =>{
         appState.delete(2);
         appState.add(4);
        // this.setState(appState);
-        return this.randGenericTips(); ////produce a list of genderic tips that are dispensed daily(7 tips)
+        return this.randGenericEndTips(); ////produce a list of genderic tips that are dispensed daily(7 tips)
       case 3: 
       appState.delete(3);
       appState.add(6);
