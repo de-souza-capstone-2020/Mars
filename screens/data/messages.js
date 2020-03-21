@@ -24,13 +24,14 @@ const sleep_diary_messages = () => {
         keepIt: true,
         values: [
           {
-            title: "not right now",
-            value: "not_right_now"
+            title: "Of course",
+            value: "sleep_diary"
           },
           {
-            title: "sure",
-            value: "sleep_diary"
+            title: "Not right now",
+            value: "not_right_now"
           }
+         
         ]
       },
       otherUser,
@@ -45,14 +46,14 @@ const generic_messages = () => {
     {
       _id: getID(),
       text:
-        "This is a generic message",
+        "When you get worried, keep a little journal to write down one worry at a time. You can return to old worries when you have alternate solutions\n. It’ll help detangle that mess of stress in your head and hopefully lead to an easier time falling asleep. ",
       createdAt: new Date(),
       quickReplies: {
         type: "radio", // or 'checkbox',
         keepIt: true,
         values: [
           {
-            title: "Hi Sleep Well",
+            title: "okay",
             value: "hi"
           }
         ]
@@ -76,8 +77,60 @@ const sleep_diary_reminder_messages = () => {
         keepIt: true,
         values: [
           {
-            title: "That makes sense",
+            title: "Maybe Later",
             value: "got_it"
+          },
+          {
+            title: "I'll do it now",
+            value: "sleep_diary"
+          }
+        ]
+      },
+      otherUser,
+      user
+    }
+  ]
+}
+
+const sleep_diary_nap_good = () => {
+  
+  return [
+    {
+      _id: getID(),
+      text:
+        "Yayy no daytime naps 😴!! Keep journaling methods that work to avoid napping during the day!",
+      createdAt: new Date(),
+      quickReplies: {
+        type: "radio", // or 'checkbox',
+        keepIt: true,
+        values: [
+          {
+            title: "I will 😀",
+            value: "got_it"
+          }
+        ]
+      },
+      otherUser,
+      user
+    }
+  ]
+}
+
+const sleep_tip_1= () => {
+  
+  return [
+    {
+      _id: getID(),
+      text:
+        "Sleep tip: Stick to a sleep schedule of the same bedtime 🌙 and wake up time 🌞, even on the weekends. This helps to regulate your body's clock and could help you fall asleep and stay asleep for the night",
+      createdAt: new Date(),
+      quickReplies: {
+        type: "radio", // or 'checkbox',
+        keepIt: true,
+        values: [
+          {
+            title: "That makes sense",
+            value: "hi"
           }
         ]
       },
@@ -91,19 +144,18 @@ const generic_tip = () => {
   return [
     {
       _id: getID(),
-      text:
-        "This is a general tip (e.g. don't consume caffeinated beverages before bed)",
+      text:"Hey, remember to limit the amount of caffeine ☕️ you consume before bed",
       createdAt: new Date(),
       quickReplies: {
         type: "radio", // or 'checkbox',
         keepIt: true,
         values: [
           {
-            title: "Got it",
+            title: "Coffee is 🤢",
             value: "got_it"
           },
           {
-            title: "Why not?",
+            title: "But i like coffee 😔",
             value: "why_caffeine"
           },
         ]
@@ -114,12 +166,64 @@ const generic_tip = () => {
   ]
 }
 
-const sleep_diary_tip = () => {
+const generic_tip_1 = () => {
+  return [
+    {
+      _id: getID(),
+      text:"Hey, do you have a relaxing bedtime ritual you practice?",
+      createdAt: new Date(),
+      quickReplies: {
+        type: "radio", // or 'checkbox',
+        keepIt: true,
+        values: [
+          {
+            title: "Yes,every night 👌",
+            value: "got_it"
+          },
+          {
+            title: "Nah, Should I 🤔?",
+            value: "why_ritual"
+          },
+        ]
+      },
+      otherUser,
+      user
+    }
+  ]
+}
+
+const generic_tip_2 = () => {
+  return [
+    {
+      _id: getID(),
+      text:" Hey do you know how your room affects your sleep?",
+      createdAt: new Date(),
+      quickReplies: {
+        type: "radio", // or 'checkbox',
+        keepIt: true,
+        values: [
+          {
+            title: "Yes,my room is zen 😌",
+            value: "got_it"
+          },
+          {
+            title: "Not really 🙃",
+            value: "why_mattress"
+          },
+        ]
+      },
+      otherUser,
+      user
+    }
+  ]
+}
+
+const sleep_tip_2 = () => {
   return [
     {
       createdAt: new Date(),
       _id: getID(),
-      text: "This is a sleep diary tip",
+      text: "Sleep Tip🥱: If you’ve been staying up late worrying. Do your worrying on paper 📓 and not in your head. Writing it down can be very helpful. Write down the worry and the possible solutions that come into mind.",
       otherUser,
       user,
       quickReplies: {
@@ -127,8 +231,8 @@ const sleep_diary_tip = () => {
         keepIt: true,
         values: [
           {
-            title: "got it",
-            value: "got_it"
+            title: "Won't worry! will journal!",
+            value: "hi"
           }
         ]
       },
@@ -149,7 +253,7 @@ const sleep_diary_tip_1 = () => {
         keepIt: true,
         values: [
           {
-            title: "got it",
+            title: "I'll work on staying out of bed",
             value: "got_it"
           }
         ]
@@ -171,7 +275,7 @@ const sleep_diary_tip_2 = () => {
         keepIt: true,
         values: [
           {
-            title: "got it",
+            title: "Yes! Progress💪",
             value: "got_it"
           }
         ]
@@ -187,6 +291,7 @@ const sleep_diary_tip_eff = (sleepEff) => {
       _id: getID(),
       text: "Your sleep efficency today is: " + sleepEff + "%",
       otherUser,
+      user,
       quickReplies: {
         type: "radio", // or 'checkbox',
         keepIt: true,
@@ -201,6 +306,26 @@ const sleep_diary_tip_eff = (sleepEff) => {
   ]
 }
 
+const sleep_diary_tip_eff_err= () => {
+  return [
+    {
+      createdAt: new Date(),
+      _id: getID(),
+      text: "Error calculating sleep efficiency",
+      otherUser,
+      quickReplies: {
+        type: "radio", // or 'checkbox',
+        keepIt: true,
+        values: [
+          {
+            title: "I see",
+            value: "got_it"
+          }
+        ]
+      },
+    }
+  ]
+}
 
 
 const module = () => {
@@ -224,4 +349,4 @@ const module = () => {
     }
   ]
 }
-export { generic_messages, sleep_diary_messages, generic_tip, sleep_diary_tip, module, sleep_diary_reminder_messages,sleep_diary_tip_2,sleep_diary_tip_1,sleep_diary_tip_eff};
+export { generic_messages, sleep_diary_messages, generic_tip,sleep_diary_nap_good, sleep_tip_2,generic_tip_2, module, sleep_diary_reminder_messages,sleep_diary_tip_2,sleep_diary_tip_1,sleep_diary_tip_eff,sleep_diary_tip_eff_err,sleep_tip_1,generic_tip_1};

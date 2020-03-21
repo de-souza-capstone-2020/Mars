@@ -98,15 +98,15 @@ export const sleep_diary_response = reply => {
     return ([
       {
         _id: getID(),
-        text: "Awesome, saved!",
+        text: "Awesome, sleep diary has been saved!",
         createdAt: new Date(),
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
           values: [
             {
-              title: "View your Saved Data",
-              value: "view_data"
+              title: "👌",
+              value: "got_it"
             }
           ]
         },
@@ -118,6 +118,8 @@ export const sleep_diary_response = reply => {
       }
     ]);
   }
+
+
   if (reply.value === "view_data") {
       const date = new Date();
       retrieveSleepDiaryData(date);
@@ -137,15 +139,15 @@ export const sleep_diary_response = reply => {
       {
         createdAt,
         _id: getID(),
-        text: "Ok, I will remind you later",
+        text: "It's important to enter your sleep diary information everyday, you can always edit it in the history tab",
         otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
           values: [
             {
-              title: "got it",
-              value: "got_it"
+              title: "Okay, I'll try",
+              value: "sleep_diary"
             }
           ]
         },
@@ -177,9 +179,8 @@ export const sleep_diary_response = reply => {
       {
         createdAt,
         _id: getID(),
-        text: "Caffeine is a type of drug that promotes alertness. These drugs are called “stimulants.”\n" + 
-        "Caffeine acts as an “adenosine receptor antagonist.” Adenosine is a substance in your body that promotes sleepiness." + 
-        "Caffeine blocks the adenosine receptor to keep you from feeling sleepy.",
+        text: "I know coffee is yummy, but...fun fact💡 \n" + "Adenosine is a substance in your body that promotes sleepiness.\n"+
+        "Caffeine in coffee is a stimulant that blocks the adenosine receptor to keep you from feeling sleepy" ,
         otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
@@ -187,6 +188,88 @@ export const sleep_diary_response = reply => {
           values: [
             {
               title: "got it",
+              value: "got_it"
+            }
+          ]
+        },
+        user: {
+          _id: getID(),
+          name: "React Native",
+          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
+        }
+      }
+    ]);
+  }
+
+  if (reply.value == "why_ritual") {
+    return ([
+      {
+        createdAt,
+        _id: getID(),
+        text: "A relaxing, routine activity right before bedtime ,done away from bright lights, helps separate your sleep time from activities that can cause excitement, stress or anxiety which can make it more difficult to fall asleep, get sound and deep sleep or remain asleep",
+        otherUser,
+        quickReplies: {
+          type: "radio", // or 'checkbox',
+          keepIt: true,
+          values: [
+            {
+              title: "I'll make a ritual",
+              value: "got_it"
+            }
+          ]
+        },
+        user: {
+          _id: getID(),
+          name: "React Native",
+          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
+        }
+      }
+    ]);
+  }
+
+  if (reply.value == "why_mattress") {
+    return ([
+      {
+        createdAt,
+        _id: getID(),
+        text: "Okay,first make sure your mattress 🛏️ and pillow is comfortable and supportive.(The one you have been using for years may have exceeded its life expectancy – about 9 or 10 years for most good quality mattresses)",
+        otherUser,
+        quickReplies: {
+          type: "radio", // or 'checkbox',
+          keepIt: true,
+          values: [
+            {
+              title: "What else?",
+              value: "more_bed"
+            },
+            {
+              title: "Got it",
+              value: "got_it"
+            }
+          ]
+        },
+        user: {
+          _id: getID(),
+          name: "React Native",
+          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
+        }
+      }
+    ]);
+  }
+
+  if (reply.value == "more_bed") {
+    return ([
+      {
+        createdAt,
+        _id: getID(),
+        text: "Make the room attractive and inviting for sleep but also free of allergens that might affect you and objects that might cause you to slip or fall if you have to get up during the night.",
+        otherUser,
+        quickReplies: {
+          type: "radio", // or 'checkbox',
+          keepIt: true,
+          values: [
+            {
+              title: "I'll work on that",
               value: "got_it"
             }
           ]
@@ -291,7 +374,7 @@ export const conversation_flow_one = reply => {
                 keepIt: true,
                 values: [
                   {
-                    title: "I would like to know more",
+                    title: "🧐 Explain..",
                     value: "know_more_please_chp1"
                   },
                   {
@@ -321,11 +404,11 @@ export const conversation_flow_one = reply => {
                 keepIt: true,
                 values: [
                   {
-                    title: "No",
+                    title: "👎",
                     value: "no_chp1"
                   },
                   {
-                    title: "Sure",
+                    title: "👍",
                     value: "work_on_sleep_efficiency_yes_chp1"
                   }
                 ]
@@ -659,14 +742,14 @@ export const conversation_flow_one = reply => {
           {
             createdAt,
             _id: getID(),
-            text: "Alright this chapter has ended.",
+            text: " On to the next",
             otherUser,
             quickReplies: {
               type: "radio", // or 'checkbox',
               keepIt: true,
               values: [
                 {
-                  title: "Next",
+                  title: "😎What else should i know?",
                   value: "got_it"
                 }
               ]

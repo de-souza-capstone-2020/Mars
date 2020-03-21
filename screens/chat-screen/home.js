@@ -15,14 +15,19 @@ import {
   generic_messages,
   sleep_diary_messages,
   generic_tip,
-  sleep_diary_tip,
+  sleep_tip_2,
   module,
   sleep_diary_reminder_messages,
   sleep_diary_tip_2,
   sleep_diary_tip_1,
   sleep_diary_tip_eff,
+  sleep_diary_tip_eff_err,
+  sleep_diary_nap_good,
+  sleep_tip_1,
+  generic_tip_1,
+  generic_tip_2,
 } from "../data/messages";
-import { getRandomAppState } from "../utils/helper-utils";
+import { getRandomAppState,getNextAppState,getRandomGenericTip} from "../utils/helper-utils";
 import LottieLoader from "../loading";
 import { 
     sleep_diary_response,
@@ -79,17 +84,19 @@ export default class Home extends Component {
 };
   async componentDidMount() {
 
-    AsyncStorage.removeItem(date);
+    //AsyncStorage.clear();
+   // AsyncStorage.removeItem(date);
     await this.isSleepDiaryEntered();
 
     //determining message type
     const { appState } = this.state;
+    console.log("componentdidmount appstate: ", appState)
     if (appState.size > 0) {
       if (appState.has(1)) {
         this.setState({ messages: new sleep_diary_messages() });
         appState.delete(1);
-      } else if (appState.has(2)) {
-        this.setState({ messages: new generic_tip() });
+      } else if (appState.has(2)) { //if sleepdiary has been entered and you return to the app you get a random generic tip to begin
+        this.setState({ messages:  this.randGenericBeginTips()});
         appState.delete(2);
       }
       this.setState({
@@ -118,15 +125,13 @@ export default class Home extends Component {
           //sleep diary is found for the day
           appState.clear();
           appState.add(2);
-          appState.add(3);
           appState.add(4);
-          appState.add(5);
           this.setState({ appState });
         } else {
           //sleep diary has not been entered already
           appState.clear();
           appState.add(1);
-          appState.add(2);
+          appState.add(7);
           this.setState({ appState });
         }
       });
@@ -177,7 +182,7 @@ export default class Home extends Component {
           sentMessages,
           Platform.OS !== "web"
         ),
-        typingText: "Chat bot is typing...",
+        //typingText: "Chat bot is typing...",
         step
       };
     });
@@ -267,6 +272,7 @@ export default class Home extends Component {
   };
 
   determineResponse = reply => {
+    const { appState } = this.state;
     if (reply.value === "sleep_diary") {
       this.toggleModal();
       reply = this.getNextConversation();
@@ -282,13 +288,46 @@ export default class Home extends Component {
     this.onSend(reply);
   };
 
+randGenericEndTips = () =>{
+  const randNextTip = getRandomGenericTip();
+  console.log("next rand end tip",randNextTip);
+  switch(randNextTip){
+    case 1:
+      return new sleep_tip_1();
+    case 2:
+      return new generic_messages();
+    case 3:
+        return new sleep_tip_2();
+    default:
+    return new generic_tip();
+  }
+};
+
+randGenericBeginTips = () =>{
+  const randNextTip = getRandomGenericTip();
+  console.log("next rand begin tip",randNextTip);
+  switch(randNextTip){
+    case 1:
+      return new generic_tip();
+    case 2:
+      return new generic_tip_1();
+    case 3:
+        return new generic_tip_2();
+    default:
+    return new generic_tip();
+  }
+};
+
+
    getNextConversation =  () => {
     const { appState } = this.state;
     const randAppState = getRandomAppState(appState);
+    const nextAppState = getNextAppState(appState);
+    this.getSleepData();
+
     const sAT = this.state.sleepAttemptTime;
     const wUT = this.state.wakeUpTime;
     const sleepTime = this.state.sleepTime;
-   // const totalSleepTime = Math.abs(this.state.wakeUpTime - sleepTime) ;
     const sleepDuration = (this.state.wakeUpTime - this.state.sleepTime) - this.state.durationTotalWakeUp;
     const sleepDurationMins = Math.floor((sleepDuration /1000)/60);
 
@@ -296,8 +335,8 @@ export default class Home extends Component {
     const totalTimeInBedMins = Math.floor((totalTimeInBed /1000)/60);
 
 
-    console.log("appState is:", appState);
-    console.log("RandAppState is:", randAppState);
+    console.log("getnextconvo appState is:", appState);
+    console.log("NextAppState is:", nextAppState);
     /* console.log("Sleep Time: ",sleepTime);
     console.log("Wake Time: ",wUT);
     console.log("Get in bed time: ",this.state.getInBedTime);
@@ -312,29 +351,24 @@ export default class Home extends Component {
       this.setState({sleep_tip: data});
       });
     }
-    switch (randAppState) {
-      case 1:
+    switch (nextAppState) {
+      case 1: 
+      //returns message that asks user to enter sleep diary, this is not in use atm, happens after case 6
         appState.delete(1);
         appState.add(2);
-        appState.add(3);
-        appState.add(4);
-        appState.add(5);
-        appState.add(6);
         this.setState(appState);
         return new sleep_diary_messages();
-      case 2:
-        appState.add(3);
+      case 2: 
+      //returns a random generic tip that terminates the convo with a 'bye' , it is the last message returned
+        appState.delete(2);
         appState.add(4);
-        appState.add(5);
-        appState.add(6);
         this.setState(appState);
-        return new generic_tip();
-      case 3: 
+        return this.randGenericEndTips(); 
+      case 3:   
+      //returns a sleep hygiene tip based on sleep diary calculation or sleep diary reminder message if state has not been set 
+      //happens after conversation flow 1 is completed 
       appState.delete(3);
-      appState.add(2);
-      appState.add(4);
       appState.add(5);
-      appState.add(6);
       this.setState(appState);
       const hours = Math.abs(sAT - sleepTime) / 36e5;
       if(this.state.sleepAttemptTime != null) {
@@ -346,45 +380,52 @@ export default class Home extends Component {
         } 
       }
       else{
+
         return new sleep_diary_reminder_messages();
       }
-      case 4:
-        appState.add(2);
+      case 4: //returns converastion flow one, happens after initial generic tip is given 
+        appState.delete(4);
         appState.add(3);
-        appState.add(5);
-        appState.add(6);
         this.setState(appState);
         const reply = {value: "start_chp_one"};
         return new conversation_flow_one(reply);
 
-      case 5:  //sleep efficency
+      case 5:  //returns sleep efficency to the user based on sleep diary, happens after case 3
           appState.delete(5);
-          appState.add(2);
-          appState.add(4);
+          appState.add(6);
           this.setState(appState);
           const sleepEfficiency = Math.floor((sleepDurationMins/totalTimeInBedMins)*100);
 
-            if(sleepEfficiency > 0) {
+            if(sleepEfficiency > 0 && sleepEfficiency<=100) {
             return new sleep_diary_tip_eff(sleepEfficiency);
             } 
-        
-        case 6:  //naps
+            else if(sleepEfficiency > 0 && sleepEfficiency>100){
+              return new sleep_diary_tip_eff_err();
+            } 
+
+        case 6:  //returns nap tips, happens after case 5
+          appState.delete(6);
           appState.add(2);
-          appState.add(3);
-          appState.add(4);
-          appState.add(5);
           this.setState(appState);
           const napreply = {value: "nap_flow"};
           if(this.state.didNap == "yes") {
           return new sleep_diary_tip_nap(napreply);
           }
+          else if(this.state.didNap == "no"){
+            return new sleep_diary_nap_good();
+          }       
+        case 7: 
+        //returns a random generic tip after at the begining if sleep diary has not been entered(line 134 )
+            appState.delete(7);
+            appState.add(4);
+            this.setState(appState);
+            return this.randGenericBeginTips(); ////produce a list of genderic tips that are dispensed daily(7 tips)
           
         default:
           //console.error("There is something wrong with the case statement");
           return new sleep_diary_reminder_messages();
     }
-    
-  };
+   };
 
   renderInputToolbar(props) {
     if (this.state.toolbar) {
