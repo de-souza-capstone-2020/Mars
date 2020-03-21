@@ -84,7 +84,7 @@ export default class Home extends Component {
 };
   async componentDidMount() {
 
-    //AsyncStorage.removeItem(date);
+    AsyncStorage.removeItem(date);
     await this.isSleepDiaryEntered();
 
     //determining message type
@@ -95,7 +95,7 @@ export default class Home extends Component {
         this.setState({ messages: new sleep_diary_messages() });
         appState.delete(1);
       } else if (appState.has(2)) {
-        this.setState({ messages: await this.randGenericBeginTips() });
+        this.setState({ messages:  this.randGenericBeginTips()});
         appState.delete(2);
       }
       this.setState({
@@ -130,7 +130,7 @@ export default class Home extends Component {
           //sleep diary has not been entered already
           appState.clear();
           appState.add(1);
-          appState.add(2);
+          appState.add(7);
           this.setState({ appState });
         }
       });
@@ -302,7 +302,7 @@ randGenericEndTips = () =>{
   }
 };
 
-randGenericBeginTips = async() =>{
+randGenericBeginTips = () =>{
   const randNextTip = getRandomGenericTip();
   console.log("next rand begin tip",randNextTip);
   switch(randNextTip){
@@ -359,22 +359,24 @@ randGenericBeginTips = async() =>{
       case 2:
         appState.delete(2);
         appState.add(4);
-       // this.setState(appState);
+        this.setState(appState);
         return this.randGenericEndTips(); ////produce a list of genderic tips that are dispensed daily(7 tips)
-      case 3: 
-      appState.delete(3);
-      appState.add(5);
-      this.setState(appState);
+      case 3:       
       const hours = Math.abs(sAT - sleepTime) / 36e5;
       if(this.state.sleepAttemptTime != null) {
+        appState.delete(3);
+        appState.add(5);
+        this.setState(appState);
       if(hours > 1){
         return new sleep_diary_tip_1();
         }
         else{
         return new sleep_diary_tip_2();
         } 
+
       }
       else{
+        
         return new sleep_diary_reminder_messages();
       }
       case 4:
@@ -406,7 +408,12 @@ randGenericBeginTips = async() =>{
           }
           else{
             return new sleep_diary_nap_good();
-          }
+          }       
+        case 7:
+            appState.delete(7);
+            appState.add(4);
+            this.setState(appState);
+            return this.randGenericBeginTips(); ////produce a list of genderic tips that are dispensed daily(7 tips)
           
         default:
           //console.error("There is something wrong with the case statement");
