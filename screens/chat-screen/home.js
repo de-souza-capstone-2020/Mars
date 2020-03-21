@@ -84,7 +84,8 @@ export default class Home extends Component {
 };
   async componentDidMount() {
 
-    AsyncStorage.clear();
+    //AsyncStorage.clear();
+   // AsyncStorage.removeItem(date);
     await this.isSleepDiaryEntered();
 
     //determining message type
@@ -397,7 +398,7 @@ randGenericBeginTips = () =>{
             else if(sleepEfficiency > 0 && sleepEfficiency>100){
               return new sleep_diary_tip_eff_err();
             } 
-                  
+
         case 6:  //naps
           appState.delete(6);
           appState.add(2);
