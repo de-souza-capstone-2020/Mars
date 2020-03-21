@@ -84,7 +84,7 @@ export default class Home extends Component {
 };
   async componentDidMount() {
 
-    AsyncStorage.removeItem(date);
+    AsyncStorage.clear();
     await this.isSleepDiaryEntered();
 
     //determining message type
@@ -356,12 +356,12 @@ randGenericBeginTips = () =>{
         appState.add(2);
         this.setState(appState);
         return new sleep_diary_messages();
-      case 2:
+      case 2: //ending generic tip
         appState.delete(2);
         appState.add(4);
         this.setState(appState);
         return this.randGenericEndTips(); ////produce a list of genderic tips that are dispensed daily(7 tips)
-      case 3:       
+      case 3:   //sleep hygiene tip    
       appState.delete(3);
       appState.add(5);
       this.setState(appState);
@@ -373,13 +373,12 @@ randGenericBeginTips = () =>{
         else{
         return new sleep_diary_tip_2();
         } 
-
       }
       else{
 
-        return new sleep_diary_reminder_messages(appstate);
+        return new sleep_diary_reminder_messages();
       }
-      case 4:
+      case 4: 
         appState.delete(4);
         appState.add(3);
         this.setState(appState);
@@ -397,7 +396,8 @@ randGenericBeginTips = () =>{
             } 
             else if(sleepEfficiency > 0 && sleepEfficiency>100){
               return new sleep_diary_tip_eff_err();
-            }       
+            } 
+                  
         case 6:  //naps
           appState.delete(6);
           appState.add(2);
@@ -406,10 +406,10 @@ randGenericBeginTips = () =>{
           if(this.state.didNap == "yes") {
           return new sleep_diary_tip_nap(napreply);
           }
-          else{
+          else if(this.state.didNap == "no"){
             return new sleep_diary_nap_good();
           }       
-        case 7:
+        case 7: //initial generic tips
             appState.delete(7);
             appState.add(4);
             this.setState(appState);

@@ -24,13 +24,14 @@ const sleep_diary_messages = () => {
         keepIt: true,
         values: [
           {
-            title: "not right now",
-            value: "not_right_now"
-          },
-          {
             title: "Of course",
             value: "sleep_diary"
+          },
+          {
+            title: "Not right now",
+            value: "not_right_now"
           }
+         
         ]
       },
       otherUser,

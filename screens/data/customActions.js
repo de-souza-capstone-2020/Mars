@@ -179,7 +179,7 @@ export const sleep_diary_response = reply => {
       {
         createdAt,
         _id: getID(),
-        text: "I know coffee is yummy, but...fun fact\n" + "Adenosine is a substance in your body that promotes sleepiness.\n"+
+        text: "I know coffee is yummy, but...fun fact💡 \n" + "Adenosine is a substance in your body that promotes sleepiness.\n"+
         "Caffeine in coffee is a stimulant that blocks the adenosine receptor to keep you from feeling sleepy" ,
         otherUser,
         quickReplies: {
@@ -241,6 +241,10 @@ export const sleep_diary_response = reply => {
             {
               title: "What else?",
               value: "more_bed"
+            },
+            {
+              title: "Got it",
+              value: "got_it"
             }
           ]
         },
