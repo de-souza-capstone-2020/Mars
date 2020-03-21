@@ -363,7 +363,7 @@ randGenericBeginTips = async() =>{
         return this.randGenericEndTips(); ////produce a list of genderic tips that are dispensed daily(7 tips)
       case 3: 
       appState.delete(3);
-      appState.add(6);
+      appState.add(5);
       this.setState(appState);
       const hours = Math.abs(sAT - sleepTime) / 36e5;
       if(this.state.sleepAttemptTime != null) {
@@ -386,7 +386,7 @@ randGenericBeginTips = async() =>{
 
       case 5:  //sleep efficency
           appState.delete(5);
-          appState.add(3);
+          appState.add(6);
           this.setState(appState);
           const sleepEfficiency = Math.floor((sleepDurationMins/totalTimeInBedMins)*100);
 
@@ -395,8 +395,7 @@ randGenericBeginTips = async() =>{
             } 
             else if(sleepEfficiency > 0 && sleepEfficiency>100){
               return new sleep_diary_tip_eff_err();
-            }
-        
+            }       
         case 6:  //naps
           appState.delete(6);
           appState.add(2);
