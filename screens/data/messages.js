@@ -28,7 +28,7 @@ const sleep_diary_messages = () => {
             value: "not_right_now"
           },
           {
-            title: "sure",
+            title: "Of course",
             value: "sleep_diary"
           }
         ]
@@ -45,7 +45,7 @@ const generic_messages = () => {
     {
       _id: getID(),
       text:
-        "Keep a little journal to write down one worry at a time and you can return to old worries when you have alternate solutions. It’ll help detangle that mess of stress in your head and hopefully lead to an easier time falling asleep. ",
+        "When you get worried, keep a little journal to write down one worry at a time. You can return to old worries when you have alternate solutions\n. It’ll help detangle that mess of stress in your head and hopefully lead to an easier time falling asleep. ",
       createdAt: new Date(),
       quickReplies: {
         type: "radio", // or 'checkbox',
@@ -76,8 +76,12 @@ const sleep_diary_reminder_messages = () => {
         keepIt: true,
         values: [
           {
-            title: "That makes sense",
+            title: "Maybe Later",
             value: "got_it"
+          },
+          {
+            title: "I'll do it now",
+            value: "sleep_diary"
           }
         ]
       },

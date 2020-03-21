@@ -362,11 +362,11 @@ randGenericBeginTips = () =>{
         this.setState(appState);
         return this.randGenericEndTips(); ////produce a list of genderic tips that are dispensed daily(7 tips)
       case 3:       
+      appState.delete(3);
+      appState.add(5);
+      this.setState(appState);
       const hours = Math.abs(sAT - sleepTime) / 36e5;
       if(this.state.sleepAttemptTime != null) {
-        appState.delete(3);
-        appState.add(5);
-        this.setState(appState);
       if(hours > 1){
         return new sleep_diary_tip_1();
         }
@@ -376,8 +376,8 @@ randGenericBeginTips = () =>{
 
       }
       else{
-        
-        return new sleep_diary_reminder_messages();
+
+        return new sleep_diary_reminder_messages(appstate);
       }
       case 4:
         appState.delete(4);

@@ -98,15 +98,15 @@ export const sleep_diary_response = reply => {
     return ([
       {
         _id: getID(),
-        text: "Awesome, saved!",
+        text: "Awesome, sleep diary has been saved!",
         createdAt: new Date(),
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
           values: [
             {
-              title: "View your Saved Data",
-              value: "view_data"
+              title: "👌",
+              value: "got_it"
             }
           ]
         },
@@ -118,6 +118,8 @@ export const sleep_diary_response = reply => {
       }
     ]);
   }
+
+
   if (reply.value === "view_data") {
       const date = new Date();
       retrieveSleepDiaryData(date);
@@ -137,15 +139,15 @@ export const sleep_diary_response = reply => {
       {
         createdAt,
         _id: getID(),
-        text: "Ok, I will remind you later",
+        text: "It's important to enter your sleep diary information everyday, you can always edit it in the history tab",
         otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
           values: [
             {
-              title: "got it",
-              value: "got_it"
+              title: "Okay, I'll try",
+              value: "sleep_diary"
             }
           ]
         },
