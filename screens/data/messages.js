@@ -92,7 +92,7 @@ const generic_tip = () => {
     {
       _id: getID(),
       text:
-        "This is a general tip (e.g. don't consume caffeinated beverages before bed)",
+        "Sleep tip: If you have a problem with napping too much. Write down alternative solutions on apiece of paper. Call someone who will keep you from napping and have them suggest alternatives when you’re really struggling not to nap. Write pros and cons to each strategy.",
       createdAt: new Date(),
       quickReplies: {
         type: "radio", // or 'checkbox',
@@ -201,6 +201,26 @@ const sleep_diary_tip_eff = (sleepEff) => {
   ]
 }
 
+const sleep_diary_tip_eff_err= () => {
+  return [
+    {
+      createdAt: new Date(),
+      _id: getID(),
+      text: "Error calculating sleep efficiency",
+      otherUser,
+      quickReplies: {
+        type: "radio", // or 'checkbox',
+        keepIt: true,
+        values: [
+          {
+            title: "I see",
+            value: "got_it"
+          }
+        ]
+      },
+    }
+  ]
+}
 
 
 const module = () => {
@@ -224,4 +244,4 @@ const module = () => {
     }
   ]
 }
-export { generic_messages, sleep_diary_messages, generic_tip, sleep_diary_tip, module, sleep_diary_reminder_messages,sleep_diary_tip_2,sleep_diary_tip_1,sleep_diary_tip_eff};
+export { generic_messages, sleep_diary_messages, generic_tip, sleep_diary_tip, module, sleep_diary_reminder_messages,sleep_diary_tip_2,sleep_diary_tip_1,sleep_diary_tip_eff,sleep_diary_tip_eff_err};

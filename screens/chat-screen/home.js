@@ -21,6 +21,7 @@ import {
   sleep_diary_tip_2,
   sleep_diary_tip_1,
   sleep_diary_tip_eff,
+  sleep_diary_tip_eff_err,
 } from "../data/messages";
 import { getRandomAppState,getNextAppState } from "../utils/helper-utils";
 import LottieLoader from "../loading";
@@ -79,11 +80,12 @@ export default class Home extends Component {
 };
   async componentDidMount() {
 
-    AsyncStorage.removeItem(date);
+    //AsyncStorage.removeItem(date);
     await this.isSleepDiaryEntered();
 
     //determining message type
     const { appState } = this.state;
+    console.log("componentdidmount appState is:", appState);
     if (appState.size > 0) {
       if (appState.has(1)) {
         this.setState({ messages: new sleep_diary_messages() });
@@ -118,9 +120,9 @@ export default class Home extends Component {
           //sleep diary is found for the day
           appState.clear();
           appState.add(2);
-          appState.add(3);
           appState.add(4);
           appState.add(5);
+          appState.add(6);
           this.setState({ appState });
         } else {
           //sleep diary has not been entered already
@@ -177,7 +179,7 @@ export default class Home extends Component {
           sentMessages,
           Platform.OS !== "web"
         ),
-        typingText: "Chat bot is typing...",
+        //typingText: "Chat bot is typing...",
         step
       };
     });
@@ -268,7 +270,7 @@ export default class Home extends Component {
 
   determineResponse = reply => {
     const { appState } = this.state;
-    console.log("appState is:", appState);
+    console.log("determine response appState is:", appState);
     if (reply.value === "sleep_diary") {
       this.toggleModal();
       reply = this.getNextConversation();
@@ -300,8 +302,8 @@ export default class Home extends Component {
     const totalTimeInBedMins = Math.floor((totalTimeInBed /1000)/60);
 
 
-    console.log("appState is:", appState);
-    console.log("RandAppState is:", randAppState);
+    console.log("getnextconvo appState is:", appState);
+    console.log("NextAppState is:", nextAppState);
     /* console.log("Sleep Time: ",sleepTime);
     console.log("Wake Time: ",wUT);
     console.log("Get in bed time: ",this.state.getInBedTime);
@@ -320,19 +322,16 @@ export default class Home extends Component {
       case 1:
         appState.delete(1);
         appState.add(2);
-        appState.add(3);
         this.setState(appState);
         return new sleep_diary_messages();
       case 2:
         appState.delete(2);
         appState.add(4);
-        appState.add(5);
-        appState.add(6);
         this.setState(appState);
         return new generic_tip(); ////produce a list of genderic tips that are dispensed daily(7 tips)
       case 3: 
       appState.delete(3);
-      appState.add(2);
+      appState.add(6);
       this.setState(appState);
       const hours = Math.abs(sAT - sleepTime) / 36e5;
       if(this.state.sleepAttemptTime != null) {
@@ -349,28 +348,26 @@ export default class Home extends Component {
       case 4:
         appState.delete(4);
         appState.add(3);
-        appState.add(5);
-        appState.add(6);
         this.setState(appState);
         const reply = {value: "start_chp_one"};
         return new conversation_flow_one(reply);
 
       case 5:  //sleep efficency
           appState.delete(5);
-          appState.add(2);
-          appState.add(4);
+          appState.add(3);
           this.setState(appState);
           const sleepEfficiency = Math.floor((sleepDurationMins/totalTimeInBedMins)*100);
 
-            if(sleepEfficiency > 0) {
+            if(sleepEfficiency > 0 && sleepEfficiency<=100) {
             return new sleep_diary_tip_eff(sleepEfficiency);
             } 
+            else if(sleepEfficiency > 0 && sleepEfficiency>100){
+              return new sleep_diary_tip_eff_err();
+            }
         
         case 6:  //naps
+          appState.delete(6);
           appState.add(2);
-          appState.add(3);
-          appState.add(4);
-          appState.add(5);
           this.setState(appState);
           const napreply = {value: "nap_flow"};
           if(this.state.didNap == "yes") {
