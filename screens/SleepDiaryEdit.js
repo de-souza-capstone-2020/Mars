@@ -20,16 +20,16 @@ export default class SleepDiaryEdit extends Component {
     const {diaryInfo } = props;
     this.state = {
       sleepQuality: diaryInfo.sleepQuality || "",
-      sleepTime: diaryInfo.sleepTime || new Date(),
-      attemptToSleepTime: diaryInfo.attemptToSleepTime || new Date(),
-      durationTillSleep: diaryInfo.durationTillSleep || "",
-      numTimesWakeUp: diaryInfo.numTimesWakeUp || "",
-      durationTotalWakeUp: diaryInfo.durationTillSleep || "",
+      sleepTime: diaryInfo.sleepTime || yesterday,
+      attemptToSleepTime: diaryInfo.attemptToSleepTime || yesterday,
+      getInBedTime: diaryInfo.getInBedTime || yesterday,
+      numTimesWakeUp: diaryInfo.numTimesWakeUp || 0,
+      durationTotalWakeUp: diaryInfo.durationTillSleep || 0,
       wakeUpTime: diaryInfo.wakeUpTime || new Date(),
       leaveBedTime: diaryInfo.leaveBedTime || new Date(),
       didNap: diaryInfo.didNap || "",
       napTime: diaryInfo.napTime || new Date(),
-      napDuration: diaryInfo.napDuration || "",
+      napDuration: diaryInfo.napDuration || 0,
       others: diaryInfo.others || "",
       dateTime: diaryInfo.dateTime || "Time Invalid"
     };
@@ -41,7 +41,7 @@ export default class SleepDiaryEdit extends Component {
         sleepQuality,
         sleepTime,
         attemptToSleepTime,
-        durationTillSleep,
+        getInBedTime,
         numTimesWakeUp,
         durationTotalWakeUp,
         wakeUpTime,
@@ -57,7 +57,7 @@ export default class SleepDiaryEdit extends Component {
         sleepQuality,
         sleepTime,
         attemptToSleepTime,
-        durationTillSleep,
+        getInBedTime,
         numTimesWakeUp,
         durationTotalWakeUp,
         wakeUpTime,
@@ -79,7 +79,7 @@ export default class SleepDiaryEdit extends Component {
       sleepQuality,
       sleepTime,
       attemptToSleepTime,
-      durationTillSleep,
+      getInBedTime,
       numTimesWakeUp,
       durationTotalWakeUp,
       wakeUpTime,
@@ -108,8 +108,8 @@ export default class SleepDiaryEdit extends Component {
               </View>
               <View style={styles.answer}>
                 <DatePicker
-                  date={sleepTime}
-                  onDateChange={sleepTime => this.setState({ sleepTime })}
+                  date={getInBedTime}
+                  onDateChange={getInBedTime => this.setState({ getInBedTime})}
                   mode={"time"}
                   fadeToColor={"none"}
                   textColor={"#000000"}
@@ -139,18 +139,17 @@ export default class SleepDiaryEdit extends Component {
             <View style={styles.row}>
               <View style={styles.question}>
                 <Text style={styles.text}>
-                  How long did it take you to fall asleep (min)?
+                What time did you fall asleep?
                 </Text>
               </View>
               <View style={styles.answer}>
-                <TextInput
-                  placeholder={"0.5"}
-                  style={styles.textBox}
-                  keyboardType="numeric"
-                  value={durationTillSleep}
-                  onChangeText={durationTillSleep =>
-                    this.setState({ durationTillSleep })
-                  }
+                <DatePicker
+                  date={sleepTime}
+                  onDateChange={sleepTime => this.setState({ sleepTime })}
+                  mode={"time"}
+                  fadeToColor={"none"}
+                  textColor={"#000000"}
+                  style={{ height: 50, width: 120 }}
                 />
               </View>
             </View>
@@ -331,6 +330,8 @@ export default class SleepDiaryEdit extends Component {
     );
   }
 }
+
+const yesterday = new Date(new Date().getTime() - 24 * 60 * 60 * 1000);
 
 const styles = StyleSheet.create({
   body: {
