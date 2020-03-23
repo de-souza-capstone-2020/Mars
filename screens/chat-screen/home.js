@@ -55,7 +55,7 @@ const otherUser = {
 };
 
 const date = Moment(date).format("MM-DD-YYYY");
-// const date = "02-18-2020"; //for testing
+// const date = "03-23-2020"; //for testing
 
 const getID = () => Math.round(Math.random() * 1000000);
 

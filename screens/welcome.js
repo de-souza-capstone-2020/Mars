@@ -10,7 +10,11 @@ import {
   AsyncStorage
 } from "react-native";
 import { Button } from 'react-native-elements';
+import Animation from 'lottie-react-native';
 import { colors } from "./chat-screen/styles";
+
+// import anim from "../assets/relaxing-time.json";
+import anim from "../assets/background1.json";
 
 
 export default class Welcome extends React.Component {
@@ -20,6 +24,7 @@ export default class Welcome extends React.Component {
 
   componentDidMount() {
     this.isUserOnboarded(); //comment out for onboarding flow
+    this.animation.play();
   }
   clearAsyncStorage = async () => {
     AsyncStorage.clear();
@@ -78,12 +83,28 @@ export default class Welcome extends React.Component {
     return (
       <SafeAreaView style={styles.body}>
         <View style={styles.body}>
+        <Animation
+            ref={animation => {
+              this.animation = animation;
+            }}
+            style={{
+              position:'absolute', 
+              // width: 300,
+              // height: 300,
+              aspectRatio: 1
+            }}
+            loop={true}
+            source={anim}
+            resizeMode="cover"
+          />
           <View style={styles.logo_area}>
             {/* <Image 
               source={require('../screens/data/logo.png')}
               style={{width: 400, height: 250}}
             /> */}
-            <Text style={styles.title_font}> 
+            
+            
+          <Text style={styles.title_font}> 
               SleepWell
             </Text>
           </View>
@@ -103,6 +124,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   logo_area: {
+    // flexDirection: 'row',
     flex: 2,
     justifyContent: "center",
     borderColor: "red",
@@ -110,7 +132,7 @@ const styles = StyleSheet.create({
   },
   get_started: {
     flex: 1,
-    borderColor: "blue",
+    // borderColor: "blue",
     justifyContent: "flex-start",
     alignItems: 'center',
     paddingTop: 50,
