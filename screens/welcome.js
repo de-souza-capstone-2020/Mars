@@ -19,7 +19,7 @@ export default class Welcome extends React.Component {
   };
 
   componentDidMount() {
-    // this.isUserOnboarded(); //comment out for onboarding flow
+    this.isUserOnboarded(); //comment out for onboarding flow
   }
   clearAsyncStorage = async () => {
     AsyncStorage.clear();
