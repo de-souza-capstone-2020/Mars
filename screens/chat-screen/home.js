@@ -8,7 +8,7 @@ import {
   AsyncStorage
 } from "react-native";
 import { GiftedChat, Bubble } from "react-native-gifted-chat";
-import QuickReplies from 'react-native-gifted-chat/lib/QuickReplies'
+import QuickReplies from "react-native-gifted-chat/lib/QuickReplies";
 import Moment from "moment";
 import SleepDiary from "../sleepDiary";
 import {
@@ -25,17 +25,21 @@ import {
   sleep_diary_nap_good,
   sleep_tip_1,
   generic_tip_1,
-  generic_tip_2,
+  generic_tip_2
 } from "../data/messages";
-import { getRandomAppState,getNextAppState,getRandomGenericTip} from "../utils/helper-utils";
+import {
+  getRandomAppState,
+  getNextAppState,
+  getRandomGenericTip
+} from "../utils/helper-utils";
 import LottieLoader from "../loading";
-import { 
-    sleep_diary_response,
-    conversation_flow_one,
-    sleep_diary_tip_nap
+import {
+  sleep_diary_response,
+  conversation_flow_one,
+  sleep_diary_tip_nap
 } from "../data/customActions";
 import SplashScreen from "../loading";
-import {s, colors} from "./styles";
+import { s, colors } from "./styles";
 
 const user = {
   _id: 1,
@@ -50,7 +54,7 @@ const otherUser = {
   avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
 };
 
-const date = Moment(date).format("MM-DD-YYYY")
+const date = Moment(date).format("MM-DD-YYYY");
 // const date = "02-18-2020"; //for testing
 
 const getID = () => Math.round(Math.random() * 1000000);
@@ -68,35 +72,34 @@ export default class Home extends Component {
     leaveBedTime: null,
     getInBedTime: null,
     sleepTime: null,
-    durationTotalWakeUp: null, 
+    durationTotalWakeUp: null,
     didNap: "",
     sleep_tip: new Object()
   };
 
-  removeItemValue = async (key)=>{
+  removeItemValue = async key => {
     try {
-        await AsyncStorage.removeItem(key);
-        return true;
+      await AsyncStorage.removeItem(key);
+      return true;
+    } catch (exception) {
+      return false;
     }
-    catch(exception) {
-        return false;
-    }
-};
+  };
   async componentDidMount() {
-
     //AsyncStorage.clear();
-   // AsyncStorage.removeItem(date);
+    // AsyncStorage.removeItem(date);
     await this.isSleepDiaryEntered();
 
     //determining message type
     const { appState } = this.state;
-    console.log("componentdidmount appstate: ", appState)
+    console.log("componentdidmount appstate: ", appState);
     if (appState.size > 0) {
       if (appState.has(1)) {
         this.setState({ messages: new sleep_diary_messages() });
         appState.delete(1);
-      } else if (appState.has(2)) { //if sleepdiary has been entered and you return to the app you get a random generic tip to begin
-        this.setState({ messages:  this.randGenericBeginTips()});
+      } else if (appState.has(2)) {
+        //if sleepdiary has been entered and you return to the app you get a random generic tip to begin
+        this.setState({ messages: this.randGenericBeginTips() });
         appState.delete(2);
       }
       this.setState({
@@ -109,7 +112,7 @@ export default class Home extends Component {
    * determines if there is a sleep diary entry for today
    * sets app state to 1 if there is no entry
    * sets app state to 2, 3, 4 if there is
-   * 
+   *
    * state 1: missing sleep diary
    * state 2: to send general tip
    * state 3: to send sleep diary tip
@@ -118,7 +121,7 @@ export default class Home extends Component {
 
   isSleepDiaryEntered = async () => {
     const appState = this.state.appState;
-    
+
     try {
       AsyncStorage.getAllKeys().then(keys => {
         if (keys.indexOf(date) != -1) {
@@ -229,46 +232,43 @@ export default class Home extends Component {
     });
   }
 
-
   getSleepData = async () => {
-     const today = Moment(new Date()).format("MM-DD-YYYY")
-     try {        
-             await AsyncStorage.getItem(today).then(key => {
-             if( key != null)
-             {
-              console.log("Sleep entry for today",JSON.parse(key));
-              const sleepAttempt = JSON.parse(key).attemptToSleepTime;
-              const wakeUp = JSON.parse(key).wakeUpTime;
-              const sleep = JSON.parse(key).sleepTime;
-              const getIntoBed = JSON.parse(key).getInBedTime;
-              const leaveBed = JSON.parse(key).leaveBedTime;
-              const durTotalWakeUp = JSON.parse(key).durationTotalWakeUp;
-              const nap = JSON.parse(key).didNap;
-              const attemptTime = new Date(sleepAttempt);
-              const wakeTime = new Date(wakeUp);
-              const sleepyTime = new Date(sleep);
-              const getIntoBedTime = new Date(getIntoBed);
-              const getOutBedTime = new Date(leaveBed);
-              //const durTotalWakeUp = new Date(durationTotalWakeUp);
+    const today = Moment(new Date()).format("MM-DD-YYYY");
+    try {
+      await AsyncStorage.getItem(today).then(key => {
+        if (key != null) {
+          console.log("Sleep entry for today", JSON.parse(key));
+          const sleepAttempt = JSON.parse(key).attemptToSleepTime;
+          const wakeUp = JSON.parse(key).wakeUpTime;
+          const sleep = JSON.parse(key).sleepTime;
+          const getIntoBed = JSON.parse(key).getInBedTime;
+          const leaveBed = JSON.parse(key).leaveBedTime;
+          const durTotalWakeUp = JSON.parse(key).durationTotalWakeUp;
+          const nap = JSON.parse(key).didNap;
+          const attemptTime = new Date(sleepAttempt);
+          const wakeTime = new Date(wakeUp);
+          const sleepyTime = new Date(sleep);
+          const getIntoBedTime = new Date(getIntoBed);
+          const getOutBedTime = new Date(leaveBed);
+          //const durTotalWakeUp = new Date(durationTotalWakeUp);
 
-              this.setState({
-                sleepAttemptTime: attemptTime,
-                wakeUpTime: wakeTime,
-                sleepTime: sleepyTime, 
-                getInBedTime: getIntoBedTime,
-                leaveBedTime: getOutBedTime,
-                durationTotalWakeUp: durTotalWakeUp,
-                didNap: nap});
-             }
-             else
-             {
-               console.log("Oooops no key")
-             }
-           });
-         } catch (error) {
-           console.log("Try error", error);
-           //console.error(error);
+          this.setState({
+            sleepAttemptTime: attemptTime,
+            wakeUpTime: wakeTime,
+            sleepTime: sleepyTime,
+            getInBedTime: getIntoBedTime,
+            leaveBedTime: getOutBedTime,
+            durationTotalWakeUp: durTotalWakeUp,
+            didNap: nap
+          });
+        } else {
+          console.log("Oooops no key");
         }
+      });
+    } catch (error) {
+      console.log("Try error", error);
+      //console.error(error);
+    }
   };
 
   determineResponse = reply => {
@@ -278,48 +278,47 @@ export default class Home extends Component {
       reply = this.getNextConversation();
     } else if (reply.value === "got_it") {
       reply = this.getNextConversation();
-    } else if (reply.value.includes("_chp1")){
+    } else if (reply.value.includes("_chp1")) {
       reply = conversation_flow_one(reply);
-    } else if (reply.value.includes("_nap")){
+    } else if (reply.value.includes("_nap")) {
       reply = sleep_diary_tip_nap(reply);
-    }else {
+    } else {
       reply = sleep_diary_response(reply);
     }
     this.onSend(reply);
   };
 
-randGenericEndTips = () =>{
-  const randNextTip = getRandomGenericTip();
-  console.log("next rand end tip",randNextTip);
-  switch(randNextTip){
-    case 1:
-      return new sleep_tip_1();
-    case 2:
-      return new generic_messages();
-    case 3:
+  randGenericEndTips = () => {
+    const randNextTip = getRandomGenericTip();
+    console.log("next rand end tip", randNextTip);
+    switch (randNextTip) {
+      case 1:
+        return new sleep_tip_1();
+      case 2:
+        return new generic_messages();
+      case 3:
         return new sleep_tip_2();
-    default:
-    return new generic_tip();
-  }
-};
+      default:
+        return new generic_tip();
+    }
+  };
 
-randGenericBeginTips = () =>{
-  const randNextTip = getRandomGenericTip();
-  console.log("next rand begin tip",randNextTip);
-  switch(randNextTip){
-    case 1:
-      return new generic_tip();
-    case 2:
-      return new generic_tip_1();
-    case 3:
+  randGenericBeginTips = () => {
+    const randNextTip = getRandomGenericTip();
+    console.log("next rand begin tip", randNextTip);
+    switch (randNextTip) {
+      case 1:
+        return new generic_tip();
+      case 2:
+        return new generic_tip_1();
+      case 3:
         return new generic_tip_2();
-    default:
-    return new generic_tip();
-  }
-};
+      default:
+        return new generic_tip();
+    }
+  };
 
-
-   getNextConversation =  () => {
+  getNextConversation = () => {
     const { appState } = this.state;
     const randAppState = getRandomAppState(appState);
     const nextAppState = getNextAppState(appState);
@@ -328,12 +327,14 @@ randGenericBeginTips = () =>{
     const sAT = this.state.sleepAttemptTime;
     const wUT = this.state.wakeUpTime;
     const sleepTime = this.state.sleepTime;
-    const sleepDuration = (this.state.wakeUpTime - this.state.sleepTime) - this.state.durationTotalWakeUp;
-    const sleepDurationMins = Math.floor((sleepDuration /1000)/60);
+    const sleepDuration =
+      this.state.wakeUpTime -
+      this.state.sleepTime -
+      this.state.durationTotalWakeUp;
+    const sleepDurationMins = Math.floor(sleepDuration / 1000 / 60);
 
-    const totalTimeInBed = (this.state.leaveBedTime - this.state.getInBedTime);
-    const totalTimeInBedMins = Math.floor((totalTimeInBed /1000)/60);
-
+    const totalTimeInBed = this.state.leaveBedTime - this.state.getInBedTime;
+    const totalTimeInBedMins = Math.floor(totalTimeInBed / 1000 / 60);
 
     console.log("getnextconvo appState is:", appState);
     console.log("NextAppState is:", nextAppState);
@@ -345,87 +346,83 @@ randGenericBeginTips = () =>{
     console.log("Total Time in Bed: ", totalTimeInBed);
     console.log("Total Time in Bed Mins: ", totalTimeInBedMins); */
 
-
     if (this.state.appState.has(3)) {
-    this.getSleepData().then( data => {
-      this.setState({sleep_tip: data});
+      this.getSleepData().then(data => {
+        this.setState({ sleep_tip: data });
       });
     }
     switch (nextAppState) {
-      case 1: 
-      //returns message that asks user to enter sleep diary, this is not in use atm, happens after case 6
+      case 1:
+        //returns message that asks user to enter sleep diary, this is not in use atm, happens after case 6
         appState.delete(1);
         appState.add(2);
         this.setState(appState);
         return new sleep_diary_messages();
-      case 2: 
-      //returns a random generic tip that terminates the convo with a 'bye' , it is the last message returned
+      case 2:
+        //returns a random generic tip that terminates the convo with a 'bye' , it is the last message returned
         appState.delete(2);
         appState.add(4);
         this.setState(appState);
-        return this.randGenericEndTips(); 
-      case 3:   
-      //returns a sleep hygiene tip based on sleep diary calculation or sleep diary reminder message if state has not been set 
-      //happens after conversation flow 1 is completed 
-      appState.delete(3);
-      appState.add(5);
-      this.setState(appState);
-      const hours = Math.abs(sAT - sleepTime) / 36e5;
-      if(this.state.sleepAttemptTime != null) {
-      if(hours > 1){
-        return new sleep_diary_tip_1();
+        return this.randGenericEndTips();
+      case 3:
+        //returns a sleep hygiene tip based on sleep diary calculation or sleep diary reminder message if state has not been set
+        //happens after conversation flow 1 is completed
+        appState.delete(3);
+        appState.add(5);
+        this.setState(appState);
+        const hours = Math.abs(sAT - sleepTime) / 36e5;
+        if (this.state.sleepAttemptTime != null) {
+          if (hours > 1) {
+            return new sleep_diary_tip_1();
+          } else {
+            return new sleep_diary_tip_2();
+          }
+        } else {
+          return new sleep_diary_reminder_messages();
         }
-        else{
-        return new sleep_diary_tip_2();
-        } 
-      }
-      else{
-
-        return new sleep_diary_reminder_messages();
-      }
-      case 4: //returns converastion flow one, happens after initial generic tip is given 
+      case 4: //returns converastion flow one, happens after initial generic tip is given
         appState.delete(4);
         appState.add(3);
         this.setState(appState);
-        const reply = {value: "start_chp_one"};
+        const reply = { value: "start_chp_one" };
         return new conversation_flow_one(reply);
 
-      case 5:  //returns sleep efficency to the user based on sleep diary, happens after case 3
-          appState.delete(5);
-          appState.add(6);
-          this.setState(appState);
-          const sleepEfficiency = Math.floor((sleepDurationMins/totalTimeInBedMins)*100);
+      case 5: //returns sleep efficency to the user based on sleep diary, happens after case 3
+        appState.delete(5);
+        appState.add(6);
+        this.setState(appState);
+        const sleepEfficiency = Math.floor(
+          (sleepDurationMins / totalTimeInBedMins) * 100
+        );
 
-            if(sleepEfficiency > 0 && sleepEfficiency<=100) {
-            return new sleep_diary_tip_eff(sleepEfficiency);
-            } 
-            else if(sleepEfficiency > 0 && sleepEfficiency>100){
-              return new sleep_diary_tip_eff_err();
-            } 
+        if (sleepEfficiency > 0 && sleepEfficiency <= 100) {
+          return new sleep_diary_tip_eff(sleepEfficiency);
+        } else if (sleepEfficiency > 0 && sleepEfficiency > 100) {
+          return new sleep_diary_tip_eff_err();
+        }
 
-        case 6:  //returns nap tips, happens after case 5
-          appState.delete(6);
-          appState.add(2);
-          this.setState(appState);
-          const napreply = {value: "nap_flow"};
-          if(this.state.didNap == "yes") {
+      case 6: //returns nap tips, happens after case 5
+        appState.delete(6);
+        appState.add(2);
+        this.setState(appState);
+        const napreply = { value: "nap_flow" };
+        if (this.state.didNap == "yes") {
           return new sleep_diary_tip_nap(napreply);
-          }
-          else if(this.state.didNap == "no"){
-            return new sleep_diary_nap_good();
-          }       
-        case 7: 
+        } else if (this.state.didNap == "no") {
+          return new sleep_diary_nap_good();
+        }
+      case 7:
         //returns a random generic tip after at the begining if sleep diary has not been entered(line 134 )
-            appState.delete(7);
-            appState.add(4);
-            this.setState(appState);
-            return this.randGenericBeginTips(); ////produce a list of genderic tips that are dispensed daily(7 tips)
-          
-        default:
-          //console.error("There is something wrong with the case statement");
-          return new sleep_diary_reminder_messages();
+        appState.delete(7);
+        appState.add(4);
+        this.setState(appState);
+        return this.randGenericBeginTips(); ////produce a list of genderic tips that are dispensed daily(7 tips)
+
+      default:
+        //console.error("There is something wrong with the case statement");
+        return new sleep_diary_reminder_messages();
     }
-   };
+  };
 
   renderInputToolbar(props) {
     if (this.state.toolbar) {
@@ -445,30 +442,28 @@ randGenericBeginTips = () =>{
     return null;
   };
 
-  renderBubble = (props) =>{
+  renderBubble = props => {
     return (
       <Bubble
         {...props}
-        renderQuickReplies = {(props) => this.renderQuickReply(props)}
+        renderQuickReplies={props => this.renderQuickReply(props)}
         textStyle={{
           right: s.chatFont,
           left: s.chatFont
         }}
         wrapperStyle={{
           left: {
-            // borderWidth: 1,
-            borderRadius: 30,
-            borderBottomLeftRadius: 0, 
-            color: 'black',
+            borderWidth: 0.5,
+            borderRadius: 20,
+            borderBottomLeftRadius: 0,
+            borderColor: colors.lightGrey,
             minWidth: 50,
             margin: 4,
             paddingLeft: 3,
+            paddingRight: 3,
             paddingTop: 6,
-            paddingBottom: 3,
-            elevation: 5,
-            // shadowOffset: { width: 15, height: 5 },
-            // shadowColor: "grey",
-            // shadowRadius: 10,
+            paddingBottom: 3
+            // elevation: 5,
           },
           right: {
             borderRadius: 20,
@@ -481,23 +476,22 @@ randGenericBeginTips = () =>{
           }
         }}
       />
-    )
-  }
+    );
+  };
 
-  renderQuickReply = (props) =>{
+  renderQuickReply = props => {
     return (
       <QuickReplies
         {...props}
-        color='white'
+        color="white"
         quickReplyStyle={{
           backgroundColor: colors.accent,
-          marginTop: 10,
-          borderWidth: 0,
+          marginTop: 5,
+          borderWidth: 0
         }}
-        
       />
-    )
-  }
+    );
+  };
   render() {
     const { messages, isModalVisible, isLoading } = this.state;
     if (isLoading) {

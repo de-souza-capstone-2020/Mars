@@ -3,21 +3,20 @@ const getID = () => Math.round(Math.random() * 1000000);
 const otherUser = {
   _id: 2,
   name: "React Native",
-  avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
+  avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
 };
 
-const user= {
+const user = {
   _id: getID(),
   name: "React Native",
   avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
-}
+};
 
 const sleep_diary_messages = () => {
   return [
     {
       _id: 1,
-      text:
-        "Hello, please input your previous night's sleep record",
+      text: "Hello, please input your previous night's sleep record",
       createdAt: new Date(),
       quickReplies: {
         type: "radio", // or 'checkbox',
@@ -31,17 +30,15 @@ const sleep_diary_messages = () => {
             title: "Not right now",
             value: "not_right_now"
           }
-         
         ]
       },
       otherUser,
       user
     }
-  ]
-} 
+  ];
+};
 
 const generic_messages = () => {
-  
   return [
     {
       _id: getID(),
@@ -61,11 +58,10 @@ const generic_messages = () => {
       otherUser,
       user
     }
-  ]
-}
+  ];
+};
 
 const sleep_diary_reminder_messages = () => {
-  
   return [
     {
       _id: getID(),
@@ -89,11 +85,10 @@ const sleep_diary_reminder_messages = () => {
       otherUser,
       user
     }
-  ]
-}
+  ];
+};
 
 const sleep_diary_nap_good = () => {
-  
   return [
     {
       _id: getID(),
@@ -113,11 +108,10 @@ const sleep_diary_nap_good = () => {
       otherUser,
       user
     }
-  ]
-}
+  ];
+};
 
-const sleep_tip_1= () => {
-  
+const sleep_tip_1 = () => {
   return [
     {
       _id: getID(),
@@ -137,14 +131,15 @@ const sleep_tip_1= () => {
       otherUser,
       user
     }
-  ]
-}
+  ];
+};
 
 const generic_tip = () => {
   return [
     {
       _id: getID(),
-      text:"Hey, remember to limit the amount of caffeine ☕️ you consume before bed",
+      text:
+        "Hey, remember to limit the amount of caffeine ☕️ you consume before bed",
       createdAt: new Date(),
       quickReplies: {
         type: "radio", // or 'checkbox',
@@ -157,73 +152,74 @@ const generic_tip = () => {
           {
             title: "But i like coffee 😔",
             value: "why_caffeine"
-          },
+          }
         ]
       },
       otherUser,
       user
     }
-  ]
-}
+  ];
+};
 
 const generic_tip_1 = () => {
   return [
     {
       _id: getID(),
-      text:"Hey, do you have a relaxing bedtime ritual you practice?",
+      text: "Hey, do you have a relaxing bedtime ritual you practice?",
       createdAt: new Date(),
       quickReplies: {
         type: "radio", // or 'checkbox',
         keepIt: true,
         values: [
           {
-            title: "Yes,every night 👌",
+            title: "Yes, every night 👌",
             value: "got_it"
           },
           {
             title: "Nah, Should I 🤔?",
             value: "why_ritual"
-          },
+          }
         ]
       },
       otherUser,
       user
     }
-  ]
-}
+  ];
+};
 
 const generic_tip_2 = () => {
   return [
     {
       _id: getID(),
-      text:" Hey do you know how your room affects your sleep?",
+      text: " Hey do you know how your room affects your sleep?",
       createdAt: new Date(),
       quickReplies: {
         type: "radio", // or 'checkbox',
         keepIt: true,
         values: [
           {
-            title: "Yes,my room is zen 😌",
+            title: "Yes, my room is zen 😌",
             value: "got_it"
           },
           {
-            title: "Not really 🙃",
+            title: "Not really",
             value: "why_mattress"
-          },
+          }
         ]
       },
       otherUser,
       user
     }
-  ]
-}
+  ];
+};
 
 const sleep_tip_2 = () => {
   return [
     {
       createdAt: new Date(),
       _id: getID(),
-      text: "Sleep Tip🥱: If you’ve been staying up late worrying. Do your worrying on paper 📓 and not in your head. Writing it down can be very helpful. Write down the worry and the possible solutions that come into mind.",
+      text:
+        "Sleep Tip🥱: If you’ve been staying up late worrying. Do your worrying on paper 📓 and not in your head. Writing it down can be very helpful. Write down the worry and the possible solutions that come into mind.",
       otherUser,
       user,
       quickReplies: {
@@ -235,17 +231,18 @@ const sleep_tip_2 = () => {
             value: "hi"
           }
         ]
-      },
+      }
     }
-  ]
-}
+  ];
+};
 
 const sleep_diary_tip_1 = () => {
   return [
     {
       createdAt: new Date(),
       _id: getID(),
-      text: "Sleep diary tip: Lying in bed while awake reinforces the role of your bed as a stimulus for wakefulness.Spending less time in bed strengthens the role of your bed as the place to sleep." ,
+      text:
+        "Sleep diary tip: Lying in bed while awake reinforces the role of your bed as a stimulus for wakefulness.Spending less time in bed strengthens the role of your bed as the place to sleep.",
       otherUser,
       user,
       quickReplies: {
@@ -257,17 +254,18 @@ const sleep_diary_tip_1 = () => {
             value: "got_it"
           }
         ]
-      },
+      }
     }
-  ]
-}
+  ];
+};
 
 const sleep_diary_tip_2 = () => {
   return [
     {
       createdAt: new Date(),
       _id: getID(),
-      text: "Sleep diary tip: Great job! You know now why spending excessive time in bed not sleeping is bad for your sleep pattern. Keep finding ways to reduce your time in bed!!",
+      text:
+        "Sleep diary tip: Great job! You know now why spending excessive time in bed not sleeping is bad for your sleep pattern. Keep finding ways to reduce your time in bed!!",
       otherUser,
       user,
       quickReplies: {
@@ -275,16 +273,16 @@ const sleep_diary_tip_2 = () => {
         keepIt: true,
         values: [
           {
-            title: "Yes! Progress💪",
+            title: "Yes! Progress 💪",
             value: "got_it"
           }
         ]
-      },
+      }
     }
-  ]
-}
+  ];
+};
 
-const sleep_diary_tip_eff = (sleepEff) => {
+const sleep_diary_tip_eff = sleepEff => {
   return [
     {
       createdAt: new Date(),
@@ -301,12 +299,12 @@ const sleep_diary_tip_eff = (sleepEff) => {
             value: "got_it"
           }
         ]
-      },
+      }
     }
-  ]
-}
+  ];
+};
 
-const sleep_diary_tip_eff_err= () => {
+const sleep_diary_tip_eff_err = () => {
   return [
     {
       createdAt: new Date(),
@@ -322,11 +320,10 @@ const sleep_diary_tip_eff_err= () => {
             value: "got_it"
           }
         ]
-      },
+      }
     }
-  ]
-}
-
+  ];
+};
 
 const module = () => {
   return [
@@ -345,8 +342,23 @@ const module = () => {
             value: "got_it"
           }
         ]
-      },
+      }
     }
-  ]
-}
-export { generic_messages, sleep_diary_messages, generic_tip,sleep_diary_nap_good, sleep_tip_2,generic_tip_2, module, sleep_diary_reminder_messages,sleep_diary_tip_2,sleep_diary_tip_1,sleep_diary_tip_eff,sleep_diary_tip_eff_err,sleep_tip_1,generic_tip_1};
+  ];
+};
+export {
+  generic_messages,
+  sleep_diary_messages,
+  generic_tip,
+  sleep_diary_nap_good,
+  sleep_tip_2,
+  generic_tip_2,
+  module,
+  sleep_diary_reminder_messages,
+  sleep_diary_tip_2,
+  sleep_diary_tip_1,
+  sleep_diary_tip_eff,
+  sleep_diary_tip_eff_err,
+  sleep_tip_1,
+  generic_tip_1
+};

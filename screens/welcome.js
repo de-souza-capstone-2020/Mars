@@ -10,7 +10,7 @@ import {
   AsyncStorage
 } from "react-native";
 import { Button } from 'react-native-elements';
-import { s } from "./chat-screen/styles";
+import { colors } from "./chat-screen/styles";
 
 
 export default class Welcome extends React.Component {
@@ -46,13 +46,7 @@ export default class Welcome extends React.Component {
             size: 15,
             color: "white"
           }}
-          buttonStyle={{
-            borderColor: "#77758F",
-            borderWidth: 2,
-            borderRadius: 15,
-            width: 250,
-            backgroundColor: "#77758F",
-          }}
+          buttonStyle={styles.button}
           titleStyle={{
             color: 'white',
           }}
@@ -69,13 +63,7 @@ export default class Welcome extends React.Component {
             size: 15,
             color: 'white',
           }}
-          buttonStyle={{
-            borderColor: "#77758F",
-            borderWidth: 2,
-            borderRadius: 15,
-            width: 250,
-            backgroundColor: "#77758F",
-          }}
+          buttonStyle={styles.button}
           titleStyle={{
             color: 'white',
           }}
@@ -90,10 +78,13 @@ export default class Welcome extends React.Component {
       <SafeAreaView style={styles.body}>
         <View style={styles.body}>
           <View style={styles.logo_area}>
-            <Image 
+            {/* <Image 
               source={require('../screens/data/logo.png')}
               style={{width: 400, height: 250}}
-            />
+            /> */}
+            <Text style={styles.title_font}> 
+              SleepWell
+            </Text>
           </View>
           <View style={styles.get_started}>
             {button}
@@ -107,12 +98,12 @@ export default class Welcome extends React.Component {
 const styles = StyleSheet.create({
   body: {
     // backgroundColor: "#cfe2f3",
-    backgroundColor: 'white',
+    backgroundColor: colors.background,
     flex: 1
   },
   logo_area: {
     flex: 2,
-    justifyContent: "flex-end",
+    justifyContent: "center",
     borderColor: "red",
     // borderWidth: 1,
   },
@@ -140,11 +131,19 @@ const styles = StyleSheet.create({
     color: "black"
   },
   title_font: {
-    fontSize: 45,
+    fontSize: 55,
     color: "black",
-    textAlign: "center"
+    textAlign: "center",
+    fontFamily: "Bimbo-Regular-trial"
   },
   highlight: {
     fontWeight: "700"
+  },
+  button: {
+    borderColor: colors.accent,
+    borderWidth: 2,
+    borderRadius: 15,
+    width: 250,
+    backgroundColor: colors.accent,
   }
 });

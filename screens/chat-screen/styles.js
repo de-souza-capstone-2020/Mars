@@ -3,8 +3,8 @@ import { StyleSheet } from "react-native";
 const colors = {
   accent: '#3DDC9F',
   accentDark: '#3eab81',
+  lightGrey: '#b5b5b5',
   background: '#EFF0F9',
-  lightGrey: '#474747',
 }
 
 const s = StyleSheet.create({
@@ -14,7 +14,7 @@ const s = StyleSheet.create({
   },
   chatFont: {
     fontSize: 15,
-    fontFamily: "OpenSans-Bold"
+    fontFamily: "OpenSans"
   },
   titleFont: {
     fontSize: 50,
