@@ -327,10 +327,15 @@ randModules = () =>{
       var reply = {value: "sleep_dur"};
       return new module_sleep_duration(reply);
     case 2:
-      var reply = {value: "start_chp_one"};
-      return new conversation_flow_one(reply);
+      //var reply = {value: "start_chp_one"};
+      var reply = {value: "sleep_dur"};
+      return new module_sleep_duration(reply);
+      //return new conversation_flow_one(reply);
     case 3:
-        return new generic_tip_2();
+      //var reply = {value: "start_chp_one"};
+      var reply = {value: "sleep_dur"};
+      return new module_sleep_duration(reply);
+        //return new generic_tip_2();
     default:
     return new generic_tip();
   }
@@ -392,7 +397,6 @@ randModules = () =>{
         } 
       }
       else{
-
         return new sleep_diary_reminder_messages();
       }
       case 4: 

@@ -770,14 +770,14 @@ export const module_sleep_duration = reply => {
       {
         createdAt,
         _id: getID(),
-        text: "Did you know that not al healthy adults actually need 7 or 8 hours of sleep?",
+        text: "Did you know that not all healthy adults actually need 7 or 8 hours of sleep?",
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
           values: [
             {
               title: "What do you mean?",
-              value: "why_dur"
+              value: "why_dur_a"
             },
             {
               title: "Yes we do!",
@@ -806,7 +806,7 @@ export const module_sleep_duration = reply => {
           values: [
             {
               title: "Tell me more",
-              value: "why_dur"
+              value: "why_dur_b"
             },
           ]
         },
@@ -819,20 +819,111 @@ export const module_sleep_duration = reply => {
     ]);
   }
 
-  if (reply.value === "why_dur") {
+  if (reply.value === "why_dur_a") {
     return ([
       {
         createdAt,
         _id: getID(),
-        text: "If you’ve ever woken up and felt like you’ve overslept with only 8 hour of sleep, it might be because your body really only needs 6 hours!",
+        text: "Each adult differs in the amount of sleep they require to function adequately! \n\nIf you’ve ever woken up and felt like you’ve overslept with only 8 hour of sleep, it might be because your body really only needs 6 hours!",
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
           values: [
             {
-              title: "Tell me more",
-              value: "why_dur"
+              title: "Woah that’s pretty interesting.",
+              value: "stages_of_sleep_dur"
             },
+            {
+              title: "Guess it’s time to figure out what works best for me!",
+              value: "stages_of_sleep_dur"
+            },
+          ]
+        },
+        user: {
+          _id: 2,
+          name: "React Native",
+          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
+        }
+      }
+    ]);
+  }
+
+  if (reply.value === "why_dur_b") {
+    return ([
+      {
+        createdAt,
+        _id: getID(),
+        text: "The idea of oversleeping is actually different for each person too! Someone who only needs 6 hours to function may feel as though they’ve overslept after getting the “recommended” 8 hours. ",
+        quickReplies: {
+          type: "radio", // or 'checkbox',
+          keepIt: true,
+          values: [
+            {
+              title: "Woah that’s pretty interesting.",
+              value: "stages_of_sleep_dur"
+            },
+            {
+              title: "Guess it’s time to figure out what works best for me!",
+              value: "stages_of_sleep_dur"
+            }
+          ]
+        },
+        user: {
+          _id: 2,
+          name: "React Native",
+          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
+        }
+      }
+    ]);
+  }
+  if (reply.value === "stages_of_sleep_dur") {
+    return ([
+      {
+        createdAt,
+        _id: getID(),
+        text: "Sleep is a restorative process, when you're getting the correct amount. It can be very beneficial to know exactly what’s going on in your brain when you sleep. Would you like to learn about the stages of sleep so you can work through your insomnia?",
+        quickReplies: {
+          type: "radio", // or 'checkbox',
+          keepIt: true,
+          values: [
+            {
+              title: "Yes Please! I want to sleep!",
+              value: "stages_of_insomnia_dur"
+            },
+            {
+              title: "No, I'll continue tomorrow",
+              value: "got_it"
+              //value: "no_tomorrow_dur"
+            }
+          ]
+        },
+        user: {
+          _id: 2,
+          name: "React Native",
+          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
+        }
+      }
+    ]);
+  }
+
+  if (reply.value === "stages_of_insomnia_dur") {
+    return ([
+      {
+        createdAt,
+        _id: getID(),
+        text: "Alright, there are 5 different stages of sleep. 4 non REM or Rapid Eye Movement stages and one REM stage. ",
+        quickReplies: {
+          type: "radio", // or 'checkbox',
+          keepIt: true,
+          values: [
+            {
+              title: "More details please",
+              value: "stages_of_insomnia_dur"
+            },
+            {
+              title: "I know about REM sleep",
+              value: "got_it"
+            }
           ]
         },
         user: {
