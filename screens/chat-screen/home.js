@@ -327,15 +327,11 @@ randModules = () =>{
       var reply = {value: "sleep_dur"};
       return new module_sleep_duration(reply);
     case 2:
-      //var reply = {value: "start_chp_one"};
-      var reply = {value: "sleep_dur"};
-      return new module_sleep_duration(reply);
-      //return new conversation_flow_one(reply);
+      var reply = {value: "start_chp_one"};
+      return new conversation_flow_one(reply);
     case 3:
-      //var reply = {value: "start_chp_one"};
       var reply = {value: "sleep_dur"};
       return new module_sleep_duration(reply);
-        //return new generic_tip_2();
     default:
     return new generic_tip();
   }
@@ -382,7 +378,7 @@ randModules = () =>{
         appState.delete(2);
         appState.add(4);
         this.setState(appState);
-        return this.randGenericEndTips(); ////produce a list of genderic tips that are dispensed daily(7 tips)
+        return this.randGenericEndTips();
       case 3:   //sleep hygiene tip    
         appState.delete(3);
         appState.add(5);
@@ -432,7 +428,7 @@ randModules = () =>{
             appState.delete(7);
             appState.add(4);
             this.setState(appState);
-            return this.randGenericBeginTips(); ////produce a list of genderic tips that are dispensed daily(7 tips)
+            return this.randGenericBeginTips(); 
           
         default:
           //console.error("There is something wrong with the case statement");
