@@ -14,7 +14,7 @@ import Animation from 'lottie-react-native';
 import { colors } from "./chat-screen/styles";
 
 // import anim from "../assets/relaxing-time.json";
-import anim from "../assets/background1.json";
+import anim from "../assets/background.json";
 
 
 export default class Welcome extends React.Component {
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
   },
   title_font: {
     fontSize: 55,
-    color: "black",
+    color: "white",
     textAlign: "center",
     fontFamily: "Bimbo-Regular-trial"
   },
