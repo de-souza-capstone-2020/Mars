@@ -31,7 +31,7 @@ export default class Intro extends React.Component {
     ageOlder50: 0,
     largeNeckSize: 0,
     gender: null,
-    hasSleepApnea: true
+    hasSleepApnea: false
   };
 
   onNavigate = () => {
@@ -92,11 +92,32 @@ export default class Intro extends React.Component {
         </View>
         <View style={styles.slide1}>
           <Image 
+            source={require('../assets/onboarding3.png')}
+            style={{width: 300, height: 300}}
+          />
+          <Text style={{fontWeight: "bold", textAlign: "center", fontSize: 20}}>
+            SleepWell will walk you through an updated version of the Sleeping Well Manual developed by Dr. Sheila Garland 
+            (Memorial University) based on her original research and clinical practice treating insomnia in individuals 
+            diagnosed with cancer
+          </Text>
+        </View>
+        <View style={styles.slide1}>
+          <Image 
             source={require('../assets/onboarding2.png')}
             style={{width: 400, height: 250, marginBottom: 20}}
           />
           <Text style={styles.intro_text}>
-            We suggest you stay with us for 6-8 weeks
+            We suggest you stay with us for 6-8 weeks for the best results
+          </Text>
+        </View>
+        <View style={styles.slide1}>
+          <Image 
+            source={require('../assets/questionnaire.png')}
+            style={{width: 400, height: 250, marginBottom: 20}}
+          />
+          <Text style={{fontWeight: "bold", textAlign: "center", fontSize: 25}}>
+            To get started, we'll ask you a few questions about yourself. Don't worry, we do not save this data at all,
+            this will simply be used to assess your risk for sleep apnea.
           </Text>
         </View>
         <View style={styles.slide2}>
