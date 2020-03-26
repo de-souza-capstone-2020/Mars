@@ -284,12 +284,13 @@ const sleep_diary_tip_2 = () => {
   ]
 }
 
+
 const sleep_diary_tip_eff = (sleepEff) => {
   return [
     {
       createdAt: new Date(),
       _id: getID(),
-      text: "Your sleep efficency today is: " + sleepEff + "%",
+      text: "Based on your sleep diary, your sleep efficency today is: " + sleepEff + "%",
       otherUser,
       user,
       quickReplies: {
@@ -297,7 +298,61 @@ const sleep_diary_tip_eff = (sleepEff) => {
         keepIt: true,
         values: [
           {
-            title: "I see",
+            title: "Thank you",
+            value: "got_it"
+          },
+          {
+            title: "What is that?",
+            value: "explain_sleep_effs"
+          }
+        ]
+      },
+    }
+  ]
+
+}
+
+  const sleep_efficiency_explain = () => {
+
+    return [
+      {
+        createdAt: new Date(),
+        _id: getID(),
+        text: "Sleep efficiency is the ratio of the total time spent asleep (total sleep time) in a night compared to the total amount of time spent in bed. \n\n... In order to achieve good sleep efficiency, it is recommended that extra time should not be spent in bed",
+        otherUser,
+        user,
+        quickReplies: {
+          type: "radio", // or 'checkbox',
+          keepIt: true,
+          values: [
+            {
+              title: "Got it",
+              value: "got_it"
+            }
+          ]
+        },
+      }
+    ]
+}
+
+const content_module_request = () => {
+  return [
+    {
+      createdAt: new Date(),
+      _id: getID(),
+      text: "It's time for a lesson on sleep. Do you have 5-7 minutes to learn content to improve ypur sleep?",
+      otherUser,
+      user,
+      quickReplies: {
+        type: "radio", // or 'checkbox',
+        keepIt: true,
+        values: [
+          {
+            title: "Yes, I do",
+            value: "yes_content"
+          },
+          {
+            title: "Not right now",
             value: "got_it"
           }
         ]
@@ -349,4 +404,4 @@ const module = () => {
     }
   ]
 }
-export { generic_messages, sleep_diary_messages, generic_tip,sleep_diary_nap_good, sleep_tip_2,generic_tip_2, module, sleep_diary_reminder_messages,sleep_diary_tip_2,sleep_diary_tip_1,sleep_diary_tip_eff,sleep_diary_tip_eff_err,sleep_tip_1,generic_tip_1};
+export { sleep_efficiency_explain,content_module_request,generic_messages, sleep_diary_messages, generic_tip,sleep_diary_nap_good, sleep_tip_2,generic_tip_2, module, sleep_diary_reminder_messages,sleep_diary_tip_2,sleep_diary_tip_1,sleep_diary_tip_eff,sleep_diary_tip_eff_err,sleep_tip_1,generic_tip_1};

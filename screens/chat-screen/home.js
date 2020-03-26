@@ -26,6 +26,8 @@ import {
   sleep_tip_1,
   generic_tip_1,
   generic_tip_2,
+  content_module_request,
+  sleep_efficiency_explain
 } from "../data/messages";
 import { getRandomAppState,getNextAppState,getRandomGenericTip} from "../utils/helper-utils";
 import LottieLoader from "../loading";
@@ -85,7 +87,7 @@ export default class Home extends Component {
 };
   async componentDidMount() {
 
-    //AsyncStorage.clear();
+    AsyncStorage.clear();
    // AsyncStorage.removeItem(date);
     await this.isSleepDiaryEntered();
 
@@ -230,7 +232,6 @@ export default class Home extends Component {
     });
   }
 
-
   getSleepData = async () => {
      const today = Moment(new Date()).format("MM-DD-YYYY")
      try {        
@@ -285,9 +286,13 @@ export default class Home extends Component {
       reply = sleep_diary_tip_nap(reply);
     }else if (reply.value.includes("_dur")){
       reply = module_sleep_duration(reply);
+    }else if (reply.value === "yes_content"){
+      reply = this.randModules(); 
+    }else if (reply.value==="explain_sleep_effs"){
+      reply = new sleep_efficiency_explain(); 
     }else {
       reply = sleep_diary_response(reply);
-    }
+    } 
     this.onSend(reply);
   };
 
@@ -349,13 +354,10 @@ randModules = () =>{
     const sleepTime = this.state.sleepTime;
     const sleepDuration = (this.state.wakeUpTime - this.state.sleepTime) - this.state.durationTotalWakeUp;
     const sleepDurationMins = Math.floor((sleepDuration /1000)/60);
-
     const totalTimeInBed = (this.state.leaveBedTime - this.state.getInBedTime);
     const totalTimeInBedMins = Math.floor((totalTimeInBed /1000)/60);
 
-
-    console.log("getnextconvo appState is:", appState);
-    console.log("NextAppState is:", nextAppState);
+    console.log("AppState is:", appState);
     /* console.log("Sleep Time: ",sleepTime);
     console.log("Wake Time: ",wUT);
     console.log("Get in bed time: ",this.state.getInBedTime);
@@ -385,7 +387,7 @@ randModules = () =>{
       //returns a sleep hygiene tip based on sleep diary calculation or sleep diary reminder message if state has not been set 
       //happens after conversation flow 1 is completed 
       appState.delete(3);
-      appState.add(5);
+      appState.add(6);
       this.setState(appState);
       const hours = Math.abs(sAT - sleepTime) / 36e5;
       if(this.state.sleepAttemptTime != null) {
@@ -402,17 +404,17 @@ randModules = () =>{
       }
       case 4: //returns converastion flow one, happens after initial generic tip is given 
         appState.delete(4);
-        appState.add(3);
+        appState.add(5);
         this.setState(appState);
-        return this.randModules();
+        return new content_module_request();
 
       case 5:  //returns sleep efficency to the user based on sleep diary, happens after case 3
           appState.delete(5);
-          appState.add(6);
+          appState.add(3);
           this.setState(appState);
           const sleepEfficiency = Math.floor((sleepDurationMins/totalTimeInBedMins)*100);
-
             if(sleepEfficiency > 0 && sleepEfficiency<=100) {
+              const effreply = {value: "sleep_eff"};
             return new sleep_diary_tip_eff(sleepEfficiency);
             } 
             else if(sleepEfficiency > 0 && sleepEfficiency>100){
