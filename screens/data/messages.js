@@ -340,7 +340,7 @@ const content_module_request = () => {
     {
       createdAt: new Date(),
       _id: getID(),
-      text: "It's time for a lesson on sleep. Do you have 5-7 minutes to learn content to improve ypur sleep?",
+      text: "It's time for a lesson on sleep. Do you have 5-7 minutes to learn content to improve your sleep?",
       otherUser,
       user,
       quickReplies: {
@@ -382,6 +382,27 @@ const sleep_diary_tip_eff_err= () => {
   ]
 }
 
+const nap_tip_1= () => {
+  return [
+    {
+      createdAt: new Date(),
+      _id: getID(),
+      text: "Aim to nap for only 10 to 20 minutes. \n\nThe longer you nap, the more likely you are to feel groggy afterward.",
+      otherUser,
+      quickReplies: {
+        type: "radio", // or 'checkbox',
+        keepIt: true,
+        values: [
+          {
+            title: "Will do",
+            value: "got_it"
+          }
+        ]
+      },
+    }
+  ]
+}
+
 
 const module = () => {
   return [
@@ -404,4 +425,4 @@ const module = () => {
     }
   ]
 }
-export { sleep_efficiency_explain,content_module_request,generic_messages, sleep_diary_messages, generic_tip,sleep_diary_nap_good, sleep_tip_2,generic_tip_2, module, sleep_diary_reminder_messages,sleep_diary_tip_2,sleep_diary_tip_1,sleep_diary_tip_eff,sleep_diary_tip_eff_err,sleep_tip_1,generic_tip_1};
+export { nap_tip_1,sleep_efficiency_explain,content_module_request,generic_messages, sleep_diary_messages, generic_tip,sleep_diary_nap_good, sleep_tip_2,generic_tip_2, module, sleep_diary_reminder_messages,sleep_diary_tip_2,sleep_diary_tip_1,sleep_diary_tip_eff,sleep_diary_tip_eff_err,sleep_tip_1,generic_tip_1};

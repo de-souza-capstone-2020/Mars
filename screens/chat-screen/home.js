@@ -27,7 +27,8 @@ import {
   generic_tip_1,
   generic_tip_2,
   content_module_request,
-  sleep_efficiency_explain
+  sleep_efficiency_explain,
+  nap_tip_1
 } from "../data/messages";
 import { getRandomAppState,getNextAppState,getRandomGenericTip} from "../utils/helper-utils";
 import LottieLoader from "../loading";
@@ -332,8 +333,10 @@ randModules = () =>{
       var reply = {value: "sleep_dur"};
       return new module_sleep_duration(reply);
     case 2:
+      /* var reply = {value: "sleep_dur"};
+      return new module_sleep_duration(reply); */
      var reply = {value: "start_chp_one"};
-      return new conversation_flow_one(reply);
+     return new conversation_flow_one(reply);
     case 3:
       var reply = {value: "sleep_dur"};
       return new module_sleep_duration(reply); //this will be the last module, currently the same as case 1
@@ -431,7 +434,10 @@ randModules = () =>{
           }
           else if(this.state.didNap == "no"){
             return new sleep_diary_nap_good();
-          }       
+          } 
+          else{
+            return new nap_tip_1();
+          }      
         case 7: 
         //returns a random generic tip after at the begining if sleep diary has not been entered(line 134 )
             appState.delete(7);
