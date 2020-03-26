@@ -245,7 +245,7 @@ const sleep_diary_tip_1 = () => {
     {
       createdAt: new Date(),
       _id: getID(),
-      text: "Sleep diary tip: Lying in bed while awake reinforces the role of your bed as a stimulus for wakefulness.Spending less time in bed strengthens the role of your bed as the place to sleep." ,
+      text: "Sleep diary tip: \n You are lying in bed while awake.This reinforces the role of your bed as a stimulus for wakefulness.\n\nYou should be spending less time in bed as it strengthens the role of your bed as the place to sleep." ,
       otherUser,
       user,
       quickReplies: {
@@ -267,7 +267,7 @@ const sleep_diary_tip_2 = () => {
     {
       createdAt: new Date(),
       _id: getID(),
-      text: "Sleep diary tip: Great job! You know now why spending excessive time in bed not sleeping is bad for your sleep pattern. Keep finding ways to reduce your time in bed!!",
+      text: "Sleep diary tip: \nGreat job staying out of bed! \nYou now know why spending excessive time in bed not sleeping is bad for your sleep pattern. Keep finding ways to reduce your time in bed",
       otherUser,
       user,
       quickReplies: {

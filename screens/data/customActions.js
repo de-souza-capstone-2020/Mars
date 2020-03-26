@@ -397,7 +397,7 @@ export const conversation_flow_one = reply => {
             {
               createdAt,
               _id: getID(),
-              text: "It is important to know the difference between time spent sleeping and time spent in bed. Would you like to work on your sleep efficiency?",
+              text: "It is important to know the difference between time spent sleeping and time spent in bed. \n\nWould you like to work on your sleep efficiency?",
               otherUser,
               quickReplies: {
                 type: "radio", // or 'checkbox',
@@ -780,6 +780,10 @@ export const module_sleep_duration = reply => {
               value: "why_dur_a"
             },
             {
+              title: "Yes i know that",
+              value: "got_it"
+            },
+            {
               title: "Yes we do!",
               value: "no_believe_dur"
             }
@@ -853,7 +857,7 @@ export const module_sleep_duration = reply => {
       {
         createdAt,
         _id: getID(),
-        text: "The idea of oversleeping is actually different for each person too! Someone who only needs 6 hours to function may feel as though they’ve overslept after getting the “recommended” 8 hours. ",
+        text: "The idea of oversleeping is actually different for each person too! Someone who only needs 6 hours to function may feel as though they’ve overslept after getting the “recommended” 8 hours.",
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -881,7 +885,7 @@ export const module_sleep_duration = reply => {
       {
         createdAt,
         _id: getID(),
-        text: "Sleep is a restorative process, when you're getting the correct amount. It can be very beneficial to know exactly what’s going on in your brain when you sleep. Would you like to learn about the stages of sleep so you can work through your insomnia?",
+        text: "Sleep is a restorative process, when you're getting the correct amount. It can be very beneficial to know exactly what’s going on in your brain when you sleep. \n\nWould you like to learn about the stages of sleep so you can work through your insomnia?",
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -911,17 +915,304 @@ export const module_sleep_duration = reply => {
       {
         createdAt,
         _id: getID(),
-        text: "Alright, there are 5 different stages of sleep. 4 non REM or Rapid Eye Movement stages and one REM stage. ",
+        text: "Alright, there are 5 different stages of sleep. 4 non REM or Rapid Eye Movement stages and one REM stage.",
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
           values: [
             {
               title: "More details please",
-              value: "stages_of_insomnia_dur"
+              value: "stage_1_dur"
             },
             {
               title: "I know about REM sleep",
+              value: "got_it"
+            }
+          ]
+        },
+        user: {
+          _id: 2,
+          name: "React Native",
+          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
+        }
+      }
+    ]);
+  }
+
+  if (reply.value === "stage_1_dur") {
+    return ([
+      {
+        createdAt,
+        _id: getID(),
+        text: "Stage 1 is the lightest form of sleep. This is usually when you can still be awaken pretty easily. This stage usually comprises only 5-10% since its essentially just that feeling of how we fall asleep.",
+        quickReplies: {
+          type: "radio", // or 'checkbox',
+          keepIt: true,
+          values: [
+            {
+              title: "That makes sense",
+              value: "twitches_dur"
+            },
+            {
+              title: "Explain further",
+              value: "twitches_dur"
+            }
+          ]
+        },
+        user: {
+          _id: 2,
+          name: "React Native",
+          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
+        }
+      }
+    ]);
+  }
+
+  if (reply.value === "twitches_dur") {
+    return ([
+      {
+        createdAt,
+        _id: getID(),
+        text: "Have you ever been near someone who is falling asleep and their body does these sudden twitches?",
+        quickReplies: {
+          type: "radio", // or 'checkbox',
+          keepIt: true,
+          values: [
+            {
+              title: "Yes! What is that?",
+              value: "hypnic_jerk_dur"
+            },
+            {
+              title: "No.. What is that?",
+              value: "hypnic_jerk_dur"
+            }
+          ]
+        },
+        user: {
+          _id: 2,
+          name: "React Native",
+          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
+        }
+      }
+    ]);
+  }
+  if (reply.value === "hypnic_jerk_dur") {
+    return ([
+      {
+        createdAt,
+        _id: getID(),
+        text: "These are called Hypnic jerks. Sometimes these jerks can even wake us up out of that light first stage of sleep.\n\nIf they don’t we go on into stage 2 where we spend a lot of our time. There are low and high amplitude brain waves occurring. We can think of it as the connection between light and deep sleep.",
+        quickReplies: {
+          type: "radio", // or 'checkbox',
+          keepIt: true,
+          values: [
+            {
+              title: "Haven't fallen asleep yet",
+              value: "deep_sleep_dur"
+            },
+          ]
+        },
+        user: {
+          _id: 2,
+          name: "React Native",
+          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
+        }
+      }
+    ]);
+  }
+  if (reply.value === "deep_sleep_dur") {
+    return ([
+      {
+        createdAt,
+        _id: getID(),
+        text: "The next stages are what we consider our deep sleep or slow wave sleep. There isn’t much brain activity and we tend to breath very slowly.\n\nHave you ever tried to wake someone up and had to really poke or shake them, maybe dump some water on them?",
+        quickReplies: {
+          type: "radio", // or 'checkbox',
+          keepIt: true,
+          values: [
+            {
+              title: "Absolutely",
+              value: "wake_up_dur"
+            },
+            {
+              title: "Never!",
+              value: "wake_up_dur"
+            }
+          ]
+        },
+        user: {
+          _id: 2,
+          name: "React Native",
+          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
+        }
+      }
+    ]);
+  }
+  if (reply.value === "wake_up_dur") {
+    return ([
+      {
+        createdAt,
+        _id: getID(),
+        text: "It’s much harder to wake someone up during these stages. In fact stage 3 and 4 are where you tend to see those who sleep walk or talk perform these actions.",
+        quickReplies: {
+          type: "radio", // or 'checkbox',
+          keepIt: true,
+          values: [
+            {
+              title: "What's the next stage?",
+              value: "last_stage_dur"
+            },
+            {
+              title: "Important take away?",
+              value: "important_dur"
+            }
+          ]
+        },
+        user: {
+          _id: 2,
+          name: "React Native",
+          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
+        }
+      }
+    ]);
+  }
+  if (reply.value === "important_dur") {
+    return ([
+      {
+        createdAt,
+        _id: getID(),
+        text: "The important part of these stages is that they are quite critical to repair and restoration of our body functions.",
+        quickReplies: {
+          type: "radio", // or 'checkbox',
+          keepIt: true,
+          values: [
+            {
+              title: "What's the next stage?",
+              value: "last_stage_dur"
+            }
+          ]
+        },
+        user: {
+          _id: 2,
+          name: "React Native",
+          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
+        }
+      }
+    ]);
+  }
+  if (reply.value === "last_stage_dur") {
+    return ([
+      {
+        createdAt,
+        _id: getID(),
+        text: "The final stage is REM sleep. Our brains are most active during this time. It is often associated with dreaming. \n\nSo when you wake up remembering that dream about a cupcake chasing you through the mall this is the stage typically responsible.",
+        quickReplies: {
+          type: "radio", // or 'checkbox',
+          keepIt: true,
+          values: [
+            {
+              title: "What else is it responsible for?",
+              value: "ask_to_stop_dur"
+            }
+          ]
+        },
+        user: {
+          _id: 2,
+          name: "React Native",
+          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
+        }
+      }
+    ]);
+  }
+  if (reply.value === "ask_to_stop_dur") {
+    return ([
+      {
+        createdAt,
+        _id: getID(),
+        text: "I have given you a lot of information to process..there's more on REM sleep to learn, would you like to go on to part 2? ",
+        quickReplies: {
+          type: "radio", // or 'checkbox',
+          keepIt: true,
+          values: [
+            {
+              title: "I can keep going",
+              value: "part_2_dur"
+            },
+            {
+              title: "I'm sleepy already",
+              value: "got_it"
+            }
+          ]
+        },
+        user: {
+          _id: 2,
+          name: "React Native",
+          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
+        }
+      }
+    ]);
+  }
+  if (reply.value === "end_rem_1_dur") {
+    return ([
+      {
+        createdAt,
+        _id: getID(),
+        text: "Okay, that's the end of the first part of the lesson on REM sleep.\nYou can learn more on it later.",
+        quickReplies: {
+          type: "radio", // or 'checkbox',
+          keepIt: true,
+          values: [
+            {
+              title: "Sounds good",
+              value: "got_it"
+            }
+          ]
+        },
+        user: {
+          _id: 2,
+          name: "React Native",
+          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
+        }
+      }
+    ]);
+  }
+  
+  if (reply.value === "part_2_dur") {
+    return ([
+      {
+        createdAt,
+        _id: getID(),
+        text: "REM sleep is where we tend to consolidate all of our memories and experiences. We move things from short term to long term memory. This one is important for remembering stuff!",
+        quickReplies: {
+          type: "radio", // or 'checkbox',
+          keepIt: true,
+          values: [
+            {
+              title: "That's pretty neat",
+              value: "paralyzed_dur"
+            }
+          ]
+        },
+        user: {
+          _id: 2,
+          name: "React Native",
+          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
+        }
+      }
+    ]);
+  }
+  if (reply.value === "paralyzed_dur") {
+    return ([
+      {
+        createdAt,
+        _id: getID(),
+        text: "During REM sleep out body becomes paralyzed so we are unable to act out our crazy dreams! We wouldn’t want you running through your house and be able to hurt yourself.",
+        quickReplies: {
+          type: "radio", // or 'checkbox',
+          keepIt: true,
+          values: [
+            {
+              title: "How long do we spend in each stage",
               value: "got_it"
             }
           ]

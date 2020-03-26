@@ -327,11 +327,11 @@ randModules = () =>{
       var reply = {value: "sleep_dur"};
       return new module_sleep_duration(reply);
     case 2:
-      var reply = {value: "start_chp_one"};
+     var reply = {value: "start_chp_one"};
       return new conversation_flow_one(reply);
     case 3:
       var reply = {value: "sleep_dur"};
-      return new module_sleep_duration(reply);
+      return new module_sleep_duration(reply); //this will be the last module, currently the same as case 1
     default:
     return new generic_tip();
   }
