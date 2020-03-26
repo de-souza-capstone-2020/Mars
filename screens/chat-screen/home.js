@@ -96,7 +96,7 @@ export default class Home extends Component {
       if (appState.has(1)) {
         this.setState({ messages: new sleep_diary_messages() });
         appState.delete(1);
-      } else if (appState.has(2)) {
+      } else if (appState.has(2)) { //if sleepdiary has been entered and you return to the app you get a random generic tip to begin
         this.setState({ messages:  this.randGenericBeginTips()});
         appState.delete(2);
       }
@@ -369,19 +369,23 @@ randModules = () =>{
       });
     }
     switch (nextAppState) {
-      case 1:
+      case 1: 
+      //returns message that asks user to enter sleep diary, this is not in use atm, happens after case 6
         appState.delete(1);
         appState.add(2);
         this.setState(appState);
         return new sleep_diary_messages();
-      case 2: //ending generic tip
+      case 2: 
+      //returns a random generic tip that terminates the convo with a 'bye' , it is the last message returned
         appState.delete(2);
         appState.add(4);
         this.setState(appState);
-        return this.randGenericEndTips();
-      case 3:   //sleep hygiene tip    
-        appState.delete(3);
-        appState.add(5);
+        return this.randGenericEndTips(); 
+      case 3:   
+      //returns a sleep hygiene tip based on sleep diary calculation or sleep diary reminder message if state has not been set 
+      //happens after conversation flow 1 is completed 
+      appState.delete(3);
+      appState.add(5);
       this.setState(appState);
       const hours = Math.abs(sAT - sleepTime) / 36e5;
       if(this.state.sleepAttemptTime != null) {
@@ -393,15 +397,16 @@ randModules = () =>{
         } 
       }
       else{
+
         return new sleep_diary_reminder_messages();
       }
-      case 4: 
+      case 4: //returns converastion flow one, happens after initial generic tip is given 
         appState.delete(4);
         appState.add(3);
         this.setState(appState);
         return this.randModules();
 
-      case 5:  //sleep efficency
+      case 5:  //returns sleep efficency to the user based on sleep diary, happens after case 3
           appState.delete(5);
           appState.add(6);
           this.setState(appState);
@@ -413,7 +418,8 @@ randModules = () =>{
             else if(sleepEfficiency > 0 && sleepEfficiency>100){
               return new sleep_diary_tip_eff_err();
             } 
-        case 6:  //naps
+
+        case 6:  //returns nap tips, happens after case 5
           appState.delete(6);
           appState.add(2);
           this.setState(appState);
@@ -424,11 +430,12 @@ randModules = () =>{
           else if(this.state.didNap == "no"){
             return new sleep_diary_nap_good();
           }       
-        case 7: //initial generic tips
+        case 7: 
+        //returns a random generic tip after at the begining if sleep diary has not been entered(line 134 )
             appState.delete(7);
             appState.add(4);
             this.setState(appState);
-            return this.randGenericBeginTips(); 
+            return this.randGenericBeginTips(); ////produce a list of genderic tips that are dispensed daily(7 tips)
           
         default:
           //console.error("There is something wrong with the case statement");
