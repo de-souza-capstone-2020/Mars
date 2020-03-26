@@ -132,6 +132,8 @@ export default class Intro extends React.Component {
             style={{width: 400, height: 250, marginBottom: 20}}
           />
           <Text style={styles.intro_text}>
+            SleepWell is a self-management sleep therapy app
+            {"\n"}
             We suggest you stay with us for 6-8 weeks for the best results
           </Text>
         </View>
