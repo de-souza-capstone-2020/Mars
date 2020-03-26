@@ -87,7 +87,7 @@ export default class Home extends Component {
 };
   async componentDidMount() {
 
-    AsyncStorage.clear();
+    //AsyncStorage.clear();
    // AsyncStorage.removeItem(date);
     await this.isSleepDiaryEntered();
 
