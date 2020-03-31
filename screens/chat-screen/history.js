@@ -11,7 +11,7 @@ import { ListItem, Icon } from "react-native-elements";
 import SplashScreen from "../loading";
 import { retrieveSleepDiaryData } from "../utils/save-utils";
 import SleepDiaryEdit from "../SleepDiaryEdit";
-import { s } from "./styles";
+import { s, colors } from "./styles";
 
 export default class History extends React.Component {
   state = {
@@ -94,13 +94,13 @@ export default class History extends React.Component {
                 <Icon
                   name="calendar"
                   type="font-awesome"
-                  color={s.lightGrey}
+                  color={colors.lightGrey}
                   iconStyle={{ paddingLeft: 10 }}
                 />
               }
-              titleStyle={{ fontSize: 18, color: s.lightGrey }}
+              titleStyle={{ fontSize: 18, }}
               style={{
-                backgroundColor: s.backgroundColor,
+                backgroundColor: colors.backgroundColor,
                 paddingLeft: 20,
                 paddingRight: 20
               }}
@@ -125,7 +125,7 @@ export default class History extends React.Component {
 
 const styles = StyleSheet.create({
   body: {
-    backgroundColor: s.backgroundColor,
+    backgroundColor: colors.backgroundColor,
     flex: 1
   },
   logo_area: {

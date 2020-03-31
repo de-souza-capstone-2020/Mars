@@ -107,12 +107,13 @@ export default class Intro extends React.Component {
         loop={false}
       >
         <View style={styles.slide1}>
-          <Image 
-            source={require('../assets/onboarding.png')}
-            style={{width: 300, height: 300}}
+          <Image
+            source={require("../assets/onboarding.png")}
+            style={{ width: 300, height: 300 }}
           />
           <Text style={styles.intro_text}>
-            This is a collaboration project between de Souza Institute and MGMT Capstone Team 8
+            This is a collaboration project between de Souza Institute and MGMT
+            Capstone Team 8
           </Text>
         </View>
         <View style={styles.slide1}>
@@ -283,8 +284,7 @@ export default class Intro extends React.Component {
               radio_props={[
                 { label: "Yes", value: 1 },
                 { label: "No", value: 0 },
-                { label: "Not sure", value: 1},
-
+                { label: "Not sure", value: 1 }
               ]}
               labelHorizontal={true}
               initial={-1}
@@ -394,6 +394,7 @@ export default class Intro extends React.Component {
               onPress={this.onNavigate}
             />
           </View>
+          
         )}
         {submitted && !hasSleepApnea && (
           <View style={styles.slide2}>
@@ -448,14 +449,16 @@ const styles = StyleSheet.create({
     color: "black",
     fontSize: 30,
     fontWeight: "bold",
-    textAlign: "center"
+    textAlign: "center",
+    fontFamily: 'OpenSans-Regular'
   },
   input_text: {
     color: "black",
     fontSize: 30,
     fontWeight: "bold",
     paddingBottom: 50,
-    textAlign: "center"
+    textAlign: "center",
+    fontFamily: 'OpenSans-Regular'
   },
   question_view: {
     flex: 2,
@@ -470,14 +473,16 @@ const styles = StyleSheet.create({
     fontSize: 25,
     textAlign: "center",
     lineHeight: 30,
-    paddingTop: 10
+    paddingTop: 10,
+    fontFamily: 'OpenSans-Regular'
   },
   question_superscript_text: {
     color: "black",
     fontSize: 15,
     lineHeight: 40,
     // paddingTop: 10,
-    textAlign: "center"
+    textAlign: "center",
+    fontFamily: 'OpenSans-Regular'
   },
   radioButton_view: {
     flex: 2,
