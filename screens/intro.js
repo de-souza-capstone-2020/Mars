@@ -121,7 +121,7 @@ export default class Intro extends React.Component {
             style={{width: 300, height: 300}}
           />
           <Text style={{fontWeight: "bold", textAlign: "center", fontSize: 20}}>
-            SleepWell will walk you through an updated version of the Sleeping Well Manual developed by Dr. Sheila Garland 
+            SleepWell is based on the Sleeping Well Manual developed by Dr. Sheila Garland 
             (Memorial University) based on her original research and clinical practice treating insomnia in individuals 
             diagnosed with cancer
           </Text>
