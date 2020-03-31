@@ -17,7 +17,7 @@ import RadioForm, {
   RadioButtonLabel
 } from "react-native-simple-radio-button";
 
-import { s, colors } from "./chat-screen/styles";
+import { colors } from "./chat-screen/styles";
 
 export default class Intro extends React.Component {
   state = {
@@ -31,7 +31,8 @@ export default class Intro extends React.Component {
     ageOlder50: 0,
     largeNeckSize: 0,
     gender: null,
-    hasSleepApnea: false
+    hasSleepApnea: true,
+    submitted: false
   };
 
   onNavigate = () => {
@@ -40,6 +41,7 @@ export default class Intro extends React.Component {
     navigation.navigate("Home");
     storeNickNameYearBirth({ nickName, yearOfBirth });
   };
+
   onSubmitForSleepApnea = () => {
     const {
       snoring,
@@ -60,7 +62,19 @@ export default class Intro extends React.Component {
     ) {
       this.setState({ hasSleepApnea: true });
     }
+
+    this.setState({submitted: true});
   };
+
+  determineAge = (text) =>{
+    this.setState({ yearOfBirth: text })
+    const year = new Date().getFullYear();
+    if (year - text >= 50){
+      this.setState({ ageOlder50: 1 })
+    } else {
+      this.setState({ ageOlder50: 0})
+    }
+  }
   render() {
     const { navigation } = this.props;
     const {
@@ -72,14 +86,25 @@ export default class Intro extends React.Component {
       ageOlder50,
       largeNeckSize,
       gender,
-      hasSleepApnea
+      hasSleepApnea,
+      submitted
     } = this.state;
+
+    let collarQuestion = "For male, is your shirt collar 17 inches / 43cm or larger ?\n\n"
+    + "For female, is your shirt collar 16 inches / 41cm or larger ?";
+    if (gender === "male"){
+      collarQuestion = "Is your shirt collar 17 inches / 43cm or larger ?"
+    } 
+    else if (gender === "female"){
+      collarQuestion = "Is your shirt collar 16 inches / 41cm or larger ?"
+    }
     return (
       <Swiper
         showsButtons={true}
         activeDotColor={colors.accent}
         nextButton={<Text style={styles.buttonText}>›</Text>}
         prevButton={<Text style={styles.buttonText}>‹</Text>}
+        loop={false}
       >
         <View style={styles.slide1}>
           <Image
@@ -92,12 +117,35 @@ export default class Intro extends React.Component {
           </Text>
         </View>
         <View style={styles.slide1}>
-          <Image
-            source={require("../assets/onboarding2.png")}
-            style={{ width: 400, height: 250, marginBottom: 20 }}
+          <Image 
+            source={require('../assets/onboarding3.png')}
+            style={{width: 300, height: 300}}
+          />
+          <Text style={{fontWeight: "bold", textAlign: "center", fontSize: 20}}>
+            SleepWell is based on the Sleeping Well Manual developed by Dr. Sheila Garland 
+            (Memorial University) based on her original research and clinical practice treating insomnia in individuals 
+            diagnosed with cancer
+          </Text>
+        </View>
+        <View style={styles.slide1}>
+          <Image 
+            source={require('../assets/onboarding2.png')}
+            style={{width: 400, height: 250, marginBottom: 20}}
           />
           <Text style={styles.intro_text}>
-            We suggest you stay with us for 6-8 weeks
+            SleepWell is a self-management sleep therapy app
+            {"\n"}
+            We suggest you stay with us for 6-8 weeks for the best results
+          </Text>
+        </View>
+        <View style={styles.slide1}>
+          <Image 
+            source={require('../assets/questionnaire.png')}
+            style={{width: 400, height: 250, marginBottom: 20}}
+          />
+          <Text style={{fontWeight: "bold", textAlign: "center", fontSize: 25}}>
+            To get started, we'll ask you a few questions about yourself. Don't worry, we do not save this data at all,
+            this will simply be used to assess your risk for sleep apnea.
           </Text>
         </View>
         <View style={styles.slide2}>
@@ -114,7 +162,7 @@ export default class Intro extends React.Component {
             style={styles.textBox}
             autoCapitalize="words"
             keyboardType="numeric"
-            onChangeText={text => this.setState({ yearOfBirth: text })}
+            onChangeText={text => this.determineAge(text)}
           />
         </View>
 
@@ -255,60 +303,6 @@ export default class Intro extends React.Component {
         <View style={styles.slide2}>
           <View style={styles.question_view}>
             <Text style={styles.question_text}>
-              Are you 50 years or older ?
-            </Text>
-          </View>
-          <View style={styles.radioButton_view}>
-            <RadioForm
-              radio_props={[
-                { label: "Yes", value: 1 },
-                { label: "No", value: 0 }
-              ]}
-              labelHorizontal={true}
-              initial={-1}
-              onPress={value => {
-                this.setState({ ageOlder50: value });
-              }}
-              animation={true}
-              buttonSize={30}
-              labelStyle={{ fontSize: 20, paddingLeft: 20 }}
-              buttonColor={colors.accent}
-              selectedButtonColor={colors.accent}
-              radioStyle={{ padding: 5 }}
-            />
-          </View>
-        </View>
-        <View style={styles.slide2}>
-          <View style={styles.question_view}>
-            <Text style={styles.question_text}>
-              For male, is your shirt collar 17 inches / 43cm or larger ? {"\n"}
-              {"\n"}
-              For female, is your shirt collar 16 inches / 41cm or larger ?
-            </Text>
-          </View>
-          <View style={styles.radioButton_view}>
-            <RadioForm
-              radio_props={[
-                { label: "Yes", value: 1 },
-                { label: "No", value: 0 }
-              ]}
-              labelHorizontal={true}
-              initial={-1}
-              onPress={value => {
-                this.setState({ largeNeckSize: value });
-              }}
-              animation={true}
-              buttonSize={30}
-              labelStyle={{ fontSize: 20, paddingLeft: 20 }}
-              buttonColor={colors.accent}
-              selectedButtonColor={colors.accent}
-              radioStyle={{ padding: 5 }}
-            />
-          </View>
-        </View>
-        <View style={styles.slide2}>
-          <View style={styles.question_view}>
-            <Text style={styles.question_text}>
               What gender do you identify as ?
             </Text>
           </View>
@@ -318,7 +312,7 @@ export default class Intro extends React.Component {
                 { label: "Male", value: "male" },
                 { label: "Female", value: "female" },
                 { label: "Prefer not to say", value: "" },
-                { label: "Other", value: "" }
+                { label: "Not listed", value: "" }
               ]}
               labelHorizontal={true}
               initial={-1}
@@ -335,6 +329,34 @@ export default class Intro extends React.Component {
           </View>
         </View>
         <View style={styles.slide2}>
+          <View style={styles.question_view}>
+            <Text style={styles.question_text}>
+              {collarQuestion}
+            </Text>
+          </View>
+          <View style={styles.radioButton_view}>
+            <RadioForm
+              radio_props={[
+                { label: "Yes", value: 1 },
+                { label: "No", value: 0 },
+                { label: "Not sure", value: 1 }
+              ]}
+              labelHorizontal={true}
+              initial={-1}
+              onPress={value => {
+                this.setState({ largeNeckSize: value });
+              }}
+              animation={true}
+              buttonSize={30}
+              labelStyle={{ fontSize: 20, paddingLeft: 20 }}
+              buttonColor={colors.accent}
+              selectedButtonColor={colors.accent}
+              radioStyle={{ padding: 5 }}
+            />
+          </View>
+        </View>
+        {!submitted &&(
+          <View style={styles.slide2}>
           <Text style={styles.input_text}>Confirm my answers</Text>
           <Button
             buttonStyle={{
@@ -350,19 +372,19 @@ export default class Intro extends React.Component {
             onPress={this.onSubmitForSleepApnea}
           />
         </View>
-        {hasSleepApnea && (
+        )}
+        {submitted && hasSleepApnea && (
           <View style={styles.slide2}>
             <Text style={styles.question_text}>
               You may have sleep apnea. This application will not help you with
               symptoms relating to or caused by sleep apnea. Please seek
-              professional help.
+              professional help. {"\n\n"}
             </Text>
             <Button
               buttonStyle={{
                 borderRadius: 15,
                 width: 150,
-                backgroundColor: colors.accent,
-                marginTop: 50
+                backgroundColor: colors.accent
               }}
               titleStyle={{
                 color: "white"
@@ -374,14 +396,14 @@ export default class Intro extends React.Component {
           </View>
           
         )}
-        {!hasSleepApnea && (
+        {submitted && !hasSleepApnea && (
           <View style={styles.slide2}>
             <Text style={styles.input_text}>You're all set</Text>
             <Button
               buttonStyle={{
                 borderRadius: 15,
                 width: 150,
-                backgroundColor: colors.accent
+                backgroundColor: colors.accent,
               }}
               titleStyle={{
                 color: "white"
@@ -391,7 +413,7 @@ export default class Intro extends React.Component {
               onPress={this.onNavigate}
             />
           </View>
-        )}
+      )}
       </Swiper>
     );
   }
