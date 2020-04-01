@@ -302,7 +302,7 @@ const sleep_diary_tip_eff = (sleepEff) => {
             value: "explain_sleep_effs"
           }
         ]
-      },
+      }
     }
   ]
 
@@ -396,8 +396,8 @@ const nap_tip_1= () => {
         ]
       },
     }
-  ]
-}
+  ];
+};
 
 const sleep_tip_3 = () => {
   return [
@@ -415,11 +415,10 @@ const sleep_tip_3 = () => {
             value: "got_it"
           }
         ]
-      },
+      }
     }
-  ]
-}
-
+  ];
+};
 
 const module = () => {
   return [
