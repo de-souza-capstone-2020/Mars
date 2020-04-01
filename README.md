@@ -8,7 +8,7 @@ Project is created with:
 - XCode
 
 ## Show case
-![](examples/welcome.gif)
+<img src='examples/welcome.gif' width=200>
 
 
 ## Getting Started 
