@@ -3,7 +3,7 @@ const getRandomAppState = appState => {
   return items[Math.floor(Math.random() * items.length)];
 };
 
-const getRandomGenericTip = () => {
+const getRandomGenericTip = () => { //three options to randomly select from
   let items = [1,2,3];
   return items[Math.floor(Math.random() * items.length)];
 };
@@ -13,4 +13,9 @@ const getNextAppState = appState => {
   return items[0];
 };
 
-export { getRandomAppState,getNextAppState,getRandomGenericTip };
+const getNextModule = modState=> {
+  let items = Array.from(modState);
+  return items[mod];
+};
+
+export { getRandomAppState,getNextAppState,getRandomGenericTip,getNextModule };

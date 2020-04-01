@@ -10,7 +10,11 @@ import {
   AsyncStorage
 } from "react-native";
 import { Button } from 'react-native-elements';
-import { s } from "./chat-screen/styles";
+import Animation from 'lottie-react-native';
+import { colors } from "./chat-screen/styles";
+
+// import anim from "../assets/relaxing-time.json";
+import anim from "../assets/background.json";
 
 
 export default class Welcome extends React.Component {
@@ -20,6 +24,7 @@ export default class Welcome extends React.Component {
 
   componentDidMount() {
     this.isUserOnboarded(); //comment out for onboarding flow
+    this.animation.play();
   }
   clearAsyncStorage = async () => {
     AsyncStorage.clear();
@@ -47,13 +52,7 @@ export default class Welcome extends React.Component {
             size: 15,
             color: "white"
           }}
-          buttonStyle={{
-            borderColor: "#77758F",
-            borderWidth: 2,
-            borderRadius: 15,
-            width: 250,
-            backgroundColor: "#77758F",
-          }}
+          buttonStyle={styles.button}
           titleStyle={{
             color: 'white',
           }}
@@ -70,13 +69,7 @@ export default class Welcome extends React.Component {
             size: 15,
             color: 'white',
           }}
-          buttonStyle={{
-            borderColor: "#77758F",
-            borderWidth: 2,
-            borderRadius: 15,
-            width: 250,
-            backgroundColor: "#77758F",
-          }}
+          buttonStyle={styles.button}
           titleStyle={{
             color: 'white',
           }}
@@ -90,11 +83,30 @@ export default class Welcome extends React.Component {
     return (
       <SafeAreaView style={styles.body}>
         <View style={styles.body}>
+        <Animation
+            ref={animation => {
+              this.animation = animation;
+            }}
+            style={{
+              position:'absolute', 
+              // width: 300,
+              // height: 300,
+              aspectRatio: 1
+            }}
+            loop={true}
+            source={anim}
+            resizeMode="cover"
+          />
           <View style={styles.logo_area}>
-            <Image 
+            {/* <Image 
               source={require('../screens/data/logo.png')}
               style={{width: 400, height: 250}}
-            />
+            /> */}
+            
+            
+          <Text style={styles.title_font}> 
+              SleepWell
+            </Text>
           </View>
           <View style={styles.get_started}>
             {button}
@@ -108,18 +120,19 @@ export default class Welcome extends React.Component {
 const styles = StyleSheet.create({
   body: {
     // backgroundColor: "#cfe2f3",
-    backgroundColor: 'white',
+    backgroundColor: colors.background,
     flex: 1
   },
   logo_area: {
+    // flexDirection: 'row',
     flex: 2,
-    justifyContent: "flex-end",
+    justifyContent: "center",
     borderColor: "red",
     // borderWidth: 1,
   },
   get_started: {
     flex: 1,
-    borderColor: "blue",
+    // borderColor: "blue",
     justifyContent: "flex-start",
     alignItems: 'center',
     paddingTop: 50,
@@ -141,11 +154,19 @@ const styles = StyleSheet.create({
     color: "black"
   },
   title_font: {
-    fontSize: 45,
-    color: "black",
-    textAlign: "center"
+    fontSize: 55,
+    color: "white",
+    textAlign: "center",
+    fontFamily: "Bimbo-Regular-trial"
   },
   highlight: {
     fontWeight: "700"
+  },
+  button: {
+    borderColor: colors.accent,
+    borderWidth: 2,
+    borderRadius: 15,
+    width: 250,
+    backgroundColor: colors.accent,
   }
 });
