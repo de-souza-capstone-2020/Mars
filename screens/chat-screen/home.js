@@ -29,7 +29,8 @@ import {
   content_module_request,
   sleep_efficiency_explain,
   nap_tip_1,
-  sleep_tip_3
+  sleep_tip_3,
+  module_end
 } from "../data/messages";
 import {
   getRandomAppState,
@@ -97,14 +98,17 @@ export default class Home extends Component {
     //AsyncStorage.clear();
     // AsyncStorage.removeItem(date);
     await this.isSleepDiaryEntered();
-
+ 
     //determining message type
     const { appState } = this.state;
+    const { modState } = this.state;
+    modState.add(0); 
+    this.setState({ modState });
     console.log("componentdidmount appstate: ", appState);
     if (appState.size > 0) {
       if (appState.has(1)) {
         this.setState({ messages: new sleep_diary_messages() });
-        appState.delete(1);
+        appState.delete(1); 
       } else if (appState.has(2)) {
         //if sleepdiary has been entered and you return to the app you get a random generic tip to begin
         this.setState({ messages: this.randGenericBeginTips() });
@@ -280,16 +284,24 @@ export default class Home extends Component {
   };
 
   determineResponse = reply => {
+    const { modState } = this.state;
+    console.log("ModState is:", modState);
+    console.log("Reply is:", reply);
     if (reply.value === "sleep_diary") {
      this.toggleModal();
       reply = this.getNextConversation();
     } else if (reply.value === "next_chp_one"){
       var val1 = {value: "start_chp_one"};
-      return new conversation_flow_one(val1);
+      reply = new conversation_flow_one(val1);
     } else if (reply.value==="next_chap_imagery"){
       var val = {value: "start_chp_img"};
       reply = new module_sleep_imagery(val); 
-    } else if (reply.value === "got_it") {
+    } else if (reply.value==="next_chap_dur"){
+      var val2 = {value: "sleep_dur"};
+      reply = new module_sleep_duration(val2);
+    }else if (reply.value === "end_module" ) {
+      reply = new module_end();
+    }else if (reply.value === "got_it") {
       reply = this.getNextConversation();
     } else if (reply.value.includes("_chp1")) {
       reply = conversation_flow_one(reply);
@@ -298,7 +310,7 @@ export default class Home extends Component {
     }else if (reply.value.includes("_dur")){
       reply = module_sleep_duration(reply);
     }else if (reply.value === "yes_content"){ //user wants module content
-      const { modState } = this.state;
+      modState.delete(0);
       modState.add(1); //set module to 1 
       reply = this.randModules(); 
     }else if (reply.value==="explain_sleep_effs"){
@@ -340,7 +352,7 @@ randGenericBeginTips = () =>{
 };
 
 randModules = () =>{
-  const randNextTip = getRandomGenericTip();
+  const randNextMod = getRandomGenericTip();
   const { modState } = this.state;
   const nextModState = getNextAppState(modState);
   //const nextModule = getNextModule(mod);
@@ -363,7 +375,7 @@ randModules = () =>{
       var reply = {value: "start_chp_img"};
       return new module_sleep_imagery(reply); //this will be the last module, currently the same as case 1
      default:
-    return new generic_tip();
+    return new sleep_tip_3();
   }
 };
 

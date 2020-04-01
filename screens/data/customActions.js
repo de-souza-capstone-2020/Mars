@@ -189,7 +189,7 @@ export const sleep_diary_response = reply => {
           keepIt: true,
           values: [
             {
-              title: "got it",
+              title: "Okay, no coffee before bed",
               value: "got_it"
             }
           ]
@@ -384,7 +384,7 @@ export const conversation_flow_one = reply => {
             },
             {
               title: "I know this!",
-              value: "next_chp_one" //equalivent as "user would like to exit the state"
+              value: "next_chap_dur" //equalivent as "user would like to exit the state"
             }
           ]
         },
@@ -797,7 +797,7 @@ export const module_sleep_duration = reply => {
             },
             {
               title: "Yes i know that",
-              value: "start_chp_img"
+              value: "next_chap_imagery"
             },
             {
               title: "Yes we do!",
@@ -854,7 +854,7 @@ export const module_sleep_duration = reply => {
               value: "stages_of_sleep_dur"
             },
             {
-              title: "Guess it’s time to figure out what works best for me!",
+              title: "What works best for me?",
               value: "stages_of_sleep_dur"
             },
           ]
@@ -883,7 +883,7 @@ export const module_sleep_duration = reply => {
               value: "stages_of_sleep_dur"
             },
             {
-              title: "Guess it’s time to figure out what works best for me!",
+              title: "What works best for me?",
               value: "stages_of_sleep_dur"
             }
           ]
@@ -1257,12 +1257,12 @@ export const module_sleep_imagery = reply => {
           keepIt: true,
           values: [
             {
-              title: "I’d love to learn about imagery!",
+              title: "Let's learn about imagery!",
               value: "know_more_please_img"
             },
             {
               title: "I already know this",
-              value: "got_it" //equalivent as "user would like to exit the state"
+              value: "end_module" //equalivent as "user would like to exit the state"
             }
           ]
         },
