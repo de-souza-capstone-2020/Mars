@@ -25,18 +25,30 @@ import {
   sleep_diary_nap_good,
   sleep_tip_1,
   generic_tip_1,
-  generic_tip_2
+  generic_tip_2,
+  content_module_request,
+  sleep_efficiency_explain,
+  nap_tip_1,
+  sleep_tip_3,
+  module_end,
+  sleep_tip_4
+  ,sleep_tip_5
+  ,sleep_tip_6
+  ,sleep_tip_7
 } from "../data/messages";
 import {
   getRandomAppState,
   getNextAppState,
-  getRandomGenericTip
+  getRandomGenericTip,
+  getNextModule
 } from "../utils/helper-utils";
 import LottieLoader from "../loading";
-import {
-  sleep_diary_response,
-  conversation_flow_one,
-  sleep_diary_tip_nap
+import { 
+    sleep_diary_response,
+    conversation_flow_one,
+    sleep_diary_tip_nap,
+    module_sleep_duration,
+    module_sleep_imagery
 } from "../data/customActions";
 import SplashScreen from "../loading";
 import { s, colors } from "./styles";
@@ -74,7 +86,8 @@ export default class Home extends Component {
     sleepTime: null,
     durationTotalWakeUp: null,
     didNap: "",
-    sleep_tip: new Object()
+    sleep_tip: new Object(),
+    modState: new Set(),
   };
 
   removeItemValue = async key => {
@@ -89,14 +102,17 @@ export default class Home extends Component {
     //AsyncStorage.clear();
     // AsyncStorage.removeItem(date);
     await this.isSleepDiaryEntered();
-
+ 
     //determining message type
     const { appState } = this.state;
+    const { modState } = this.state;
+    modState.add(0); 
+    this.setState({ modState });
     console.log("componentdidmount appstate: ", appState);
     if (appState.size > 0) {
       if (appState.has(1)) {
         this.setState({ messages: new sleep_diary_messages() });
-        appState.delete(1);
+        appState.delete(1); 
       } else if (appState.has(2)) {
         //if sleepdiary has been entered and you return to the app you get a random generic tip to begin
         this.setState({ messages: this.randGenericBeginTips() });
@@ -237,7 +253,6 @@ export default class Home extends Component {
     try {
       await AsyncStorage.getItem(today).then(key => {
         if (key != null) {
-          console.log("Sleep entry for today", JSON.parse(key));
           const sleepAttempt = JSON.parse(key).attemptToSleepTime;
           const wakeUp = JSON.parse(key).wakeUpTime;
           const sleep = JSON.parse(key).sleepTime;
@@ -269,75 +284,121 @@ export default class Home extends Component {
       console.log("Try error", error);
       //console.error(error);
     }
-  };
+  }; 
 
-  determineResponse = reply => {
-    const { appState } = this.state;
+  determineResponse = reply => { 
+    const { modState } = this.state;
+    console.log("Reply is:", reply);
     if (reply.value === "sleep_diary") {
-      this.toggleModal();
+     this.toggleModal();
       reply = this.getNextConversation();
-    } else if (reply.value === "got_it") {
+    } else if (reply.value === "next_chp_one"){
+      var val1 = {value: "start_chp_one"};
+      reply = new conversation_flow_one(val1);
+    } else if (reply.value==="next_chap_imagery"){
+      var val = {value: "start_chp_img"};
+      reply = new module_sleep_imagery(val); 
+    } else if (reply.value==="next_chap_dur"){
+      var val2 = {value: "sleep_dur"};
+      reply = new module_sleep_duration(val2);
+    }else if (reply.value === "end_module" ) {
+      reply = new module_end();
+    }else if (reply.value === "got_it") {
       reply = this.getNextConversation();
     } else if (reply.value.includes("_chp1")) {
       reply = conversation_flow_one(reply);
     } else if (reply.value.includes("_nap")) {
       reply = sleep_diary_tip_nap(reply);
-    } else {
+    }else if (reply.value.includes("_dur")){
+      reply = module_sleep_duration(reply);
+    }else if (reply.value === "yes_content"){ //user wants module content
+      modState.delete(0);
+      modState.add(1); //set module to 1 
+      reply = this.nextModules(); 
+    }else if (reply.value==="explain_sleep_effs"){
+      reply = new sleep_efficiency_explain(); 
+    }else if (reply.value.includes("_img")){
+        reply = new sleep_efficiency_explain(); 
+    }else {
       reply = sleep_diary_response(reply);
-    }
+    } 
     this.onSend(reply);
   };
 
-  randGenericEndTips = () => {
-    const randNextTip = getRandomGenericTip();
-    console.log("next rand end tip", randNextTip);
-    switch (randNextTip) {
-      case 1:
-        return new sleep_tip_1();
-      case 2:
-        return new generic_messages();
-      case 3:
+randGenericEndTips = () =>{
+  const randNextTip = getRandomGenericTip();
+  switch(randNextTip){
+    case 1:
+      return new sleep_tip_1();
+    case 2:
+      return new generic_messages();
+    case 3:
         return new sleep_tip_2();
+    case 4:
+        return new sleep_tip_3();
+    case 5:
+        return new sleep_tip_4();
       default:
         return new generic_tip();
     }
-  };
+  }; 
 
-  randGenericBeginTips = () => {
-    const randNextTip = getRandomGenericTip();
-    console.log("next rand begin tip", randNextTip);
-    switch (randNextTip) {
-      case 1:
-        return new generic_tip();
-      case 2:
-        return new generic_tip_1();
-      case 3:
+randGenericBeginTips = () =>{
+  const randNextTip = getRandomGenericTip();
+  switch(randNextTip){
+    case 1:
+      return new generic_tip();
+    case 2:
+      return new generic_tip_1();
+    case 3:
         return new generic_tip_2();
-      default:
-        return new generic_tip();
-    }
-  };
+    case 4:
+        return new sleep_tip_5();
+    case 5:
+        return new sleep_tip_6();
+    default:
+    return new sleep_tip_6();
+  }
+};
+
+nextModules = () =>{
+  const { modState } = this.state;
+  const nextModState = getNextAppState(modState);
+  console.log("Next module case number", nextModState)
+  switch(nextModState){
+    case 1:
+      modState.delete(1);
+      modState.add(2);
+      var reply = {value: "start_chp_one"};
+     return new conversation_flow_one(reply);
+    case 2:
+      /* var reply = {value: "sleep_dur"};
+       return new module_sleep_duration(reply);  */
+      modState.delete(2);
+      modState.add(3);
+      var reply = {value: "sleep_dur"};
+      return new module_sleep_duration(reply);
+    case 3:
+      modState.delete(3);
+      var reply = {value: "start_chp_img"};
+      return new module_sleep_imagery(reply); //this will be the last module, currently the same as case 1
+     default:
+    return new sleep_tip_3();
+  }
+};
 
   getNextConversation = () => {
     const { appState } = this.state;
-    const randAppState = getRandomAppState(appState);
     const nextAppState = getNextAppState(appState);
     this.getSleepData();
-
     const sAT = this.state.sleepAttemptTime;
     const wUT = this.state.wakeUpTime;
     const sleepTime = this.state.sleepTime;
-    const sleepDuration =
-      this.state.wakeUpTime -
-      this.state.sleepTime -
-      this.state.durationTotalWakeUp;
-    const sleepDurationMins = Math.floor(sleepDuration / 1000 / 60);
+    const sleepDuration = (this.state.wakeUpTime - this.state.sleepTime) - this.state.durationTotalWakeUp;
+    const sleepDurationMins = Math.floor((sleepDuration /1000)/60);
+    const totalTimeInBed = (this.state.leaveBedTime - this.state.getInBedTime);
+    const totalTimeInBedMins = Math.floor((totalTimeInBed /1000)/60);
 
-    const totalTimeInBed = this.state.leaveBedTime - this.state.getInBedTime;
-    const totalTimeInBedMins = Math.floor(totalTimeInBed / 1000 / 60);
-
-    console.log("getnextconvo appState is:", appState);
-    console.log("NextAppState is:", nextAppState);
     /* console.log("Sleep Time: ",sleepTime);
     console.log("Wake Time: ",wUT);
     console.log("Get in bed time: ",this.state.getInBedTime);
@@ -345,7 +406,6 @@ export default class Home extends Component {
     console.log("Sleep Duration: ", sleepDurationMins);
     console.log("Total Time in Bed: ", totalTimeInBed);
     console.log("Total Time in Bed Mins: ", totalTimeInBedMins); */
-
     if (this.state.appState.has(3)) {
       this.getSleepData().then(data => {
         this.setState({ sleep_tip: data });
@@ -368,7 +428,7 @@ export default class Home extends Component {
         //returns a sleep hygiene tip based on sleep diary calculation or sleep diary reminder message if state has not been set
         //happens after conversation flow 1 is completed
         appState.delete(3);
-        appState.add(5);
+        appState.add(6);
         this.setState(appState);
         const hours = Math.abs(sAT - sleepTime) / 36e5;
         if (this.state.sleepAttemptTime != null) {
@@ -377,46 +437,48 @@ export default class Home extends Component {
           } else {
             return new sleep_diary_tip_2();
           }
-        } else {
+        } else { 
           return new sleep_diary_reminder_messages();
         }
       case 4: //returns converastion flow one, happens after initial generic tip is given
         appState.delete(4);
-        appState.add(3);
+        appState.add(5);
         this.setState(appState);
-        const reply = { value: "start_chp_one" };
-        return new conversation_flow_one(reply);
+        return new content_module_request();
 
-      case 5: //returns sleep efficency to the user based on sleep diary, happens after case 3
-        appState.delete(5);
-        appState.add(6);
-        this.setState(appState);
-        const sleepEfficiency = Math.floor(
-          (sleepDurationMins / totalTimeInBedMins) * 100
-        );
+      case 5:  //returns sleep efficency to the user based on sleep diary, happens after case 3
+          appState.delete(5);
+          appState.add(3);
+          this.setState(appState);
+          const sleepEfficiency = Math.floor((sleepDurationMins/totalTimeInBedMins)*100);
+            if(sleepEfficiency > 0 && sleepEfficiency<=100) {
+              const effreply = {value: "sleep_eff"};
+            return new sleep_diary_tip_eff(sleepEfficiency);
+            } 
+            else if(sleepEfficiency > 0 && sleepEfficiency>100){
+              return new sleep_diary_tip_eff_err();
+            } 
 
-        if (sleepEfficiency > 0 && sleepEfficiency <= 100) {
-          return new sleep_diary_tip_eff(sleepEfficiency);
-        } else if (sleepEfficiency > 0 && sleepEfficiency > 100) {
-          return new sleep_diary_tip_eff_err();
-        }
-
-      case 6: //returns nap tips, happens after case 5
-        appState.delete(6);
-        appState.add(2);
-        this.setState(appState);
-        const napreply = { value: "nap_flow" };
-        if (this.state.didNap == "yes") {
+        case 6:  //returns nap tips, happens after case 5
+          appState.delete(6);
+          appState.add(2);
+          this.setState(appState);
+          const napreply = {value: "nap_flow"};
+          if(this.state.didNap == "yes") {
           return new sleep_diary_tip_nap(napreply);
-        } else if (this.state.didNap == "no") {
-          return new sleep_diary_nap_good();
-        }
-      case 7:
+          }
+          else if(this.state.didNap == "no"){
+            return new sleep_diary_nap_good();
+          } 
+          else{
+            return new nap_tip_1();
+          }      
+        case 7: 
         //returns a random generic tip after at the begining if sleep diary has not been entered(line 134 )
         appState.delete(7);
         appState.add(4);
         this.setState(appState);
-        return this.randGenericBeginTips(); ////produce a list of genderic tips that are dispensed daily(7 tips)
+        return this.randGenericBeginTips(); 
 
       default:
         //console.error("There is something wrong with the case statement");

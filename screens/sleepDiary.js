@@ -91,7 +91,7 @@ export default class SleepDiary extends Component {
         <View style={styles.sleepDiary}>
           <SleepDiary />
 
-          <ScrollView style={styles.body}>
+          <ScrollView style={styles.body} fadingEdgeLength={15} >       
             <View style={styles.row}>
               <Text style={styles.date}>Sleep Diary: {todayFormatted}</Text>
             </View>
@@ -168,7 +168,7 @@ export default class SleepDiary extends Component {
             <View style={styles.row}>
               <View style={styles.question}>
                 <Text style={styles.text}>
-                  In total, how long did these awakenings last?
+                  In total, how long did these awakenings last?(in minutes)
                 </Text>
               </View>
               <View style={styles.answer}>
@@ -311,9 +311,6 @@ export default class SleepDiary extends Component {
           </ScrollView>
           <View style={styles.confirmation}>
             <View style={styles.diaryButtons}>
-              <Button title="Cancel" onPress={toggleModal} />
-            </View>
-            <View style={styles.diaryButtons}>
               <Button title="Submit" onPress={this.onSubmitData} />
             </View>
           </View>
@@ -324,11 +321,7 @@ export default class SleepDiary extends Component {
   }
 }
 
-
-  const yesterday = new Date(new Date().getTime() - 24 * 60 * 60 * 1000);
-
-
-
+const yesterday = new Date(new Date().getTime() - 24 * 60 * 60 * 1000);
 
 const styles = StyleSheet.create({
   body: {

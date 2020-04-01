@@ -128,9 +128,9 @@ export default class Intro extends React.Component {
           </Text>
         </View>
         <View style={styles.slide1}>
-          <Image 
-            source={require('../assets/onboarding2.png')}
-            style={{width: 400, height: 250, marginBottom: 20}}
+          <Image
+            source={require("../assets/onboarding2.png")}
+            style={{ width: 400, height: 250, marginBottom: 20 }}
           />
           <Text style={styles.intro_text}>
             SleepWell is a self-management sleep therapy app

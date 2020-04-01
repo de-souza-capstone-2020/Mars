@@ -3,8 +3,8 @@ const getRandomAppState = appState => {
   return items[Math.floor(Math.random() * items.length)];
 };
 
-const getRandomGenericTip = () => {
-  let items = [1,2,3];
+const getRandomGenericTip = () => { //five options to randomly select from
+  let items = [1,2,3,4,5];
   return items[Math.floor(Math.random() * items.length)];
 };
 
@@ -13,4 +13,9 @@ const getNextAppState = appState => {
   return items[0];
 };
 
-export { getRandomAppState,getNextAppState,getRandomGenericTip };
+const getNextModule = ()=> { //three modules to randomly select from
+  let items = [1,2,3];
+  return items[Math.floor(Math.random() * items.length)];
+};
+
+export { getRandomAppState,getNextAppState,getRandomGenericTip,getNextModule };
