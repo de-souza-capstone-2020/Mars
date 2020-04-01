@@ -30,7 +30,11 @@ import {
   sleep_efficiency_explain,
   nap_tip_1,
   sleep_tip_3,
-  module_end
+  module_end,
+  sleep_tip_4
+  ,sleep_tip_5
+  ,sleep_tip_6
+  ,sleep_tip_7
 } from "../data/messages";
 import {
   getRandomAppState,
@@ -249,7 +253,6 @@ export default class Home extends Component {
     try {
       await AsyncStorage.getItem(today).then(key => {
         if (key != null) {
-          console.log("Sleep entry for today", JSON.parse(key));
           const sleepAttempt = JSON.parse(key).attemptToSleepTime;
           const wakeUp = JSON.parse(key).wakeUpTime;
           const sleep = JSON.parse(key).sleepTime;
@@ -281,11 +284,10 @@ export default class Home extends Component {
       console.log("Try error", error);
       //console.error(error);
     }
-  };
+  }; 
 
-  determineResponse = reply => {
+  determineResponse = reply => { 
     const { modState } = this.state;
-    console.log("ModState is:", modState);
     console.log("Reply is:", reply);
     if (reply.value === "sleep_diary") {
      this.toggleModal();
@@ -312,7 +314,7 @@ export default class Home extends Component {
     }else if (reply.value === "yes_content"){ //user wants module content
       modState.delete(0);
       modState.add(1); //set module to 1 
-      reply = this.randModules(); 
+      reply = this.nextModules(); 
     }else if (reply.value==="explain_sleep_effs"){
       reply = new sleep_efficiency_explain(); 
     }else if (reply.value.includes("_img")){
@@ -332,6 +334,10 @@ randGenericEndTips = () =>{
       return new generic_messages();
     case 3:
         return new sleep_tip_2();
+    case 4:
+        return new sleep_tip_3();
+    case 5:
+        return new sleep_tip_4();
       default:
         return new generic_tip();
     }
@@ -346,17 +352,19 @@ randGenericBeginTips = () =>{
       return new generic_tip_1();
     case 3:
         return new generic_tip_2();
+    case 4:
+        return new sleep_tip_5();
+    case 5:
+        return new sleep_tip_6();
     default:
-    return new generic_tip();
+    return new sleep_tip_6();
   }
 };
 
-randModules = () =>{
-  const randNextMod = getRandomGenericTip();
+nextModules = () =>{
   const { modState } = this.state;
   const nextModState = getNextAppState(modState);
-  //const nextModule = getNextModule(mod);
-  console.log("next module state", nextModState)
+  console.log("Next module case number", nextModState)
   switch(nextModState){
     case 1:
       modState.delete(1);
@@ -391,7 +399,6 @@ randModules = () =>{
     const totalTimeInBed = (this.state.leaveBedTime - this.state.getInBedTime);
     const totalTimeInBedMins = Math.floor((totalTimeInBed /1000)/60);
 
-    console.log("AppState is:", appState);
     /* console.log("Sleep Time: ",sleepTime);
     console.log("Wake Time: ",wUT);
     console.log("Get in bed time: ",this.state.getInBedTime);
@@ -430,7 +437,7 @@ randModules = () =>{
           } else {
             return new sleep_diary_tip_2();
           }
-        } else {
+        } else { 
           return new sleep_diary_reminder_messages();
         }
       case 4: //returns converastion flow one, happens after initial generic tip is given
@@ -471,7 +478,7 @@ randModules = () =>{
         appState.delete(7);
         appState.add(4);
         this.setState(appState);
-        return this.randGenericBeginTips(); ////produce a list of genderic tips that are dispensed daily(7 tips)
+        return this.randGenericBeginTips(); 
 
       default:
         //console.error("There is something wrong with the case statement");

@@ -209,7 +209,7 @@ export const sleep_diary_response = reply => {
         createdAt,
         _id: getID(),
         text:
-          "A relaxing, routine activity right before bedtime ,done away from bright lights, helps separate your sleep time from activities that can cause excitement, stress or anxiety which can make it more difficult to fall asleep, get sound and deep sleep or remain asleep",
+          "A relaxing routine activity, right before bedtime ,done away from bright lights, helps separate your sleep time from activities that can cause excitement, stress or anxiety. \n\nThese can make it more difficult to fall asleep, get sound and deep sleep or remain asleep.",
         otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
@@ -410,12 +410,42 @@ export const conversation_flow_one = reply => {
           keepIt: true,
           values: [
             {
-              title: "👎",
-              value: "no_chp1"
+              title: "Yes 👍",
+              value: "work_on_sleep_efficiency_yes_chp1"
+            },           
+            {
+              title: "What is that?",
+              value: "sleep_efficiency_explain_chp1"
+            }
+          ]
+        },
+        user: {
+          _id: getID(),
+          name: "React Native",
+          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
+        }
+      }
+    ];
+  }
+  if (reply.value === "sleep_efficiency_explain_chp1") {
+    return [
+      {
+        createdAt,
+        _id: getID(),
+        text:
+          "Sleep efficiency is the ratio of the total time spent asleep (total sleep time) in a night, compared to the total amount of time spent in bed. \n\n... In order to achieve good sleep efficiency, it is recommended that extra time should not be spent in bed. ",
+        otherUser,
+        quickReplies: {
+          type: "radio", // or 'checkbox',
+          keepIt: true,
+          values: [
+            {
+              title: "Yes, work on my sleep eff..",
+              value: "work_on_sleep_efficiency_yes_chp1"
             },
             {
-              title: "👍",
-              value: "work_on_sleep_efficiency_yes_chp1"
+              title: "No, work on it later",
+              value: "no_chp1"
             }
           ]
         },
@@ -464,7 +494,7 @@ export const conversation_flow_one = reply => {
         createdAt,
         _id: getID(),
         text:
-          "Laying in bed without successfully falling asleep strengthens the association of bed being a place to lay awake. To work on this we use a skill called Sleep Restriction. Sleep Restriction works to actually shorten how long you spend in bed. It leads to ‘concentrated’ sleep where you remain asleep the majority of the night.",
+          "Laying in bed without successfully falling asleep strengthens the association of bed being a place to lay awake. \n\nTo work on this, we use a skill called Sleep Restriction. \n\nSleep Restriction works to actually shorten how long you spend in bed. It leads to ‘concentrated’ sleep where you remain asleep the majority of the night.",
         otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
@@ -494,7 +524,7 @@ export const conversation_flow_one = reply => {
         createdAt,
         _id: getID(),
         text:
-          "Ready for a little homework? Calculate your sleep efficiency and average nightly total sleep. This will help to see the real improvements of learning sleep restriction.",
+          "Ready for a little homework? \n\nCalculate your sleep efficiency and average nightly total sleep. This will help to see the real improvements of learning sleep restriction.",
         otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
@@ -524,7 +554,7 @@ export const conversation_flow_one = reply => {
         createdAt,
         _id: getID(),
         text:
-          "Alright. First you need to pick a a consistent time every morning to wake up during the week. Based on your current sleep ability use this amount of time and add 30 minutes. Count backwards to figure out your new bedtime. As you work on sleep restriction you wil gradually increase your sleep quantity. Is this something you think you are able to do?",
+          "Alright. First you need to pick a a consistent time every morning to wake up during the week. \n\nBased on your current sleep ability, use this amount of time and add 30 minutes. Count backwards to figure out your new bedtime. \n\nAs you work on sleep restriction you wil gradually increase your sleep quantity. Is this something you think you are able to do?",
         otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
@@ -539,7 +569,7 @@ export const conversation_flow_one = reply => {
               value: "calc_sleep_restriction_3_chp1"
             },
             {
-              title: "I could give it a try but I'd like to know more",
+              title: "I'd like to know more",
               value: "calc_sleep_restriction_3_chp1"
             }
           ]
@@ -558,7 +588,7 @@ export const conversation_flow_one = reply => {
         createdAt,
         _id: getID(),
         text:
-          "To get your body used to your new bedtime you need to implement a 90 minutes buffer zone. If you have calculate your bedtime is midnight then at around 10:30pm you should engage in activities that will help relax your body and brain. Stay away from computers and backlit devices.",
+          "To get your body used to your new bedtime you need to implement a 90 minutes buffer zone. \n\nIf you have calculated that your bedtime is midnight, then at around 10:30pm you should engage in activities that will help relax your body and brain. \n\nStay away from computers and backlit devices.",
         otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
@@ -566,13 +596,13 @@ export const conversation_flow_one = reply => {
           values: [
             {
               title:
-                "But I love watching movies before bed, what can I do instead.",
+                "What can I do instead.",
               value: "calc_sleep_restriction_4_screen_chp1"
             },
-            {
+           /*  {
               title: "Does that mean no phone?",
               value: "calc_sleep_restriction_4_screen_chp1"
-            },
+            }, */
             {
               title: "I can do it!",
               value: "calc_sleep_restriction_4_screen_chp1"
@@ -593,14 +623,49 @@ export const conversation_flow_one = reply => {
         createdAt,
         _id: getID(),
         text:
-          "Some examples of good pre-sleep activities during this buffer zone are taking a warm bath, reading a fiction novel or practicing relaxation techniques. These will help you unwind and it can be most efficient if you set a routine that you stick to each night.",
+          "Here are some examples of good pre-sleep activities during this buffer zone, which appeals to you?",
         otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
           values: [
             {
-              title: "Hm, a warm bath and book sounds nice!",
+              title: "A warm bath 🛀",
+              value: "relaxing_activity_chp1"
+            },
+            {
+              title: "Reading a fiction novel 📖",
+              value: "relaxing_activity_chp1"
+            },
+            {
+              title: "Relaxation techniques 🧘",
+              value: "relaxing_activity_chp1"
+            }
+          ]
+        },
+        user: {
+          _id: getID(),
+          name: "React Native",
+          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
+        }
+      }
+    ];
+  }
+
+  if (reply.value === "relaxing_activity_chp1") {
+    return [
+      {
+        createdAt,
+        _id: getID(),
+        text:
+          "This will help you unwind,it is most efficient if you set a routine that you stick to each night.",
+        otherUser,
+        quickReplies: {
+          type: "radio", // or 'checkbox',
+          keepIt: true,
+          values: [
+            {
+              title: "Okay",
               value: "calc_sleep_restriction_4_continue_chp1"
             }
           ]
@@ -613,29 +678,26 @@ export const conversation_flow_one = reply => {
       }
     ];
   }
+
   if (reply.value === "calc_sleep_restriction_4_continue_chp1") {
     return [
       {
         createdAt,
         _id: getID(),
         text:
-          "Though you may be feeling very tired throughout the day it is important that you do not nap during the day. This only decreases sleep pressure that builds over the course of the day. As good as it may feel in the moment it will only worsen your insomnia and rob you of restorative slow-wave sleep.",
+          "Though you may be feeling very tired throughout the day, it is important that you do not nap during the day. \n\nThis only decreases sleep pressure that builds over the course of the day. As good as it may feel in the moment it will only worsen your insomnia and rob you of restorative slow-wave sleep.",
         otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
           values: [
             {
-              title: "No more naps :( ",
+              title: "No more naps 😟",
               value: "need_more_naps_chp1"
             },
             {
               title: "No way, I need my nap. ",
               value: "need_more_naps_chp1"
-            },
-            {
-              title: "No problem. I dont nap anyway!",
-              value: "no_chp1"
             }
           ]
         },
@@ -653,7 +715,7 @@ export const conversation_flow_one = reply => {
         createdAt,
         _id: getID(),
         text:
-          "If you absolutely need a nap the best time of day to do it is in the morning. When you start feeling like you may need a nap it can be helpful to find alternative activities that get you out of your house.  This strategy uses the technique of stimulus control and keeps you from giving into the temptation of retreating to your bed or couch.",
+          "If you absolutely need a nap the best time of day to do it is in the morning. \n\nWhen you start feeling like you may need a nap it can be helpful to find alternative activities that get you out of your house.  \n\nThis strategy uses the technique of stimulus control and keeps you from giving into the temptation of retreating to your bed or couch.",
         otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
@@ -683,7 +745,7 @@ export const conversation_flow_one = reply => {
         createdAt,
         _id: getID(),
         text:
-          "The main things to remember are to only go to bed when you are sleepy. There is no reason to lay in bed if you are not tired. If you cannot fall asleep in a reasonable time get out of bed and go to another room. Engage in a quiet activity until you feel sleepy.  This will help to re-associate your bed with feeling sleepy rather than frustrated. Your bed should be reserved for sleep and sex.",
+          "The main things to remember are to only go to bed when you are sleepy. \n\nThere is no reason to lay in bed if you are not tired. If you cannot fall asleep in a reasonable time get out of bed and go to another room. \n\nEngage in a quiet activity until you feel sleepy.  This will help to re-associate your bed with feeling sleepy rather than frustrated. \n\nYour bed should be reserved for sleep and sex.",
         otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
@@ -721,7 +783,7 @@ export const conversation_flow_one = reply => {
           values: [
             {
               title: "Sounds good",
-              value: "good_night_chp1"
+              value: "got_it"
             }
           ]
         },
@@ -733,26 +795,7 @@ export const conversation_flow_one = reply => {
       }
     ];
   }
-  if (reply.value === "good_night_chp1") {
-    return [
-      {
-        createdAt,
-        _id: getID(),
-        text: "Goodnight! Sleep right!",
-        otherUser,
-        quickReplies: {
-          type: "radio", // or 'checkbox',
-          keepIt: true,
-          values: []
-        },
-        user: {
-          _id: getID(),
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png"
-        }
-      }
-    ];
-  }
+  
   if (reply.value === "no_chp1") {
     return [
       {
@@ -796,11 +839,11 @@ export const module_sleep_duration = reply => {
               value: "why_dur_a"
             },
             {
-              title: "Yes i know that",
+              title: "Yes, i know that",
               value: "next_chap_imagery"
             },
             {
-              title: "Yes we do!",
+              title: "Yes we do 😾",
               value: "no_believe_dur"
             }
           ]
@@ -873,7 +916,7 @@ export const module_sleep_duration = reply => {
       {
         createdAt,
         _id: getID(),
-        text: "The idea of oversleeping is actually different for each person too! Someone who only needs 6 hours to function may feel as though they’ve overslept after getting the “recommended” 8 hours.",
+        text: "The idea of oversleeping is actually different for each person too! \n\nSomeone who only needs 6 hours to function may feel as though they’ve overslept after getting the “recommended” 8 hours.",
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,

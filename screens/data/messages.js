@@ -172,10 +172,13 @@ const generic_tip = () => {
             value: "why_caffeine"
           },
           {
+            title: "I know that",
+            value: "got_it"
+          },
+          {
             title: "Coffee is yuck 🤮",
             value: "got_it"
           }
-          
         ]
       },
       otherUser,
@@ -251,7 +254,7 @@ const sleep_tip_2 = () => {
         values: [
           {
             title: "Sounds good",
-            value: "got_it"
+            value: "hi"
           }
         ]
       }
@@ -435,6 +438,89 @@ const sleep_tip_3 = () => {
         values: [
           {
             title: "I'll try",
+            value: "hi"
+          }
+        ]
+      }
+    }
+  ];
+};
+
+const sleep_tip_4 = () => {
+  return [
+    {
+      createdAt: new Date(),
+      _id: getID(),
+      text: "Use positive reaffirming self talk!\n\nRemind yourself that insomnia will go away! ",
+      otherUser,
+      quickReplies: {
+        type: "radio", // or 'checkbox',
+        keepIt: true,
+        values: [
+          {
+            title: "I'll try",
+            value: "hi"
+          }
+        ]
+      }
+    }
+  ];
+};
+
+const sleep_tip_5 = () => {
+  return [
+    {
+      createdAt: new Date(),
+      _id: getID(),
+      text: "You have the skills to do this and work through the insomnia.\n\nRemind yourself of the people who love you and the support system that you may be grateful for.",
+      otherUser,
+      quickReplies: {
+        type: "radio", // or 'checkbox',
+        keepIt: true,
+        values: [
+          {
+            title: "I'll try",
+            value: "got_it"
+          }
+        ]
+      }
+    }
+  ];
+};
+const sleep_tip_6 = () => {
+  return [
+    {
+      createdAt: new Date(),
+      _id: getID(),
+      text: "A positive mood leads to less worrying and less time spent thinking in bed before finally falling asleep.",
+      otherUser,
+      quickReplies: {
+        type: "radio", // or 'checkbox',
+        keepIt: true,
+        values: [
+          {
+            title: "I'll stay positive",
+            value: "got_it"
+          }
+        ]
+      }
+    }
+  ];
+};
+
+const sleep_tip_7 = () => {
+  return [
+    {
+      createdAt: new Date(),
+      _id: getID(),
+      text: "Keeping yourself busy will keep you away from unhealthy habits like daytime napping and you will be more tired when it’s finally time for bed",
+      otherUser,
+      quickReplies: {
+        type: "radio", // or 'checkbox',
+        keepIt: true,
+        values: [
+          {
+            title: "I'll keep busy",
             value: "got_it"
           }
         ]
@@ -480,6 +566,10 @@ export {
   ,sleep_diary_tip_eff_err
   ,sleep_tip_1
   ,sleep_tip_3
+  ,sleep_tip_4
+  ,sleep_tip_5
+  ,sleep_tip_6
+  ,sleep_tip_7
   ,generic_tip_1
   ,module_end
 };
