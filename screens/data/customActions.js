@@ -950,11 +950,11 @@ export const module_sleep_duration = reply => {
           keepIt: true,
           values: [
             {
-              title: "Yes Please! I want to sleep!",
+              title: "Yeah, let's do it",
               value: "stages_of_insomnia_dur"
             },
             {
-              title: "No, I'll continue tomorrow",
+              title: "No, i'm tired",
               value: "got_it"
               //value: "no_tomorrow_dur"
             }

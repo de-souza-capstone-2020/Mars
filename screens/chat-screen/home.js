@@ -341,7 +341,7 @@ randGenericEndTips = () =>{
       default:
         return new generic_tip();
     }
-  };
+  }; 
 
 randGenericBeginTips = () =>{
   const randNextTip = getRandomGenericTip();

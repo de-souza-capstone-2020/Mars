@@ -246,8 +246,6 @@ const sleep_tip_2 = () => {
       _id: getID(),
       text:
         "Sleep Tip: Plan activities that get you out of the house each and every day. Planning to meet a friend for a walk or go for lunch will hold you accountable for leaving the house. It will keep you busy during the day and lead to more positive feelings.",
-      otherUser,
-      user,
       quickReplies: {
         type: "radio", // or 'checkbox',
         keepIt: true,
@@ -257,7 +255,9 @@ const sleep_tip_2 = () => {
             value: "hi"
           }
         ]
-      }
+      },
+      otherUser,
+      user,
     }
   ];
 };
@@ -268,8 +268,6 @@ const sleep_diary_tip_1 = () => {
       createdAt: new Date(),
       _id: getID(),
       text: "Sleep Diary Tip: \n You are lying in bed while awake.\n\nYou should be spending less time in bed as it strengthens the role of your bed as the place to sleep." ,
-      otherUser,
-      user,
       quickReplies: {
         type: "radio", // or 'checkbox',
         keepIt: true,
@@ -279,7 +277,9 @@ const sleep_diary_tip_1 = () => {
             value: "got_it"
           }
         ]
-      }
+      },
+      otherUser,
+      user,
     }
   ];
 };
@@ -290,8 +290,6 @@ const sleep_diary_tip_2 = () => {
       createdAt: new Date(),
       _id: getID(),
       text: "Sleep Diary Tip: \nGreat job staying out of bed! \nYou now know why spending excessive time in bed not sleeping is bad for your sleep pattern. Keep finding ways to reduce your time in bed",
-      otherUser,
-      user,
       quickReplies: {
         type: "radio", // or 'checkbox',
         keepIt: true,
@@ -301,7 +299,9 @@ const sleep_diary_tip_2 = () => {
             value: "got_it"
           }
         ]
-      }
+      },
+      otherUser,
+      user,
     }
   ];
 };
@@ -313,8 +313,6 @@ const sleep_diary_tip_eff = (sleepEff) => {
       createdAt: new Date(),
       _id: getID(),
       text: "Based on your sleep diary, your sleep efficiency today is: " + sleepEff + "%",
-      otherUser,
-      user,
       quickReplies: {
         type: "radio", // or 'checkbox',
         keepIt: true,
@@ -328,7 +326,9 @@ const sleep_diary_tip_eff = (sleepEff) => {
             value: "explain_sleep_effs"
           }
         ]
-      }
+      },
+      otherUser,
+      user,
     }
   ]
 
@@ -341,8 +341,6 @@ const sleep_diary_tip_eff = (sleepEff) => {
         createdAt: new Date(),
         _id: getID(),
         text: "Sleep efficiency is the ratio of the total time spent asleep (total sleep time) in a night compared to the total amount of time spent in bed. \n\n... In order to achieve good sleep efficiency, it is recommended that extra time should not be spent in bed",
-        otherUser,
-        user,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -353,6 +351,8 @@ const sleep_diary_tip_eff = (sleepEff) => {
             }
           ]
         },
+        otherUser,
+        user,
       }
     ]
 }
@@ -363,8 +363,6 @@ const content_module_request = () => {
       createdAt: new Date(),
       _id: getID(),
       text: "It's time for a lesson on sleep. Do you have 5-7 minutes to learn content to improve your sleep?",
-      otherUser,
-      user,
       quickReplies: {
         type: "radio", // or 'checkbox',
         keepIt: true,
@@ -378,7 +376,9 @@ const content_module_request = () => {
             value: "got_it"
           }
         ]
-      }
+      },
+      otherUser,
+      user,
     }
   ];
 };
@@ -389,7 +389,6 @@ const sleep_diary_tip_eff_err = () => {
       createdAt: new Date(),
       _id: getID(),
       text: "Error calculating sleep efficiency",
-      otherUser,
       quickReplies: {
         type: "radio", // or 'checkbox',
         keepIt: true,
@@ -399,7 +398,9 @@ const sleep_diary_tip_eff_err = () => {
             value: "got_it"
           }
         ]
-      }
+      },
+      otherUser,
+      user,
     }
   ]
 }
@@ -410,7 +411,6 @@ const nap_tip_1= () => {
       createdAt: new Date(),
       _id: getID(),
       text: "Aim to nap for only 10 to 20 minutes. \n\nThe longer you nap, the more likely you are to feel groggy afterward.",
-      otherUser,
       quickReplies: {
         type: "radio", // or 'checkbox',
         keepIt: true,
@@ -421,6 +421,8 @@ const nap_tip_1= () => {
           }
         ]
       },
+      otherUser,
+      user,
     }
   ];
 };
@@ -431,7 +433,6 @@ const sleep_tip_3 = () => {
       createdAt: new Date(),
       _id: getID(),
       text: "Let the people around you know what you’re dealing with and how you plan to resolve it. \n\n Don’t be afraid to ask for support and positive words of motivation.",
-      otherUser,
       quickReplies: {
         type: "radio", // or 'checkbox',
         keepIt: true,
@@ -441,7 +442,9 @@ const sleep_tip_3 = () => {
             value: "hi"
           }
         ]
-      }
+      },
+      otherUser,
+      user,
     }
   ];
 };
@@ -462,7 +465,9 @@ const sleep_tip_4 = () => {
             value: "hi"
           }
         ]
-      }
+      },
+      otherUser,
+      user,
     }
   ];
 };
@@ -473,17 +478,22 @@ const sleep_tip_5 = () => {
       createdAt: new Date(),
       _id: getID(),
       text: "You have the skills to do this and work through the insomnia.\n\nRemind yourself of the people who love you and the support system that you may be grateful for.",
-      otherUser,
       quickReplies: {
         type: "radio", // or 'checkbox',
         keepIt: true,
         values: [
           {
-            title: "I'll try",
+            title: "Yes, I've got this",
+            value: "got_it"
+          },
+          {
+            title: "I'll, try",
             value: "got_it"
           }
         ]
-      }
+      },
+      otherUser,
+      user,
     }
   ];
 };
@@ -493,7 +503,6 @@ const sleep_tip_6 = () => {
       createdAt: new Date(),
       _id: getID(),
       text: "A positive mood leads to less worrying and less time spent thinking in bed before finally falling asleep.",
-      otherUser,
       quickReplies: {
         type: "radio", // or 'checkbox',
         keepIt: true,
@@ -503,7 +512,9 @@ const sleep_tip_6 = () => {
             value: "got_it"
           }
         ]
-      }
+      },
+      otherUser,
+      user,
     }
   ];
 };
@@ -514,7 +525,6 @@ const sleep_tip_7 = () => {
       createdAt: new Date(),
       _id: getID(),
       text: "Keeping yourself busy will keep you away from unhealthy habits like daytime napping and you will be more tired when it’s finally time for bed",
-      otherUser,
       quickReplies: {
         type: "radio", // or 'checkbox',
         keepIt: true,
@@ -524,7 +534,9 @@ const sleep_tip_7 = () => {
             value: "got_it"
           }
         ]
-      }
+      },
+      otherUser,
+      user,
     }
   ];
 };
@@ -535,8 +547,6 @@ const module = () => {
       createdAt: new Date(),
       _id: getID(),
       text: "Module 1: .......",
-      otherUser,
-      user,
       quickReplies: {
         type: "radio", // or 'checkbox',
         keepIt: true,
@@ -546,7 +556,9 @@ const module = () => {
             value: "got_it"
           }
         ]
-      }
+      },
+      otherUser,
+      user,
     }
   ]
 }
