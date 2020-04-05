@@ -1,6 +1,8 @@
 # SleepWell
 An insomnia CBTi Chatbot by **de Souza Institude** and **UW Management Engineering Capstone 2020**
 
+The SleepWell chatbot is based off [Dr. Sheila Garland's Sleeping Well Manual](https://support.desouzainstitute.com/kb/article/55-sleeping-well-manual?fbclid=IwAR0WDvWJEzrMrapEE-3JiRzE7L4jj9v69SBX37VEDOm9YcBraqlNe0w39tA)
+
 ## Technologies
 Project is created with:
 - React Native
