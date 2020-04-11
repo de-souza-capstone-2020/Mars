@@ -35,7 +35,7 @@ import {
   sleep_tip_5,
   sleep_tip_6,
   sleep_tip_7,
-} from "./data/messages";
+} from "./static/messages";
 import {
   getRandomAppState,
   getNextAppState,
@@ -49,7 +49,7 @@ import {
   sleep_diary_tip_nap,
   module_sleep_duration,
   module_sleep_imagery,
-} from "./data/customActions";
+} from "./static/customActions";
 import SplashScreen from "./loading";
 import { s, colors } from "./styles";
 
