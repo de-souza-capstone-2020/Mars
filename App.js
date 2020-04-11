@@ -15,12 +15,12 @@ import {
   createSwitchNavigator
 } from "react-navigation";
 import { Icon } from 'react-native-elements';
-import { colors } from './screens/chat-screen/styles';
-import Welcome from "./screens/welcome";
-import Home from "./screens/chat-screen/home";
-import Intro from "./screens/intro";
-import Setting from "./screens/setting";
-import History from './screens/chat-screen/history';
+import { colors } from './src/styles';
+import Welcome from "./src/welcome";
+import Home from "./src/chatbot";
+import Intro from "./src/intro";
+import Setting from "./src/setting";
+import History from './src/history';
 
 const WelcomeStack = createStackNavigator({
   Welcome: Welcome
