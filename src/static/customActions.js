@@ -1,12 +1,6 @@
 import { retrieveSleepDiaryData } from "../utils/save-utils";
 
 const user = {
-  _id: 1,
-  name: "Developer",
-  avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-};
-
-const otherUser = {
   _id: 2,
   name: "React Native",
   avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
@@ -46,7 +40,7 @@ export const sleep_diary_response = (reply) => {
         createdAt,
         _id: Math.round(Math.random() * 1000000),
         text: "byeeeee",
-        otherUser,
+        user,
       },
     ];
   }
@@ -56,7 +50,7 @@ export const sleep_diary_response = (reply) => {
         createdAt,
         _id: getID(),
         text: "jokes i have no pics",
-        otherUser,
+        user,
       },
     ];
   }
@@ -84,11 +78,7 @@ export const sleep_diary_response = (reply) => {
             },
           ],
         },
-        user: {
-          _id: getID(),
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user,
       },
     ];
   }
@@ -110,11 +100,7 @@ export const sleep_diary_response = (reply) => {
             },
           ],
         },
-        user: {
-          _id: getID(),
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user,
       },
     ];
   }
@@ -129,7 +115,7 @@ export const sleep_diary_response = (reply) => {
         createdAt,
         _id: getID(),
         text: "👋",
-        otherUser,
+        user,
       },
     ];
   }
@@ -140,7 +126,6 @@ export const sleep_diary_response = (reply) => {
         _id: getID(),
         text:
           "It's important to enter your sleep diary information everyday, you can always edit it in the history tab",
-        otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -160,7 +145,6 @@ export const sleep_diary_response = (reply) => {
         createdAt,
         _id: getID(),
         text: "👍",
-        otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -183,7 +167,6 @@ export const sleep_diary_response = (reply) => {
           "I know coffee is yummy, but...fun fact 💡 \n" +
           "Adenosine is a substance in your body that promotes sleepiness.\n" +
           "Caffeine in coffee is a stimulant that blocks the adenosine receptor to keep you from feeling sleepy",
-        otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -194,11 +177,7 @@ export const sleep_diary_response = (reply) => {
             },
           ],
         },
-        user: {
-          _id: getID(),
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user,
       },
     ];
   }
@@ -210,7 +189,6 @@ export const sleep_diary_response = (reply) => {
         _id: getID(),
         text:
           "A relaxing routine activity, right before bedtime ,done away from bright lights, helps separate your sleep time from activities that can cause excitement, stress or anxiety. \n\nThese can make it more difficult to fall asleep, get sound and deep sleep or remain asleep.",
-        otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -221,11 +199,7 @@ export const sleep_diary_response = (reply) => {
             },
           ],
         },
-        user: {
-          _id: getID(),
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user,
       },
     ];
   }
@@ -237,7 +211,6 @@ export const sleep_diary_response = (reply) => {
         _id: getID(),
         text:
           "Okay, first make sure your mattress and pillow is comfortable and supportive. (The one you have been using for years may have exceeded its life expectancy – about 9 or 10 years for most good quality mattresses)",
-        otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -252,11 +225,7 @@ export const sleep_diary_response = (reply) => {
             },
           ],
         },
-        user: {
-          _id: getID(),
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user,
       },
     ];
   }
@@ -268,7 +237,6 @@ export const sleep_diary_response = (reply) => {
         _id: getID(),
         text:
           "Make the room attractive and inviting for sleep but also free of allergens that might affect you and objects that might cause you to slip or fall if you have to get up during the night.",
-        otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -279,11 +247,7 @@ export const sleep_diary_response = (reply) => {
             },
           ],
         },
-        user: {
-          _id: getID(),
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user,
       },
     ];
   }
@@ -297,7 +261,6 @@ export const sleep_diary_tip_nap = (reply) => {
         _id: getID(),
         text:
           "Hey, you seem to be struggling with avoiding naps. Remember that napping disrupts the sleep rhythm you are trying to develop with the procedure, and destroys any of its benefits.",
-        otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -323,7 +286,6 @@ export const sleep_diary_tip_nap = (reply) => {
         _id: getID(),
         text:
           "Okay, If you have a problem with napping too much. Write down alternative solutions on apiece of paper. Call someone who will keep you from napping and have them suggest alternatives when you’re really struggling not to nap. Write pros and cons to each strategy.",
-        otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -349,7 +311,6 @@ export const sleep_diary_tip_nap = (reply) => {
         _id: getID(),
         text:
           "Some ways to nap less include engaging in other activities that are incompatible with napping when you feel the urge to nap.",
-        otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -373,7 +334,6 @@ export const conversation_flow_one = (reply) => {
         _id: getID(),
         text:
           "Did you know that the best way to fix your trouble sleeping is to actually limit how much time you’re spending in bed? ",
-        otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -388,11 +348,7 @@ export const conversation_flow_one = (reply) => {
             },
           ],
         },
-        user: {
-          _id: getID(),
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user,
       },
     ];
   }
@@ -404,7 +360,6 @@ export const conversation_flow_one = (reply) => {
         _id: getID(),
         text:
           "It is important to know the difference between time spent sleeping and time spent in bed. \n\nWould you like to work on your sleep efficiency?",
-        otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -419,11 +374,7 @@ export const conversation_flow_one = (reply) => {
             },
           ],
         },
-        user: {
-          _id: getID(),
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user,
       },
     ];
   }
@@ -434,7 +385,6 @@ export const conversation_flow_one = (reply) => {
         _id: getID(),
         text:
           "Sleep efficiency is the ratio of the total time spent asleep (total sleep time) in a night, compared to the total amount of time spent in bed. \n\n... In order to achieve good sleep efficiency, it is recommended that extra time should not be spent in bed. ",
-        otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -449,11 +399,7 @@ export const conversation_flow_one = (reply) => {
             },
           ],
         },
-        user: {
-          _id: getID(),
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user,
       },
     ];
   }
@@ -465,7 +411,6 @@ export const conversation_flow_one = (reply) => {
         _id: getID(),
         text:
           "Ironically laying in bed is actually the worst thing you can do for your insomnia. ",
-        otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -480,11 +425,7 @@ export const conversation_flow_one = (reply) => {
             },
           ],
         },
-        user: {
-          _id: getID(),
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user,
       },
     ];
   }
@@ -495,7 +436,6 @@ export const conversation_flow_one = (reply) => {
         _id: getID(),
         text:
           "Laying in bed without successfully falling asleep strengthens the association of bed being a place to lay awake. \n\nTo work on this, we use a skill called Sleep Restriction. \n\nSleep Restriction works to actually shorten how long you spend in bed. It leads to ‘concentrated’ sleep where you remain asleep the majority of the night.",
-        otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -510,11 +450,7 @@ export const conversation_flow_one = (reply) => {
             },
           ],
         },
-        user: {
-          _id: getID(),
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user,
       },
     ];
   }
@@ -525,7 +461,6 @@ export const conversation_flow_one = (reply) => {
         _id: getID(),
         text:
           "Ready for a little homework? \n\nCalculate your sleep efficiency and average nightly total sleep. This will help to see the real improvements of learning sleep restriction.",
-        otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -540,11 +475,7 @@ export const conversation_flow_one = (reply) => {
             },
           ],
         },
-        user: {
-          _id: getID(),
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user,
       },
     ];
   }
@@ -555,7 +486,6 @@ export const conversation_flow_one = (reply) => {
         _id: getID(),
         text:
           "Alright. First you need to pick a a consistent time every morning to wake up during the week. \n\nBased on your current sleep ability, use this amount of time and add 30 minutes. Count backwards to figure out your new bedtime. \n\nAs you work on sleep restriction you wil gradually increase your sleep quantity. Is this something you think you are able to do?",
-        otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -574,11 +504,7 @@ export const conversation_flow_one = (reply) => {
             },
           ],
         },
-        user: {
-          _id: getID(),
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user,
       },
     ];
   }
@@ -589,7 +515,6 @@ export const conversation_flow_one = (reply) => {
         _id: getID(),
         text:
           "To get your body used to your new bedtime you need to implement a 90 minutes buffer zone. \n\nIf you have calculated that your bedtime is midnight, then at around 10:30pm you should engage in activities that will help relax your body and brain. \n\nStay away from computers and backlit devices.",
-        otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -608,11 +533,7 @@ export const conversation_flow_one = (reply) => {
             },
           ],
         },
-        user: {
-          _id: getID(),
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user,
       },
     ];
   }
@@ -623,7 +544,6 @@ export const conversation_flow_one = (reply) => {
         _id: getID(),
         text:
           "Here are some examples of good pre-sleep activities during this buffer zone, which appeals to you?",
-        otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -642,11 +562,7 @@ export const conversation_flow_one = (reply) => {
             },
           ],
         },
-        user: {
-          _id: getID(),
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user,
       },
     ];
   }
@@ -658,7 +574,6 @@ export const conversation_flow_one = (reply) => {
         _id: getID(),
         text:
           "This will help you unwind,it is most efficient if you set a routine that you stick to each night.",
-        otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -669,11 +584,7 @@ export const conversation_flow_one = (reply) => {
             },
           ],
         },
-        user: {
-          _id: getID(),
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user,
       },
     ];
   }
@@ -685,7 +596,6 @@ export const conversation_flow_one = (reply) => {
         _id: getID(),
         text:
           "Though you may be feeling very tired throughout the day, it is important that you do not nap during the day. \n\nThis only decreases sleep pressure that builds over the course of the day. As good as it may feel in the moment it will only worsen your insomnia and rob you of restorative slow-wave sleep.",
-        otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -700,11 +610,7 @@ export const conversation_flow_one = (reply) => {
             },
           ],
         },
-        user: {
-          _id: getID(),
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user,
       },
     ];
   }
@@ -715,7 +621,6 @@ export const conversation_flow_one = (reply) => {
         _id: getID(),
         text:
           "If you absolutely need a nap the best time of day to do it is in the morning. \n\nWhen you start feeling like you may need a nap it can be helpful to find alternative activities that get you out of your house.  \n\nThis strategy uses the technique of stimulus control and keeps you from giving into the temptation of retreating to your bed or couch.",
-        otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -730,11 +635,7 @@ export const conversation_flow_one = (reply) => {
             },
           ],
         },
-        user: {
-          _id: getID(),
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user,
       },
     ];
   }
@@ -745,7 +646,6 @@ export const conversation_flow_one = (reply) => {
         _id: getID(),
         text:
           "The main things to remember are to only go to bed when you are sleepy. \n\nThere is no reason to lay in bed if you are not tired. If you cannot fall asleep in a reasonable time get out of bed and go to another room. \n\nEngage in a quiet activity until you feel sleepy.  This will help to re-associate your bed with feeling sleepy rather than frustrated. \n\nYour bed should be reserved for sleep and sex.",
-        otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -760,11 +660,7 @@ export const conversation_flow_one = (reply) => {
             },
           ],
         },
-        user: {
-          _id: getID(),
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user,
       },
     ];
   }
@@ -775,7 +671,6 @@ export const conversation_flow_one = (reply) => {
         _id: getID(),
         text:
           "If you’d like to learn more and read something to really make you fall asleep you can refer to the manual.",
-        otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -786,11 +681,7 @@ export const conversation_flow_one = (reply) => {
             },
           ],
         },
-        user: {
-          _id: getID(),
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user,
       },
     ];
   }
@@ -801,7 +692,6 @@ export const conversation_flow_one = (reply) => {
         createdAt,
         _id: getID(),
         text: " On to the next",
-        otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -812,11 +702,7 @@ export const conversation_flow_one = (reply) => {
             },
           ],
         },
-        user: {
-          _id: getID(),
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user,
       },
     ];
   }
@@ -1309,7 +1195,6 @@ export const module_sleep_imagery = (reply) => {
         _id: getID(),
         text:
           "Using Imagery can be very beneficial to reduce stressful thoughts coursing through your brain while you’re laying in bed. \n\nRelaxing your brain is the first step to relax your body and get to sleep. ",
-        otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -1324,11 +1209,7 @@ export const module_sleep_imagery = (reply) => {
             },
           ],
         },
-        user: {
-          _id: getID(),
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user,
       },
     ];
   }
@@ -1339,7 +1220,6 @@ export const module_sleep_imagery = (reply) => {
         _id: getID(),
         text:
           "First step is to clear a physical space in order to prepare your mental space. No music or sounds, just you and your mind.",
-        otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -1350,11 +1230,7 @@ export const module_sleep_imagery = (reply) => {
             },
           ],
         },
-        user: {
-          _id: getID(),
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user,
       },
     ];
   }
@@ -1366,7 +1242,6 @@ export const module_sleep_imagery = (reply) => {
         _id: getID(),
         text:
           "Let’s try a practice imagery scene. \n\n Imagine a black circle on a white background. Picture the circle as perfectly round and completely black. Focus on the contrast of black on the white background ",
-        otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -1377,11 +1252,7 @@ export const module_sleep_imagery = (reply) => {
             },
           ],
         },
-        user: {
-          _id: getID(),
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user,
       },
     ];
   }
@@ -1393,7 +1264,6 @@ export const module_sleep_imagery = (reply) => {
         _id: getID(),
         text:
           "Now imagine the circle is an oval. \n\nPicture the oval as being taller than it is wide. \n\nNow change the colour of the oval from black to blue. \n\nChange the shape and colour several more times before finishing with this image.\n\nOnce you feel like you are really in this scene move on.",
-        otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -1404,11 +1274,7 @@ export const module_sleep_imagery = (reply) => {
             },
           ],
         },
-        user: {
-          _id: getID(),
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user,
       },
     ];
   }
@@ -1420,7 +1286,6 @@ export const module_sleep_imagery = (reply) => {
         _id: getID(),
         text:
           "Imagine you are standing next to a running stream. It is springtime and the ice has just melted through to the water. \n\nThe water is deep and swift. It looks cool and refreshing. You can see to the rocks at the bottom of the stream.",
-        otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -1431,11 +1296,7 @@ export const module_sleep_imagery = (reply) => {
             },
           ],
         },
-        user: {
-          _id: getID(),
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user,
       },
     ];
   }
@@ -1446,7 +1307,6 @@ export const module_sleep_imagery = (reply) => {
         _id: getID(),
         text:
           "Now imagine any negative thoughts you have as objects floating down the stream. \n\nThey float by you and away from you quickly down the stream until they are out of your sight completely. \n\nIf a distracting thought surfaces again, let the water take it again. \n\nKeep doing this for any negative thoughts that enter your mind.",
-        otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -1457,11 +1317,7 @@ export const module_sleep_imagery = (reply) => {
             },
           ],
         },
-        user: {
-          _id: getID(),
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user,
       },
     ];
   }
@@ -1473,7 +1329,6 @@ export const module_sleep_imagery = (reply) => {
         _id: getID(),
         text:
           "Take a deep breath. Relax your body.  Think of a pleasant image or somewhere you feel safe and calm. Say out loud to yourself positive reinforcers. “ I feel calm”, “ I will sleep well tonight” “ I am putting away my problems for now”. \n\n This is the end of this lesson",
-        otherUser,
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -1484,11 +1339,7 @@ export const module_sleep_imagery = (reply) => {
             },
           ],
         },
-        user: {
-          _id: getID(),
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user,
       },
     ];
   }

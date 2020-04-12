@@ -1,17 +1,15 @@
-import React, { Fragment, Component } from "react";
+import React from "react";
 import {
   SafeAreaView,
   StyleSheet,
   ScrollView,
-  View,
   Text,
   AsyncStorage,
 } from "react-native";
 import { ListItem, Icon } from "react-native-elements";
-import SplashScreen from "../loading";
-import { retrieveSleepDiaryData } from "../utils/save-utils";
-import SleepDiaryEdit from "../SleepDiaryEdit";
-import { s, colors } from "./styles";
+import LottieLoader from "./loading";
+import SleepDiaryEdit from "./SleepDiaryEdit";
+import { colors } from "./styles";
 
 export default class History extends React.Component {
   state = {
@@ -80,7 +78,7 @@ export default class History extends React.Component {
       sleepDiaryInfo,
     } = this.state;
     if (isLoading) {
-      return <SplashScreen />;
+      return <LottieLoader />;
     }
     return (
       <SafeAreaView style={styles.body}>

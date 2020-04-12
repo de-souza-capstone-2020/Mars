@@ -1,13 +1,13 @@
 const getID = () => Math.round(Math.random() * 1000000);
 
-const otherUser = {
-  _id: 2,
+const user = {
+  _id: getID(),
   name: "React Native",
   avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
 };
 
-const user = {
-  _id: getID(),
+const otherUser = {
+  _id: 2,
   name: "React Native",
   avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
 };
@@ -32,7 +32,7 @@ const sleep_diary_messages = () => {
           },
         ],
       },
-      otherUser,
+      user,
       user,
     },
   ];
@@ -54,7 +54,7 @@ const module_end = () => {
           },
         ],
       },
-      otherUser,
+      user,
       user,
     },
   ];
@@ -77,7 +77,7 @@ const generic_messages = () => {
           },
         ],
       },
-      otherUser,
+      user,
       user,
     },
   ];
@@ -104,7 +104,7 @@ const sleep_diary_reminder_messages = () => {
           },
         ],
       },
-      otherUser,
+      user,
       user,
     },
   ];
@@ -127,7 +127,7 @@ const sleep_diary_nap_good = () => {
           },
         ],
       },
-      otherUser,
+      user,
       user,
     },
   ];
@@ -150,7 +150,7 @@ const sleep_tip_1 = () => {
           },
         ],
       },
-      otherUser,
+      user,
       user,
     },
   ];
@@ -181,7 +181,7 @@ const generic_tip = () => {
           },
         ],
       },
-      otherUser,
+      user,
       user,
     },
   ];
@@ -207,7 +207,7 @@ const generic_tip_1 = () => {
           },
         ],
       },
-      otherUser,
+      user,
       user,
     },
   ];
@@ -233,7 +233,7 @@ const generic_tip_2 = () => {
           },
         ],
       },
-      otherUser,
+      user,
       user,
     },
   ];
@@ -256,7 +256,7 @@ const sleep_tip_2 = () => {
           },
         ],
       },
-      otherUser,
+      user,
       user,
     },
   ];
@@ -279,7 +279,7 @@ const sleep_diary_tip_1 = () => {
           },
         ],
       },
-      otherUser,
+      user,
       user,
     },
   ];
@@ -302,7 +302,7 @@ const sleep_diary_tip_2 = () => {
           },
         ],
       },
-      otherUser,
+      user,
       user,
     },
   ];
@@ -331,7 +331,7 @@ const sleep_diary_tip_eff = (sleepEff) => {
           },
         ],
       },
-      otherUser,
+      user,
       user,
     },
   ];
@@ -354,7 +354,7 @@ const sleep_efficiency_explain = () => {
           },
         ],
       },
-      otherUser,
+      user,
       user,
     },
   ];
@@ -381,7 +381,7 @@ const content_module_request = () => {
           },
         ],
       },
-      otherUser,
+      user,
       user,
     },
   ];
@@ -403,7 +403,7 @@ const sleep_diary_tip_eff_err = () => {
           },
         ],
       },
-      otherUser,
+      user,
       user,
     },
   ];
@@ -426,7 +426,7 @@ const nap_tip_1 = () => {
           },
         ],
       },
-      otherUser,
+      user,
       user,
     },
   ];
@@ -449,7 +449,7 @@ const sleep_tip_3 = () => {
           },
         ],
       },
-      otherUser,
+      user,
       user,
     },
   ];
@@ -462,7 +462,7 @@ const sleep_tip_4 = () => {
       _id: getID(),
       text:
         "Use positive reaffirming self talk!\n\nRemind yourself that insomnia will go away! ",
-      otherUser,
+      user,
       quickReplies: {
         type: "radio", // or 'checkbox',
         keepIt: true,
@@ -473,7 +473,7 @@ const sleep_tip_4 = () => {
           },
         ],
       },
-      otherUser,
+      user,
       user,
     },
   ];
@@ -500,7 +500,7 @@ const sleep_tip_5 = () => {
           },
         ],
       },
-      otherUser,
+      user,
       user,
     },
   ];
@@ -522,12 +522,13 @@ const sleep_tip_6 = () => {
           },
         ],
       },
-      otherUser,
+      user,
       user,
     },
   ];
 };
 
+//currently usused 
 const sleep_tip_7 = () => {
   return [
     {
@@ -545,12 +546,13 @@ const sleep_tip_7 = () => {
           },
         ],
       },
-      otherUser,
+      user,
       user,
     },
   ];
 };
 
+//currently unused
 const module = () => {
   return [
     {
@@ -567,7 +569,7 @@ const module = () => {
           },
         ],
       },
-      otherUser,
+      user,
       user,
     },
   ];

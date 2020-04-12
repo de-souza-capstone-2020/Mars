@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import {
-  StyleSheet,
   Text,
   View,
-  Image,
-  Button,
   AsyncStorage,
 } from "react-native";
 import { GiftedChat, Bubble } from "react-native-gifted-chat";
@@ -16,7 +13,6 @@ import {
   sleep_diary_messages,
   generic_tip,
   sleep_tip_2,
-  module,
   sleep_diary_reminder_messages,
   sleep_diary_tip_2,
   sleep_diary_tip_1,
@@ -34,13 +30,10 @@ import {
   sleep_tip_4,
   sleep_tip_5,
   sleep_tip_6,
-  sleep_tip_7,
 } from "./static/messages";
 import {
-  getRandomAppState,
   getNextAppState,
   getRandomGenericTip,
-  getNextModule,
 } from "./utils/helper-utils";
 import LottieLoader from "./loading";
 import {
@@ -50,13 +43,11 @@ import {
   module_sleep_duration,
   module_sleep_imagery,
 } from "./static/customActions";
-import SplashScreen from "./loading";
 import { s, colors } from "./styles";
 
 const user = {
   _id: 1,
   name: "Developer",
-  // image: "../../assets/sleep_avatar.png",
   avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
 };
 
@@ -178,7 +169,7 @@ export default class Home extends Component {
             _id: getID(),
             text,
             createdAt: new Date(),
-            user: otherUser,
+            user: user,
           },
           Platform.OS !== "web"
         ),

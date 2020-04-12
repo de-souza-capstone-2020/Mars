@@ -11,11 +11,7 @@ import {
 import { Button } from "react-native-elements";
 import Swiper from "react-native-swiper";
 import { storeNickNameYearBirth } from "./utils/save-utils";
-import RadioForm, {
-  RadioButton,
-  RadioButtonInput,
-  RadioButtonLabel,
-} from "react-native-simple-radio-button";
+import RadioForm from "react-native-simple-radio-button";
 
 import { colors } from "./styles";
 

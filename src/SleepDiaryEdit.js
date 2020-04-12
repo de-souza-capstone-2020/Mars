@@ -7,7 +7,6 @@ import {
   TextInput,
   ScrollView,
   Picker,
-  Image,
 } from "react-native";
 import DatePicker from "react-native-date-picker";
 import Modal from "react-native-modal";

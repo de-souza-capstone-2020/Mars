@@ -2,11 +2,8 @@ import React, { Fragment, Component } from "react";
 import {
   SafeAreaView,
   StyleSheet,
-  ScrollView,
   View,
   Text,
-  Image,
-  StatusBar,
   AsyncStorage,
 } from "react-native";
 import { Button } from "react-native-elements";
