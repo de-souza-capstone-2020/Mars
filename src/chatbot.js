@@ -44,12 +44,6 @@ const user = {
   avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
 };
 
-const otherUser = {
-  _id: 2,
-  name: "React Native",
-  avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-};
-
 const date = Moment(date).format("MM-DD-YYYY");
 // const date = "03-23-2020"; //for testing
 
