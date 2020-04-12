@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-import {
-  Text,
-  View,
-  AsyncStorage,
-} from "react-native";
+import { Text, View, AsyncStorage } from "react-native";
 import { GiftedChat, Bubble } from "react-native-gifted-chat";
 import QuickReplies from "react-native-gifted-chat/lib/QuickReplies";
 import Moment from "moment";
@@ -31,10 +27,7 @@ import {
   sleep_tip_5,
   sleep_tip_6,
 } from "./static/messages";
-import {
-  getNextAppState,
-  getRandomGenericTip,
-} from "./utils/helper-utils";
+import { getNextAppState, getRandomGenericTip } from "./utils/helper-utils";
 import LottieLoader from "./loading";
 import {
   sleep_diary_response,
@@ -99,7 +92,7 @@ export default class Home extends Component {
     const { modState } = this.state;
     modState.add(0);
     this.setState({ modState });
-    console.log("componentdidmount appstate: ", appState);
+    console.log("appstate: ", appState);
     if (appState.size > 0) {
       if (appState.has(1)) {
         this.setState({ messages: new sleep_diary_messages() });
@@ -185,19 +178,16 @@ export default class Home extends Component {
           message.quickReplies.values = [];
         }
       });
-      const sentMessages = [{ ...messages[0], sent: true, received: true }];
       return {
         messages: GiftedChat.append(
           previousState.messages,
-          sentMessages,
+          messages,
           Platform.OS !== "web"
         ),
         //typingText: "Chat bot is typing...",
         step,
       };
     });
-    // for demo purpose
-    // setTimeout(() => this.botSend(step, messages[0]), Math.round(Math.random() * 1000))
   };
 
   onQuickReply = (replies) => {
@@ -310,7 +300,7 @@ export default class Home extends Component {
     } else if (reply.value === "explain_sleep_effs") {
       reply = new sleep_efficiency_explain();
     } else if (reply.value.includes("_img")) {
-      reply = new sleep_efficiency_explain();
+      reply = new module_sleep_imagery(reply);
     } else {
       reply = sleep_diary_response(reply);
     }

@@ -26,12 +26,8 @@ export const sleep_diary_response = (reply) => {
             },
           ],
         },
-        user: {
-          _id: 2,
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
-      },
+        user,
+      }
     ];
   }
   if (reply.value === "seeu") {
@@ -160,11 +156,11 @@ export const sleep_diary_response = (reply) => {
   }
   if (reply.value == "why_caffeine") {
     return [
+      
       {
-        createdAt,
+        createdAt: new Date(),
         _id: getID(),
         text:
-          "I know coffee is yummy, but...fun fact 💡 \n" +
           "Adenosine is a substance in your body that promotes sleepiness.\n" +
           "Caffeine in coffee is a stimulant that blocks the adenosine receptor to keep you from feeling sleepy",
         quickReplies: {
@@ -179,6 +175,13 @@ export const sleep_diary_response = (reply) => {
         },
         user,
       },
+      {
+        createdAt,
+        _id: getID(),
+        text:
+          "I know coffee is yummy, but...fun fact 💡",
+        user,
+      },
     ];
   }
 
@@ -188,7 +191,7 @@ export const sleep_diary_response = (reply) => {
         createdAt,
         _id: getID(),
         text:
-          "A relaxing routine activity, right before bedtime ,done away from bright lights, helps separate your sleep time from activities that can cause excitement, stress or anxiety. \n\nThese can make it more difficult to fall asleep, get sound and deep sleep or remain asleep.",
+          "These can make it more difficult to fall asleep, get sound and deep sleep or remain asleep.",
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -199,6 +202,13 @@ export const sleep_diary_response = (reply) => {
             },
           ],
         },
+        user,
+      },
+      {
+        createdAt,
+        _id: getID(),
+        text:
+          "A relaxing routine activity, right before bedtime, done away from bright lights, helps separate your sleep time from activities that can cause excitement, stress or anxiety.",
         user,
       },
     ];
@@ -359,7 +369,7 @@ export const conversation_flow_one = (reply) => {
         createdAt,
         _id: getID(),
         text:
-          "It is important to know the difference between time spent sleeping and time spent in bed. \n\nWould you like to work on your sleep efficiency?",
+          "Would you like to work on your sleep efficiency?",
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -376,6 +386,13 @@ export const conversation_flow_one = (reply) => {
         },
         user,
       },
+      {
+        createdAt,
+        _id: getID(),
+        text:
+          "It is important to know the difference between time spent sleeping and time spent in bed.",
+        user,
+      },
     ];
   }
   if (reply.value === "sleep_efficiency_explain_chp1") {
@@ -384,7 +401,7 @@ export const conversation_flow_one = (reply) => {
         createdAt,
         _id: getID(),
         text:
-          "Sleep efficiency is the ratio of the total time spent asleep (total sleep time) in a night, compared to the total amount of time spent in bed. \n\n... In order to achieve good sleep efficiency, it is recommended that extra time should not be spent in bed. ",
+          "In order to achieve good sleep efficiency, it is recommended that extra time should not be spent in bed. ",
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -399,6 +416,13 @@ export const conversation_flow_one = (reply) => {
             },
           ],
         },
+        user,
+      },
+      {
+        createdAt,
+        _id: getID(),
+        text:
+          "Sleep efficiency is the ratio of the total time spent asleep (total sleep time) in a night, compared to the total amount of time spent in bed.",
         user,
       },
     ];
@@ -435,7 +459,7 @@ export const conversation_flow_one = (reply) => {
         createdAt,
         _id: getID(),
         text:
-          "Laying in bed without successfully falling asleep strengthens the association of bed being a place to lay awake. \n\nTo work on this, we use a skill called Sleep Restriction. \n\nSleep Restriction works to actually shorten how long you spend in bed. It leads to ‘concentrated’ sleep where you remain asleep the majority of the night.",
+          "Sleep Restriction works to actually shorten how long you spend in bed. It leads to ‘concentrated’ sleep where you remain asleep the majority of the night.",
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -450,6 +474,20 @@ export const conversation_flow_one = (reply) => {
             },
           ],
         },
+        user,
+      },
+      {
+        createdAt,
+        _id: getID(),
+        text:
+          "To work on this, we use a skill called Sleep Restriction.",
+        user,
+      },
+      {
+        createdAt,
+        _id: getID(),
+        text:
+          "Laying in bed without successfully falling asleep strengthens the association of bed being a place to lay awake.",
         user,
       },
     ];
@@ -485,7 +523,7 @@ export const conversation_flow_one = (reply) => {
         createdAt,
         _id: getID(),
         text:
-          "Alright. First you need to pick a a consistent time every morning to wake up during the week. \n\nBased on your current sleep ability, use this amount of time and add 30 minutes. Count backwards to figure out your new bedtime. \n\nAs you work on sleep restriction you wil gradually increase your sleep quantity. Is this something you think you are able to do?",
+          "As you work on sleep restriction you wil gradually increase your sleep quantity. Is this something you think you are able to do?",
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -504,6 +542,20 @@ export const conversation_flow_one = (reply) => {
             },
           ],
         },
+        user,
+      },
+      {
+        createdAt,
+        _id: getID(),
+        text:
+          "Based on your current sleep ability, use this amount of time and add 30 minutes. Count backwards to figure out your new bedtime.",
+        user,
+      },
+      {
+        createdAt,
+        _id: getID(),
+        text:
+          "Alright! First you need to pick a a consistent time every morning to wake up during the week.",
         user,
       },
     ];
@@ -733,11 +785,7 @@ export const module_sleep_duration = (reply) => {
             },
           ],
         },
-        user: {
-          _id: 2,
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user
       },
     ];
   }
@@ -759,11 +807,7 @@ export const module_sleep_duration = (reply) => {
             },
           ],
         },
-        user: {
-          _id: 2,
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user
       },
     ];
   }
@@ -774,7 +818,7 @@ export const module_sleep_duration = (reply) => {
         createdAt,
         _id: getID(),
         text:
-          "Each adult differs in the amount of sleep they require to function adequately! \n\nIf you’ve ever woken up and felt like you’ve overslept with only 8 hour of sleep, it might be because your body really only needs 6 hours!",
+          "If you’ve ever woken up and felt like you’ve overslept with only 8 hour of sleep, it might be because your body really only needs 6 hours!",
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -789,11 +833,14 @@ export const module_sleep_duration = (reply) => {
             },
           ],
         },
-        user: {
-          _id: 2,
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user
+      },
+      {
+        createdAt,
+        _id: getID(),
+        text:
+          "Each adult differs in the amount of sleep they require to function adequately!",
+        user
       },
     ];
   }
@@ -819,11 +866,7 @@ export const module_sleep_duration = (reply) => {
             },
           ],
         },
-        user: {
-          _id: 2,
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user
       },
     ];
   }
@@ -833,7 +876,7 @@ export const module_sleep_duration = (reply) => {
         createdAt,
         _id: getID(),
         text:
-          "Sleep is a restorative process, when you're getting the correct amount. It can be very beneficial to know exactly what’s going on in your brain when you sleep. \n\nWould you like to learn about the stages of sleep so you can work through your insomnia?",
+          "Would you like to learn about the stages of sleep so you can work through your insomnia?",
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -849,11 +892,14 @@ export const module_sleep_duration = (reply) => {
             },
           ],
         },
-        user: {
-          _id: 2,
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user
+      },
+      {
+        createdAt,
+        _id: getID(),
+        text:
+          "Sleep is a restorative process, when you're getting the correct amount. It can be very beneficial to know exactly what’s going on in your brain when you sleep.",
+        user
       },
     ];
   }
@@ -953,7 +999,7 @@ export const module_sleep_duration = (reply) => {
         createdAt,
         _id: getID(),
         text:
-          "These are called Hypnic jerks. Sometimes these jerks can even wake us up out of that light first stage of sleep.\n\nIf they don’t we go on into stage 2 where we spend a lot of our time. There are low and high amplitude brain waves occurring. We can think of it as the connection between light and deep sleep.",
+          "If they don’t we go on into stage 2 where we spend a lot of our time. There are low and high amplitude brain waves occurring. We can think of it as the connection between light and deep sleep.",
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -964,11 +1010,15 @@ export const module_sleep_duration = (reply) => {
             },
           ],
         },
-        user: {
-          _id: 2,
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user
+      },
+      {
+        createdAt,
+        _id: getID(),
+        text:
+          "These are called Hypnic jerks. Sometimes these jerks can even wake us up out of that light first stage of sleep.",
+        
+        user
       },
     ];
   }
@@ -978,7 +1028,7 @@ export const module_sleep_duration = (reply) => {
         createdAt,
         _id: getID(),
         text:
-          "The next stages are what we consider our deep sleep or slow wave sleep. There isn’t much brain activity and we tend to breath very slowly.\n\nHave you ever tried to wake someone up and had to really poke or shake them, maybe dump some water on them?",
+          "Have you ever tried to wake someone up and had to really poke or shake them, maybe dump some water on them?",
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -993,11 +1043,14 @@ export const module_sleep_duration = (reply) => {
             },
           ],
         },
-        user: {
-          _id: 2,
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user
+      },
+      {
+        createdAt,
+        _id: getID(),
+        text:
+          "The next stages are what we consider our deep sleep or slow wave sleep. There isn’t much brain activity and we tend to breath very slowly.",
+        user
       },
     ];
   }
@@ -1022,11 +1075,7 @@ export const module_sleep_duration = (reply) => {
             },
           ],
         },
-        user: {
-          _id: 2,
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user
       },
     ];
   }
@@ -1047,11 +1096,7 @@ export const module_sleep_duration = (reply) => {
             },
           ],
         },
-        user: {
-          _id: 2,
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user
       },
     ];
   }
@@ -1061,7 +1106,7 @@ export const module_sleep_duration = (reply) => {
         createdAt,
         _id: getID(),
         text:
-          "The final stage is REM sleep. Our brains are most active during this time. It is often associated with dreaming. \n\nSo when you wake up remembering that dream about a cupcake chasing you through the mall this is the stage typically responsible.",
+          "So when you wake up remembering that dream about a cupcake chasing you through the mall this is the stage typically responsible.",
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -1072,11 +1117,15 @@ export const module_sleep_duration = (reply) => {
             },
           ],
         },
-        user: {
-          _id: 2,
-          name: "React Native",
-          avatar: "https://i.gyazo.com/a9ea9603d80527d5e94de3ac55fb9260.png",
-        },
+        user
+      },
+      {
+        createdAt,
+        _id: getID(),
+        text:
+          "The final stage is REM sleep. Our brains are most active during this time. It is often associated with dreaming. ",
+        
+        user
       },
     ];
   }
@@ -1189,12 +1238,13 @@ export const module_sleep_duration = (reply) => {
 
 export const module_sleep_imagery = (reply) => {
   if (reply.value === "start_chp_img") {
+    console.log('starting imagery chapter')
     return [
       {
         createdAt,
         _id: getID(),
         text:
-          "Using Imagery can be very beneficial to reduce stressful thoughts coursing through your brain while you’re laying in bed. \n\nRelaxing your brain is the first step to relax your body and get to sleep. ",
+          "Relaxing your brain is the first step to relax your body and get to sleep. ",
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -1211,9 +1261,17 @@ export const module_sleep_imagery = (reply) => {
         },
         user,
       },
+      {
+        createdAt,
+        _id: getID(),
+        text:
+          "Using Imagery can be very beneficial to reduce stressful thoughts coursing through your brain while you’re laying in bed.",
+        user,
+      },
     ];
   }
   if (reply.value === "know_more_please_img") {
+    console.log('learning more about imagery chapter')
     return [
       {
         createdAt,
@@ -1241,7 +1299,7 @@ export const module_sleep_imagery = (reply) => {
         createdAt,
         _id: getID(),
         text:
-          "Let’s try a practice imagery scene. \n\n Imagine a black circle on a white background. Picture the circle as perfectly round and completely black. Focus on the contrast of black on the white background ",
+          "Imagine a black circle on a white background. Picture the circle as perfectly round and completely black. Focus on the contrast of black on the white background ",
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -1254,6 +1312,13 @@ export const module_sleep_imagery = (reply) => {
         },
         user,
       },
+      {
+        createdAt,
+        _id: getID(),
+        text:
+          "Let’s try a practice imagery scene.",
+        user,
+      },
     ];
   }
 
@@ -1263,7 +1328,7 @@ export const module_sleep_imagery = (reply) => {
         createdAt,
         _id: getID(),
         text:
-          "Now imagine the circle is an oval. \n\nPicture the oval as being taller than it is wide. \n\nNow change the colour of the oval from black to blue. \n\nChange the shape and colour several more times before finishing with this image.\n\nOnce you feel like you are really in this scene move on.",
+          "Once you feel like you are really in this scene move on.",
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -1276,6 +1341,34 @@ export const module_sleep_imagery = (reply) => {
         },
         user,
       },
+      {
+        createdAt,
+        _id: getID(),
+        text:
+          "Change the shape and colour several more times before finishing with this image.",
+        user,
+      },
+      {
+        createdAt,
+        _id: getID(),
+        text:
+          "Now change the colour of the oval from black to blue.",
+        user,
+      },
+      {
+        createdAt,
+        _id: getID(),
+        text:
+          "Picture the oval as being taller than it is wide.",
+        user,
+      },
+      {
+        createdAt,
+        _id: getID(),
+        text:
+          "Now imagine the circle is an oval.",
+        user,
+      },
     ];
   }
 
@@ -1285,17 +1378,24 @@ export const module_sleep_imagery = (reply) => {
         createdAt,
         _id: getID(),
         text:
-          "Imagine you are standing next to a running stream. It is springtime and the ice has just melted through to the water. \n\nThe water is deep and swift. It looks cool and refreshing. You can see to the rocks at the bottom of the stream.",
+          "The water is deep and swift. It looks cool and refreshing. You can see to the rocks at the bottom of the stream.",
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
           values: [
             {
-              title: "i can see that",
+              title: "I can see that",
               value: "stream_negative_img",
             },
           ],
         },
+        user,
+      },
+      {
+        createdAt,
+        _id: getID(),
+        text:
+          "Imagine you are standing next to a running stream. It is springtime and the ice has just melted through to the water.",
         user,
       },
     ];
@@ -1306,7 +1406,7 @@ export const module_sleep_imagery = (reply) => {
         createdAt,
         _id: getID(),
         text:
-          "Now imagine any negative thoughts you have as objects floating down the stream. \n\nThey float by you and away from you quickly down the stream until they are out of your sight completely. \n\nIf a distracting thought surfaces again, let the water take it again. \n\nKeep doing this for any negative thoughts that enter your mind.",
+          "Keep doing this for any negative thoughts that enter your mind.",
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
@@ -1319,6 +1419,27 @@ export const module_sleep_imagery = (reply) => {
         },
         user,
       },
+      {
+        createdAt,
+        _id: getID(),
+        text:
+          "If a distracting thought surfaces again, let the water take it again.",
+        user,
+      },
+      {
+        createdAt,
+        _id: getID(),
+        text:
+          "They float by you and away from you quickly down the stream until they are out of your sight completely.",
+        user,
+      },
+      {
+        createdAt,
+        _id: getID(),
+        text:
+          "Now imagine any negative thoughts you have as objects floating down the stream.",
+        user,
+      },
     ];
   }
 
@@ -1328,17 +1449,24 @@ export const module_sleep_imagery = (reply) => {
         createdAt,
         _id: getID(),
         text:
-          "Take a deep breath. Relax your body.  Think of a pleasant image or somewhere you feel safe and calm. Say out loud to yourself positive reinforcers. “ I feel calm”, “ I will sleep well tonight” “ I am putting away my problems for now”. \n\n This is the end of this lesson",
+          "This is the end of this lesson",
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
           values: [
             {
               title: "Thank you",
-              value: "got it",
+              value: "got_it",
             },
           ],
         },
+        user,
+      },
+      {
+        createdAt,
+        _id: getID(),
+        text:
+          "Take a deep breath. Relax your body.  Think of a pleasant image or somewhere you feel safe and calm. Say out loud to yourself positive reinforcers. “ I feel calm”, “ I will sleep well tonight” “ I am putting away my problems for now”",
         user,
       },
     ];

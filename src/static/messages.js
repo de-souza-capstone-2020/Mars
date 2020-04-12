@@ -33,7 +33,6 @@ const sleep_diary_messages = () => {
         ],
       },
       user,
-      user,
     },
   ];
 };
@@ -55,7 +54,6 @@ const module_end = () => {
         ],
       },
       user,
-      user,
     },
   ];
 };
@@ -65,19 +63,32 @@ const generic_messages = () => {
     {
       _id: getID(),
       text:
-        "When you get worried, keep a little journal to write down one worry at a time. \n\nYou can return to old worries when you have alternate solutions\n. \nIt’ll help detangle that mess of stress in your head and hopefully lead to an easier time falling asleep. ",
+        "It’ll help detangle that mess of stress in your head and hopefully lead to an easier time falling asleep. ",
       createdAt: new Date(),
       quickReplies: {
         type: "radio", // or 'checkbox',
         keepIt: true,
         values: [
           {
-            title: "okay",
+            title: "Okay",
             value: "hi",
           },
         ],
       },
       user,
+    },
+    {
+      _id: getID(),
+      text:
+        "You can return to old worries when you have alternate solutions",
+      createdAt: new Date(),
+      user,
+    },
+    {
+      _id: getID(),
+      text:
+        "When you get worried, keep a little journal to write down one worry at a time.",
+      createdAt: new Date(),
       user,
     },
   ];
@@ -105,7 +116,6 @@ const sleep_diary_reminder_messages = () => {
         ],
       },
       user,
-      user,
     },
   ];
 };
@@ -128,7 +138,6 @@ const sleep_diary_nap_good = () => {
         ],
       },
       user,
-      user,
     },
   ];
 };
@@ -138,7 +147,7 @@ const sleep_tip_1 = () => {
     {
       _id: getID(),
       text:
-        "Sleep tip: Stick to a sleep schedule of the same bedtime 🌙 and wake up time 🌞, even on the weekends. \n\nThis helps to regulate your body's clock and could help you fall asleep and stay asleep for the night",
+        "This helps to regulate your body's clock and could help you fall asleep and stay asleep for the night",
       createdAt: new Date(),
       quickReplies: {
         type: "radio", // or 'checkbox',
@@ -151,6 +160,12 @@ const sleep_tip_1 = () => {
         ],
       },
       user,
+    },
+    {
+      _id: getID(),
+      text:
+        "Sleep tip: Stick to a sleep schedule of the same bedtime 🌙 and wake up time 🌞, even on the weekends.",
+      createdAt: new Date(),
       user,
     },
   ];
@@ -182,7 +197,6 @@ const generic_tip = () => {
         ],
       },
       user,
-      user,
     },
   ];
 };
@@ -207,7 +221,6 @@ const generic_tip_1 = () => {
           },
         ],
       },
-      user,
       user,
     },
   ];
@@ -234,7 +247,6 @@ const generic_tip_2 = () => {
         ],
       },
       user,
-      user,
     },
   ];
 };
@@ -257,7 +269,6 @@ const sleep_tip_2 = () => {
         ],
       },
       user,
-      user,
     },
   ];
 };
@@ -268,7 +279,7 @@ const sleep_diary_tip_1 = () => {
       createdAt: new Date(),
       _id: getID(),
       text:
-        "Sleep Diary Tip: \n You are lying in bed while awake.\n\nYou should be spending less time in bed as it strengthens the role of your bed as the place to sleep.",
+        "You should be spending less time in bed as it strengthens the role of your bed as the place to sleep.",
       quickReplies: {
         type: "radio", // or 'checkbox',
         keepIt: true,
@@ -280,6 +291,13 @@ const sleep_diary_tip_1 = () => {
         ],
       },
       user,
+    },
+    {
+      createdAt: new Date(),
+      _id: getID(),
+      text:
+        "Sleep Diary Tip: \n You are lying in bed while awake.",
+      
       user,
     },
   ];
@@ -291,7 +309,7 @@ const sleep_diary_tip_2 = () => {
       createdAt: new Date(),
       _id: getID(),
       text:
-        "Sleep Diary Tip: \nGreat job staying out of bed! \nYou now know why spending excessive time in bed not sleeping is bad for your sleep pattern. Keep finding ways to reduce your time in bed",
+        "You now know why spending excessive time in bed not sleeping is bad for your sleep pattern. Keep finding ways to reduce your time in bed",
       quickReplies: {
         type: "radio", // or 'checkbox',
         keepIt: true,
@@ -303,6 +321,12 @@ const sleep_diary_tip_2 = () => {
         ],
       },
       user,
+    },
+    {
+      createdAt: new Date(),
+      _id: getID(),
+      text:
+        "Sleep Diary Tip: \nGreat job staying out of bed!",
       user,
     },
   ];
@@ -332,7 +356,6 @@ const sleep_diary_tip_eff = (sleepEff) => {
         ],
       },
       user,
-      user,
     },
   ];
 };
@@ -343,7 +366,7 @@ const sleep_efficiency_explain = () => {
       createdAt: new Date(),
       _id: getID(),
       text:
-        "Sleep efficiency is the ratio of the total time spent asleep (total sleep time) in a night compared to the total amount of time spent in bed. \n\n... In order to achieve good sleep efficiency, it is recommended that extra time should not be spent in bed",
+        "In order to achieve good sleep efficiency, it is recommended that extra time should not be spent in bed",
       quickReplies: {
         type: "radio", // or 'checkbox',
         keepIt: true,
@@ -355,6 +378,11 @@ const sleep_efficiency_explain = () => {
         ],
       },
       user,
+    },{
+      createdAt: new Date(),
+      _id: getID(),
+      text:
+        "Sleep efficiency is the ratio of the total time spent asleep (total sleep time) in a night compared to the total amount of time spent in bed.",
       user,
     },
   ];
@@ -382,7 +410,6 @@ const content_module_request = () => {
         ],
       },
       user,
-      user,
     },
   ];
 };
@@ -404,7 +431,6 @@ const sleep_diary_tip_eff_err = () => {
         ],
       },
       user,
-      user,
     },
   ];
 };
@@ -415,7 +441,7 @@ const nap_tip_1 = () => {
       createdAt: new Date(),
       _id: getID(),
       text:
-        "Aim to nap for only 10 to 20 minutes. \n\nThe longer you nap, the more likely you are to feel groggy afterward.",
+        "The longer you nap, the more likely you are to feel groggy afterward.",
       quickReplies: {
         type: "radio", // or 'checkbox',
         keepIt: true,
@@ -427,6 +453,12 @@ const nap_tip_1 = () => {
         ],
       },
       user,
+    },
+    {
+      createdAt: new Date(),
+      _id: getID(),
+      text:
+        "Aim to nap for only 10 to 20 minutes.",
       user,
     },
   ];
@@ -438,7 +470,7 @@ const sleep_tip_3 = () => {
       createdAt: new Date(),
       _id: getID(),
       text:
-        "Let the people around you know what you’re dealing with and how you plan to resolve it. \n\n Don’t be afraid to ask for support and positive words of motivation.",
+        "Don’t be afraid to ask for support and positive words of motivation.",
       quickReplies: {
         type: "radio", // or 'checkbox',
         keepIt: true,
@@ -450,6 +482,12 @@ const sleep_tip_3 = () => {
         ],
       },
       user,
+    },
+    {
+      createdAt: new Date(),
+      _id: getID(),
+      text:
+        "Let the people around you know what you’re dealing with and how you plan to resolve it.",
       user,
     },
   ];
@@ -461,7 +499,7 @@ const sleep_tip_4 = () => {
       createdAt: new Date(),
       _id: getID(),
       text:
-        "Use positive reaffirming self talk!\n\nRemind yourself that insomnia will go away! ",
+        "Remind yourself that insomnia will go away! ",
       user,
       quickReplies: {
         type: "radio", // or 'checkbox',
@@ -474,6 +512,12 @@ const sleep_tip_4 = () => {
         ],
       },
       user,
+    },
+    {
+      createdAt: new Date(),
+      _id: getID(),
+      text:
+        "Use positive reaffirming self talk!",
       user,
     },
   ];
@@ -485,7 +529,7 @@ const sleep_tip_5 = () => {
       createdAt: new Date(),
       _id: getID(),
       text:
-        "You have the skills to do this and work through the insomnia.\n\nRemind yourself of the people who love you and the support system that you may be grateful for.",
+        "Remind yourself of the people who love you and the support system that you may be grateful for.",
       quickReplies: {
         type: "radio", // or 'checkbox',
         keepIt: true,
@@ -501,6 +545,12 @@ const sleep_tip_5 = () => {
         ],
       },
       user,
+    },
+    {
+      createdAt: new Date(),
+      _id: getID(),
+      text:
+        "You have the skills to do this and work through the insomnia.",
       user,
     },
   ];
@@ -522,7 +572,6 @@ const sleep_tip_6 = () => {
           },
         ],
       },
-      user,
       user,
     },
   ];
@@ -547,7 +596,6 @@ const sleep_tip_7 = () => {
         ],
       },
       user,
-      user,
     },
   ];
 };
@@ -569,7 +617,6 @@ const module = () => {
           },
         ],
       },
-      user,
       user,
     },
   ];
