@@ -26,7 +26,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 - [React Native](https://reactnative.dev/docs/environment-setup)
     - Please read above documentation carefully, it is a complete guide for all platforms (Mac, Windows, iOS and Android)
-    - From personal experience, running on Android is easier to set up 
+    - From personal experience, running on Android emulator is easiest to set up (Pixel 3 API 27, Android 8.1 Oreo)
 
 
 ## Set up
